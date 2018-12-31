@@ -9,17 +9,17 @@
 
 <channel>
 	<title>Rolify &#8211; Mediocre Inventions</title>
-	<atom:link href="https://dev.mediocreinventions.com/tag/rolify/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.mediocreinventions.com/tag/rolify/feed/" rel="self" type="application/rss+xml" />
 	<link>http://mediocreinventions.herokuapp.com</link>
 	<description></description>
-	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
-		<title>4. Rails Authorization</title>
-		<link>https://dev.mediocreinventions.com/rails-authorization/</link>
+		<title>4. Ruby on Rails Authorization</title>
+		<link>https://www.mediocreinventions.com/rails-authorization/</link>
 		<pubDate>Sun, 30 Dec 2018 03:08:52 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails Authentication/Authorization]]></category>
@@ -30,9 +30,9 @@
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=721</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=721</guid>
 		<description><![CDATA[<p>Intro In this article, we will create two roles for the users: the Admin role and Normal_User role. Users with the Admin role should have access to create and modify books on the website, while normal_users should only be able to view the books. We use the Rolify and CanCanCan gems to help us implement [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -107,9 +107,11 @@ users, and made a loop that created 5 sample book entries. </p>
 
 
 
-<p>You
- can check to see if these values were entered into the database 
-successfuly by running the following command to open your database: </p>
+<h4>Opening the Database<br></h4>
+
+
+
+<p>You can check to see if these values were entered into the database successfuly by running the following command to open your database: </p>
 
 
 
@@ -140,10 +142,11 @@ should have the role with an id of 1 (the admin role).</p>
 
 
 
-<p>Now
- we can begin to implement authorization by permitting certain actions. 
-Lets start by going into the /app/models/user.rb file and add some role 
-checking functions: </p>
+<h4>Authorization</h4>
+
+
+
+<p>Now we can begin to implement authorization by permitting certain actions. Lets start by going into the /app/models/user.rb file and add some role checking functions: </p>
 
 
 
@@ -180,11 +183,11 @@ abilities, please visit: <a href="https://github.com/CanCanCommunity/cancancan/w
 
 
 
-<p>Now
- we just have to go into our /app/controllers/api/books_controller.rb 
-file to make sure our controller is checking for permissions before 
-allowing any actions to be performed. At the top (under class 
-BooksController and above the index method), add the following: </p>
+<h4>Controller</h4>
+
+
+
+<p>Now we just have to go into our /app/controllers/api/books_controller.rb file to make sure our controller is checking for permissions before allowing any actions to be performed. At the top (under class BooksController and above the index method), add the following: </p>
 
 
 
@@ -240,7 +243,7 @@ Now we have a basic authorization process for the website!</p>
 we haven&#8217;t went over the ways of put and post options (creating, 
 deleting, or editing). We will implement these functions in the next 
 article where we implement React for the front-end of the website. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

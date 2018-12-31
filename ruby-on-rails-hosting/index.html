@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>6. Ruby on Rails Hosting Options - Mediocre Inventions</title><meta name="description" content="This article will go over some free/cheap options for hosting your Ruby on Rails web application and explain how to get started with these services."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="6. Ruby on Rails Hosting Options - Mediocre Inventions"><meta property="og:description" content="This article will go over some free/cheap options for hosting your Ruby on Rails web application and explain how to get started with these services."><meta property="og:url" content="https://www.mediocreinventions.com/ruby-on-rails-hosting/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="aws"><meta property="article:tag" content="heroku"><meta property="article:tag" content="hosting"><meta property="article:tag" content="nginx"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Rails and Nginx"><meta property="article:published_time" content="2018-12-31T19:51:49+00:00"><meta property="article:modified_time" content="2018-12-31T21:38:16+00:00"><meta property="og:updated_time" content="2018-12-31T21:38:16+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article will go over some free/cheap options for hosting your Ruby on Rails web application and explain how to get started with these services."><meta name="twitter:title" content="6. Ruby on Rails Hosting Options - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-108237564-4');
+			
+		</script></head><body class="post-template-default single single-post postid-1371 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://www.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-1371" class="single-content post-text scroll post-1371 post type-post status-publish format-standard hentry category-rails-nginx category-rails-to-production tag-aws tag-heroku tag-hosting tag-nginx tag-ruby-on-rails"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>6. Ruby on Rails Hosting Options</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" rel="category tag">Rails and Nginx</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails To Production</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>If you have followed through the Ruby on Rails tutorial in the previous posts, then you should have a basic Ruby on Rails web application on your local machine. The next step would be to move this onto a Production level web server so that the public can access it. In this article, we will go over two common hosting options that you can choose from to bring your web application to Production: Heroku and Amazon Web Services (AWS)</p>
+
+
+
+<h2>Heroku</h2>
+
+
+
+<p>If
+ you are not interested in configuring web servers or setting up 
+environments, then Heroku may be suitable for you. For Ruby on Rails 
+applications, you can simply use their services to host your project for
+ free without having to configure too much. This is great if you just 
+want a simple &ldquo;push to production&rdquo; approach and let Heroku do all the 
+server related things. </p>
+
+
+
+<p><strong>Pros</strong></p>
+
+
+
+<ul><li>There is a free tier. </li><li>Easy and quick to get started. </li><li>Can scale easily if you pay for an upgrade. </li></ul><p><strong>Cons</strong></p>
+
+
+
+<ul><li>Scaling to a higher tier can be more expensive compared to other services. </li><li>Free
+ tier has limited hours per month and your application will shut down to
+ save hours if inactive. This means that the first time you visit the 
+website after it is inactive will take longer to load. </li><li>To add 
+SSL certificates (make your website https instead of http) you will need
+ to upgrade to at least the hobby ($7 a month) plan. </li></ul><p><strong>Other</strong></p>
+
+
+
+<ul><li>To give your application a custom domain name, it is free, but you need to register your credit. </li><li>Heroku offers a lot more than just hosting, but for our purposes, using it to host is all we will cover. </li></ul><h3>Getting Started With Heroku<br></h3>
+
+
+
+<p>If you choose to go the Heroku way, then you can skip the next 2 articles since they will be focusing on setting up a web server manually. Here are the instructions to host your web application on Heroku: </p>
+
+
+
+<p>Go to their website <a href="https://www.heroku.com/" target="_blank" rel="noreferrer noopener">https://www.heroku.com/</a> and sign up then login. Go into your dashboard (<a href="https://dashboard.heroku.com/apps" target="_blank" rel="noreferrer noopener">https://dashboard.heroku.com/apps</a>),
+ select New in the top right and create a new app. Follow the 
+instructions on the page to create your application (remember your 
+application name). </p>
+
+
+
+<p>Install Heroku CLI</p>
+
+
+
+<pre class="wp-block-preformatted">sudo snap install --classic heroku
+</pre>
+
+
+
+<p>Make sure Git is installed</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git
+</pre>
+
+
+
+<p>Go into your application directory and run the following and enter your credentials</p>
+
+
+
+<pre class="wp-block-preformatted">Heroku login
+</pre>
+
+
+
+<p>Replace replaceme with your app name</p>
+
+
+
+<pre class="wp-block-preformatted">git remote add heroku git@heroku.com:replaceme.git<br>git add . <br>git commit -m "First commit. "<br>git push<br>git push heroku master</pre>
+
+
+
+<p>You can visit your website on the Heroku dashboard 
+by pressing on Open at in the top right, and it should open up your 
+project&rsquo;s page with a URL like https://yourapp.herokuapp.com</p>
+
+
+
+<h4>Heroku Commands<br></h4>
+
+
+
+<p>Every time you want to push to heroku and update your live site, you can just run the commands from &ldquo;git add&rdquo; to &ldquo;git push heroku master. &rdquo; You can also tell Heroku to run certain commands on the server by typing something like</p>
+
+
+
+<pre class="wp-block-preformatted">heroku rake db:create<br>heroku rake db:migrate<br>heroku rake db:seed</pre>
+
+
+
+<p>You can basically prepend &ldquo;heroku&rdquo; to your commands in the terminal then run your usual rails commands to tell it what to do. Running the above rake commands will be necessary most of the times to get your Heroku database up and ready to go. <br></p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Before
+ using Git, remember to configure your username and name. When you run 
+&ldquo;git commit&rdquo;, it should tell you to configure these with 2 commands if 
+you haven&rsquo;t already. </p>
+
+
+
+<p>If you run into an error saying 
+&ldquo;Precompiling assets failed. &ldquo;, you can try going in in 
+config/application.rb, add/edit line to be</p>
+
+
+
+<pre class="wp-block-preformatted">config.assets.initialize_on_precompile = false
+</pre>
+
+
+
+<p>If you run into &ldquo;Could not detect rake tasks. &ldquo;, you can try running </p>
+
+
+
+<pre class="wp-block-preformatted">RAILS_ENV=production bundle exec rake assets:precompile
+</pre>
+
+
+
+<p>If all went smoothly, your website is now in 
+Production and can be visited by anyone on the internet! If you now want
+ a custom domain, you will have to enter your credit information with 
+Heroku to verify your account. Then, you can buy a domain name from a 
+company such as GoDaddy or Namecheap and point your domain (&ldquo;CName&rdquo; or 
+&ldquo;A record&rdquo;) to your app&rsquo;s URL and run </p>
+
+
+
+<p>heroku domains:add www.yourwebsite.com</p>
+
+
+
+<p>Remember
+ to replace yourwebsite with your actual domain name. For more 
+information on this, please follow their instructions here: <a href="https://devcenter.heroku.com/articles/custom-domains" target="_blank" rel="noreferrer noopener">https://devcenter.heroku.com/articles/custom-domains</a></p>
+
+
+
+<p>If
+ you chose the Heroku route, then you are done! (for now). The rest of 
+this article will just go over AWS and how to set it up. </p>
+
+
+
+<h2>Amazon Web Services (AWS)</h2>
+
+
+
+<p>The
+ AWS option is basically renting out a remote server from Amazon, and 
+configuring it yourself to run a web application. We will be using EC2 
+and there is a Free tier for AWS that you can use for a year, there are 
+also very cheap servers that can be around $3 a month. </p>
+
+
+
+<p><strong>Pros</strong></p>
+
+
+
+<ul><li>There is a free trial. <br></li><li>Your server doesn&rsquo;t deactivate when there is no activity. </li><li>Since you are configuring everything manually, you can find free alternatives for some software/services. For example, the SSL article later on will show you how to obtain an SSL certificate to make your website use https instead of http for free. You can also install your own free server monitoring tools or connect to your server conveniently to make changes. </li></ul><p><strong>Cons</strong></p>
+
+
+
+<ul><li>Can
+ require a bit more knowledge to configure web servers and can take 
+longer than Heroku to set up. However, once you understand what is 
+needed to configure this, you can also write a script to automate the 
+process. </li><li>The free tier is only for a year. </li><li>Scaling might not be as straight forward as Heroku. </li></ul><p><strong>Other</strong></p>
+
+
+
+<ul><li>You may need to register your credit card</li><li>Depending on your plan, you can get unexpected charges if you go over your limits</li><li>We
+ won&rsquo;t be using a graphical interface to connect to our server, so you 
+should be comfortable with using the command line to interact with the 
+machine. </li></ul><h3>Setting up an AWS server</h3>
+
+
+
+<p>Go to their website and sign up for AWS <a rel="noreferrer noopener" href="https://aws.amazon.com/" target="_blank">https://aws.amazon.com/</a> then login to their AWS console (you can just Google &ldquo;aws console&rdquo; if you can&rsquo;t find the link on their website). </p>
+
+
+
+<p>At the top, click on Services &gt; EC2. Then click on Launch Instance. There will now be 7 steps here to launch your instance. </p>
+
+
+
+<p>For
+ the first step, you will need to select an AMI, which is basically a 
+machine image that your machine will use. So in this case, we want to 
+pick a Ubuntu 18.04 image. Search for it (maybe in the marketplace or 
+community section) and select it. I selected the Ubuntu 18.04 LTS &ndash; 
+Bionic option. </p>
+
+
+
+<p>Select the tier that you want to use (there should be a Free tier if you need). For the rest of the steps until 6, you can just stick with the default options. </p>
+
+
+
+<h4>Security and SSH<br></h4>
+
+
+
+<p>In step 6, you will be configuring security settings. Check Create a new security group and name it. Below that, there should be a table with headers that say Type, Protocol, Port range, and Source. Make sure you create a rule here with Type SSH, TCP Protocol, Port 22, Source Anywhere or your IP. This rule would mean that you are allowed to ssh into your server from anywhere or your ip address (sshing into the machine just means that you can connect to the machine to run commands from your terminal as if it were your own local machine. This also means you will not have a graphical interface for our purposes). For more information on ssh, please refer to this article <a rel="noreferrer noopener" href="https://www.ssh.com/ssh/protocol/" target="_blank">https://www.ssh.com/ssh/protocol/</a></p>
+
+
+
+<p>Once you have set up this rule, click launch and it should bring up a window to create your key pair. Create a new keypair here, name it, and make sure you download it (there is no way to generate this again so don&rsquo;t lose it). Once you click launch, your machine will start being setup and you can check on its status through the Instances menu option on the left. Once the Instance State says it is running, we can ssh into the server to start setting up our application. </p>
+
+
+
+<h4>Accessing the Machine<br></h4>
+
+
+
+<p>To ssh 
+into this machine, open up your terminal and change directory to the 
+folder that you saved your ssh key in then run (make your you replace 
+your-key-name.pem with your own .pem file&rsquo;s name)</p>
+
+
+
+<pre class="wp-block-preformatted">chmod 400 your-key-name.pem
+</pre>
+
+
+
+<p>The above command &ldquo;chmod&rdquo; modifies the file&rsquo;s permissions to 
+allow to you perform the below command properly. For more information on
+ the &ldquo;chmod&rdquo; command, take a look at 
+https://isabelcastillo.com/linux-chmod-permissions-cheat-sheet to see a 
+list of different permission combinations. </p>
+
+
+
+<p>Now you can connect to the server by running</p>
+
+
+
+<pre class="wp-block-preformatted">ssh -i your-key-name.pem ubuntu@18.111.111.11
+</pre>
+
+
+
+<p>Make sure to replace &ldquo;your-key-name.pem&rdquo; with the name of your 
+own .pem file and also replace the IP address after the @ sign with your
+ AWS machine&rsquo;s. You can see this in the Instances tab as well. (it 
+should be the Public IP or IPv4 Public IP column). </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>By default, AWS Ubuntu AMIs use the user called &ldquo;ubuntu&rdquo;, which is why we put ubuntu@18.111.111.11 to connect to the server. </p>
+
+
+
+<p>You
+ should now be connected to your server properly. As you can see, this 
+is just another Ubuntu server that you are able to use now!</p>
+
+
+
+<p>Now
+ if you want to point a custom domain to your website, you can buy a 
+domain name from a provider such as GoDaddy or Namecheap and follow the 
+instructions here: <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html" target="_blank" rel="noreferrer noopener">https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html</a></p>
+
+
+
+<p>Congratulation,
+ your AWS server is now up and running! Now our next few articles will 
+go over how to set up these servers to be a proper Production 
+environment for your application. </p>
+<div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/aws/" rel="tag">aws</a>, <a href="https://www.mediocreinventions.com/tag/heroku/" rel="tag">heroku</a>, <a href="https://www.mediocreinventions.com/tag/hosting/" rel="tag">hosting</a>, <a href="https://www.mediocreinventions.com/tag/nginx/" rel="tag">nginx</a>, <a href="https://www.mediocreinventions.com/tag/ruby-on-rails/" rel="tag">Ruby on Rails</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/rails-with-react/" rel="prev">5. Ruby on Rails With React</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/rails-on-nginx/" rel="next">7. Rails on Nginx, Puma, and PostgreSQL</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://www.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

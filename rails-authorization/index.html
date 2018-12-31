@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>4. Rails Authorization - Mediocre Inventions</title><meta name="description" content="In this part of the tutorial, we will implement authorization in our Ruby on Rails application with the Rolify and CanCanCan gems."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="4. Rails Authorization - Mediocre Inventions"><meta property="og:description" content="In this part of the tutorial, we will implement authorization in our Ruby on Rails application with the Rolify and CanCanCan gems."><meta property="og:url" content="https://dev.mediocreinventions.com/rails-authorization/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="Authorization"><meta property="article:tag" content="CanCanCan"><meta property="article:tag" content="Rolify"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Rails To Production"><meta property="article:published_time" content="2018-12-30T03:08:52+00:00"><meta property="article:modified_time" content="2018-12-30T21:12:01+00:00"><meta property="og:updated_time" content="2018-12-30T21:12:01+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this part of the tutorial, we will implement authorization in our Ruby on Rails application with the Rolify and CanCanCan gems."><meta name="twitter:title" content="4. Rails Authorization - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script></head><body class="post-template-default single single-post postid-721 single-format-standard">
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>4. Ruby on Rails Authorization - Mediocre Inventions</title><meta name="description" content="In this part of the tutorial, we will implement authorization in our Ruby on Rails application with the Rolify and CanCanCan gems."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="4. Ruby on Rails Authorization - Mediocre Inventions"><meta property="og:description" content="In this part of the tutorial, we will implement authorization in our Ruby on Rails application with the Rolify and CanCanCan gems."><meta property="og:url" content="https://www.mediocreinventions.com/rails-authorization/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="Authorization"><meta property="article:tag" content="CanCanCan"><meta property="article:tag" content="Rolify"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Rails To Production"><meta property="article:published_time" content="2018-12-30T03:08:52+00:00"><meta property="article:modified_time" content="2018-12-31T21:27:32+00:00"><meta property="og:updated_time" content="2018-12-31T21:27:32+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this part of the tutorial, we will implement authorization in our Ruby on Rails application with the Rolify and CanCanCan gems."><meta name="twitter:title" content="4. Ruby on Rails Authorization - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-108237564-4');
+			
+		</script></head><body class="post-template-default single single-post postid-721 single-format-standard">
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 	  
@@ -10,7 +16,7 @@
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
-                        				<h1 class="site-title"><a href="https://dev.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+                        				<h1 class="site-title"><a href="https://www.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
 			                        
                     </div>
                     
@@ -25,9 +31,9 @@
 
 				<article id="post-721" class="single-content post-text scroll post-721 post type-post status-publish format-standard hentry category-rails-authentication-authorization category-rails-to-production tag-authorization tag-cancancan tag-rolify tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
                             	                            </div>
-                            <header class=" text-header"><h2>4. Rails Authorization</h2>                                                            <div class="post-meta"> 
-                                   <a href="https://dev.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
-                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" rel="category tag">Rails Authentication/Authorization</a>, <a href="https://dev.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails To Production</a></span>
+                            <header class=" text-header"><h2>4. Ruby on Rails Authorization</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" rel="category tag">Rails Authentication/Authorization</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails To Production</a></span>
                                                                    
                                 </div>
                                                         </header><div class=" ufade post-content"> 
@@ -97,9 +103,11 @@ users, and made a loop that created 5 sample book entries. </p>
 
 
 
-<p>You
- can check to see if these values were entered into the database 
-successfuly by running the following command to open your database: </p>
+<h4>Opening the Database<br></h4>
+
+
+
+<p>You can check to see if these values were entered into the database successfuly by running the following command to open your database: </p>
 
 
 
@@ -130,10 +138,11 @@ should have the role with an id of 1 (the admin role).</p>
 
 
 
-<p>Now
- we can begin to implement authorization by permitting certain actions. 
-Lets start by going into the /app/models/user.rb file and add some role 
-checking functions: </p>
+<h4>Authorization</h4>
+
+
+
+<p>Now we can begin to implement authorization by permitting certain actions. Lets start by going into the /app/models/user.rb file and add some role checking functions: </p>
 
 
 
@@ -162,11 +171,11 @@ abilities, please visit: <a href="https://github.com/CanCanCommunity/cancancan/w
 
 
 
-<p>Now
- we just have to go into our /app/controllers/api/books_controller.rb 
-file to make sure our controller is checking for permissions before 
-allowing any actions to be performed. At the top (under class 
-BooksController and above the index method), add the following: </p>
+<h4>Controller</h4>
+
+
+
+<p>Now we just have to go into our /app/controllers/api/books_controller.rb file to make sure our controller is checking for permissions before allowing any actions to be performed. At the top (under class BooksController and above the index method), add the following: </p>
 
 
 
@@ -218,41 +227,41 @@ Now we have a basic authorization process for the website!</p>
 we haven&rsquo;t went over the ways of put and post options (creating, 
 deleting, or editing). We will implement these functions in the next 
 article where we implement React for the front-end of the website. </p>
-<div class="tags-links bfade">Tagged: <a href="https://dev.mediocreinventions.com/tag/authorization/" rel="tag">Authorization</a>, <a href="https://dev.mediocreinventions.com/tag/cancancan/" rel="tag">CanCanCan</a>, <a href="https://dev.mediocreinventions.com/tag/rolify/" rel="tag">Rolify</a>, <a href="https://dev.mediocreinventions.com/tag/ruby/" rel="tag">Ruby</a>, <a href="https://dev.mediocreinventions.com/tag/ruby-on-rails/" rel="tag">Ruby on Rails</a></div>								</div>
+<div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/authorization/" rel="tag">Authorization</a>, <a href="https://www.mediocreinventions.com/tag/cancancan/" rel="tag">CanCanCan</a>, <a href="https://www.mediocreinventions.com/tag/rolify/" rel="tag">Rolify</a>, <a href="https://www.mediocreinventions.com/tag/ruby/" rel="tag">Ruby</a>, <a href="https://www.mediocreinventions.com/tag/ruby-on-rails/" rel="tag">Ruby on Rails</a></div>								</div>
                             </div>
         </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
-		<div class="nav-links"><div class="nav-previous"><a href="https://dev.mediocreinventions.com/rails-authentication/" rel="prev">3. Rails Authentication</a></div><div class="nav-next"><a href="https://dev.mediocreinventions.com/rails-with-react/" rel="next">5. Rails With React</a></div></div>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/rails-authentication/" rel="prev">3. Ruby on Rails Authentication</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/rails-with-react/" rel="next">5. Ruby on Rails With React</a></div></div>
 	</nav></div>
 								<div class="col-sm-3"> 
 				
-<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://dev.mediocreinventions.com/">
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.mediocreinventions.com/">
 				<label>
 					<span class="screen-reader-text">Search for:</span>
 					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
 				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
-					<a href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a>
+					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
 									</li>
 											<li>
-					<a href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a>
+					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
 									</li>
 											<li>
-					<a href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a>
+					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
 									</li>
 											<li>
-					<a href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a>
+					<a href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a>
 									</li>
 											<li>
-					<a href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a>
+					<a href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a>
 									</li>
-					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
 </li>
-	<li class="cat-item cat-item-281"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+	<li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
 </li>
-	<li class="cat-item cat-item-9"><a href="https://dev.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+	<li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
 </li>
-	<li class="cat-item cat-item-2"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+	<li class="cat-item cat-item-2"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
 </li>
-	<li class="cat-item cat-item-10"><a href="https://dev.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+	<li class="cat-item cat-item-10"><a href="https://www.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
 The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
 You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
 ">Web Application Basics</a>
@@ -271,4 +280,4 @@ You can read these in order starting from 1., but the other tutorials on this si
             </div>
         </footer></div>
 
-<script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>
+<script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

@@ -9,17 +9,17 @@
 
 <channel>
 	<title>Rails With React &#8211; Mediocre Inventions</title>
-	<atom:link href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/feed/" rel="self" type="application/rss+xml" />
 	<link>http://mediocreinventions.herokuapp.com</link>
 	<description></description>
-	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
-		<title>5. Rails With React</title>
-		<link>https://dev.mediocreinventions.com/rails-with-react/</link>
+		<title>5. Ruby on Rails With React</title>
+		<link>https://www.mediocreinventions.com/rails-with-react/</link>
 		<pubDate>Sun, 30 Dec 2018 03:15:22 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails To Production]]></category>
@@ -29,9 +29,9 @@
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=791</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=791</guid>
 		<description><![CDATA[<p>Intro This article is going to be a very brief rundown of what React.js is and how to use it with your application. React is a very popular JavaScript library and there are a lot of courses out there that can teach you its ins and outs in detail. However, if you just want to [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -140,6 +140,10 @@ of the component changes, the render() function gets called again. </p>
 
 
 
+<h4>React Workflow<br></h4>
+
+
+
 <p>Here is the general flow of what is happening here in our component: </p>
 
 
@@ -170,10 +174,11 @@ it does run into any. </p>
 
 
 
-<p>Now that we have the component, 
-lets go into /app/views/homepage/index.html.erb and change it so that it
- renders our component instead of the default text. Replace everything 
-in the index.html.erb file with: </p>
+<h4>Rendering</h4>
+
+
+
+<p>Now that we have the component, lets go into /app/views/homepage/index.html.erb and change it so that it renders our component instead of the default text. Replace everything in the index.html.erb file with: </p>
 
 
 
@@ -186,7 +191,7 @@ in the index.html.erb file with: </p>
 
 
 
-<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://dev.mediocreinventions.com/wp-content/uploads/books.png 955w, https://dev.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px" /></figure>
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://www.mediocreinventions.com/wp-content/uploads/books.png 955w, https://www.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://www.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px" /></figure>
 
 
 
@@ -204,7 +209,7 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 
 
-<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png" alt="" class="wp-image-922" srcset="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png 1024w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-300x135.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-768x344.png 768w, https://dev.mediocreinventions.com/wp-content/uploads/book_table.png 1055w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png" alt="" class="wp-image-922" srcset="https://www.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/book_table-300x135.png 300w, https://www.mediocreinventions.com/wp-content/uploads/book_table-768x344.png 768w, https://www.mediocreinventions.com/wp-content/uploads/book_table.png 1055w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -213,12 +218,12 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 
 <p>For our purposes, this basic application should be enough to deploy to a Production environment. The next articles will go through some common options for hosting your web application. <br></p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>2. Ruby on Rails API</title>
-		<link>https://dev.mediocreinventions.com/ruby-on-rails-api/</link>
+		<title>2. Creating the Ruby on Rails API</title>
+		<link>https://www.mediocreinventions.com/ruby-on-rails-api/</link>
 		<pubDate>Sun, 30 Dec 2018 02:58:49 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails and Nginx]]></category>
@@ -229,9 +234,9 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=641</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=641</guid>
 		<description><![CDATA[<p>Intro Now that we have the environment setup, we can finally start building our API for the web application. This article will go through how to create a basic REST API for perform CRUD (Create, Read, Update, Delete) operations. Start Lets start by creating the home page. Generate files needed for the home page by [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -291,7 +296,11 @@ integer format), and when it was published (in date format).&nbsp;</p>
 
 
 
-<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines:&nbsp;</p>
+<h4>Routes</h4>
+
+
+
+<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines: </p>
 
 
 
@@ -308,7 +317,11 @@ end
 
 
 
-<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be:&nbsp;</p>
+<h4>Controller</h4>
+
+
+
+<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be: </p>
 
 
 
@@ -349,39 +362,11 @@ so these URLs wouldn&#8217;t return anything right now).&nbsp;</p>
 
 
 
-<p>GET		/api/books(.:format)			api/books#index</p>
+<pre class="wp-block-preformatted">GET	/api/books(.:format)			api/books#index<br>POST	/api/books(.:format)			api/books#create<br>GET 	/api/books/new(.:format)		api/books#new<br>GET 	/api/books/:id/edit(.:format) 		api/books#edit<br>GET 	/api/books/:id(.:format) 		api/books#show<br>PATCH 	/api/books/:id(.:format) 		api/books#update<br>PUT 	/api/books/:id(.:format) 		api/books#update<br>DELETE 	/api/books/:id(.:format)</pre>
 
 
 
-<p>POST	/api/books(.:format)			api/books#create</p>
-
-
-
-<p>GET 	/api/books/new(.:format)		api/books#new</p>
-
-
-
-<p>GET 	/api/books/:id/edit(.:format) 	api/books#edit</p>
-
-
-
-<p>GET 	/api/books/:id(.:format) 		api/books#show</p>
-
-
-
-<p>PATCH 	/api/books/:id(.:format) 		api/books#update</p>
-
-
-
-<p>PUT 	/api/books/:id(.:format) 		api/books#update</p>
-
-
-
-<p>DELETE 	/api/books/:id(.:format)</p>
-
-
-
-<p>More information on REST here: <a href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank" rel="noreferrer noopener">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
+<p>More information on REST here: <a rel="noreferrer noopener" href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
 
 
 
@@ -498,12 +483,12 @@ in JSON format. The &#8220;1&#8221; at the end of the URL represent&#8217;s the 
 is found in the ID column of the Books table in the database. So if you 
 go to localhost:3000/api/books/2 then it will give you information on 
 the other book. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>1. Rails Setup</title>
-		<link>https://dev.mediocreinventions.com/rails-setup/</link>
+		<title>1. Setting up Ruby on Rails Environment</title>
+		<link>https://www.mediocreinventions.com/rails-setup/</link>
 		<pubDate>Sun, 30 Dec 2018 02:35:16 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails and Nginx]]></category>
@@ -516,9 +501,9 @@ the other book. </p>
 		<category><![CDATA[Ruby on Rails]]></category>
 		<category><![CDATA[setup]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=531</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=531</guid>
 		<description><![CDATA[<p>Intro In this series of tutorials, we will go through how to build a Rails application with authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -683,14 +668,11 @@ sudo apt-get install sublime-text
 
 
 
-<p>Then open up the Gemfile edit it to include the 
-proper gems. In particular, we are going to need Devise for 
-authentication and CanCanCan for authorization. Authentication would 
-mean the parts responsible for logging in a user, whereas authorization 
-would be permissions for which types of users (roles) are allowed to do 
-certain actions. These are usually very important for people to define 
-in projects, since you wouldn&#8217;t want a guest to be able to access Admin 
-level functions (such as deleting users).&nbsp;</p>
+<h4>Gemfile</h4>
+
+
+
+<p>Then open up the Gemfile edit it to include the proper gems. In particular, we are going to need Devise for authentication and CanCanCan for authorization. Authentication would mean the parts responsible for logging in a user, whereas authorization would be permissions for which types of users (roles) are allowed to do certain actions. These are usually very important for people to define in projects, since you wouldn&#8217;t want a guest to be able to access Admin level functions (such as deleting users). </p>
 
 
 
@@ -703,10 +685,11 @@ level functions (such as deleting users).&nbsp;</p>
 
 
 
-<p>If
- you are unfamiliar with gems, you can think of them as additional 
-programs, plugins/extensions, or libraries that the application can use.
- </p>
+<p>If you are unfamiliar with gems, you can think of them as additional programs, plugins/extensions, or libraries that the application can use. </p>
+
+
+
+<h4>Turbo Links<br></h4>
 
 
 
@@ -729,6 +712,10 @@ The application.html.erb file  should look like this: <a rel="noreferrer noopene
 In general, all your pages in this application will use the HTML here 
 for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
 depending on the page. </p>
+
+
+
+<h4>Database</h4>
 
 
 
@@ -766,7 +753,11 @@ we move it into production.&nbsp;</p>
 
 
 
-<p>Let&#8217;s generate the files for React so we can use them later on:&nbsp;</p>
+<h4>React</h4>
+
+
+
+<p>Let&#8217;s generate the files for React so we can use them later on: </p>
 
 
 
@@ -795,7 +786,7 @@ application started successfully.&nbsp;</p>
 
 
 <p>Now that the application is up and running, we can start making a basic API.</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

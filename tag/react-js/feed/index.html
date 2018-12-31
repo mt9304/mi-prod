@@ -9,17 +9,17 @@
 
 <channel>
 	<title>React.js &#8211; Mediocre Inventions</title>
-	<atom:link href="https://dev.mediocreinventions.com/tag/react-js/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.mediocreinventions.com/tag/react-js/feed/" rel="self" type="application/rss+xml" />
 	<link>http://mediocreinventions.herokuapp.com</link>
 	<description></description>
-	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
-		<title>5. Rails With React</title>
-		<link>https://dev.mediocreinventions.com/rails-with-react/</link>
+		<title>5. Ruby on Rails With React</title>
+		<link>https://www.mediocreinventions.com/rails-with-react/</link>
 		<pubDate>Sun, 30 Dec 2018 03:15:22 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails To Production]]></category>
@@ -29,9 +29,9 @@
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=791</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=791</guid>
 		<description><![CDATA[<p>Intro This article is going to be a very brief rundown of what React.js is and how to use it with your application. React is a very popular JavaScript library and there are a lot of courses out there that can teach you its ins and outs in detail. However, if you just want to [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -140,6 +140,10 @@ of the component changes, the render() function gets called again. </p>
 
 
 
+<h4>React Workflow<br></h4>
+
+
+
 <p>Here is the general flow of what is happening here in our component: </p>
 
 
@@ -170,10 +174,11 @@ it does run into any. </p>
 
 
 
-<p>Now that we have the component, 
-lets go into /app/views/homepage/index.html.erb and change it so that it
- renders our component instead of the default text. Replace everything 
-in the index.html.erb file with: </p>
+<h4>Rendering</h4>
+
+
+
+<p>Now that we have the component, lets go into /app/views/homepage/index.html.erb and change it so that it renders our component instead of the default text. Replace everything in the index.html.erb file with: </p>
 
 
 
@@ -186,7 +191,7 @@ in the index.html.erb file with: </p>
 
 
 
-<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://dev.mediocreinventions.com/wp-content/uploads/books.png 955w, https://dev.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px" /></figure>
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://www.mediocreinventions.com/wp-content/uploads/books.png 955w, https://www.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://www.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px" /></figure>
 
 
 
@@ -204,7 +209,7 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 
 
-<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png" alt="" class="wp-image-922" srcset="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png 1024w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-300x135.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-768x344.png 768w, https://dev.mediocreinventions.com/wp-content/uploads/book_table.png 1055w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png" alt="" class="wp-image-922" srcset="https://www.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/book_table-300x135.png 300w, https://www.mediocreinventions.com/wp-content/uploads/book_table-768x344.png 768w, https://www.mediocreinventions.com/wp-content/uploads/book_table.png 1055w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -213,7 +218,7 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 
 <p>For our purposes, this basic application should be enough to deploy to a Production environment. The next articles will go through some common options for hosting your web application. <br></p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

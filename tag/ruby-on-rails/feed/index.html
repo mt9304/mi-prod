@@ -9,17 +9,894 @@
 
 <channel>
 	<title>Ruby on Rails &#8211; Mediocre Inventions</title>
-	<atom:link href="https://dev.mediocreinventions.com/tag/ruby-on-rails/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.mediocreinventions.com/tag/ruby-on-rails/feed/" rel="self" type="application/rss+xml" />
 	<link>http://mediocreinventions.herokuapp.com</link>
 	<description></description>
-	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
-		<title>5. Rails With React</title>
-		<link>https://dev.mediocreinventions.com/rails-with-react/</link>
+		<title>7. Rails on Nginx, Puma, and PostgreSQL</title>
+		<link>https://www.mediocreinventions.com/rails-on-nginx/</link>
+		<pubDate>Mon, 31 Dec 2018 20:06:38 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[bash]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[postgresql]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+		<category><![CDATA[server]]></category>
+		<category><![CDATA[Ubuntu]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[web application]]></category>
+		<category><![CDATA[web server]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1451</guid>
+		<description><![CDATA[<p>Intro In this article, we will deploy our Ruby on Rails application on a Ubuntu 18.04 server with Nginx (web server) and Puma (application server). We will also use PostgreSQL as our database and Rbenv to help us store sensitive information. Rbenv helps us store sensitive information (such as database passwords) on the server as [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this
+ article, we will deploy our Ruby on Rails application on a Ubuntu 18.04
+ server with Nginx (web server) and Puma (application server). We will 
+also use PostgreSQL as our database and Rbenv to help us store sensitive
+ information. Rbenv helps us store sensitive information (such as 
+database passwords) on the server as environment variables. This way if 
+your project is on Github as a public project, you won&#8217;t have to reveal 
+that kind of information to the world. </p>
+
+
+
+<p>If you have created a 
+brand new server or VM, remember to install all the dependencies that 
+our project needs. I have created a script to help with this (installing
+ rails, ruby, git, etc) in case you need here: <a href="https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh" target="_blank" rel="noreferrer noopener">https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh</a>. This script can take a while to complete, but you can download and run this on your new server by running: </p>
+
+
+
+<p>sudo apt install curl</p>
+
+
+
+<pre class="wp-block-preformatted">curl -o https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh rails.sh<br>sh rails.sh</pre>
+
+
+
+<h2>Installing Dependencies<br></h2>
+
+
+
+<p>After our environment is setup, let&#8217;s install more dependencies!</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update<br>sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev<br>cd ~/.rbenv/plugins<br>git clone https://github.com/sstephenson/rbenv-vars.git</pre>
+
+
+
+<p>Now let&#8217;s go back to our home directory and clone our project folder here. </p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+</pre>
+
+
+
+<p>(Remember to replace [YOUR_USER] and [YOUR_PROJECT_NAME] with 
+the values that match your own project Github. In my case, it would be: <a href="https://github.com/TestingAndLearning/rails_template" target="_blank" rel="noreferrer noopener">https://github.com/TestingAndLearning/rails_template</a>)</p>
+
+
+
+<pre class="wp-block-preformatted">git clone https://github.com/[YOUR_USER]/[YOUR_PROJECT_NAME]
+</pre>
+
+
+
+<p>Now change directory into your application&#8217;s folder and run: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt-get install libsqlite3-dev<br>bundle install</pre>
+
+
+
+<p>Note: </p>
+
+
+
+<p>If you don&#8217;t install libsqlite3-dev and your application references sqlite, then you may get an error like: </p>
+
+
+
+<p class="has-text-color has-vivid-red-color">An error occurred while installing sqlite3 (1.3.13), and Bundler cannot continue.</p>
+
+
+
+<p class="has-text-color has-vivid-red-color">Make sure that `gem install sqlite3 -v &#8216;1.3.13&#8217;` succeeds before bundling.</p>
+
+
+
+<h2>Configuration Changes</h2>
+
+
+
+<p>Now
+ we will go into the /config/database.yml file and make some changes to 
+the Production environment, since this is the environment we will be 
+deploying in (Remember to replace the values in quotes with your own). </p>
+
+
+
+<pre class="wp-block-preformatted">adapter: postgresql
+encoding: unicode
+database: RT_prod
+pool: 5
+username: &lt;%= ENV['NAME_OF_YOUR_USER'] %&gt;
+password: &lt;%= ENV['YOUR_DATA_BASE_PASSWORD'] %&gt;
+</pre>
+
+
+
+<p>Your file might look something like this: <a href="https://gist.github.com/mt9304/2c8014ffed16adfe072970050f8643ae" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/2c8014ffed16adfe072970050f8643ae</a></p>
+
+
+
+<p>These &lt;%= ENV[&#8216;VALUE&#8217;] %&gt; tags are the environment variables that Rbenv will use. </p>
+
+
+
+<p>Now run the following to get a unique value for your application: </p>
+
+
+
+<pre class="wp-block-preformatted">rake secret
+</pre>
+
+
+
+<p>Make sure to copy this down somewhere. Now we can create our rbenv file and add these values: </p>
+
+
+
+<pre class="wp-block-preformatted">nano .rbenv vars
+or any other text editor like vi or vim. Then edit the contents in this file to be something like: 
+SECRET_KEY_BASE=YOURRAKESECRETOUTPUT
+NAME_OF_YOUR_USER=YOURACTUALUSER
+YOUR_DATA_BASE_PASSWORD=YOURACTUALPASSWORD
+</pre>
+
+
+
+<p>Remember to replace the values with your own. These 
+should match the ones you entered in the database.yml file. For the user
+ value, I would recommend using the value you see when you run: </p>
+
+
+
+<pre class="wp-block-preformatted">echo $USER
+</pre>
+
+
+
+<p>This way you can avoid some permission issues with the database in the future. </p>
+
+
+
+<h4>Git Ignore<br></h4>
+
+
+
+<p>Also,
+ if you haven&#8217;t already, let&#8217;s create a .gitignore file and make sure we
+ ignore this file so that it doesn&#8217;t end up in the git repository. In 
+the application folder, create the file by running: </p>
+
+
+
+<pre class="wp-block-preformatted">nano .gitignore
+</pre>
+
+
+
+<p>Then make sure one of the lines says</p>
+
+
+
+<pre class="wp-block-preformatted">.rbenv-vars
+</pre>
+
+
+
+<p>Save the file and run the following to make sure the .gitignore works properly. </p>
+
+
+
+<pre class="wp-block-preformatted">git rm -r --cached .
+</pre>
+
+
+
+<p>Now you can push into your repository and test if the .rbenv-vars file ends up in there. </p>
+
+
+
+<h4>More Configurations<br></h4>
+
+
+
+<p>Run the following command and remember the number it outputs (this gets the number of CPUs available to use in your server): </p>
+
+
+
+<pre class="wp-block-preformatted">grep -c processor /proc/cpuinfo
+</pre>
+
+
+
+<p>We can now edit our /config/puma.rb file. Remove the contents in there and make sure it looks something like this: <a href="https://gist.github.com/mt9304/7a444e84098e49ce5d0f92e263f95e21" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/7a444e84098e49ce5d0f92e263f95e21</a></p>
+
+
+
+<p>Remember to change the YOURCPUOUTPUT value to the number of CPUs we just found. </p>
+
+
+
+<p>Now let&#8217;s go back to your application&#8217;s root directory and run the following to create some required folders: </p>
+
+
+
+<pre class="wp-block-preformatted">mkdir -p shared/pids shared/sockets shared/log
+</pre>
+
+
+
+<p>For the next bit, we will use some scripts I found 
+on the internet that will allow you to start/stop the Puma server 
+easily. We won&#8217;t go into this in too much detail, but feel free to go to
+ <a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04" target="_blank" rel="noreferrer noopener">https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04</a> for a similar guide. Go back to your home directory and download the scripts by running this: </p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma-manager.conf
+wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma.conf
+sudo cp puma.conf puma-manager.conf /etc/init
+</pre>
+
+
+
+<p>Make sure to edit the YOURUSER and YOURAPPLICATIONNAME values so that it leads to your application folder. </p>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee -a /etc/puma.conf
+/home/YOURUSER/YOURAPPLICATIONNAME
+EOF
+</pre>
+
+
+
+<p>Note:</p>
+
+
+
+<p>The &#8220;cat&#8221; command here helps us write a line, the &#8220;tee&#8221; command takes the output of what we write and writes it in the /etc/puma.conf file. The -a argument makes sure it appends to the end of the file so that it doesn&#8217;t overwrite anything. The &#8220;&lt;&lt; EOF&#8221; part tells the &#8220;cat&#8221; command to take anything in the next lines as output for this, until the word EOF is found on its own line. In ths case, it is the path to your application&#8217;s directory. Then the EOF at the end is detected and it stops writing as output. </p>
+
+
+
+<h4>Puma Configuration<br></h4>
+
+
+
+<p>For
+ your convenience, you can run the following to set your variables in 
+this session (Make sure to replace appfoldername with your application&#8217;s
+ folder name. Also, if you are using the default user, then you don&#8217;t 
+have to set this. You can check the values of these by typing echo $USER
+ or echo APP_NAME once you have set them): </p>
+
+
+
+<pre class="wp-block-preformatted">USER=ubuntu
+APP_NAME=appfoldername
+</pre>
+
+
+
+<p>Now we can run the following </p>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee /etc/systemd/system/puma.service
+&nbsp;&nbsp;&nbsp;#Modify the path to the app directory and the user and group. 
+&nbsp;&nbsp;&nbsp;[Unit]
+&nbsp;&nbsp;&nbsp;Description=Puma HTTP Server
+&nbsp;&nbsp;&nbsp;After=network.target
+&nbsp;&nbsp;&nbsp;# Uncomment for socket activation (see below)
+&nbsp;&nbsp;&nbsp;# Requires=puma.socket
+&nbsp;&nbsp;&nbsp;[Service]
+&nbsp;&nbsp;&nbsp;# Foreground process (do not use --daemon in ExecStart or config.rb)
+&nbsp;&nbsp;&nbsp;Type=simple
+&nbsp;&nbsp;&nbsp;# Preferably configure a non-privileged user
+&nbsp;&nbsp;&nbsp;User=${USER}
+&nbsp;&nbsp;&nbsp;Group=${USER}
+&nbsp;&nbsp;&nbsp;# Specify the path to your puma application root
+&nbsp;&nbsp;&nbsp;WorkingDirectory=/home/${USER}/${APP_NAME}
+&nbsp;&nbsp;&nbsp;# Helpful for debugging socket activation, etc.
+&nbsp;&nbsp;&nbsp;# Environment=PUMA_DEBUG=1
+&nbsp;&nbsp;&nbsp;# EnvironmentFile=/home/${USER}/${APP_NAME}/.env
+&nbsp;&nbsp;&nbsp;# The command to start Puma
+&nbsp;&nbsp;&nbsp;# ExecStart=&lt;WD&gt;/sbin/puma -b tcp://0.0.0.0:9292 -b ssl://0.0.0.0:9293?key=key.pem&amp;cert=cert.pem
+&nbsp;&nbsp;&nbsp;# ExecStart=/usr/local/bin/bundle exec --keep-file-descriptors puma -e production
+&nbsp;&nbsp;&nbsp;# ExecStart=/usr/local/bin/puma -C /home/${USER}/${APP_NAME}/config/puma.rb
+&nbsp;&nbsp;&nbsp;ExecStart=/home/${USER}/.rbenv/shims/bundle exec puma -e production -C ./config/puma.rb config.ru
+&nbsp;&nbsp;&nbsp;PIDFile=/home/${USER}/${APP_NAME}/shared/tmp/pids/puma.pid
+&nbsp;&nbsp;&nbsp;Restart=always
+&nbsp;&nbsp;&nbsp;[Install]
+&nbsp;&nbsp;&nbsp;WantedBy=multi-user.target
+EOF
+</pre>
+
+
+
+<p>Then restart and enable Puma. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl daemon-reload
+sudo systemctl enable puma
+</pre>
+
+
+
+<h4>Nginx</h4>
+
+
+
+<p>Almost done, now we can finally install Nginx: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt-get install nginx
+</pre>
+
+
+
+<p>And we can replate some default files with our own by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo rm /etc/nginx/sites-available/default
+</pre>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee /etc/nginx/sites-available/default
+&nbsp;&nbsp;&nbsp;upstream app {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Path to Puma SOCK file, as defined previously
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server unix:/home/${USER}/${APP_NAME}/shared/sockets/puma.sock fail_timeout=0;
+&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;server {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen 80;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server_name localhost;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root /home/${USER}/${APP_NAME}/public;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try_files $uri/index.html $uri @app;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location @app {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://app;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host \$http_host;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_redirect off;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error_page 500 502 503 504 /500.html;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client_max_body_size 4G;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keepalive_timeout 10;
+&nbsp;&nbsp;&nbsp;}
+EOF
+</pre>
+
+
+
+<h4>PostgreSQL Database<br></h4>
+
+
+
+<p>Now let&#8217;s create the users for our database and give it the Superuser role. In the below steps, we basically change to use the postgres user, then enter the pg console with psql, which allows us to run SQL commands for our database. Make sure to replace the user and password values with your own, and include the semi colon at the end: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo -iu postgres
+psql
+CREATE USER username WITH PASSWORD 'yourpassword';
+"ALTER USER username WITH SUPERUSER;
+\q
+exit
+</pre>
+
+
+
+<p>Note: </p>
+
+
+
+<p>&#8220;\q&#8221; exits you from psql and &#8220;exit&#8221; 
+takes you back into the default user. While in psql you can also type 
+&#8220;\l&#8221; to list all the databases, &#8220;\c databasename&#8221; to connect to a 
+database then \dt to list all the tables in that database. You can then 
+run SQL commands such as &#8220;SELECT * FROM tablename;&#8221; to interact with 
+your database. </p>
+
+
+
+<p>The below commands also accomplishes 
+the same thing in case you just want to save time (replace the 
+YOURPASSWORD value with your password):</p>
+
+
+
+<pre class="wp-block-preformatted">DB_PASS=YOURPASSWORD
+sudo -u postgres bash -c "psql -c \"CREATE USER $USER WITH PASSWORD '$DB_PASS';\""
+sudo -u postgres bash -c "psql -c \"ALTER USER $USER WITH SUPERUSER;\""
+</pre>
+
+
+
+<p>Now that we have the users avaiable for the 
+database, we can set up the Production environment&#8217;s database. Change 
+directory into your application&#8217;s folder and run the following (make 
+sure your Gemfile has the pg gem in it. There should be a line that says
+ something like gem &#8216;pg&#8217;, &#8216;~&gt; 0.18&#8217;: </p>
+
+
+
+<pre class="wp-block-preformatted">RAILS_ENV=production rake db:drop
+RAILS_ENV=production rake db:create
+RAILS_ENV=production rake db:migrate
+RAILS_ENV=production rake db:seed
+RAILS_ENV=production rake assets:precompile
+</pre>
+
+
+
+<h4>Restarting the Server<br></h4>
+
+
+
+<p>Finally, we can restart Puma and Nginx and for the changes to take affect:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl stop puma
+sudo systemctl start puma
+</pre>
+
+
+
+<p>or</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart puma
+</pre>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl stop nginx
+sudo systemctl start nginx
+</pre>
+
+
+
+<p>or</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart nginx
+</pre>
+
+
+
+<p>You can run the following to check the status of these servers to make sure that they are action and running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl status nginx
+sudo systemctl status puma
+</pre>
+
+
+
+<p>Some of those scripts that we downloaded and used above allow for Puma to be interacted with the systemctl command. </p>
+
+
+
+<p>We
+ can now visit localhost:80 to check the web application. In 
+development, you would usually visit a Rails application through port 
+3000, however, Nginx makes it possible to connect it through port 80, 
+which is the default port for Production websites. This essentially 
+means you can just type localhost in the URL without the port number and
+ it should take you to the site. This makes it easier to point your 
+domains and such to your server when you decide to go public with your 
+website. </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>If you find that
+ your CSS and JavaScript files are not loading, you can open the 
+/config/environments/production.rb file and change the following line to
+ true, then restart Puma. </p>
+
+
+
+<p>config.public_file_server.enabled = true</p>
+
+
+
+<p>Your website should now be ready to go public!</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>6. Ruby on Rails Hosting Options</title>
+		<link>https://www.mediocreinventions.com/ruby-on-rails-hosting/</link>
+		<pubDate>Mon, 31 Dec 2018 19:51:49 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[aws]]></category>
+		<category><![CDATA[heroku]]></category>
+		<category><![CDATA[hosting]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1371</guid>
+		<description><![CDATA[<p>Intro If you have followed through the Ruby on Rails tutorial in the previous posts, then you should have a basic Ruby on Rails web application on your local machine. The next step would be to move this onto a Production level web server so that the public can access it. In this article, we [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>If you have followed through the Ruby on Rails tutorial in the previous posts, then you should have a basic Ruby on Rails web application on your local machine. The next step would be to move this onto a Production level web server so that the public can access it. In this article, we will go over two common hosting options that you can choose from to bring your web application to Production: Heroku and Amazon Web Services (AWS)</p>
+
+
+
+<h2>Heroku</h2>
+
+
+
+<p>If
+ you are not interested in configuring web servers or setting up 
+environments, then Heroku may be suitable for you. For Ruby on Rails 
+applications, you can simply use their services to host your project for
+ free without having to configure too much. This is great if you just 
+want a simple &#8220;push to production&#8221; approach and let Heroku do all the 
+server related things. </p>
+
+
+
+<p><strong>Pros</strong></p>
+
+
+
+<ul><li>There is a free tier. </li><li>Easy and quick to get started. </li><li>Can scale easily if you pay for an upgrade. </li></ul>
+
+
+
+<p><strong>Cons</strong></p>
+
+
+
+<ul><li>Scaling to a higher tier can be more expensive compared to other services. </li><li>Free
+ tier has limited hours per month and your application will shut down to
+ save hours if inactive. This means that the first time you visit the 
+website after it is inactive will take longer to load. </li><li>To add 
+SSL certificates (make your website https instead of http) you will need
+ to upgrade to at least the hobby ($7 a month) plan. </li></ul>
+
+
+
+<p><strong>Other</strong></p>
+
+
+
+<ul><li>To give your application a custom domain name, it is free, but you need to register your credit. </li><li>Heroku offers a lot more than just hosting, but for our purposes, using it to host is all we will cover. </li></ul>
+
+
+
+<h3>Getting Started With Heroku<br></h3>
+
+
+
+<p>If you choose to go the Heroku way, then you can skip the next 2 articles since they will be focusing on setting up a web server manually. Here are the instructions to host your web application on Heroku: </p>
+
+
+
+<p>Go to their website <a href="https://www.heroku.com/" target="_blank" rel="noreferrer noopener">https://www.heroku.com/</a> and sign up then login. Go into your dashboard (<a href="https://dashboard.heroku.com/apps" target="_blank" rel="noreferrer noopener">https://dashboard.heroku.com/apps</a>),
+ select New in the top right and create a new app. Follow the 
+instructions on the page to create your application (remember your 
+application name). </p>
+
+
+
+<p>Install Heroku CLI</p>
+
+
+
+<pre class="wp-block-preformatted">sudo snap install --classic heroku
+</pre>
+
+
+
+<p>Make sure Git is installed</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git
+</pre>
+
+
+
+<p>Go into your application directory and run the following and enter your credentials</p>
+
+
+
+<pre class="wp-block-preformatted">Heroku login
+</pre>
+
+
+
+<p>Replace replaceme with your app name</p>
+
+
+
+<pre class="wp-block-preformatted">git remote add heroku git@heroku.com:replaceme.git<br>git add . <br>git commit -m "First commit. "<br>git push<br>git push heroku master</pre>
+
+
+
+<p>You can visit your website on the Heroku dashboard 
+by pressing on Open at in the top right, and it should open up your 
+project&#8217;s page with a URL like https://yourapp.herokuapp.com</p>
+
+
+
+<h4>Heroku Commands<br></h4>
+
+
+
+<p>Every time you want to push to heroku and update your live site, you can just run the commands from &#8220;git add&#8221; to &#8220;git push heroku master. &#8221; You can also tell Heroku to run certain commands on the server by typing something like</p>
+
+
+
+<pre class="wp-block-preformatted">heroku rake db:create<br>heroku rake db:migrate<br>heroku rake db:seed</pre>
+
+
+
+<p>You can basically prepend &#8220;heroku&#8221; to your commands in the terminal then run your usual rails commands to tell it what to do. Running the above rake commands will be necessary most of the times to get your Heroku database up and ready to go. <br></p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Before
+ using Git, remember to configure your username and name. When you run 
+&#8220;git commit&#8221;, it should tell you to configure these with 2 commands if 
+you haven&#8217;t already. </p>
+
+
+
+<p>If you run into an error saying 
+&#8220;Precompiling assets failed. &#8220;, you can try going in in 
+config/application.rb, add/edit line to be</p>
+
+
+
+<pre class="wp-block-preformatted">config.assets.initialize_on_precompile = false
+</pre>
+
+
+
+<p>If you run into &#8220;Could not detect rake tasks. &#8220;, you can try running </p>
+
+
+
+<pre class="wp-block-preformatted">RAILS_ENV=production bundle exec rake assets:precompile
+</pre>
+
+
+
+<p>If all went smoothly, your website is now in 
+Production and can be visited by anyone on the internet! If you now want
+ a custom domain, you will have to enter your credit information with 
+Heroku to verify your account. Then, you can buy a domain name from a 
+company such as GoDaddy or Namecheap and point your domain (&#8220;CName&#8221; or 
+&#8220;A record&#8221;) to your app&#8217;s URL and run </p>
+
+
+
+<p>heroku domains:add www.yourwebsite.com</p>
+
+
+
+<p>Remember
+ to replace yourwebsite with your actual domain name. For more 
+information on this, please follow their instructions here: <a href="https://devcenter.heroku.com/articles/custom-domains" target="_blank" rel="noreferrer noopener">https://devcenter.heroku.com/articles/custom-domains</a></p>
+
+
+
+<p>If
+ you chose the Heroku route, then you are done! (for now). The rest of 
+this article will just go over AWS and how to set it up. </p>
+
+
+
+<h2>Amazon Web Services (AWS)</h2>
+
+
+
+<p>The
+ AWS option is basically renting out a remote server from Amazon, and 
+configuring it yourself to run a web application. We will be using EC2 
+and there is a Free tier for AWS that you can use for a year, there are 
+also very cheap servers that can be around $3 a month. </p>
+
+
+
+<p><strong>Pros</strong></p>
+
+
+
+<ul><li>There is a free trial. <br></li><li>Your server doesn&#8217;t deactivate when there is no activity. </li><li>Since you are configuring everything manually, you can find free alternatives for some software/services. For example, the SSL article later on will show you how to obtain an SSL certificate to make your website use https instead of http for free. You can also install your own free server monitoring tools or connect to your server conveniently to make changes. </li></ul>
+
+
+
+<p><strong>Cons</strong></p>
+
+
+
+<ul><li>Can
+ require a bit more knowledge to configure web servers and can take 
+longer than Heroku to set up. However, once you understand what is 
+needed to configure this, you can also write a script to automate the 
+process. </li><li>The free tier is only for a year. </li><li>Scaling might not be as straight forward as Heroku. </li></ul>
+
+
+
+<p><strong>Other</strong></p>
+
+
+
+<ul><li>You may need to register your credit card</li><li>Depending on your plan, you can get unexpected charges if you go over your limits</li><li>We
+ won&#8217;t be using a graphical interface to connect to our server, so you 
+should be comfortable with using the command line to interact with the 
+machine. </li></ul>
+
+
+
+<h3>Setting up an AWS server</h3>
+
+
+
+<p>Go to their website and sign up for AWS <a rel="noreferrer noopener" href="https://aws.amazon.com/" target="_blank">https://aws.amazon.com/</a> then login to their AWS console (you can just Google &#8220;aws console&#8221; if you can&#8217;t find the link on their website). </p>
+
+
+
+<p>At the top, click on Services &gt; EC2. Then click on Launch Instance. There will now be 7 steps here to launch your instance. </p>
+
+
+
+<p>For
+ the first step, you will need to select an AMI, which is basically a 
+machine image that your machine will use. So in this case, we want to 
+pick a Ubuntu 18.04 image. Search for it (maybe in the marketplace or 
+community section) and select it. I selected the Ubuntu 18.04 LTS &#8211; 
+Bionic option. </p>
+
+
+
+<p>Select the tier that you want to use (there should be a Free tier if you need). For the rest of the steps until 6, you can just stick with the default options. </p>
+
+
+
+<h4>Security and SSH<br></h4>
+
+
+
+<p>In step 6, you will be configuring security settings. Check Create a new security group and name it. Below that, there should be a table with headers that say Type, Protocol, Port range, and Source. Make sure you create a rule here with Type SSH, TCP Protocol, Port 22, Source Anywhere or your IP. This rule would mean that you are allowed to ssh into your server from anywhere or your ip address (sshing into the machine just means that you can connect to the machine to run commands from your terminal as if it were your own local machine. This also means you will not have a graphical interface for our purposes). For more information on ssh, please refer to this article <a rel="noreferrer noopener" href="https://www.ssh.com/ssh/protocol/" target="_blank">https://www.ssh.com/ssh/protocol/</a></p>
+
+
+
+<p>Once you have set up this rule, click launch and it should bring up a window to create your key pair. Create a new keypair here, name it, and make sure you download it (there is no way to generate this again so don&#8217;t lose it). Once you click launch, your machine will start being setup and you can check on its status through the Instances menu option on the left. Once the Instance State says it is running, we can ssh into the server to start setting up our application. </p>
+
+
+
+<h4>Accessing the Machine<br></h4>
+
+
+
+<p>To ssh 
+into this machine, open up your terminal and change directory to the 
+folder that you saved your ssh key in then run (make your you replace 
+your-key-name.pem with your own .pem file&#8217;s name)</p>
+
+
+
+<pre class="wp-block-preformatted">chmod 400 your-key-name.pem
+</pre>
+
+
+
+<p>The above command &#8220;chmod&#8221; modifies the file&#8217;s permissions to 
+allow to you perform the below command properly. For more information on
+ the &#8220;chmod&#8221; command, take a look at 
+https://isabelcastillo.com/linux-chmod-permissions-cheat-sheet to see a 
+list of different permission combinations. </p>
+
+
+
+<p>Now you can connect to the server by running</p>
+
+
+
+<pre class="wp-block-preformatted">ssh -i your-key-name.pem ubuntu@18.111.111.11
+</pre>
+
+
+
+<p>Make sure to replace &#8220;your-key-name.pem&#8221; with the name of your 
+own .pem file and also replace the IP address after the @ sign with your
+ AWS machine&#8217;s. You can see this in the Instances tab as well. (it 
+should be the Public IP or IPv4 Public IP column). </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>By default, AWS Ubuntu AMIs use the user called &#8220;ubuntu&#8221;, which is why we put ubuntu@18.111.111.11 to connect to the server. </p>
+
+
+
+<p>You
+ should now be connected to your server properly. As you can see, this 
+is just another Ubuntu server that you are able to use now!</p>
+
+
+
+<p>Now
+ if you want to point a custom domain to your website, you can buy a 
+domain name from a provider such as GoDaddy or Namecheap and follow the 
+instructions here: <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html" target="_blank" rel="noreferrer noopener">https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html</a></p>
+
+
+
+<p>Congratulation,
+ your AWS server is now up and running! Now our next few articles will 
+go over how to set up these servers to be a proper Production 
+environment for your application. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>5. Ruby on Rails With React</title>
+		<link>https://www.mediocreinventions.com/rails-with-react/</link>
 		<pubDate>Sun, 30 Dec 2018 03:15:22 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails To Production]]></category>
@@ -29,9 +906,9 @@
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=791</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=791</guid>
 		<description><![CDATA[<p>Intro This article is going to be a very brief rundown of what React.js is and how to use it with your application. React is a very popular JavaScript library and there are a lot of courses out there that can teach you its ins and outs in detail. However, if you just want to [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -140,6 +1017,10 @@ of the component changes, the render() function gets called again. </p>
 
 
 
+<h4>React Workflow<br></h4>
+
+
+
 <p>Here is the general flow of what is happening here in our component: </p>
 
 
@@ -170,10 +1051,11 @@ it does run into any. </p>
 
 
 
-<p>Now that we have the component, 
-lets go into /app/views/homepage/index.html.erb and change it so that it
- renders our component instead of the default text. Replace everything 
-in the index.html.erb file with: </p>
+<h4>Rendering</h4>
+
+
+
+<p>Now that we have the component, lets go into /app/views/homepage/index.html.erb and change it so that it renders our component instead of the default text. Replace everything in the index.html.erb file with: </p>
 
 
 
@@ -186,7 +1068,7 @@ in the index.html.erb file with: </p>
 
 
 
-<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://dev.mediocreinventions.com/wp-content/uploads/books.png 955w, https://dev.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px" /></figure>
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://www.mediocreinventions.com/wp-content/uploads/books.png 955w, https://www.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://www.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px" /></figure>
 
 
 
@@ -204,7 +1086,7 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 
 
-<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png" alt="" class="wp-image-922" srcset="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png 1024w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-300x135.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-768x344.png 768w, https://dev.mediocreinventions.com/wp-content/uploads/book_table.png 1055w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png" alt="" class="wp-image-922" srcset="https://www.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/book_table-300x135.png 300w, https://www.mediocreinventions.com/wp-content/uploads/book_table-768x344.png 768w, https://www.mediocreinventions.com/wp-content/uploads/book_table.png 1055w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -213,12 +1095,12 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 
 <p>For our purposes, this basic application should be enough to deploy to a Production environment. The next articles will go through some common options for hosting your web application. <br></p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>4. Rails Authorization</title>
-		<link>https://dev.mediocreinventions.com/rails-authorization/</link>
+		<title>4. Ruby on Rails Authorization</title>
+		<link>https://www.mediocreinventions.com/rails-authorization/</link>
 		<pubDate>Sun, 30 Dec 2018 03:08:52 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails Authentication/Authorization]]></category>
@@ -229,9 +1111,9 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=721</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=721</guid>
 		<description><![CDATA[<p>Intro In this article, we will create two roles for the users: the Admin role and Normal_User role. Users with the Admin role should have access to create and modify books on the website, while normal_users should only be able to view the books. We use the Rolify and CanCanCan gems to help us implement [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -306,9 +1188,11 @@ users, and made a loop that created 5 sample book entries. </p>
 
 
 
-<p>You
- can check to see if these values were entered into the database 
-successfuly by running the following command to open your database: </p>
+<h4>Opening the Database<br></h4>
+
+
+
+<p>You can check to see if these values were entered into the database successfuly by running the following command to open your database: </p>
 
 
 
@@ -339,10 +1223,11 @@ should have the role with an id of 1 (the admin role).</p>
 
 
 
-<p>Now
- we can begin to implement authorization by permitting certain actions. 
-Lets start by going into the /app/models/user.rb file and add some role 
-checking functions: </p>
+<h4>Authorization</h4>
+
+
+
+<p>Now we can begin to implement authorization by permitting certain actions. Lets start by going into the /app/models/user.rb file and add some role checking functions: </p>
 
 
 
@@ -379,11 +1264,11 @@ abilities, please visit: <a href="https://github.com/CanCanCommunity/cancancan/w
 
 
 
-<p>Now
- we just have to go into our /app/controllers/api/books_controller.rb 
-file to make sure our controller is checking for permissions before 
-allowing any actions to be performed. At the top (under class 
-BooksController and above the index method), add the following: </p>
+<h4>Controller</h4>
+
+
+
+<p>Now we just have to go into our /app/controllers/api/books_controller.rb file to make sure our controller is checking for permissions before allowing any actions to be performed. At the top (under class BooksController and above the index method), add the following: </p>
 
 
 
@@ -439,12 +1324,12 @@ Now we have a basic authorization process for the website!</p>
 we haven&#8217;t went over the ways of put and post options (creating, 
 deleting, or editing). We will implement these functions in the next 
 article where we implement React for the front-end of the website. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>3. Rails Authentication</title>
-		<link>https://dev.mediocreinventions.com/rails-authentication/</link>
+		<title>3. Ruby on Rails Authentication</title>
+		<link>https://www.mediocreinventions.com/rails-authentication/</link>
 		<pubDate>Sun, 30 Dec 2018 03:06:25 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails Authentication/Authorization]]></category>
@@ -454,9 +1339,9 @@ article where we implement React for the front-end of the website. </p>
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=691</guid>
-		<description><![CDATA[<p>Note:A more detailed article on this topic can be found here: https://www.nopio.com/blog/authentication-authorization-rails/ Intro If you have followed through the previous article, then we should now have a basic API for retrieving information about our Books. Since our website now has some purpose, we should add some authentication functions so that users can sign up and [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=691</guid>
+		<description><![CDATA[<p>Note:A more detailed article on this topic can be found here: https://www.nopio.com/blog/authentication-authorization-rails/ Intro If you have followed through the previous article, then we should now have a basic API for our Books. Since our website now has functions, we should add authentication features so users can sign up and login. This can help us track [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authentication/">3. Ruby on Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <p><strong>Note:</strong><br>A more detailed article on this topic can be found here: <a href="https://www.nopio.com/blog/authentication-authorization-rails/">https://www.nopio.com/blog/authentication-authorization-rails/</a><br></p>
@@ -467,7 +1352,7 @@ article where we implement React for the front-end of the website. </p>
 
 
 
-<p>If you have followed through the previous article, then we should now have a basic API for retrieving information about our Books. Since our website now has some purpose, we should add some authentication functions so that users can sign up and log into the site. This can help us track users and implement authorization later on.</p>
+<p>If you have followed through the previous article, then we should now have a basic API for our Books. Since our website now has functions, we should add authentication features so users can sign up and login. This can help us track users and implement authorization later on.</p>
 
 
 
@@ -516,11 +1401,15 @@ rake db:migrate</pre>
 
 
 
-<p>After you create the user, you should be automatically signed in. Or you can sign in through /users/sign_in (if you are already signed in, it will just take you to the home page). Now we just need a way to let users know that they are signed in.</p>
+<p>After you create the user, you should be automatically signed in. Or you can sign in through /users/sign_in. If you are already signed in, it will just take you to the home page. Now we just need a way to let users know that they are signed in.</p>
 
 
 
-<p>Let&#8217;s add a navigation bar at the top of the page for User related options like signing in and signing out. Go to /app/views/layous/ and open up your application&#8217;s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
+<h3>Navigation Bar<br></h3>
+
+
+
+<p>Let&#8217;s add a navigation bar at the top of the page for User options like signing in and signing out. Go to /app/views/layouts/ and open up your application&#8217;s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
 
 
 
@@ -544,19 +1433,23 @@ rake db:migrate</pre>
 
 
 
-<p>It essentially has a bunch of prebuild styles that we can use to make a website so that we don&#8217;t have to style it from scratch.</p>
+<p>It essentially has a bunch of pre-built styles we can use to make a website so we don&#8217;t have to style it from scratch.</p>
 
 
 
-<p>When you start the server and look at the website, you should now see a navigation bar at the home with a Dropdown menu for Users at the top right. Right now, clicking it won&#8217;t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap&#8217;s JavaScript library to help us handle dropdown menues.</p>
+<p>When you start the server and look at the website, you should now see a navigation bar at the top with a Dropdown menu for Users at the top right. Right now, clicking it won&#8217;t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap&#8217;s JavaScript library to help us handle dropdown menues.</p>
 
 
 
-<p>Go to /app/assets/javascripts/application.js and add //= require bootstrap-sprockets to the very bottom of the page and save. Now when you click on the User button at the top right, you should be able to see the menu drop down and show actions such as Login and Logout. These buttons should work already since the Devise gem has taken care of the authentication functions for us, but since we want users to know when they are logged in, we will make some changes to this menu.</p>
+<p>Go to /app/assets/javascripts/application.js and add //= require bootstrap-sprockets to the very bottom of the page and save. Now when you click on the User button at the top right, you should be able to see the menu drop down. This should show actions such as Login and Logout. These buttons should work already since the Devise gem has taken care of the authentication functions for us, but since we want users to know when they are logged in, we will make some changes to this menu.</p>
 
 
 
-<p>Let&#8217;s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let&#8217;s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section (around lined 32):</p>
+<h4>Checking if logged in<br></h4>
+
+
+
+<p>Let&#8217;s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let&#8217;s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section. (around lined 32):</p>
 
 
 
@@ -584,11 +1477,11 @@ The code that says something like link_to and new_user_session_path are just pre
 
 
 
-<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: 
-&lt;% if user_signed_in? %&gt;
-   
-Yay, you are logged in!&lt;% end %&gt;
-</p>
+<h4>Logging in<br></h4>
+
+
+
+<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: &lt;% if user_signed_in? %>   Yay, you are logged in!&lt;% end %></p>
 
 
 
@@ -596,17 +1489,17 @@ Yay, you are logged in!&lt;% end %&gt;
 
 
 
-<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/image.png" alt="" class="wp-image-872" srcset="https://dev.mediocreinventions.com/wp-content/uploads/image.png 1014w, https://dev.mediocreinventions.com/wp-content/uploads/image-300x130.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/image-768x334.png 768w" sizes="(max-width: 1014px) 100vw, 1014px" /></figure>
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/image.png" alt="" class="wp-image-872" srcset="https://www.mediocreinventions.com/wp-content/uploads/image.png 1014w, https://www.mediocreinventions.com/wp-content/uploads/image-300x130.png 300w, https://www.mediocreinventions.com/wp-content/uploads/image-768x334.png 768w" sizes="(max-width: 1014px) 100vw, 1014px" /></figure>
 
 
 
 <p>In the next article, we will go through Authorization, which means giving different users certain roles (such as Admin or Client) and allowing each of these roles to see different content. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authentication/">3. Ruby on Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>2. Ruby on Rails API</title>
-		<link>https://dev.mediocreinventions.com/ruby-on-rails-api/</link>
+		<title>2. Creating the Ruby on Rails API</title>
+		<link>https://www.mediocreinventions.com/ruby-on-rails-api/</link>
 		<pubDate>Sun, 30 Dec 2018 02:58:49 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails and Nginx]]></category>
@@ -617,9 +1510,9 @@ Yay, you are logged in!&lt;% end %&gt;
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=641</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=641</guid>
 		<description><![CDATA[<p>Intro Now that we have the environment setup, we can finally start building our API for the web application. This article will go through how to create a basic REST API for perform CRUD (Create, Read, Update, Delete) operations. Start Lets start by creating the home page. Generate files needed for the home page by [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -679,7 +1572,11 @@ integer format), and when it was published (in date format).&nbsp;</p>
 
 
 
-<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines:&nbsp;</p>
+<h4>Routes</h4>
+
+
+
+<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines: </p>
 
 
 
@@ -696,7 +1593,11 @@ end
 
 
 
-<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be:&nbsp;</p>
+<h4>Controller</h4>
+
+
+
+<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be: </p>
 
 
 
@@ -737,39 +1638,11 @@ so these URLs wouldn&#8217;t return anything right now).&nbsp;</p>
 
 
 
-<p>GET		/api/books(.:format)			api/books#index</p>
+<pre class="wp-block-preformatted">GET	/api/books(.:format)			api/books#index<br>POST	/api/books(.:format)			api/books#create<br>GET 	/api/books/new(.:format)		api/books#new<br>GET 	/api/books/:id/edit(.:format) 		api/books#edit<br>GET 	/api/books/:id(.:format) 		api/books#show<br>PATCH 	/api/books/:id(.:format) 		api/books#update<br>PUT 	/api/books/:id(.:format) 		api/books#update<br>DELETE 	/api/books/:id(.:format)</pre>
 
 
 
-<p>POST	/api/books(.:format)			api/books#create</p>
-
-
-
-<p>GET 	/api/books/new(.:format)		api/books#new</p>
-
-
-
-<p>GET 	/api/books/:id/edit(.:format) 	api/books#edit</p>
-
-
-
-<p>GET 	/api/books/:id(.:format) 		api/books#show</p>
-
-
-
-<p>PATCH 	/api/books/:id(.:format) 		api/books#update</p>
-
-
-
-<p>PUT 	/api/books/:id(.:format) 		api/books#update</p>
-
-
-
-<p>DELETE 	/api/books/:id(.:format)</p>
-
-
-
-<p>More information on REST here: <a href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank" rel="noreferrer noopener">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
+<p>More information on REST here: <a rel="noreferrer noopener" href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
 
 
 
@@ -886,12 +1759,12 @@ in JSON format. The &#8220;1&#8221; at the end of the URL represent&#8217;s the 
 is found in the ID column of the Books table in the database. So if you 
 go to localhost:3000/api/books/2 then it will give you information on 
 the other book. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>1. Rails Setup</title>
-		<link>https://dev.mediocreinventions.com/rails-setup/</link>
+		<title>1. Setting up Ruby on Rails Environment</title>
+		<link>https://www.mediocreinventions.com/rails-setup/</link>
 		<pubDate>Sun, 30 Dec 2018 02:35:16 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails and Nginx]]></category>
@@ -904,9 +1777,9 @@ the other book. </p>
 		<category><![CDATA[Ruby on Rails]]></category>
 		<category><![CDATA[setup]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=531</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=531</guid>
 		<description><![CDATA[<p>Intro In this series of tutorials, we will go through how to build a Rails application with authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -1071,14 +1944,11 @@ sudo apt-get install sublime-text
 
 
 
-<p>Then open up the Gemfile edit it to include the 
-proper gems. In particular, we are going to need Devise for 
-authentication and CanCanCan for authorization. Authentication would 
-mean the parts responsible for logging in a user, whereas authorization 
-would be permissions for which types of users (roles) are allowed to do 
-certain actions. These are usually very important for people to define 
-in projects, since you wouldn&#8217;t want a guest to be able to access Admin 
-level functions (such as deleting users).&nbsp;</p>
+<h4>Gemfile</h4>
+
+
+
+<p>Then open up the Gemfile edit it to include the proper gems. In particular, we are going to need Devise for authentication and CanCanCan for authorization. Authentication would mean the parts responsible for logging in a user, whereas authorization would be permissions for which types of users (roles) are allowed to do certain actions. These are usually very important for people to define in projects, since you wouldn&#8217;t want a guest to be able to access Admin level functions (such as deleting users). </p>
 
 
 
@@ -1091,10 +1961,11 @@ level functions (such as deleting users).&nbsp;</p>
 
 
 
-<p>If
- you are unfamiliar with gems, you can think of them as additional 
-programs, plugins/extensions, or libraries that the application can use.
- </p>
+<p>If you are unfamiliar with gems, you can think of them as additional programs, plugins/extensions, or libraries that the application can use. </p>
+
+
+
+<h4>Turbo Links<br></h4>
 
 
 
@@ -1117,6 +1988,10 @@ The application.html.erb file  should look like this: <a rel="noreferrer noopene
 In general, all your pages in this application will use the HTML here 
 for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
 depending on the page. </p>
+
+
+
+<h4>Database</h4>
 
 
 
@@ -1154,7 +2029,11 @@ we move it into production.&nbsp;</p>
 
 
 
-<p>Let&#8217;s generate the files for React so we can use them later on:&nbsp;</p>
+<h4>React</h4>
+
+
+
+<p>Let&#8217;s generate the files for React so we can use them later on: </p>
 
 
 
@@ -1183,7 +2062,7 @@ application started successfully.&nbsp;</p>
 
 
 <p>Now that the application is up and running, we can start making a basic API.</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

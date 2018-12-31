@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>scripting &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/scripting/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>8. Scripting for Linux Systems</title>
+		<link>https://www.mediocreinventions.com/scripting/</link>
+		<pubDate>Sat, 29 Dec 2018 23:50:09 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[bash]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[scripting]]></category>
+		<category><![CDATA[Ubuntu]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1041</guid>
+		<description><![CDATA[<p>Intro Once you have built a web application, you will have to set up and configure a server before it can be deployed in a production environment. However, before diving into server configurations, learning how to use the terminal is very important. Terminal The terminal is used to execute commands to your server. You can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/scripting/">8. Scripting for Linux Systems</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Once you have built a web application, you will have to set up and configure a server before it can be deployed in a production environment. However, before  diving into server configurations, learning how to use the terminal is  very important. </p>
+
+
+
+<h2>Terminal</h2>
+
+
+
+<p>The terminal is used to execute commands to your server. You can use it to move files, search for text, and install software. It can basically do anything that your normal graphical interface can. It also allows you to automate many things and can accomplish tasks faster as compared to using the graphical interface. </p>
+
+
+
+<p>For example, in Windows Explorer, if you wanted to move all files with the letter S to another folder, you might have to find and drag the files multiple times if there are other files in there without the letter S. However, the command line can accomplish this with one line of code.</p>
+
+
+
+<h2>Other resources<br></h2>
+
+
+
+<p>This  article will go through all the most common commands that is used in  the terminal to help you get familiar with it. However, I would also  recommend doing a quick tutorial on this to grasp the basics here:  https://www.learnshell.org/</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>To access the terminal in Ubuntu, press CTRL + ALT + T.</p>
+
+
+
+<h3>List files and folders</h3>
+
+
+
+<p>Command: ls</p>
+
+
+
+<p>List the contents of current folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls
+</pre>
+
+
+
+<p>List the contents of a folder named test</p>
+
+
+
+<pre class="wp-block-preformatted">ls test
+</pre>
+
+
+
+<p>List the contents of a folder named test3 within another folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls test/test2/test3
+</pre>
+
+
+
+<p>List all the contents in the current folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls -a
+</pre>
+
+
+
+<p>List all the contents in a folder named test</p>
+
+
+
+<pre class="wp-block-preformatted">ls -a test
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>The letter with a dash 
+is called an argument. It lets the computer know to run the command with
+ certain options enabled. Most commands will have the arguments, you can
+ use the &#8220;man&#8221; command to bring up a manual with a list of Instructions 
+on how to use commands. For example, &#8220;man ls&#8221;.</p>
+
+
+
+<p>Some files and 
+folders won&#8217;t be listed by ls without the -a argument. For example, 
+folders that start with a &#8220;.&#8221; like the &#8220;.git&#8221; folder.</p>
+
+
+
+<h3>Changing folders/directories</h3>
+
+
+
+<p>Command: cd</p>
+
+
+
+<p>Change to folder called test</p>
+
+
+
+<pre class="wp-block-preformatted">cd test
+</pre>
+
+
+
+<p>Change to folder called test3 within multiple folders</p>
+
+
+
+<pre class="wp-block-preformatted">cd test/test2/test3
+</pre>
+
+
+
+<p>Change to the folder in the previous level</p>
+
+
+
+<pre class="wp-block-preformatted">cd ..
+</pre>
+
+
+
+<p>Change to your home directory</p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>When you are typing the
+ name of a file or folder, you can press tab and it will autocomplete 
+the name for you. For example, if you have these folder names in your 
+current directory: test, sample, abc, abcdef, example</p>
+
+
+
+<p>Then you can
+ type &#8220;cd t&#8221; and then press tab and it will auto-complete to &#8220;cd test/&#8221;.
+ You can also type cd &#8220;abcd&#8221; then tab to autocomplete to the abcdef 
+folder. However, if you have two or more similar named files/folders, 
+then you will have to keep typing until there is only one option. In 
+that case, you can also press tab twice to see the different names of 
+folders.</p>
+
+
+
+<p>You can also type &#8220;pwd&#8221; to check your current directory.</p>
+
+
+
+<h3>Moving, renaming, creating, removing and copying</h3>
+
+
+
+<p>Command: mv, cp, touch, mkdir, rm</p>
+
+
+
+<p>Move a file called test.txt to the folder test3</p>
+
+
+
+<pre class="wp-block-preformatted">mv test.txt test3/
+</pre>
+
+
+
+<p>Rename a file called test.txt to test3.txt</p>
+
+
+
+<pre class="wp-block-preformatted">mv test.txt test3.txt
+</pre>
+
+
+
+<p>Move all files with the letter &#8220;s&#8221; to a folder called test3</p>
+
+
+
+<pre class="wp-block-preformatted">mv *s* test3
+</pre>
+
+
+
+<p>Copy a file called text3.txt to a file called text4.txt</p>
+
+
+
+<pre class="wp-block-preformatted">cp text3.txt text4.txt
+</pre>
+
+
+
+<p>Create a file called test5.txt</p>
+
+
+
+<pre class="wp-block-preformatted">touch test5.txt
+</pre>
+
+
+
+<p>Delete a file called test5.txt</p>
+
+
+
+<pre class="wp-block-preformatted">rm test5.txt
+</pre>
+
+
+
+<p>Create a folder called test2</p>
+
+
+
+<pre class="wp-block-preformatted">mkdir test2
+</pre>
+
+
+
+<p>Remove a folder called test2</p>
+
+
+
+<pre class="wp-block-preformatted">rmdir test2
+</pre>
+
+
+
+<p>Remove a directory called test2 that contains files/folders</p>
+
+
+
+<pre class="wp-block-preformatted">rm -r test2
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Using the rm functions will remove the files from the system, it does not simply move them to the recycle bin.</p>
+
+
+
+<h3>Output text and values</h3>
+
+
+
+<p>Command: echo</p>
+
+
+
+<p>Output the text &#8220;Hello World&#8221;</p>
+
+
+
+<pre class="wp-block-preformatted">echo "Hello World"
+</pre>
+
+
+
+<p>Output the current user</p>
+
+
+
+<pre class="wp-block-preformatted">echo $USER
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>You can also set 
+variables for your session by. You can type TESTVAR=&#8221;hi&#8221;, press enter 
+then type echo $TESTVAR to see the result.</p>
+
+
+
+<h3>Installing a program</h3>
+
+
+
+<p>Command: apt</p>
+
+
+
+<p>Install a program called curl that helps transfer data</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install curl
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>sudo means to run the 
+command with elevated privileges. Commands such as apt install that 
+install software may require more permissions than a normal user.</p>
+
+
+
+<p>apt
+ is a package manager for Ubuntu (it is a program that helps install 
+programs). In this case, we are telling apt to install a program called 
+curl. Now that you have curl, you can use it to get website contents. 
+Try typing &#8220;curl http://icanhazip.com&#8221; to get your ip address. You can 
+also visit this website in your browser to see the results.</p>
+
+
+
+<h3>Finding text within a file</h3>
+
+
+
+<p>Command: grep</p>
+
+
+
+<p>Find the word &#8220;hello&#8221; in a file called test.txt</p>
+
+
+
+<pre class="wp-block-preformatted">grep "hello" test.txt
+</pre>
+
+
+
+<p>Find the world &#8220;hello&#8221; in a file called test.txt, but case insensitive</p>
+
+
+
+<pre class="wp-block-preformatted">grep -i "hello" test.txt
+</pre>
+
+
+
+<p>Find the word &#8220;hello&#8221; in all the files within this folder and its subfolders, and also case insensitive</p>
+
+
+
+<pre class="wp-block-preformatted">grep -ri "hello" *
+</pre>
+
+
+
+<p>These are some of the most common functions that you  will find yourself using when programming. As you install new programs,  you will also learn their commands. For example, Git and Rails will  have their own functions that you will eventually learn. When you want  to learn how to do something with the terminal, you can just Google  something like &#8220;how to write to file in Bash&#8221; or &#8220;how to manage  permissions with ubuntu terminal&#8221; (Bash is the scripting language that  we covered here).</p>
+
+
+
+<h3>Script File<br></h3>
+
+
+
+<p>Once you have found all the commands  that you want to do for a repetitive task, you can save all those  commands together in a file, and tell the the computer to run it as a  script. For example, if you wanted a script to automatically install  some programs, you can create a new text file called myScript.sh and put  the following inside:</p>
+
+
+
+<pre class="wp-block-preformatted">#!bin/bash
+sudo apt install git
+sudo apt install curl
+echo "Finished installing!
+</pre>
+
+
+
+<p>Then save the file and run it by running this in the terminal</p>
+
+
+
+<pre class="wp-block-preformatted">sh myScript.sh
+</pre>
+
+
+
+<p>That command should then run the commands from top 
+to bottom. You can also  pass different arguments in the sh command for 
+the script to use by adding text to the end. You can access each 
+argument in order with $1, $2, $3, and so on. For example, if your file 
+looked like</p>
+
+
+
+<pre class="wp-block-preformatted">#!bin/bash
+echo $1
+echo $2
+</pre>
+
+
+
+<p>You can run &#8220;sh myScrip.sh myfirstarg mysecondarg&#8221; 
+and watch it print out the arguments. Congratulations, you just created a
+ script!</p>
+
+
+
+<p><strong>Note: </strong></p>
+
+
+
+<p>Windows also has
+ a command line interface called Powershell or cmd. However, their 
+commands are different and it doesn&#8217;t come with a package manager like 
+Ubuntu does.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/scripting/">8. Scripting for Linux Systems</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

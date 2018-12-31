@@ -1,64 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="//mediocreinventions.herokuapp.com/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://dev.mediocreinventions.com/programming-basics/</loc>
-		<lastmod>2018-12-29T04:48:20+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/</loc>
+		<lastmod>2018-12-31T20:44:53+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://dev.mediocreinventions.com/internet-basics/</loc>
-		<lastmod>2018-12-29T04:48:47+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/rails-on-nginx/</loc>
+		<lastmod>2018-12-31T20:51:05+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/tools/</loc>
+		<lastmod>2018-12-31T20:54:00+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/testing/</loc>
+		<lastmod>2018-12-31T20:54:51+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/databases/</loc>
+		<lastmod>2018-12-31T20:55:55+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/encryption/</loc>
+		<lastmod>2018-12-31T21:07:22+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/scripting/</loc>
+		<lastmod>2018-12-31T21:09:22+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/rails-setup/</loc>
+		<lastmod>2018-12-31T21:12:57+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/ruby-on-rails-api/</loc>
+		<lastmod>2018-12-31T21:17:06+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/rails-authentication/</loc>
+		<lastmod>2018-12-31T21:24:53+00:00</lastmod>
 		<image:image>
-			<image:loc>https://dev.mediocreinventions.com/wp-content/uploads/lb.png</image:loc>
+			<image:loc>https://www.mediocreinventions.com/wp-content/uploads/image.png</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>https://dev.mediocreinventions.com/testing/</loc>
-		<lastmod>2018-12-29T05:02:43+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/rails-authorization/</loc>
+		<lastmod>2018-12-31T21:27:32+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://dev.mediocreinventions.com/tools/</loc>
-		<lastmod>2018-12-29T05:13:55+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://dev.mediocreinventions.com/databases/</loc>
-		<lastmod>2018-12-29T08:45:56+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://dev.mediocreinventions.com/web-servers/</loc>
-		<lastmod>2018-12-29T08:56:36+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://dev.mediocreinventions.com/encryption/</loc>
-		<lastmod>2018-12-29T09:04:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://dev.mediocreinventions.com/rails-setup/</loc>
-		<lastmod>2018-12-30T21:11:01+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://dev.mediocreinventions.com/ruby-on-rails-api/</loc>
-		<lastmod>2018-12-30T21:11:25+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://dev.mediocreinventions.com/rails-authorization/</loc>
-		<lastmod>2018-12-30T21:12:01+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://dev.mediocreinventions.com/rails-authentication/</loc>
-		<lastmod>2018-12-31T03:35:16+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/rails-with-react/</loc>
+		<lastmod>2018-12-31T21:29:37+00:00</lastmod>
 		<image:image>
-			<image:loc>https://dev.mediocreinventions.com/wp-content/uploads/image.png</image:loc>
+			<image:loc>https://www.mediocreinventions.com/wp-content/uploads/books.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://www.mediocreinventions.com/wp-content/uploads/book_table.png</image:loc>
 		</image:image>
 	</url>
 	<url>
-		<loc>https://dev.mediocreinventions.com/rails-with-react/</loc>
-		<lastmod>2018-12-31T03:59:05+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/seo/</loc>
+		<lastmod>2018-12-31T21:30:55+00:00</lastmod>
 		<image:image>
-			<image:loc>https://dev.mediocreinventions.com/wp-content/uploads/books.png</image:loc>
+			<image:loc>https://www.mediocreinventions.com/wp-content/uploads/image-1.png</image:loc>
 		</image:image>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/monitoring/</loc>
+		<lastmod>2018-12-31T21:31:20+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/data-structures/</loc>
+		<lastmod>2018-12-31T21:32:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/big-o/</loc>
+		<lastmod>2018-12-31T21:34:25+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/web-servers/</loc>
+		<lastmod>2018-12-31T21:35:18+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/programming-basics/</loc>
+		<lastmod>2018-12-31T21:36:43+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/internet-basics/</loc>
+		<lastmod>2018-12-31T21:37:41+00:00</lastmod>
 		<image:image>
-			<image:loc>https://dev.mediocreinventions.com/wp-content/uploads/book_table.png</image:loc>
+			<image:loc>https://www.mediocreinventions.com/wp-content/uploads/lb.png</image:loc>
 		</image:image>
+	</url>
+	<url>
+		<loc>https://www.mediocreinventions.com/ruby-on-rails-hosting/</loc>
+		<lastmod>2018-12-31T21:38:16+00:00</lastmod>
 	</url>
 </urlset>
 <!-- XML Sitemap generated by Yoast SEO -->

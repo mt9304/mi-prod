@@ -9,17 +9,17 @@
 
 <channel>
 	<title>Rails Authentication/Authorization &#8211; Mediocre Inventions</title>
-	<atom:link href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/feed/" rel="self" type="application/rss+xml" />
 	<link>http://mediocreinventions.herokuapp.com</link>
 	<description></description>
-	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
-		<title>4. Rails Authorization</title>
-		<link>https://dev.mediocreinventions.com/rails-authorization/</link>
+		<title>4. Ruby on Rails Authorization</title>
+		<link>https://www.mediocreinventions.com/rails-authorization/</link>
 		<pubDate>Sun, 30 Dec 2018 03:08:52 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails Authentication/Authorization]]></category>
@@ -30,9 +30,9 @@
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=721</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=721</guid>
 		<description><![CDATA[<p>Intro In this article, we will create two roles for the users: the Admin role and Normal_User role. Users with the Admin role should have access to create and modify books on the website, while normal_users should only be able to view the books. We use the Rolify and CanCanCan gems to help us implement [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -107,9 +107,11 @@ users, and made a loop that created 5 sample book entries. </p>
 
 
 
-<p>You
- can check to see if these values were entered into the database 
-successfuly by running the following command to open your database: </p>
+<h4>Opening the Database<br></h4>
+
+
+
+<p>You can check to see if these values were entered into the database successfuly by running the following command to open your database: </p>
 
 
 
@@ -140,10 +142,11 @@ should have the role with an id of 1 (the admin role).</p>
 
 
 
-<p>Now
- we can begin to implement authorization by permitting certain actions. 
-Lets start by going into the /app/models/user.rb file and add some role 
-checking functions: </p>
+<h4>Authorization</h4>
+
+
+
+<p>Now we can begin to implement authorization by permitting certain actions. Lets start by going into the /app/models/user.rb file and add some role checking functions: </p>
 
 
 
@@ -180,11 +183,11 @@ abilities, please visit: <a href="https://github.com/CanCanCommunity/cancancan/w
 
 
 
-<p>Now
- we just have to go into our /app/controllers/api/books_controller.rb 
-file to make sure our controller is checking for permissions before 
-allowing any actions to be performed. At the top (under class 
-BooksController and above the index method), add the following: </p>
+<h4>Controller</h4>
+
+
+
+<p>Now we just have to go into our /app/controllers/api/books_controller.rb file to make sure our controller is checking for permissions before allowing any actions to be performed. At the top (under class BooksController and above the index method), add the following: </p>
 
 
 
@@ -240,12 +243,12 @@ Now we have a basic authorization process for the website!</p>
 we haven&#8217;t went over the ways of put and post options (creating, 
 deleting, or editing). We will implement these functions in the next 
 article where we implement React for the front-end of the website. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>3. Rails Authentication</title>
-		<link>https://dev.mediocreinventions.com/rails-authentication/</link>
+		<title>3. Ruby on Rails Authentication</title>
+		<link>https://www.mediocreinventions.com/rails-authentication/</link>
 		<pubDate>Sun, 30 Dec 2018 03:06:25 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails Authentication/Authorization]]></category>
@@ -255,9 +258,9 @@ article where we implement React for the front-end of the website. </p>
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=691</guid>
-		<description><![CDATA[<p>Note:A more detailed article on this topic can be found here: https://www.nopio.com/blog/authentication-authorization-rails/ Intro If you have followed through the previous article, then we should now have a basic API for retrieving information about our Books. Since our website now has some purpose, we should add some authentication functions so that users can sign up and [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=691</guid>
+		<description><![CDATA[<p>Note:A more detailed article on this topic can be found here: https://www.nopio.com/blog/authentication-authorization-rails/ Intro If you have followed through the previous article, then we should now have a basic API for our Books. Since our website now has functions, we should add authentication features so users can sign up and login. This can help us track [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authentication/">3. Ruby on Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <p><strong>Note:</strong><br>A more detailed article on this topic can be found here: <a href="https://www.nopio.com/blog/authentication-authorization-rails/">https://www.nopio.com/blog/authentication-authorization-rails/</a><br></p>
@@ -268,7 +271,7 @@ article where we implement React for the front-end of the website. </p>
 
 
 
-<p>If you have followed through the previous article, then we should now have a basic API for retrieving information about our Books. Since our website now has some purpose, we should add some authentication functions so that users can sign up and log into the site. This can help us track users and implement authorization later on.</p>
+<p>If you have followed through the previous article, then we should now have a basic API for our Books. Since our website now has functions, we should add authentication features so users can sign up and login. This can help us track users and implement authorization later on.</p>
 
 
 
@@ -317,11 +320,15 @@ rake db:migrate</pre>
 
 
 
-<p>After you create the user, you should be automatically signed in. Or you can sign in through /users/sign_in (if you are already signed in, it will just take you to the home page). Now we just need a way to let users know that they are signed in.</p>
+<p>After you create the user, you should be automatically signed in. Or you can sign in through /users/sign_in. If you are already signed in, it will just take you to the home page. Now we just need a way to let users know that they are signed in.</p>
 
 
 
-<p>Let&#8217;s add a navigation bar at the top of the page for User related options like signing in and signing out. Go to /app/views/layous/ and open up your application&#8217;s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
+<h3>Navigation Bar<br></h3>
+
+
+
+<p>Let&#8217;s add a navigation bar at the top of the page for User options like signing in and signing out. Go to /app/views/layouts/ and open up your application&#8217;s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
 
 
 
@@ -345,19 +352,23 @@ rake db:migrate</pre>
 
 
 
-<p>It essentially has a bunch of prebuild styles that we can use to make a website so that we don&#8217;t have to style it from scratch.</p>
+<p>It essentially has a bunch of pre-built styles we can use to make a website so we don&#8217;t have to style it from scratch.</p>
 
 
 
-<p>When you start the server and look at the website, you should now see a navigation bar at the home with a Dropdown menu for Users at the top right. Right now, clicking it won&#8217;t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap&#8217;s JavaScript library to help us handle dropdown menues.</p>
+<p>When you start the server and look at the website, you should now see a navigation bar at the top with a Dropdown menu for Users at the top right. Right now, clicking it won&#8217;t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap&#8217;s JavaScript library to help us handle dropdown menues.</p>
 
 
 
-<p>Go to /app/assets/javascripts/application.js and add //= require bootstrap-sprockets to the very bottom of the page and save. Now when you click on the User button at the top right, you should be able to see the menu drop down and show actions such as Login and Logout. These buttons should work already since the Devise gem has taken care of the authentication functions for us, but since we want users to know when they are logged in, we will make some changes to this menu.</p>
+<p>Go to /app/assets/javascripts/application.js and add //= require bootstrap-sprockets to the very bottom of the page and save. Now when you click on the User button at the top right, you should be able to see the menu drop down. This should show actions such as Login and Logout. These buttons should work already since the Devise gem has taken care of the authentication functions for us, but since we want users to know when they are logged in, we will make some changes to this menu.</p>
 
 
 
-<p>Let&#8217;s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let&#8217;s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section (around lined 32):</p>
+<h4>Checking if logged in<br></h4>
+
+
+
+<p>Let&#8217;s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let&#8217;s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section. (around lined 32):</p>
 
 
 
@@ -385,11 +396,11 @@ The code that says something like link_to and new_user_session_path are just pre
 
 
 
-<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: 
-&lt;% if user_signed_in? %&gt;
-   
-Yay, you are logged in!&lt;% end %&gt;
-</p>
+<h4>Logging in<br></h4>
+
+
+
+<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: &lt;% if user_signed_in? %>   Yay, you are logged in!&lt;% end %></p>
 
 
 
@@ -397,17 +408,17 @@ Yay, you are logged in!&lt;% end %&gt;
 
 
 
-<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/image.png" alt="" class="wp-image-872" srcset="https://dev.mediocreinventions.com/wp-content/uploads/image.png 1014w, https://dev.mediocreinventions.com/wp-content/uploads/image-300x130.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/image-768x334.png 768w" sizes="(max-width: 1014px) 100vw, 1014px" /></figure>
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/image.png" alt="" class="wp-image-872" srcset="https://www.mediocreinventions.com/wp-content/uploads/image.png 1014w, https://www.mediocreinventions.com/wp-content/uploads/image-300x130.png 300w, https://www.mediocreinventions.com/wp-content/uploads/image-768x334.png 768w" sizes="(max-width: 1014px) 100vw, 1014px" /></figure>
 
 
 
 <p>In the next article, we will go through Authorization, which means giving different users certain roles (such as Admin or Client) and allowing each of these roles to see different content. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authentication/">3. Ruby on Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>2. Ruby on Rails API</title>
-		<link>https://dev.mediocreinventions.com/ruby-on-rails-api/</link>
+		<title>2. Creating the Ruby on Rails API</title>
+		<link>https://www.mediocreinventions.com/ruby-on-rails-api/</link>
 		<pubDate>Sun, 30 Dec 2018 02:58:49 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails and Nginx]]></category>
@@ -418,9 +429,9 @@ Yay, you are logged in!&lt;% end %&gt;
 		<category><![CDATA[Ruby]]></category>
 		<category><![CDATA[Ruby on Rails]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=641</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=641</guid>
 		<description><![CDATA[<p>Intro Now that we have the environment setup, we can finally start building our API for the web application. This article will go through how to create a basic REST API for perform CRUD (Create, Read, Update, Delete) operations. Start Lets start by creating the home page. Generate files needed for the home page by [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -480,7 +491,11 @@ integer format), and when it was published (in date format).&nbsp;</p>
 
 
 
-<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines:&nbsp;</p>
+<h4>Routes</h4>
+
+
+
+<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines: </p>
 
 
 
@@ -497,7 +512,11 @@ end
 
 
 
-<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be:&nbsp;</p>
+<h4>Controller</h4>
+
+
+
+<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be: </p>
 
 
 
@@ -538,39 +557,11 @@ so these URLs wouldn&#8217;t return anything right now).&nbsp;</p>
 
 
 
-<p>GET		/api/books(.:format)			api/books#index</p>
+<pre class="wp-block-preformatted">GET	/api/books(.:format)			api/books#index<br>POST	/api/books(.:format)			api/books#create<br>GET 	/api/books/new(.:format)		api/books#new<br>GET 	/api/books/:id/edit(.:format) 		api/books#edit<br>GET 	/api/books/:id(.:format) 		api/books#show<br>PATCH 	/api/books/:id(.:format) 		api/books#update<br>PUT 	/api/books/:id(.:format) 		api/books#update<br>DELETE 	/api/books/:id(.:format)</pre>
 
 
 
-<p>POST	/api/books(.:format)			api/books#create</p>
-
-
-
-<p>GET 	/api/books/new(.:format)		api/books#new</p>
-
-
-
-<p>GET 	/api/books/:id/edit(.:format) 	api/books#edit</p>
-
-
-
-<p>GET 	/api/books/:id(.:format) 		api/books#show</p>
-
-
-
-<p>PATCH 	/api/books/:id(.:format) 		api/books#update</p>
-
-
-
-<p>PUT 	/api/books/:id(.:format) 		api/books#update</p>
-
-
-
-<p>DELETE 	/api/books/:id(.:format)</p>
-
-
-
-<p>More information on REST here: <a href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank" rel="noreferrer noopener">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
+<p>More information on REST here: <a rel="noreferrer noopener" href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
 
 
 
@@ -687,12 +678,12 @@ in JSON format. The &#8220;1&#8221; at the end of the URL represent&#8217;s the 
 is found in the ID column of the Books table in the database. So if you 
 go to localhost:3000/api/books/2 then it will give you information on 
 the other book. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>1. Rails Setup</title>
-		<link>https://dev.mediocreinventions.com/rails-setup/</link>
+		<title>1. Setting up Ruby on Rails Environment</title>
+		<link>https://www.mediocreinventions.com/rails-setup/</link>
 		<pubDate>Sun, 30 Dec 2018 02:35:16 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails and Nginx]]></category>
@@ -705,9 +696,9 @@ the other book. </p>
 		<category><![CDATA[Ruby on Rails]]></category>
 		<category><![CDATA[setup]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=531</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=531</guid>
 		<description><![CDATA[<p>Intro In this series of tutorials, we will go through how to build a Rails application with authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -872,14 +863,11 @@ sudo apt-get install sublime-text
 
 
 
-<p>Then open up the Gemfile edit it to include the 
-proper gems. In particular, we are going to need Devise for 
-authentication and CanCanCan for authorization. Authentication would 
-mean the parts responsible for logging in a user, whereas authorization 
-would be permissions for which types of users (roles) are allowed to do 
-certain actions. These are usually very important for people to define 
-in projects, since you wouldn&#8217;t want a guest to be able to access Admin 
-level functions (such as deleting users).&nbsp;</p>
+<h4>Gemfile</h4>
+
+
+
+<p>Then open up the Gemfile edit it to include the proper gems. In particular, we are going to need Devise for authentication and CanCanCan for authorization. Authentication would mean the parts responsible for logging in a user, whereas authorization would be permissions for which types of users (roles) are allowed to do certain actions. These are usually very important for people to define in projects, since you wouldn&#8217;t want a guest to be able to access Admin level functions (such as deleting users). </p>
 
 
 
@@ -892,10 +880,11 @@ level functions (such as deleting users).&nbsp;</p>
 
 
 
-<p>If
- you are unfamiliar with gems, you can think of them as additional 
-programs, plugins/extensions, or libraries that the application can use.
- </p>
+<p>If you are unfamiliar with gems, you can think of them as additional programs, plugins/extensions, or libraries that the application can use. </p>
+
+
+
+<h4>Turbo Links<br></h4>
 
 
 
@@ -918,6 +907,10 @@ The application.html.erb file  should look like this: <a rel="noreferrer noopene
 In general, all your pages in this application will use the HTML here 
 for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
 depending on the page. </p>
+
+
+
+<h4>Database</h4>
 
 
 
@@ -955,7 +948,11 @@ we move it into production.&nbsp;</p>
 
 
 
-<p>Let&#8217;s generate the files for React so we can use them later on:&nbsp;</p>
+<h4>React</h4>
+
+
+
+<p>Let&#8217;s generate the files for React so we can use them later on: </p>
 
 
 
@@ -984,7 +981,7 @@ application started successfully.&nbsp;</p>
 
 
 <p>Now that the application is up and running, we can start making a basic API.</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ubuntu 18.04 &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/ubuntu-18-04/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>8. Nginx and Let&#8217;s Encrypt (SSL)</title>
+		<link>https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/</link>
+		<pubDate>Mon, 31 Dec 2018 20:42:12 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[https]]></category>
+		<category><![CDATA[let's encrypt]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[server]]></category>
+		<category><![CDATA[ssl]]></category>
+		<category><![CDATA[Ubuntu]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[web server]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1621</guid>
+		<description><![CDATA[<p>Intro If you have setup your Nginx server on Ubuntu 18.04 then this article will walk you through how to add an SSL certificate using Let&#8217;s Encrypt to your website so that it uses https instead of http. If you chose to use Heroku, then you can skip this article. Please note that this article [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h3>Intro</h3>
+
+
+
+<p>If you 
+have setup your Nginx server on Ubuntu 18.04 then this article will walk
+ you through how to add an SSL certificate using Let&#8217;s Encrypt to your 
+website so that it uses https instead of http. If you chose to use 
+Heroku, then you can skip this article. Please note that this article 
+will require you to own a domain name already. This will be a quick 
+summary to get you up and running, but a more detailed article on this 
+topic can be found here if you are interested: <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04" target="_blank" rel="noreferrer noopener">https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04 </a></p>
+
+
+
+<h3>Setup</h3>
+
+
+
+<p>First, let&#8217;s install Certbot:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo add-apt-repository ppa:certbot/certbot
+sudo apt install python-certbot-nginx
+</pre>
+
+
+
+<p>Double check that you have your domains entered 
+properly in /etc/nginx/sites-available/yourdomain.com or sudo nano 
+/etc/nginx/sites-available/default. There should be a line with 
+server_name that follows with your domain. For example: </p>
+
+
+
+<pre class="wp-block-preformatted">server_name yourdomain.com www.yourdomain.com;
+</pre>
+
+
+
+<p>If you had to make any changes, make sure to open the file as &#8220;sudo&#8221;, save then and run</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl reload nginx
+</pre>
+
+
+
+<p>If you have your firewall on (you can check its 
+status by running sudo ufw status), remember to configure your firewall 
+for this:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+</pre>
+
+
+
+<p>Then run you can run this to make sure nothing is wrong with the status</p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw status
+</pre>
+
+
+
+<p>Now you can run the following to finish setting up SSL for your website:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+</pre>
+
+
+
+<p>This certificate should auto-renew itself when it expires now. </p>
+
+
+
+<p>Congratulations, you have just secured your website with SSL and it should be ready for production!</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>7. Rails on Nginx, Puma, and PostgreSQL</title>
+		<link>https://www.mediocreinventions.com/rails-on-nginx/</link>
+		<pubDate>Mon, 31 Dec 2018 20:06:38 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[bash]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[postgresql]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+		<category><![CDATA[server]]></category>
+		<category><![CDATA[Ubuntu]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[web application]]></category>
+		<category><![CDATA[web server]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1451</guid>
+		<description><![CDATA[<p>Intro In this article, we will deploy our Ruby on Rails application on a Ubuntu 18.04 server with Nginx (web server) and Puma (application server). We will also use PostgreSQL as our database and Rbenv to help us store sensitive information. Rbenv helps us store sensitive information (such as database passwords) on the server as [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this
+ article, we will deploy our Ruby on Rails application on a Ubuntu 18.04
+ server with Nginx (web server) and Puma (application server). We will 
+also use PostgreSQL as our database and Rbenv to help us store sensitive
+ information. Rbenv helps us store sensitive information (such as 
+database passwords) on the server as environment variables. This way if 
+your project is on Github as a public project, you won&#8217;t have to reveal 
+that kind of information to the world. </p>
+
+
+
+<p>If you have created a 
+brand new server or VM, remember to install all the dependencies that 
+our project needs. I have created a script to help with this (installing
+ rails, ruby, git, etc) in case you need here: <a href="https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh" target="_blank" rel="noreferrer noopener">https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh</a>. This script can take a while to complete, but you can download and run this on your new server by running: </p>
+
+
+
+<p>sudo apt install curl</p>
+
+
+
+<pre class="wp-block-preformatted">curl -o https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh rails.sh<br>sh rails.sh</pre>
+
+
+
+<h2>Installing Dependencies<br></h2>
+
+
+
+<p>After our environment is setup, let&#8217;s install more dependencies!</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update<br>sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev<br>cd ~/.rbenv/plugins<br>git clone https://github.com/sstephenson/rbenv-vars.git</pre>
+
+
+
+<p>Now let&#8217;s go back to our home directory and clone our project folder here. </p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+</pre>
+
+
+
+<p>(Remember to replace [YOUR_USER] and [YOUR_PROJECT_NAME] with 
+the values that match your own project Github. In my case, it would be: <a href="https://github.com/TestingAndLearning/rails_template" target="_blank" rel="noreferrer noopener">https://github.com/TestingAndLearning/rails_template</a>)</p>
+
+
+
+<pre class="wp-block-preformatted">git clone https://github.com/[YOUR_USER]/[YOUR_PROJECT_NAME]
+</pre>
+
+
+
+<p>Now change directory into your application&#8217;s folder and run: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt-get install libsqlite3-dev<br>bundle install</pre>
+
+
+
+<p>Note: </p>
+
+
+
+<p>If you don&#8217;t install libsqlite3-dev and your application references sqlite, then you may get an error like: </p>
+
+
+
+<p class="has-text-color has-vivid-red-color">An error occurred while installing sqlite3 (1.3.13), and Bundler cannot continue.</p>
+
+
+
+<p class="has-text-color has-vivid-red-color">Make sure that `gem install sqlite3 -v &#8216;1.3.13&#8217;` succeeds before bundling.</p>
+
+
+
+<h2>Configuration Changes</h2>
+
+
+
+<p>Now
+ we will go into the /config/database.yml file and make some changes to 
+the Production environment, since this is the environment we will be 
+deploying in (Remember to replace the values in quotes with your own). </p>
+
+
+
+<pre class="wp-block-preformatted">adapter: postgresql
+encoding: unicode
+database: RT_prod
+pool: 5
+username: &lt;%= ENV['NAME_OF_YOUR_USER'] %&gt;
+password: &lt;%= ENV['YOUR_DATA_BASE_PASSWORD'] %&gt;
+</pre>
+
+
+
+<p>Your file might look something like this: <a href="https://gist.github.com/mt9304/2c8014ffed16adfe072970050f8643ae" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/2c8014ffed16adfe072970050f8643ae</a></p>
+
+
+
+<p>These &lt;%= ENV[&#8216;VALUE&#8217;] %&gt; tags are the environment variables that Rbenv will use. </p>
+
+
+
+<p>Now run the following to get a unique value for your application: </p>
+
+
+
+<pre class="wp-block-preformatted">rake secret
+</pre>
+
+
+
+<p>Make sure to copy this down somewhere. Now we can create our rbenv file and add these values: </p>
+
+
+
+<pre class="wp-block-preformatted">nano .rbenv vars
+or any other text editor like vi or vim. Then edit the contents in this file to be something like: 
+SECRET_KEY_BASE=YOURRAKESECRETOUTPUT
+NAME_OF_YOUR_USER=YOURACTUALUSER
+YOUR_DATA_BASE_PASSWORD=YOURACTUALPASSWORD
+</pre>
+
+
+
+<p>Remember to replace the values with your own. These 
+should match the ones you entered in the database.yml file. For the user
+ value, I would recommend using the value you see when you run: </p>
+
+
+
+<pre class="wp-block-preformatted">echo $USER
+</pre>
+
+
+
+<p>This way you can avoid some permission issues with the database in the future. </p>
+
+
+
+<h4>Git Ignore<br></h4>
+
+
+
+<p>Also,
+ if you haven&#8217;t already, let&#8217;s create a .gitignore file and make sure we
+ ignore this file so that it doesn&#8217;t end up in the git repository. In 
+the application folder, create the file by running: </p>
+
+
+
+<pre class="wp-block-preformatted">nano .gitignore
+</pre>
+
+
+
+<p>Then make sure one of the lines says</p>
+
+
+
+<pre class="wp-block-preformatted">.rbenv-vars
+</pre>
+
+
+
+<p>Save the file and run the following to make sure the .gitignore works properly. </p>
+
+
+
+<pre class="wp-block-preformatted">git rm -r --cached .
+</pre>
+
+
+
+<p>Now you can push into your repository and test if the .rbenv-vars file ends up in there. </p>
+
+
+
+<h4>More Configurations<br></h4>
+
+
+
+<p>Run the following command and remember the number it outputs (this gets the number of CPUs available to use in your server): </p>
+
+
+
+<pre class="wp-block-preformatted">grep -c processor /proc/cpuinfo
+</pre>
+
+
+
+<p>We can now edit our /config/puma.rb file. Remove the contents in there and make sure it looks something like this: <a href="https://gist.github.com/mt9304/7a444e84098e49ce5d0f92e263f95e21" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/7a444e84098e49ce5d0f92e263f95e21</a></p>
+
+
+
+<p>Remember to change the YOURCPUOUTPUT value to the number of CPUs we just found. </p>
+
+
+
+<p>Now let&#8217;s go back to your application&#8217;s root directory and run the following to create some required folders: </p>
+
+
+
+<pre class="wp-block-preformatted">mkdir -p shared/pids shared/sockets shared/log
+</pre>
+
+
+
+<p>For the next bit, we will use some scripts I found 
+on the internet that will allow you to start/stop the Puma server 
+easily. We won&#8217;t go into this in too much detail, but feel free to go to
+ <a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04" target="_blank" rel="noreferrer noopener">https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04</a> for a similar guide. Go back to your home directory and download the scripts by running this: </p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma-manager.conf
+wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma.conf
+sudo cp puma.conf puma-manager.conf /etc/init
+</pre>
+
+
+
+<p>Make sure to edit the YOURUSER and YOURAPPLICATIONNAME values so that it leads to your application folder. </p>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee -a /etc/puma.conf
+/home/YOURUSER/YOURAPPLICATIONNAME
+EOF
+</pre>
+
+
+
+<p>Note:</p>
+
+
+
+<p>The &#8220;cat&#8221; command here helps us write a line, the &#8220;tee&#8221; command takes the output of what we write and writes it in the /etc/puma.conf file. The -a argument makes sure it appends to the end of the file so that it doesn&#8217;t overwrite anything. The &#8220;&lt;&lt; EOF&#8221; part tells the &#8220;cat&#8221; command to take anything in the next lines as output for this, until the word EOF is found on its own line. In ths case, it is the path to your application&#8217;s directory. Then the EOF at the end is detected and it stops writing as output. </p>
+
+
+
+<h4>Puma Configuration<br></h4>
+
+
+
+<p>For
+ your convenience, you can run the following to set your variables in 
+this session (Make sure to replace appfoldername with your application&#8217;s
+ folder name. Also, if you are using the default user, then you don&#8217;t 
+have to set this. You can check the values of these by typing echo $USER
+ or echo APP_NAME once you have set them): </p>
+
+
+
+<pre class="wp-block-preformatted">USER=ubuntu
+APP_NAME=appfoldername
+</pre>
+
+
+
+<p>Now we can run the following </p>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee /etc/systemd/system/puma.service
+&nbsp;&nbsp;&nbsp;#Modify the path to the app directory and the user and group. 
+&nbsp;&nbsp;&nbsp;[Unit]
+&nbsp;&nbsp;&nbsp;Description=Puma HTTP Server
+&nbsp;&nbsp;&nbsp;After=network.target
+&nbsp;&nbsp;&nbsp;# Uncomment for socket activation (see below)
+&nbsp;&nbsp;&nbsp;# Requires=puma.socket
+&nbsp;&nbsp;&nbsp;[Service]
+&nbsp;&nbsp;&nbsp;# Foreground process (do not use --daemon in ExecStart or config.rb)
+&nbsp;&nbsp;&nbsp;Type=simple
+&nbsp;&nbsp;&nbsp;# Preferably configure a non-privileged user
+&nbsp;&nbsp;&nbsp;User=${USER}
+&nbsp;&nbsp;&nbsp;Group=${USER}
+&nbsp;&nbsp;&nbsp;# Specify the path to your puma application root
+&nbsp;&nbsp;&nbsp;WorkingDirectory=/home/${USER}/${APP_NAME}
+&nbsp;&nbsp;&nbsp;# Helpful for debugging socket activation, etc.
+&nbsp;&nbsp;&nbsp;# Environment=PUMA_DEBUG=1
+&nbsp;&nbsp;&nbsp;# EnvironmentFile=/home/${USER}/${APP_NAME}/.env
+&nbsp;&nbsp;&nbsp;# The command to start Puma
+&nbsp;&nbsp;&nbsp;# ExecStart=&lt;WD&gt;/sbin/puma -b tcp://0.0.0.0:9292 -b ssl://0.0.0.0:9293?key=key.pem&amp;cert=cert.pem
+&nbsp;&nbsp;&nbsp;# ExecStart=/usr/local/bin/bundle exec --keep-file-descriptors puma -e production
+&nbsp;&nbsp;&nbsp;# ExecStart=/usr/local/bin/puma -C /home/${USER}/${APP_NAME}/config/puma.rb
+&nbsp;&nbsp;&nbsp;ExecStart=/home/${USER}/.rbenv/shims/bundle exec puma -e production -C ./config/puma.rb config.ru
+&nbsp;&nbsp;&nbsp;PIDFile=/home/${USER}/${APP_NAME}/shared/tmp/pids/puma.pid
+&nbsp;&nbsp;&nbsp;Restart=always
+&nbsp;&nbsp;&nbsp;[Install]
+&nbsp;&nbsp;&nbsp;WantedBy=multi-user.target
+EOF
+</pre>
+
+
+
+<p>Then restart and enable Puma. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl daemon-reload
+sudo systemctl enable puma
+</pre>
+
+
+
+<h4>Nginx</h4>
+
+
+
+<p>Almost done, now we can finally install Nginx: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt-get install nginx
+</pre>
+
+
+
+<p>And we can replate some default files with our own by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo rm /etc/nginx/sites-available/default
+</pre>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee /etc/nginx/sites-available/default
+&nbsp;&nbsp;&nbsp;upstream app {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Path to Puma SOCK file, as defined previously
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server unix:/home/${USER}/${APP_NAME}/shared/sockets/puma.sock fail_timeout=0;
+&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;server {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen 80;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server_name localhost;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root /home/${USER}/${APP_NAME}/public;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try_files $uri/index.html $uri @app;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location @app {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://app;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host \$http_host;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_redirect off;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error_page 500 502 503 504 /500.html;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client_max_body_size 4G;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keepalive_timeout 10;
+&nbsp;&nbsp;&nbsp;}
+EOF
+</pre>
+
+
+
+<h4>PostgreSQL Database<br></h4>
+
+
+
+<p>Now let&#8217;s create the users for our database and give it the Superuser role. In the below steps, we basically change to use the postgres user, then enter the pg console with psql, which allows us to run SQL commands for our database. Make sure to replace the user and password values with your own, and include the semi colon at the end: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo -iu postgres
+psql
+CREATE USER username WITH PASSWORD 'yourpassword';
+"ALTER USER username WITH SUPERUSER;
+\q
+exit
+</pre>
+
+
+
+<p>Note: </p>
+
+
+
+<p>&#8220;\q&#8221; exits you from psql and &#8220;exit&#8221; 
+takes you back into the default user. While in psql you can also type 
+&#8220;\l&#8221; to list all the databases, &#8220;\c databasename&#8221; to connect to a 
+database then \dt to list all the tables in that database. You can then 
+run SQL commands such as &#8220;SELECT * FROM tablename;&#8221; to interact with 
+your database. </p>
+
+
+
+<p>The below commands also accomplishes 
+the same thing in case you just want to save time (replace the 
+YOURPASSWORD value with your password):</p>
+
+
+
+<pre class="wp-block-preformatted">DB_PASS=YOURPASSWORD
+sudo -u postgres bash -c "psql -c \"CREATE USER $USER WITH PASSWORD '$DB_PASS';\""
+sudo -u postgres bash -c "psql -c \"ALTER USER $USER WITH SUPERUSER;\""
+</pre>
+
+
+
+<p>Now that we have the users avaiable for the 
+database, we can set up the Production environment&#8217;s database. Change 
+directory into your application&#8217;s folder and run the following (make 
+sure your Gemfile has the pg gem in it. There should be a line that says
+ something like gem &#8216;pg&#8217;, &#8216;~&gt; 0.18&#8217;: </p>
+
+
+
+<pre class="wp-block-preformatted">RAILS_ENV=production rake db:drop
+RAILS_ENV=production rake db:create
+RAILS_ENV=production rake db:migrate
+RAILS_ENV=production rake db:seed
+RAILS_ENV=production rake assets:precompile
+</pre>
+
+
+
+<h4>Restarting the Server<br></h4>
+
+
+
+<p>Finally, we can restart Puma and Nginx and for the changes to take affect:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl stop puma
+sudo systemctl start puma
+</pre>
+
+
+
+<p>or</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart puma
+</pre>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl stop nginx
+sudo systemctl start nginx
+</pre>
+
+
+
+<p>or</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart nginx
+</pre>
+
+
+
+<p>You can run the following to check the status of these servers to make sure that they are action and running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl status nginx
+sudo systemctl status puma
+</pre>
+
+
+
+<p>Some of those scripts that we downloaded and used above allow for Puma to be interacted with the systemctl command. </p>
+
+
+
+<p>We
+ can now visit localhost:80 to check the web application. In 
+development, you would usually visit a Rails application through port 
+3000, however, Nginx makes it possible to connect it through port 80, 
+which is the default port for Production websites. This essentially 
+means you can just type localhost in the URL without the port number and
+ it should take you to the site. This makes it easier to point your 
+domains and such to your server when you decide to go public with your 
+website. </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>If you find that
+ your CSS and JavaScript files are not loading, you can open the 
+/config/environments/production.rb file and change the following line to
+ true, then restart Puma. </p>
+
+
+
+<p>config.public_file_server.enabled = true</p>
+
+
+
+<p>Your website should now be ready to go public!</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

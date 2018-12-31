@@ -9,17 +9,17 @@
 
 <channel>
 	<title>install &#8211; Mediocre Inventions</title>
-	<atom:link href="https://dev.mediocreinventions.com/tag/install/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.mediocreinventions.com/tag/install/feed/" rel="self" type="application/rss+xml" />
 	<link>http://mediocreinventions.herokuapp.com</link>
 	<description></description>
-	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
-		<title>1. Rails Setup</title>
-		<link>https://dev.mediocreinventions.com/rails-setup/</link>
+		<title>1. Setting up Ruby on Rails Environment</title>
+		<link>https://www.mediocreinventions.com/rails-setup/</link>
 		<pubDate>Sun, 30 Dec 2018 02:35:16 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Rails and Nginx]]></category>
@@ -32,9 +32,9 @@
 		<category><![CDATA[Ruby on Rails]]></category>
 		<category><![CDATA[setup]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=531</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=531</guid>
 		<description><![CDATA[<p>Intro In this series of tutorials, we will go through how to build a Rails application with authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -199,14 +199,11 @@ sudo apt-get install sublime-text
 
 
 
-<p>Then open up the Gemfile edit it to include the 
-proper gems. In particular, we are going to need Devise for 
-authentication and CanCanCan for authorization. Authentication would 
-mean the parts responsible for logging in a user, whereas authorization 
-would be permissions for which types of users (roles) are allowed to do 
-certain actions. These are usually very important for people to define 
-in projects, since you wouldn&#8217;t want a guest to be able to access Admin 
-level functions (such as deleting users).&nbsp;</p>
+<h4>Gemfile</h4>
+
+
+
+<p>Then open up the Gemfile edit it to include the proper gems. In particular, we are going to need Devise for authentication and CanCanCan for authorization. Authentication would mean the parts responsible for logging in a user, whereas authorization would be permissions for which types of users (roles) are allowed to do certain actions. These are usually very important for people to define in projects, since you wouldn&#8217;t want a guest to be able to access Admin level functions (such as deleting users). </p>
 
 
 
@@ -219,10 +216,11 @@ level functions (such as deleting users).&nbsp;</p>
 
 
 
-<p>If
- you are unfamiliar with gems, you can think of them as additional 
-programs, plugins/extensions, or libraries that the application can use.
- </p>
+<p>If you are unfamiliar with gems, you can think of them as additional programs, plugins/extensions, or libraries that the application can use. </p>
+
+
+
+<h4>Turbo Links<br></h4>
 
 
 
@@ -245,6 +243,10 @@ The application.html.erb file  should look like this: <a rel="noreferrer noopene
 In general, all your pages in this application will use the HTML here 
 for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
 depending on the page. </p>
+
+
+
+<h4>Database</h4>
 
 
 
@@ -282,7 +284,11 @@ we move it into production.&nbsp;</p>
 
 
 
-<p>Let&#8217;s generate the files for React so we can use them later on:&nbsp;</p>
+<h4>React</h4>
+
+
+
+<p>Let&#8217;s generate the files for React so we can use them later on: </p>
 
 
 
@@ -311,7 +317,7 @@ application started successfully.&nbsp;</p>
 
 
 <p>Now that the application is up and running, we can start making a basic API.</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Uptime Robot &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/uptime-robot/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>10. Web Application Monitoring</title>
+		<link>https://www.mediocreinventions.com/monitoring/</link>
+		<pubDate>Sat, 29 Dec 2018 23:55:43 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[Google Analytics]]></category>
+		<category><![CDATA[monitoring]]></category>
+		<category><![CDATA[Nginx Amplify]]></category>
+		<category><![CDATA[production]]></category>
+		<category><![CDATA[Uptime Robot]]></category>
+		<category><![CDATA[web applications]]></category>
+		<category><![CDATA[websites]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1201</guid>
+		<description><![CDATA[<p>Intro When your application has gone live, you will probably want some way of monitoring it. For example, it would be very helpful if you were able to see how many users are visiting your site, where they are visiting from, or if it is even still running at all. This article will go through [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/monitoring/">10. Web Application Monitoring</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h3>Intro</h3>
+
+
+
+<p>When your application has gone live, you will probably want some way of monitoring it. For example, it would be very helpful if you were able to see how many users are visiting your site, where they are visiting from, or if it is even still running at all. This article will go through some free tools that can help you accomplish just that. </p>
+
+
+
+<h3>Google Analytics</h3>
+
+
+
+<p>Google Analytics can help check how many visitors you get, which location (both geographic and links) they are coming from, and what time people tend tovisit. To get started, create an account here: <a rel="noreferrer noopener" href="https://analytics.google.com/analytics/web/" target="_blank">https://analytics.google.com/analytics/web/</a></p>
+
+
+
+<p>The website has a lot of detailed guides on how to use it, but once you see the graphs it should be pretty self explanatory to find the basic information you need. To add Google Analytics to your site, you basically just need to add a JavaScript tag to your website. If you followed the Ruby on Rails tutorial on this site, this can be put in your views files found in /applicationfolder/app/views/. The application layout file is recommended since elements in that file should show up on every page. To get this code snippet, go to Admin &gt; create and account, then create a new property. Fill out the input boxes to generate your script. You can then find it in Admin under the property section under Tracking Info. </p>
+
+
+
+<p>It can take 24 hours for it
+ to start working. Please note that AdBlocker addons can prevent Google 
+Analytics from tracking you (this also means other users using adblocker
+ may not be tracked as well). If you are having issues with this, I 
+would recommend download the Google Tag Assistant addon (or other Google
+ Analytics addons) since it can help provide you more information on any
+ errors your website may be having with the script. </p>
+
+
+
+<h3>Uptime Robot</h3>
+
+
+
+<p>A very simple free service that checks your website every once in a while to see if it is down. You can sign up at their website here: <a rel="noreferrer noopener" href="https://uptimerobot.com/" target="_blank">https://uptimerobot.com/</a> and follow their instructions to send you email notifications whenever a website is detected to be down. </p>
+
+
+
+<h3>Nginx Amplify</h3>
+
+
+
+<p>If
+ you have setup your Nginx server in the previous articles, you can use 
+this free tool to monitor your server. You can get information on how 
+many visitors/connections you have, what kind of errors users are 
+encountering, how often, and how much of your server&#8217;s resources are 
+being used. It is a helpful tool to help you monitor the health of your 
+server. You can sign up at their website here: <a href="https://amplify.nginx.com/login" target="_blank" rel="noreferrer noopener">https://amplify.nginx.com/login</a>
+ and follow their instructions to set this up. It is very fast to setup 
+and their instructions are very clear and straight-forward. Once you 
+have set it up, you can log into their website to check the status of 
+your application at your convenience</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/monitoring/">10. Web Application Monitoring</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

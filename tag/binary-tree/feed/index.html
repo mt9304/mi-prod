@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>binary tree &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/binary-tree/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>12. Data Structure Basics For Programming</title>
+		<link>https://www.mediocreinventions.com/data-structures/</link>
+		<pubDate>Sat, 29 Dec 2018 23:59:12 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[binary tree]]></category>
+		<category><![CDATA[data structures]]></category>
+		<category><![CDATA[hash map]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[linked list]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1311</guid>
+		<description><![CDATA[<p>Intro Knowing various data structures can be very beneficial when creating applications. For example, some data structures are faster to search through and some will be faster for inserting data. Depending on what your use case is, knowing when to use certain data structures and when to avoid certain ones can help your application scale [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/data-structures/">12. Data Structure Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Knowing
+ various data structures can be very beneficial when creating 
+applications. For example, some data structures are faster to search 
+through and some will be faster for inserting data. Depending on what 
+your use case is, knowing when to use certain data structures and when 
+to avoid certain ones can help your application scale and perform a lot 
+better.&nbsp;This article will go through some of the most important data 
+structures that are implemented in various programming languages. </p>
+
+
+
+<h3>Array</h3>
+
+
+
+<p>Arrays can be declared in JavaScript like this:</p>
+
+
+
+<pre class="wp-block-preformatted">var myArray = ["firstValue", "secondValue", "thirdValue"];
+</pre>
+
+
+
+<p>Arrays store values in different indices and it can 
+be access quickly. In the above example, you can run the following to 
+get the first value stored in the array:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">console.log(myArray[0]);
+</pre>
+
+
+
+<p>The [0] is saying to look at index number 0, or the 
+very first thing inside the array (the count starts from 0, not 1). So 
+running myArray[1] would get the second value of &#8220;secondValue&#8221;. If you 
+already know the index of where the value is going to be stored, 
+accessing this value can be very efficient since it runs at constant 
+time, or O(1). However, if you didn&#8217;t know the index of where the value 
+is, you may have to write a function to search through the array. In 
+that case, it can longer. For example, the following snippet will loop 
+from the whole array to find the value it needs, giving it a linear 
+runtime, or O(n):&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">for (var i = 0; i &lt; myArray.length; i++) {<br>	if (myArray[i] == "thirdValue") {<br>		console.log("Found it!");<br>	}<br>}</pre>
+
+
+
+<p>Inserting and deleting values in the array can also 
+take just as long, since it has to move all the existing other values to
+ fill the gap.&nbsp;</p>
+
+
+
+<h3>Linked List</h3>
+
+
+
+<p>A linked list is a 
+collection of data that is saved in a linear way. Each element points to
+ the next element so that it knows which order it is in. For example, 
+below is a visualization of how a linked list might look like:&nbsp;</p>
+
+
+
+<p>Winter =&gt; Spring =&gt; Summer =&gt; Fall</p>
+
+
+
+<p>In
+ the above example, the first item in the list is &#8220;Winter&#8221;, and it knows
+ that its next element will be Spring. Spring will then only know its 
+next element is Summer, and so on. A linked list is very useful if you 
+want to insert or delete values very often, since it would have a 
+constant execution time, or O(n). This is because you would only have to
+ change the pointers of the elements if you wanted to insert something, 
+instead of moving all the other elements around. For example, if we 
+wanted to insert an element between Spring and Summer called 
+&#8220;Springish&#8221;, then the process of inserting would be to just change the 
+Spring pointer to Springish and make sure the Springish pointer is set 
+to Summer.&nbsp;</p>
+
+
+
+<p><strong>Notes:&nbsp;</strong></p>
+
+
+
+<p>When 
+inserting at a specific index of a long linked list, you may still have 
+to traverse through the list at a linear execution time to search and 
+find the position.&nbsp;</p>
+
+
+
+<p>A &#8220;Doubly Linked List&#8221; is a data structure 
+that points in both directions. So each element knows both its previous 
+and next element. This allows for it to traverse both ways through the 
+list.&nbsp;</p>
+
+
+
+<p>I would recommend looking through this article to get a better idea of how to implement a linked list: <a href="https://www.geeksforgeeks.org/implementation-linkedlist-javascript/">https://www.geeksforgeeks.org/implementation-linkedlist-javascript/</a></p>
+
+
+
+<h3>Hash Map</h3>
+
+
+
+<p>A hash map stores key value pairs and is generally very fast when performing searches, insertion, and deletion. On average, it should have a constant execution time for these actions, but it can also take linear time in the worst case scenario.&nbsp;</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>This
+ is going to be a very simplified explanation of the data structure. The
+ Encryption article briefly explain hashing if you have not learned it 
+yet, or you can read from here: <a href="https://en.wikipedia.org/wiki/Hash_function" target="_blank" rel="noreferrer noopener">https://en.wikipedia.org/wiki/Hash_function</a></p>
+
+
+
+<p>Below is a pseudo-code snippet of a hash map that stored the names of different animals:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">myHashMap = { "dog" =&gt; "Skippy", "cat" =&gt; "Garfield", "squirrel" =&gt; "Ralph" }
+</pre>
+
+
+
+<p>To map the values, the value of dog may be hashed to
+ become a number like 4. In that case, the value of &#8220;dog&#8221; would be 
+stored in an array-like structure at the 4th index. Since arrays have 
+constant access time, searching for a value in the hash map will be 
+constant in this case, since it just has to find the 4th index and 
+retrieve the value stored in there (which would be &#8220;Skippy&#8221;). However, 
+if another word happens to be hashed into 4, then they will both share 
+the same index. If all of the items happened to fall in the 4th index, 
+then it could take linear execution time to traverse through that bucket
+ before finding the value. This collision here can be handled 
+differently depending on the developer, but it is usually handled like a
+ linked list.&nbsp;</p>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>You may 
+see a lot of resources reference Hash Table and Hash Map. They are 
+similar data structures, but do have a few differences. A good 
+explanation of this can be found here: <a href="https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable" target="_blank" rel="noreferrer noopener">https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable</a></p>
+
+
+
+<h3>Binary Tree</h3>
+
+
+
+<p>A
+ binary tree is made up of a bunch of nodes, and each node points to 2 
+other nodes, the left and the right. Below would be a visualization of a
+ tree (you can also google a binary tree visualization for a proper 
+image):&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">       (5)<br>      /   \<br>    (3)   (7)<br>   / \     / \<br>(2) (4)   (6) (8)</pre>
+
+
+
+<p>For each node, the left node should be smaller than 
+the parent node and the right node should be bigger. When sorted and 
+balanced like this properly, it becomes very fast to find the value that
+ you need. This is because if you need to find a value, you don&#8217;t need 
+to traverse through every node to find a match like a linked list would.
+ For example, if you wanted to find the value of 4 in the above tree, it
+ would start at the top and see that 4 is less than 5. Since the left 
+node is supposed to be less than the parent, it would then go to the 
+left node and do the same thing. Now 4 is more than 3, so it would look 
+to the right because the right node is larger than the parent. By 
+following this logic, even very large trees (as long as it is balanced) 
+will have very fast and scalable execution times for access, search, 
+delete, and insert functions (O(log(n))).&nbsp;</p>
+
+
+
+<p>In the worst
+ case scenario though, if the tree is completely unbalanced, it might 
+just look like an ordered linked list. Below is an example visualization
+ of an unbalanced tree:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">(1)<br>  \<br>  (2)<br>    \<br>    (3)<br>      \<br>      (4)</pre>
+
+
+
+<p>In that case, finding the value 4 would take linear execution time, since it has to traverse through everything.&nbsp;</p>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>For more details on this data structure and how it is implemented, this is a good article to start: <a href="https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/" target="_blank" rel="noreferrer noopener">https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/</a></p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/data-structures/">12. Data Structure Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

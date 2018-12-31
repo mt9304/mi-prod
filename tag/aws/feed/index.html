@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>aws &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/aws/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>6. Ruby on Rails Hosting Options</title>
+		<link>https://www.mediocreinventions.com/ruby-on-rails-hosting/</link>
+		<pubDate>Mon, 31 Dec 2018 19:51:49 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[aws]]></category>
+		<category><![CDATA[heroku]]></category>
+		<category><![CDATA[hosting]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1371</guid>
+		<description><![CDATA[<p>Intro If you have followed through the Ruby on Rails tutorial in the previous posts, then you should have a basic Ruby on Rails web application on your local machine. The next step would be to move this onto a Production level web server so that the public can access it. In this article, we [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>If you have followed through the Ruby on Rails tutorial in the previous posts, then you should have a basic Ruby on Rails web application on your local machine. The next step would be to move this onto a Production level web server so that the public can access it. In this article, we will go over two common hosting options that you can choose from to bring your web application to Production: Heroku and Amazon Web Services (AWS)</p>
+
+
+
+<h2>Heroku</h2>
+
+
+
+<p>If
+ you are not interested in configuring web servers or setting up 
+environments, then Heroku may be suitable for you. For Ruby on Rails 
+applications, you can simply use their services to host your project for
+ free without having to configure too much. This is great if you just 
+want a simple &#8220;push to production&#8221; approach and let Heroku do all the 
+server related things. </p>
+
+
+
+<p><strong>Pros</strong></p>
+
+
+
+<ul><li>There is a free tier. </li><li>Easy and quick to get started. </li><li>Can scale easily if you pay for an upgrade. </li></ul>
+
+
+
+<p><strong>Cons</strong></p>
+
+
+
+<ul><li>Scaling to a higher tier can be more expensive compared to other services. </li><li>Free
+ tier has limited hours per month and your application will shut down to
+ save hours if inactive. This means that the first time you visit the 
+website after it is inactive will take longer to load. </li><li>To add 
+SSL certificates (make your website https instead of http) you will need
+ to upgrade to at least the hobby ($7 a month) plan. </li></ul>
+
+
+
+<p><strong>Other</strong></p>
+
+
+
+<ul><li>To give your application a custom domain name, it is free, but you need to register your credit. </li><li>Heroku offers a lot more than just hosting, but for our purposes, using it to host is all we will cover. </li></ul>
+
+
+
+<h3>Getting Started With Heroku<br></h3>
+
+
+
+<p>If you choose to go the Heroku way, then you can skip the next 2 articles since they will be focusing on setting up a web server manually. Here are the instructions to host your web application on Heroku: </p>
+
+
+
+<p>Go to their website <a href="https://www.heroku.com/" target="_blank" rel="noreferrer noopener">https://www.heroku.com/</a> and sign up then login. Go into your dashboard (<a href="https://dashboard.heroku.com/apps" target="_blank" rel="noreferrer noopener">https://dashboard.heroku.com/apps</a>),
+ select New in the top right and create a new app. Follow the 
+instructions on the page to create your application (remember your 
+application name). </p>
+
+
+
+<p>Install Heroku CLI</p>
+
+
+
+<pre class="wp-block-preformatted">sudo snap install --classic heroku
+</pre>
+
+
+
+<p>Make sure Git is installed</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git
+</pre>
+
+
+
+<p>Go into your application directory and run the following and enter your credentials</p>
+
+
+
+<pre class="wp-block-preformatted">Heroku login
+</pre>
+
+
+
+<p>Replace replaceme with your app name</p>
+
+
+
+<pre class="wp-block-preformatted">git remote add heroku git@heroku.com:replaceme.git<br>git add . <br>git commit -m "First commit. "<br>git push<br>git push heroku master</pre>
+
+
+
+<p>You can visit your website on the Heroku dashboard 
+by pressing on Open at in the top right, and it should open up your 
+project&#8217;s page with a URL like https://yourapp.herokuapp.com</p>
+
+
+
+<h4>Heroku Commands<br></h4>
+
+
+
+<p>Every time you want to push to heroku and update your live site, you can just run the commands from &#8220;git add&#8221; to &#8220;git push heroku master. &#8221; You can also tell Heroku to run certain commands on the server by typing something like</p>
+
+
+
+<pre class="wp-block-preformatted">heroku rake db:create<br>heroku rake db:migrate<br>heroku rake db:seed</pre>
+
+
+
+<p>You can basically prepend &#8220;heroku&#8221; to your commands in the terminal then run your usual rails commands to tell it what to do. Running the above rake commands will be necessary most of the times to get your Heroku database up and ready to go. <br></p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Before
+ using Git, remember to configure your username and name. When you run 
+&#8220;git commit&#8221;, it should tell you to configure these with 2 commands if 
+you haven&#8217;t already. </p>
+
+
+
+<p>If you run into an error saying 
+&#8220;Precompiling assets failed. &#8220;, you can try going in in 
+config/application.rb, add/edit line to be</p>
+
+
+
+<pre class="wp-block-preformatted">config.assets.initialize_on_precompile = false
+</pre>
+
+
+
+<p>If you run into &#8220;Could not detect rake tasks. &#8220;, you can try running </p>
+
+
+
+<pre class="wp-block-preformatted">RAILS_ENV=production bundle exec rake assets:precompile
+</pre>
+
+
+
+<p>If all went smoothly, your website is now in 
+Production and can be visited by anyone on the internet! If you now want
+ a custom domain, you will have to enter your credit information with 
+Heroku to verify your account. Then, you can buy a domain name from a 
+company such as GoDaddy or Namecheap and point your domain (&#8220;CName&#8221; or 
+&#8220;A record&#8221;) to your app&#8217;s URL and run </p>
+
+
+
+<p>heroku domains:add www.yourwebsite.com</p>
+
+
+
+<p>Remember
+ to replace yourwebsite with your actual domain name. For more 
+information on this, please follow their instructions here: <a href="https://devcenter.heroku.com/articles/custom-domains" target="_blank" rel="noreferrer noopener">https://devcenter.heroku.com/articles/custom-domains</a></p>
+
+
+
+<p>If
+ you chose the Heroku route, then you are done! (for now). The rest of 
+this article will just go over AWS and how to set it up. </p>
+
+
+
+<h2>Amazon Web Services (AWS)</h2>
+
+
+
+<p>The
+ AWS option is basically renting out a remote server from Amazon, and 
+configuring it yourself to run a web application. We will be using EC2 
+and there is a Free tier for AWS that you can use for a year, there are 
+also very cheap servers that can be around $3 a month. </p>
+
+
+
+<p><strong>Pros</strong></p>
+
+
+
+<ul><li>There is a free trial. <br></li><li>Your server doesn&#8217;t deactivate when there is no activity. </li><li>Since you are configuring everything manually, you can find free alternatives for some software/services. For example, the SSL article later on will show you how to obtain an SSL certificate to make your website use https instead of http for free. You can also install your own free server monitoring tools or connect to your server conveniently to make changes. </li></ul>
+
+
+
+<p><strong>Cons</strong></p>
+
+
+
+<ul><li>Can
+ require a bit more knowledge to configure web servers and can take 
+longer than Heroku to set up. However, once you understand what is 
+needed to configure this, you can also write a script to automate the 
+process. </li><li>The free tier is only for a year. </li><li>Scaling might not be as straight forward as Heroku. </li></ul>
+
+
+
+<p><strong>Other</strong></p>
+
+
+
+<ul><li>You may need to register your credit card</li><li>Depending on your plan, you can get unexpected charges if you go over your limits</li><li>We
+ won&#8217;t be using a graphical interface to connect to our server, so you 
+should be comfortable with using the command line to interact with the 
+machine. </li></ul>
+
+
+
+<h3>Setting up an AWS server</h3>
+
+
+
+<p>Go to their website and sign up for AWS <a rel="noreferrer noopener" href="https://aws.amazon.com/" target="_blank">https://aws.amazon.com/</a> then login to their AWS console (you can just Google &#8220;aws console&#8221; if you can&#8217;t find the link on their website). </p>
+
+
+
+<p>At the top, click on Services &gt; EC2. Then click on Launch Instance. There will now be 7 steps here to launch your instance. </p>
+
+
+
+<p>For
+ the first step, you will need to select an AMI, which is basically a 
+machine image that your machine will use. So in this case, we want to 
+pick a Ubuntu 18.04 image. Search for it (maybe in the marketplace or 
+community section) and select it. I selected the Ubuntu 18.04 LTS &#8211; 
+Bionic option. </p>
+
+
+
+<p>Select the tier that you want to use (there should be a Free tier if you need). For the rest of the steps until 6, you can just stick with the default options. </p>
+
+
+
+<h4>Security and SSH<br></h4>
+
+
+
+<p>In step 6, you will be configuring security settings. Check Create a new security group and name it. Below that, there should be a table with headers that say Type, Protocol, Port range, and Source. Make sure you create a rule here with Type SSH, TCP Protocol, Port 22, Source Anywhere or your IP. This rule would mean that you are allowed to ssh into your server from anywhere or your ip address (sshing into the machine just means that you can connect to the machine to run commands from your terminal as if it were your own local machine. This also means you will not have a graphical interface for our purposes). For more information on ssh, please refer to this article <a rel="noreferrer noopener" href="https://www.ssh.com/ssh/protocol/" target="_blank">https://www.ssh.com/ssh/protocol/</a></p>
+
+
+
+<p>Once you have set up this rule, click launch and it should bring up a window to create your key pair. Create a new keypair here, name it, and make sure you download it (there is no way to generate this again so don&#8217;t lose it). Once you click launch, your machine will start being setup and you can check on its status through the Instances menu option on the left. Once the Instance State says it is running, we can ssh into the server to start setting up our application. </p>
+
+
+
+<h4>Accessing the Machine<br></h4>
+
+
+
+<p>To ssh 
+into this machine, open up your terminal and change directory to the 
+folder that you saved your ssh key in then run (make your you replace 
+your-key-name.pem with your own .pem file&#8217;s name)</p>
+
+
+
+<pre class="wp-block-preformatted">chmod 400 your-key-name.pem
+</pre>
+
+
+
+<p>The above command &#8220;chmod&#8221; modifies the file&#8217;s permissions to 
+allow to you perform the below command properly. For more information on
+ the &#8220;chmod&#8221; command, take a look at 
+https://isabelcastillo.com/linux-chmod-permissions-cheat-sheet to see a 
+list of different permission combinations. </p>
+
+
+
+<p>Now you can connect to the server by running</p>
+
+
+
+<pre class="wp-block-preformatted">ssh -i your-key-name.pem ubuntu@18.111.111.11
+</pre>
+
+
+
+<p>Make sure to replace &#8220;your-key-name.pem&#8221; with the name of your 
+own .pem file and also replace the IP address after the @ sign with your
+ AWS machine&#8217;s. You can see this in the Instances tab as well. (it 
+should be the Public IP or IPv4 Public IP column). </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>By default, AWS Ubuntu AMIs use the user called &#8220;ubuntu&#8221;, which is why we put ubuntu@18.111.111.11 to connect to the server. </p>
+
+
+
+<p>You
+ should now be connected to your server properly. As you can see, this 
+is just another Ubuntu server that you are able to use now!</p>
+
+
+
+<p>Now
+ if you want to point a custom domain to your website, you can buy a 
+domain name from a provider such as GoDaddy or Namecheap and follow the 
+instructions here: <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html" target="_blank" rel="noreferrer noopener">https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html</a></p>
+
+
+
+<p>Congratulation,
+ your AWS server is now up and running! Now our next few articles will 
+go over how to set up these servers to be a proper Production 
+environment for your application. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

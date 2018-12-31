@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>7. Rails on Nginx, Puma, and PostgreSQL - Mediocre Inventions</title><meta name="description" content="This article will walk through how to deploy a Ruby on Rails application onto an Ubuntu 18.04 server using Nginx and Puma."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="7. Rails on Nginx, Puma, and PostgreSQL - Mediocre Inventions"><meta property="og:description" content="This article will walk through how to deploy a Ruby on Rails application onto an Ubuntu 18.04 server using Nginx and Puma."><meta property="og:url" content="https://www.mediocreinventions.com/rails-on-nginx/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="bash"><meta property="article:tag" content="linux"><meta property="article:tag" content="nginx"><meta property="article:tag" content="postgresql"><meta property="article:tag" content="Ruby on Rails"><meta property="article:tag" content="server"><meta property="article:tag" content="Ubuntu"><meta property="article:tag" content="Ubuntu 18.04"><meta property="article:tag" content="web application"><meta property="article:tag" content="web server"><meta property="article:section" content="Rails and Nginx"><meta property="article:published_time" content="2018-12-31T20:06:38+00:00"><meta property="article:modified_time" content="2018-12-31T20:51:05+00:00"><meta property="og:updated_time" content="2018-12-31T20:51:05+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article will walk through how to deploy a Ruby on Rails application onto an Ubuntu 18.04 server using Nginx and Puma."><meta name="twitter:title" content="7. Rails on Nginx, Puma, and PostgreSQL - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-108237564-4');
+			
+		</script></head><body class="post-template-default single single-post postid-1451 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://www.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-1451" class="single-content post-text scroll post-1451 post type-post status-publish format-standard hentry category-rails-nginx category-rails-to-production tag-bash tag-linux tag-nginx tag-postgresql tag-ruby-on-rails tag-server tag-ubuntu tag-ubuntu-18-04 tag-web-application tag-web-server"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>7. Rails on Nginx, Puma, and PostgreSQL</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" rel="category tag">Rails and Nginx</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails To Production</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>In this
+ article, we will deploy our Ruby on Rails application on a Ubuntu 18.04
+ server with Nginx (web server) and Puma (application server). We will 
+also use PostgreSQL as our database and Rbenv to help us store sensitive
+ information. Rbenv helps us store sensitive information (such as 
+database passwords) on the server as environment variables. This way if 
+your project is on Github as a public project, you won&rsquo;t have to reveal 
+that kind of information to the world. </p>
+
+
+
+<p>If you have created a 
+brand new server or VM, remember to install all the dependencies that 
+our project needs. I have created a script to help with this (installing
+ rails, ruby, git, etc) in case you need here: <a href="https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh" target="_blank" rel="noreferrer noopener">https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh</a>. This script can take a while to complete, but you can download and run this on your new server by running: </p>
+
+
+
+<p>sudo apt install curl</p>
+
+
+
+<pre class="wp-block-preformatted">curl -o https://raw.githubusercontent.com/mt9304/scripts/master/rails.sh rails.sh<br>sh rails.sh</pre>
+
+
+
+<h2>Installing Dependencies<br></h2>
+
+
+
+<p>After our environment is setup, let&rsquo;s install more dependencies!</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update<br>sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev<br>cd ~/.rbenv/plugins<br>git clone https://github.com/sstephenson/rbenv-vars.git</pre>
+
+
+
+<p>Now let&rsquo;s go back to our home directory and clone our project folder here. </p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+</pre>
+
+
+
+<p>(Remember to replace [YOUR_USER] and [YOUR_PROJECT_NAME] with 
+the values that match your own project Github. In my case, it would be: <a href="https://github.com/TestingAndLearning/rails_template" target="_blank" rel="noreferrer noopener">https://github.com/TestingAndLearning/rails_template</a>)</p>
+
+
+
+<pre class="wp-block-preformatted">git clone https://github.com/[YOUR_USER]/[YOUR_PROJECT_NAME]
+</pre>
+
+
+
+<p>Now change directory into your application&rsquo;s folder and run: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt-get install libsqlite3-dev<br>bundle install</pre>
+
+
+
+<p>Note: </p>
+
+
+
+<p>If you don&rsquo;t install libsqlite3-dev and your application references sqlite, then you may get an error like: </p>
+
+
+
+<p class="has-text-color has-vivid-red-color">An error occurred while installing sqlite3 (1.3.13), and Bundler cannot continue.</p>
+
+
+
+<p class="has-text-color has-vivid-red-color">Make sure that `gem install sqlite3 -v &lsquo;1.3.13&rsquo;` succeeds before bundling.</p>
+
+
+
+<h2>Configuration Changes</h2>
+
+
+
+<p>Now
+ we will go into the /config/database.yml file and make some changes to 
+the Production environment, since this is the environment we will be 
+deploying in (Remember to replace the values in quotes with your own). </p>
+
+
+
+<pre class="wp-block-preformatted">adapter: postgresql
+encoding: unicode
+database: RT_prod
+pool: 5
+username: &lt;%= ENV['NAME_OF_YOUR_USER'] %&gt;
+password: &lt;%= ENV['YOUR_DATA_BASE_PASSWORD'] %&gt;
+</pre>
+
+
+
+<p>Your file might look something like this: <a href="https://gist.github.com/mt9304/2c8014ffed16adfe072970050f8643ae" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/2c8014ffed16adfe072970050f8643ae</a></p>
+
+
+
+<p>These &lt;%= ENV[&lsquo;VALUE&rsquo;] %&gt; tags are the environment variables that Rbenv will use. </p>
+
+
+
+<p>Now run the following to get a unique value for your application: </p>
+
+
+
+<pre class="wp-block-preformatted">rake secret
+</pre>
+
+
+
+<p>Make sure to copy this down somewhere. Now we can create our rbenv file and add these values: </p>
+
+
+
+<pre class="wp-block-preformatted">nano .rbenv vars
+or any other text editor like vi or vim. Then edit the contents in this file to be something like: 
+SECRET_KEY_BASE=YOURRAKESECRETOUTPUT
+NAME_OF_YOUR_USER=YOURACTUALUSER
+YOUR_DATA_BASE_PASSWORD=YOURACTUALPASSWORD
+</pre>
+
+
+
+<p>Remember to replace the values with your own. These 
+should match the ones you entered in the database.yml file. For the user
+ value, I would recommend using the value you see when you run: </p>
+
+
+
+<pre class="wp-block-preformatted">echo $USER
+</pre>
+
+
+
+<p>This way you can avoid some permission issues with the database in the future. </p>
+
+
+
+<h4>Git Ignore<br></h4>
+
+
+
+<p>Also,
+ if you haven&rsquo;t already, let&rsquo;s create a .gitignore file and make sure we
+ ignore this file so that it doesn&rsquo;t end up in the git repository. In 
+the application folder, create the file by running: </p>
+
+
+
+<pre class="wp-block-preformatted">nano .gitignore
+</pre>
+
+
+
+<p>Then make sure one of the lines says</p>
+
+
+
+<pre class="wp-block-preformatted">.rbenv-vars
+</pre>
+
+
+
+<p>Save the file and run the following to make sure the .gitignore works properly. </p>
+
+
+
+<pre class="wp-block-preformatted">git rm -r --cached .
+</pre>
+
+
+
+<p>Now you can push into your repository and test if the .rbenv-vars file ends up in there. </p>
+
+
+
+<h4>More Configurations<br></h4>
+
+
+
+<p>Run the following command and remember the number it outputs (this gets the number of CPUs available to use in your server): </p>
+
+
+
+<pre class="wp-block-preformatted">grep -c processor /proc/cpuinfo
+</pre>
+
+
+
+<p>We can now edit our /config/puma.rb file. Remove the contents in there and make sure it looks something like this: <a href="https://gist.github.com/mt9304/7a444e84098e49ce5d0f92e263f95e21" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/7a444e84098e49ce5d0f92e263f95e21</a></p>
+
+
+
+<p>Remember to change the YOURCPUOUTPUT value to the number of CPUs we just found. </p>
+
+
+
+<p>Now let&rsquo;s go back to your application&rsquo;s root directory and run the following to create some required folders: </p>
+
+
+
+<pre class="wp-block-preformatted">mkdir -p shared/pids shared/sockets shared/log
+</pre>
+
+
+
+<p>For the next bit, we will use some scripts I found 
+on the internet that will allow you to start/stop the Puma server 
+easily. We won&rsquo;t go into this in too much detail, but feel free to go to
+ <a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04" target="_blank" rel="noreferrer noopener">https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04</a> for a similar guide. Go back to your home directory and download the scripts by running this: </p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma-manager.conf
+wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma.conf
+sudo cp puma.conf puma-manager.conf /etc/init
+</pre>
+
+
+
+<p>Make sure to edit the YOURUSER and YOURAPPLICATIONNAME values so that it leads to your application folder. </p>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee -a /etc/puma.conf
+/home/YOURUSER/YOURAPPLICATIONNAME
+EOF
+</pre>
+
+
+
+<p>Note:</p>
+
+
+
+<p>The &ldquo;cat&rdquo; command here helps us write a line, the &ldquo;tee&rdquo; command takes the output of what we write and writes it in the /etc/puma.conf file. The -a argument makes sure it appends to the end of the file so that it doesn&rsquo;t overwrite anything. The &ldquo;&lt;&lt; EOF&rdquo; part tells the &ldquo;cat&rdquo; command to take anything in the next lines as output for this, until the word EOF is found on its own line. In ths case, it is the path to your application&rsquo;s directory. Then the EOF at the end is detected and it stops writing as output. </p>
+
+
+
+<h4>Puma Configuration<br></h4>
+
+
+
+<p>For
+ your convenience, you can run the following to set your variables in 
+this session (Make sure to replace appfoldername with your application&rsquo;s
+ folder name. Also, if you are using the default user, then you don&rsquo;t 
+have to set this. You can check the values of these by typing echo $USER
+ or echo APP_NAME once you have set them): </p>
+
+
+
+<pre class="wp-block-preformatted">USER=ubuntu
+APP_NAME=appfoldername
+</pre>
+
+
+
+<p>Now we can run the following </p>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee /etc/systemd/system/puma.service
+&nbsp;&nbsp;&nbsp;#Modify the path to the app directory and the user and group. 
+&nbsp;&nbsp;&nbsp;[Unit]
+&nbsp;&nbsp;&nbsp;Description=Puma HTTP Server
+&nbsp;&nbsp;&nbsp;After=network.target
+&nbsp;&nbsp;&nbsp;# Uncomment for socket activation (see below)
+&nbsp;&nbsp;&nbsp;# Requires=puma.socket
+&nbsp;&nbsp;&nbsp;[Service]
+&nbsp;&nbsp;&nbsp;# Foreground process (do not use --daemon in ExecStart or config.rb)
+&nbsp;&nbsp;&nbsp;Type=simple
+&nbsp;&nbsp;&nbsp;# Preferably configure a non-privileged user
+&nbsp;&nbsp;&nbsp;User=${USER}
+&nbsp;&nbsp;&nbsp;Group=${USER}
+&nbsp;&nbsp;&nbsp;# Specify the path to your puma application root
+&nbsp;&nbsp;&nbsp;WorkingDirectory=/home/${USER}/${APP_NAME}
+&nbsp;&nbsp;&nbsp;# Helpful for debugging socket activation, etc.
+&nbsp;&nbsp;&nbsp;# Environment=PUMA_DEBUG=1
+&nbsp;&nbsp;&nbsp;# EnvironmentFile=/home/${USER}/${APP_NAME}/.env
+&nbsp;&nbsp;&nbsp;# The command to start Puma
+&nbsp;&nbsp;&nbsp;# ExecStart=&lt;WD&gt;/sbin/puma -b tcp://0.0.0.0:9292 -b ssl://0.0.0.0:9293?key=key.pem&amp;cert=cert.pem
+&nbsp;&nbsp;&nbsp;# ExecStart=/usr/local/bin/bundle exec --keep-file-descriptors puma -e production
+&nbsp;&nbsp;&nbsp;# ExecStart=/usr/local/bin/puma -C /home/${USER}/${APP_NAME}/config/puma.rb
+&nbsp;&nbsp;&nbsp;ExecStart=/home/${USER}/.rbenv/shims/bundle exec puma -e production -C ./config/puma.rb config.ru
+&nbsp;&nbsp;&nbsp;PIDFile=/home/${USER}/${APP_NAME}/shared/tmp/pids/puma.pid
+&nbsp;&nbsp;&nbsp;Restart=always
+&nbsp;&nbsp;&nbsp;[Install]
+&nbsp;&nbsp;&nbsp;WantedBy=multi-user.target
+EOF
+</pre>
+
+
+
+<p>Then restart and enable Puma. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl daemon-reload
+sudo systemctl enable puma
+</pre>
+
+
+
+<h4>Nginx</h4>
+
+
+
+<p>Almost done, now we can finally install Nginx: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt-get install nginx
+</pre>
+
+
+
+<p>And we can replate some default files with our own by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo rm /etc/nginx/sites-available/default
+</pre>
+
+
+
+<pre class="wp-block-preformatted">cat &lt;&lt; EOF | sudo tee /etc/nginx/sites-available/default
+&nbsp;&nbsp;&nbsp;upstream app {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Path to Puma SOCK file, as defined previously
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server unix:/home/${USER}/${APP_NAME}/shared/sockets/puma.sock fail_timeout=0;
+&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;server {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen 80;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server_name localhost;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root /home/${USER}/${APP_NAME}/public;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try_files $uri/index.html $uri @app;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location @app {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://app;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host \$http_host;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_redirect off;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error_page 500 502 503 504 /500.html;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client_max_body_size 4G;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keepalive_timeout 10;
+&nbsp;&nbsp;&nbsp;}
+EOF
+</pre>
+
+
+
+<h4>PostgreSQL Database<br></h4>
+
+
+
+<p>Now let&rsquo;s create the users for our database and give it the Superuser role. In the below steps, we basically change to use the postgres user, then enter the pg console with psql, which allows us to run SQL commands for our database. Make sure to replace the user and password values with your own, and include the semi colon at the end: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo -iu postgres
+psql
+CREATE USER username WITH PASSWORD 'yourpassword';
+"ALTER USER username WITH SUPERUSER;
+\q
+exit
+</pre>
+
+
+
+<p>Note: </p>
+
+
+
+<p>&ldquo;\q&rdquo; exits you from psql and &ldquo;exit&rdquo; 
+takes you back into the default user. While in psql you can also type 
+&ldquo;\l&rdquo; to list all the databases, &ldquo;\c databasename&rdquo; to connect to a 
+database then \dt to list all the tables in that database. You can then 
+run SQL commands such as &ldquo;SELECT * FROM tablename;&rdquo; to interact with 
+your database. </p>
+
+
+
+<p>The below commands also accomplishes 
+the same thing in case you just want to save time (replace the 
+YOURPASSWORD value with your password):</p>
+
+
+
+<pre class="wp-block-preformatted">DB_PASS=YOURPASSWORD
+sudo -u postgres bash -c "psql -c \"CREATE USER $USER WITH PASSWORD '$DB_PASS';\""
+sudo -u postgres bash -c "psql -c \"ALTER USER $USER WITH SUPERUSER;\""
+</pre>
+
+
+
+<p>Now that we have the users avaiable for the 
+database, we can set up the Production environment&rsquo;s database. Change 
+directory into your application&rsquo;s folder and run the following (make 
+sure your Gemfile has the pg gem in it. There should be a line that says
+ something like gem &lsquo;pg&rsquo;, &lsquo;~&gt; 0.18&rsquo;: </p>
+
+
+
+<pre class="wp-block-preformatted">RAILS_ENV=production rake db:drop
+RAILS_ENV=production rake db:create
+RAILS_ENV=production rake db:migrate
+RAILS_ENV=production rake db:seed
+RAILS_ENV=production rake assets:precompile
+</pre>
+
+
+
+<h4>Restarting the Server<br></h4>
+
+
+
+<p>Finally, we can restart Puma and Nginx and for the changes to take affect:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl stop puma
+sudo systemctl start puma
+</pre>
+
+
+
+<p>or</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart puma
+</pre>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl stop nginx
+sudo systemctl start nginx
+</pre>
+
+
+
+<p>or</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart nginx
+</pre>
+
+
+
+<p>You can run the following to check the status of these servers to make sure that they are action and running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl status nginx
+sudo systemctl status puma
+</pre>
+
+
+
+<p>Some of those scripts that we downloaded and used above allow for Puma to be interacted with the systemctl command. </p>
+
+
+
+<p>We
+ can now visit localhost:80 to check the web application. In 
+development, you would usually visit a Rails application through port 
+3000, however, Nginx makes it possible to connect it through port 80, 
+which is the default port for Production websites. This essentially 
+means you can just type localhost in the URL without the port number and
+ it should take you to the site. This makes it easier to point your 
+domains and such to your server when you decide to go public with your 
+website. </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>If you find that
+ your CSS and JavaScript files are not loading, you can open the 
+/config/environments/production.rb file and change the following line to
+ true, then restart Puma. </p>
+
+
+
+<p>config.public_file_server.enabled = true</p>
+
+
+
+<p>Your website should now be ready to go public!</p>
+<div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/bash/" rel="tag">bash</a>, <a href="https://www.mediocreinventions.com/tag/linux/" rel="tag">linux</a>, <a href="https://www.mediocreinventions.com/tag/nginx/" rel="tag">nginx</a>, <a href="https://www.mediocreinventions.com/tag/postgresql/" rel="tag">postgresql</a>, <a href="https://www.mediocreinventions.com/tag/ruby-on-rails/" rel="tag">Ruby on Rails</a>, <a href="https://www.mediocreinventions.com/tag/server/" rel="tag">server</a>, <a href="https://www.mediocreinventions.com/tag/ubuntu/" rel="tag">Ubuntu</a>, <a href="https://www.mediocreinventions.com/tag/ubuntu-18-04/" rel="tag">Ubuntu 18.04</a>, <a href="https://www.mediocreinventions.com/tag/web-application/" rel="tag">web application</a>, <a href="https://www.mediocreinventions.com/tag/web-server/" rel="tag">web server</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/" rel="prev">6. Ruby on Rails Hosting Options</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/" rel="next">8. Nginx and Let&rsquo;s Encrypt (SSL)</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://www.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

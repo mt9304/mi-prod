@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>big o &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/big-o/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>11. Big O Notation Basics For Programming</title>
+		<link>https://www.mediocreinventions.com/big-o/</link>
+		<pubDate>Sat, 29 Dec 2018 23:57:06 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[big o]]></category>
+		<category><![CDATA[efficiency]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[time complexity]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1271</guid>
+		<description><![CDATA[<p>Intro If you have followed through the Ruby on Rails tutorials on this website, then you should have a basic working application with an API to create, read, update, or delete items from your database. Following these concepts, you can build a lot of different applications, since this is essentially what almost every web application [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/big-o/">11. Big O Notation Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>If you have followed through the Ruby on Rails tutorials on this website, then you should have a basic working application with an API to create, read, update, or delete items from your database. Following these concepts, you can build a lot of different applications, since this is essentially what almost every web application does. For example, a website that allows you to see movie ratings and reviews (such as IMDB) follows the same concept: </p>
+
+
+
+<ul><li>Has a database of objects, in this case it stores movies. </li><li>The movies have columns such as name, year, rating or summary. </li><li>There is something that pulls this information from the database and renders it for the public to see. </li></ul>
+
+
+
+<p>Even
+ things like Twitter or Airbnb build on these same concepts (they are 
+definitely more complicated than this, but the point is that they are 
+all just applications that interact with a database and render things to
+ users). So if you just build upon this template application, you can 
+make a lot of different inventions. However, when the projects get 
+really big (maybe you end up storing a million books in the database), 
+then the application will naturally take longer to process this. In 
+these cases, you will want to make sure that your code is as optimal as 
+you can make it so that the application can keep running fast and scale 
+better with time. For example, if you are implementing a search 
+function, you don&#8217;t want the code to go through a simple For Loop and 
+loop through the millions of books before finding the resulting book. </p>
+
+
+
+<p>The
+ next few articles will also go through important concepts such as data 
+structures and algorithms to help get a clearer picture of what 
+efficient code looks like. However, it would be beneficial to first 
+understand what Big O is to know how to evaluate the efficiency of code.
+ This article will introduce you to some of the main points of the Big O
+ notation so that you will have a basic understanding of what it is 
+about. </p>
+
+
+
+<h2>Big O</h2>
+
+
+
+<p>Big O is a mathematical 
+representation that describes how much time and space an algorithm 
+requires as the input grows. We are going to go over 4 different run 
+times that are most commonly seen: O(n), O(n^2), O(log n), and O(1). If 
+you are afraid of math and feel like this makes no sense already, don&#8217;t 
+worry. I will go over this in plain English and will give simple 
+examples to illustrate what each of these mean. This also means that the
+ explanations in this article will be very basic and will definitely not
+ go into as much detail as an academic textbook would, so if you are 
+interested in this area then I would recommend taking a longer course on
+ this since it is a very significant area in computer science. That 
+being said, I do believe that even having a basic understanding of this 
+is very valuable and will help you improve the way you code. </p>
+
+
+
+<h3>O(n)</h3>
+
+
+
+<p>When
+ people refer to something as having a run time of O(n), it means that 
+it will take as long as the size of &#8220;n&#8221; (the variable). For example, the
+ below code would be considered to have O(n) run time: </p>
+
+
+
+<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	console.log("I will run n times. ");<br>}</pre>
+
+
+
+<p>If you recall from the <a href="http://docs.mediocreinventions.com/article?name=Programming" target="_blank" rel="noreferrer noopener">Programming</a>
+ article, the for loop will run as long as the condition of &#8220;i &lt; n&#8221; 
+is true. This means that this function will run 5 times if the value of 
+&#8220;n&#8221; is 5, and 5000 times if the value of &#8220;n&#8221; is 5000. This has a 
+&#8220;linear&#8221; run time because the size of &#8220;n&#8221; is proportionate to how many 
+times it will run at a 1:1 ratio. So in the Search function example 
+above, if the function loops through a million Book entries in 
+alphabetical order, users will have to wait for the function to run a 
+million times before it reaches the end. In the best case (&#8220;maybe the 
+book being searched starts with &#8220;A&#8221;), it might only have to loop through
+ a handful of times before returning the result. Similarly, in the worst
+ case scenario (maybe a Book&#8217;s name is &#8220;ZZZZZZ&#8221;), then it will run the 
+whole million times before returning the result. Although this can be 
+very fast if the book&#8217;s name started with &#8220;A&#8221;, Big O generally refers to
+ the worst case scenario as its run time. So a simple for loop in this 
+case would be O(n). </p>
+
+
+
+<h3>O(n^2)</h3>
+
+
+
+<p>This is O(n) to the power of 2, which means it runs exponentially slower than O(n). The code below would be considered O(n^2): </p>
+
+
+
+<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	for (j =0; j &lt; n; i++) {<br>	console.log("I will run n * n times. ");	<br>	}<br>}</pre>
+
+
+
+<p>You can see that there is a for loop nested within a for loop, 
+and both of them depend on the size of &#8220;n&#8221;. Which means that if n is 10,
+ then both the &#8220;j&#8221; and &#8220;i&#8221; loops have to run 10 times each. Since the 
+&#8220;j&#8221; loop is nested within the &#8220;i&#8221; loop, the &#8220;j&#8221; loop has to run 10 times
+ before the &#8220;i&#8221; value increments by 1. To finish, &#8220;i&#8221; will also need to 
+run 10 times, which means 10 times 10. The point here is that both loops
+ depend on the same variable and one of the loops is nested in the 
+other. This makes it take exponentially longer to run as the size of n 
+increases. </p>
+
+
+
+<h3>O(log n)</h3>
+
+
+
+<p>This one might be a bit 
+more complicated to understand in terms of the code. However, the 
+concept is much easier to understand. Algorithms that have a O(log n) or
+ logarithmic run time are often regarded as very efficient and scalable.
+ The code below is regarded as O(log n): </p>
+
+
+
+<pre class="wp-block-preformatted">function divideByTwo(n) {&nbsp;&nbsp;&nbsp;<br>   if (n == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>&nbsp;&nbsp;&nbsp;} else if (n &gt; 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var previousNumber = divideByTwo(n / 2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>&nbsp;&nbsp;&nbsp;}<br>}</pre>
+
+
+
+<p>We haven&#8217;t went through &#8220;recursion&#8221; so the above code might 
+look a bit confusing (recursion is essentially a function that calls 
+itself). The code takes the input &#8220;n&#8221;, prints out the number, then 
+divide it by 2, and print out that number, then divide by 2 and so on 
+until the resulting number is less than 1. You can see that this is 
+scalable because even if the input is a million, if you keep dividing it
+ by 2, the number of times this function has to run is still less than 
+30. The number of times this function has to run only increases by 1 
+every time &#8220;n&#8221; doubles in size. </p>
+
+
+
+<p>We implement these kind of 
+functions in real life all the time. For example, when you open up a 
+dictionary and want to find a word, you only need to flip through the 
+dictionary a few times before you find your word even though it may have
+ thousands of pages. If the word is &#8220;happy&#8221;, you might start by opening 
+the dictionary from the middle. If you reach the &#8220;m&#8221; section, you 
+automatically flip back (maybe halfway). If this next section starts 
+with &#8220;e&#8221;, then you flip forward again and repeat until you reach the &#8220;h&#8221;
+ section to find your word. No matter how big the dictionary is, it is 
+always a doable task because you are able to halve your results with 
+each flip. This is much more efficient than flipping through each page 
+one at a time, similar to what a for loop would do. </p>
+
+
+
+<h3>O(1)</h3>
+
+
+
+<p>This
+ one just means constant time. It doesn&#8217;t depend on any input size, the 
+amount of time it runs is always going to be the same. A function like 
+below would be considered constant time: </p>
+
+
+
+<pre class="wp-block-preformatted">function doBunchOfThings() {<br>	console.log("Do something. ");<br>	console.log("Do another thing. ");<br>	console.log("Do even more things. ");<br>	console.log("Keep doing things. ");<br>	console.log("Just do one more thing. ");<br>}</pre>
+
+
+
+<p>No matter how many console.log() functions is fit in there, it 
+is always going to be O(1) run time because there is no variable input. </p>
+
+
+
+<p>There
+ are a lot more notations out there and definitely more to analyzing run
+ times, however, these are the essential concepts that should give you a
+ decent understanding of how to determine the run time of a function. </p>
+
+
+
+<p>For a chart of some different Big O notations and their run times, please see this link: <a href="http://bigocheatsheet.com/" target="_blank" rel="noreferrer noopener">http://bigocheatsheet.com/</a></p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/big-o/">11. Big O Notation Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

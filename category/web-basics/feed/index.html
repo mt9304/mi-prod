@@ -9,17 +9,1157 @@
 
 <channel>
 	<title>Web Application Basics &#8211; Mediocre Inventions</title>
-	<atom:link href="https://dev.mediocreinventions.com/category/web-basics/feed/" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.mediocreinventions.com/category/web-basics/feed/" rel="self" type="application/rss+xml" />
 	<link>http://mediocreinventions.herokuapp.com</link>
 	<description></description>
-	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
-		<title>7. Encryption</title>
-		<link>https://dev.mediocreinventions.com/encryption/</link>
+		<title>12. Data Structure Basics For Programming</title>
+		<link>https://www.mediocreinventions.com/data-structures/</link>
+		<pubDate>Sat, 29 Dec 2018 23:59:12 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[array]]></category>
+		<category><![CDATA[binary tree]]></category>
+		<category><![CDATA[data structures]]></category>
+		<category><![CDATA[hash map]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[linked list]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1311</guid>
+		<description><![CDATA[<p>Intro Knowing various data structures can be very beneficial when creating applications. For example, some data structures are faster to search through and some will be faster for inserting data. Depending on what your use case is, knowing when to use certain data structures and when to avoid certain ones can help your application scale [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/data-structures/">12. Data Structure Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Knowing
+ various data structures can be very beneficial when creating 
+applications. For example, some data structures are faster to search 
+through and some will be faster for inserting data. Depending on what 
+your use case is, knowing when to use certain data structures and when 
+to avoid certain ones can help your application scale and perform a lot 
+better.&nbsp;This article will go through some of the most important data 
+structures that are implemented in various programming languages. </p>
+
+
+
+<h3>Array</h3>
+
+
+
+<p>Arrays can be declared in JavaScript like this:</p>
+
+
+
+<pre class="wp-block-preformatted">var myArray = ["firstValue", "secondValue", "thirdValue"];
+</pre>
+
+
+
+<p>Arrays store values in different indices and it can 
+be access quickly. In the above example, you can run the following to 
+get the first value stored in the array:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">console.log(myArray[0]);
+</pre>
+
+
+
+<p>The [0] is saying to look at index number 0, or the 
+very first thing inside the array (the count starts from 0, not 1). So 
+running myArray[1] would get the second value of &#8220;secondValue&#8221;. If you 
+already know the index of where the value is going to be stored, 
+accessing this value can be very efficient since it runs at constant 
+time, or O(1). However, if you didn&#8217;t know the index of where the value 
+is, you may have to write a function to search through the array. In 
+that case, it can longer. For example, the following snippet will loop 
+from the whole array to find the value it needs, giving it a linear 
+runtime, or O(n):&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">for (var i = 0; i &lt; myArray.length; i++) {<br>	if (myArray[i] == "thirdValue") {<br>		console.log("Found it!");<br>	}<br>}</pre>
+
+
+
+<p>Inserting and deleting values in the array can also 
+take just as long, since it has to move all the existing other values to
+ fill the gap.&nbsp;</p>
+
+
+
+<h3>Linked List</h3>
+
+
+
+<p>A linked list is a 
+collection of data that is saved in a linear way. Each element points to
+ the next element so that it knows which order it is in. For example, 
+below is a visualization of how a linked list might look like:&nbsp;</p>
+
+
+
+<p>Winter =&gt; Spring =&gt; Summer =&gt; Fall</p>
+
+
+
+<p>In
+ the above example, the first item in the list is &#8220;Winter&#8221;, and it knows
+ that its next element will be Spring. Spring will then only know its 
+next element is Summer, and so on. A linked list is very useful if you 
+want to insert or delete values very often, since it would have a 
+constant execution time, or O(n). This is because you would only have to
+ change the pointers of the elements if you wanted to insert something, 
+instead of moving all the other elements around. For example, if we 
+wanted to insert an element between Spring and Summer called 
+&#8220;Springish&#8221;, then the process of inserting would be to just change the 
+Spring pointer to Springish and make sure the Springish pointer is set 
+to Summer.&nbsp;</p>
+
+
+
+<p><strong>Notes:&nbsp;</strong></p>
+
+
+
+<p>When 
+inserting at a specific index of a long linked list, you may still have 
+to traverse through the list at a linear execution time to search and 
+find the position.&nbsp;</p>
+
+
+
+<p>A &#8220;Doubly Linked List&#8221; is a data structure 
+that points in both directions. So each element knows both its previous 
+and next element. This allows for it to traverse both ways through the 
+list.&nbsp;</p>
+
+
+
+<p>I would recommend looking through this article to get a better idea of how to implement a linked list: <a href="https://www.geeksforgeeks.org/implementation-linkedlist-javascript/">https://www.geeksforgeeks.org/implementation-linkedlist-javascript/</a></p>
+
+
+
+<h3>Hash Map</h3>
+
+
+
+<p>A hash map stores key value pairs and is generally very fast when performing searches, insertion, and deletion. On average, it should have a constant execution time for these actions, but it can also take linear time in the worst case scenario.&nbsp;</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>This
+ is going to be a very simplified explanation of the data structure. The
+ Encryption article briefly explain hashing if you have not learned it 
+yet, or you can read from here: <a href="https://en.wikipedia.org/wiki/Hash_function" target="_blank" rel="noreferrer noopener">https://en.wikipedia.org/wiki/Hash_function</a></p>
+
+
+
+<p>Below is a pseudo-code snippet of a hash map that stored the names of different animals:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">myHashMap = { "dog" =&gt; "Skippy", "cat" =&gt; "Garfield", "squirrel" =&gt; "Ralph" }
+</pre>
+
+
+
+<p>To map the values, the value of dog may be hashed to
+ become a number like 4. In that case, the value of &#8220;dog&#8221; would be 
+stored in an array-like structure at the 4th index. Since arrays have 
+constant access time, searching for a value in the hash map will be 
+constant in this case, since it just has to find the 4th index and 
+retrieve the value stored in there (which would be &#8220;Skippy&#8221;). However, 
+if another word happens to be hashed into 4, then they will both share 
+the same index. If all of the items happened to fall in the 4th index, 
+then it could take linear execution time to traverse through that bucket
+ before finding the value. This collision here can be handled 
+differently depending on the developer, but it is usually handled like a
+ linked list.&nbsp;</p>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>You may 
+see a lot of resources reference Hash Table and Hash Map. They are 
+similar data structures, but do have a few differences. A good 
+explanation of this can be found here: <a href="https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable" target="_blank" rel="noreferrer noopener">https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable</a></p>
+
+
+
+<h3>Binary Tree</h3>
+
+
+
+<p>A
+ binary tree is made up of a bunch of nodes, and each node points to 2 
+other nodes, the left and the right. Below would be a visualization of a
+ tree (you can also google a binary tree visualization for a proper 
+image):&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">       (5)<br>      /   \<br>    (3)   (7)<br>   / \     / \<br>(2) (4)   (6) (8)</pre>
+
+
+
+<p>For each node, the left node should be smaller than 
+the parent node and the right node should be bigger. When sorted and 
+balanced like this properly, it becomes very fast to find the value that
+ you need. This is because if you need to find a value, you don&#8217;t need 
+to traverse through every node to find a match like a linked list would.
+ For example, if you wanted to find the value of 4 in the above tree, it
+ would start at the top and see that 4 is less than 5. Since the left 
+node is supposed to be less than the parent, it would then go to the 
+left node and do the same thing. Now 4 is more than 3, so it would look 
+to the right because the right node is larger than the parent. By 
+following this logic, even very large trees (as long as it is balanced) 
+will have very fast and scalable execution times for access, search, 
+delete, and insert functions (O(log(n))).&nbsp;</p>
+
+
+
+<p>In the worst
+ case scenario though, if the tree is completely unbalanced, it might 
+just look like an ordered linked list. Below is an example visualization
+ of an unbalanced tree:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">(1)<br>  \<br>  (2)<br>    \<br>    (3)<br>      \<br>      (4)</pre>
+
+
+
+<p>In that case, finding the value 4 would take linear execution time, since it has to traverse through everything.&nbsp;</p>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>For more details on this data structure and how it is implemented, this is a good article to start: <a href="https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/" target="_blank" rel="noreferrer noopener">https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/</a></p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/data-structures/">12. Data Structure Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>11. Big O Notation Basics For Programming</title>
+		<link>https://www.mediocreinventions.com/big-o/</link>
+		<pubDate>Sat, 29 Dec 2018 23:57:06 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[big o]]></category>
+		<category><![CDATA[efficiency]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[time complexity]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1271</guid>
+		<description><![CDATA[<p>Intro If you have followed through the Ruby on Rails tutorials on this website, then you should have a basic working application with an API to create, read, update, or delete items from your database. Following these concepts, you can build a lot of different applications, since this is essentially what almost every web application [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/big-o/">11. Big O Notation Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>If you have followed through the Ruby on Rails tutorials on this website, then you should have a basic working application with an API to create, read, update, or delete items from your database. Following these concepts, you can build a lot of different applications, since this is essentially what almost every web application does. For example, a website that allows you to see movie ratings and reviews (such as IMDB) follows the same concept: </p>
+
+
+
+<ul><li>Has a database of objects, in this case it stores movies. </li><li>The movies have columns such as name, year, rating or summary. </li><li>There is something that pulls this information from the database and renders it for the public to see. </li></ul>
+
+
+
+<p>Even
+ things like Twitter or Airbnb build on these same concepts (they are 
+definitely more complicated than this, but the point is that they are 
+all just applications that interact with a database and render things to
+ users). So if you just build upon this template application, you can 
+make a lot of different inventions. However, when the projects get 
+really big (maybe you end up storing a million books in the database), 
+then the application will naturally take longer to process this. In 
+these cases, you will want to make sure that your code is as optimal as 
+you can make it so that the application can keep running fast and scale 
+better with time. For example, if you are implementing a search 
+function, you don&#8217;t want the code to go through a simple For Loop and 
+loop through the millions of books before finding the resulting book. </p>
+
+
+
+<p>The
+ next few articles will also go through important concepts such as data 
+structures and algorithms to help get a clearer picture of what 
+efficient code looks like. However, it would be beneficial to first 
+understand what Big O is to know how to evaluate the efficiency of code.
+ This article will introduce you to some of the main points of the Big O
+ notation so that you will have a basic understanding of what it is 
+about. </p>
+
+
+
+<h2>Big O</h2>
+
+
+
+<p>Big O is a mathematical 
+representation that describes how much time and space an algorithm 
+requires as the input grows. We are going to go over 4 different run 
+times that are most commonly seen: O(n), O(n^2), O(log n), and O(1). If 
+you are afraid of math and feel like this makes no sense already, don&#8217;t 
+worry. I will go over this in plain English and will give simple 
+examples to illustrate what each of these mean. This also means that the
+ explanations in this article will be very basic and will definitely not
+ go into as much detail as an academic textbook would, so if you are 
+interested in this area then I would recommend taking a longer course on
+ this since it is a very significant area in computer science. That 
+being said, I do believe that even having a basic understanding of this 
+is very valuable and will help you improve the way you code. </p>
+
+
+
+<h3>O(n)</h3>
+
+
+
+<p>When
+ people refer to something as having a run time of O(n), it means that 
+it will take as long as the size of &#8220;n&#8221; (the variable). For example, the
+ below code would be considered to have O(n) run time: </p>
+
+
+
+<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	console.log("I will run n times. ");<br>}</pre>
+
+
+
+<p>If you recall from the <a href="http://docs.mediocreinventions.com/article?name=Programming" target="_blank" rel="noreferrer noopener">Programming</a>
+ article, the for loop will run as long as the condition of &#8220;i &lt; n&#8221; 
+is true. This means that this function will run 5 times if the value of 
+&#8220;n&#8221; is 5, and 5000 times if the value of &#8220;n&#8221; is 5000. This has a 
+&#8220;linear&#8221; run time because the size of &#8220;n&#8221; is proportionate to how many 
+times it will run at a 1:1 ratio. So in the Search function example 
+above, if the function loops through a million Book entries in 
+alphabetical order, users will have to wait for the function to run a 
+million times before it reaches the end. In the best case (&#8220;maybe the 
+book being searched starts with &#8220;A&#8221;), it might only have to loop through
+ a handful of times before returning the result. Similarly, in the worst
+ case scenario (maybe a Book&#8217;s name is &#8220;ZZZZZZ&#8221;), then it will run the 
+whole million times before returning the result. Although this can be 
+very fast if the book&#8217;s name started with &#8220;A&#8221;, Big O generally refers to
+ the worst case scenario as its run time. So a simple for loop in this 
+case would be O(n). </p>
+
+
+
+<h3>O(n^2)</h3>
+
+
+
+<p>This is O(n) to the power of 2, which means it runs exponentially slower than O(n). The code below would be considered O(n^2): </p>
+
+
+
+<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	for (j =0; j &lt; n; i++) {<br>	console.log("I will run n * n times. ");	<br>	}<br>}</pre>
+
+
+
+<p>You can see that there is a for loop nested within a for loop, 
+and both of them depend on the size of &#8220;n&#8221;. Which means that if n is 10,
+ then both the &#8220;j&#8221; and &#8220;i&#8221; loops have to run 10 times each. Since the 
+&#8220;j&#8221; loop is nested within the &#8220;i&#8221; loop, the &#8220;j&#8221; loop has to run 10 times
+ before the &#8220;i&#8221; value increments by 1. To finish, &#8220;i&#8221; will also need to 
+run 10 times, which means 10 times 10. The point here is that both loops
+ depend on the same variable and one of the loops is nested in the 
+other. This makes it take exponentially longer to run as the size of n 
+increases. </p>
+
+
+
+<h3>O(log n)</h3>
+
+
+
+<p>This one might be a bit 
+more complicated to understand in terms of the code. However, the 
+concept is much easier to understand. Algorithms that have a O(log n) or
+ logarithmic run time are often regarded as very efficient and scalable.
+ The code below is regarded as O(log n): </p>
+
+
+
+<pre class="wp-block-preformatted">function divideByTwo(n) {&nbsp;&nbsp;&nbsp;<br>   if (n == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>&nbsp;&nbsp;&nbsp;} else if (n &gt; 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var previousNumber = divideByTwo(n / 2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>&nbsp;&nbsp;&nbsp;}<br>}</pre>
+
+
+
+<p>We haven&#8217;t went through &#8220;recursion&#8221; so the above code might 
+look a bit confusing (recursion is essentially a function that calls 
+itself). The code takes the input &#8220;n&#8221;, prints out the number, then 
+divide it by 2, and print out that number, then divide by 2 and so on 
+until the resulting number is less than 1. You can see that this is 
+scalable because even if the input is a million, if you keep dividing it
+ by 2, the number of times this function has to run is still less than 
+30. The number of times this function has to run only increases by 1 
+every time &#8220;n&#8221; doubles in size. </p>
+
+
+
+<p>We implement these kind of 
+functions in real life all the time. For example, when you open up a 
+dictionary and want to find a word, you only need to flip through the 
+dictionary a few times before you find your word even though it may have
+ thousands of pages. If the word is &#8220;happy&#8221;, you might start by opening 
+the dictionary from the middle. If you reach the &#8220;m&#8221; section, you 
+automatically flip back (maybe halfway). If this next section starts 
+with &#8220;e&#8221;, then you flip forward again and repeat until you reach the &#8220;h&#8221;
+ section to find your word. No matter how big the dictionary is, it is 
+always a doable task because you are able to halve your results with 
+each flip. This is much more efficient than flipping through each page 
+one at a time, similar to what a for loop would do. </p>
+
+
+
+<h3>O(1)</h3>
+
+
+
+<p>This
+ one just means constant time. It doesn&#8217;t depend on any input size, the 
+amount of time it runs is always going to be the same. A function like 
+below would be considered constant time: </p>
+
+
+
+<pre class="wp-block-preformatted">function doBunchOfThings() {<br>	console.log("Do something. ");<br>	console.log("Do another thing. ");<br>	console.log("Do even more things. ");<br>	console.log("Keep doing things. ");<br>	console.log("Just do one more thing. ");<br>}</pre>
+
+
+
+<p>No matter how many console.log() functions is fit in there, it 
+is always going to be O(1) run time because there is no variable input. </p>
+
+
+
+<p>There
+ are a lot more notations out there and definitely more to analyzing run
+ times, however, these are the essential concepts that should give you a
+ decent understanding of how to determine the run time of a function. </p>
+
+
+
+<p>For a chart of some different Big O notations and their run times, please see this link: <a href="http://bigocheatsheet.com/" target="_blank" rel="noreferrer noopener">http://bigocheatsheet.com/</a></p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/big-o/">11. Big O Notation Basics For Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>10. Web Application Monitoring</title>
+		<link>https://www.mediocreinventions.com/monitoring/</link>
+		<pubDate>Sat, 29 Dec 2018 23:55:43 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[Google Analytics]]></category>
+		<category><![CDATA[monitoring]]></category>
+		<category><![CDATA[Nginx Amplify]]></category>
+		<category><![CDATA[production]]></category>
+		<category><![CDATA[Uptime Robot]]></category>
+		<category><![CDATA[web applications]]></category>
+		<category><![CDATA[websites]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1201</guid>
+		<description><![CDATA[<p>Intro When your application has gone live, you will probably want some way of monitoring it. For example, it would be very helpful if you were able to see how many users are visiting your site, where they are visiting from, or if it is even still running at all. This article will go through [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/monitoring/">10. Web Application Monitoring</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h3>Intro</h3>
+
+
+
+<p>When your application has gone live, you will probably want some way of monitoring it. For example, it would be very helpful if you were able to see how many users are visiting your site, where they are visiting from, or if it is even still running at all. This article will go through some free tools that can help you accomplish just that. </p>
+
+
+
+<h3>Google Analytics</h3>
+
+
+
+<p>Google Analytics can help check how many visitors you get, which location (both geographic and links) they are coming from, and what time people tend tovisit. To get started, create an account here: <a rel="noreferrer noopener" href="https://analytics.google.com/analytics/web/" target="_blank">https://analytics.google.com/analytics/web/</a></p>
+
+
+
+<p>The website has a lot of detailed guides on how to use it, but once you see the graphs it should be pretty self explanatory to find the basic information you need. To add Google Analytics to your site, you basically just need to add a JavaScript tag to your website. If you followed the Ruby on Rails tutorial on this site, this can be put in your views files found in /applicationfolder/app/views/. The application layout file is recommended since elements in that file should show up on every page. To get this code snippet, go to Admin &gt; create and account, then create a new property. Fill out the input boxes to generate your script. You can then find it in Admin under the property section under Tracking Info. </p>
+
+
+
+<p>It can take 24 hours for it
+ to start working. Please note that AdBlocker addons can prevent Google 
+Analytics from tracking you (this also means other users using adblocker
+ may not be tracked as well). If you are having issues with this, I 
+would recommend download the Google Tag Assistant addon (or other Google
+ Analytics addons) since it can help provide you more information on any
+ errors your website may be having with the script. </p>
+
+
+
+<h3>Uptime Robot</h3>
+
+
+
+<p>A very simple free service that checks your website every once in a while to see if it is down. You can sign up at their website here: <a rel="noreferrer noopener" href="https://uptimerobot.com/" target="_blank">https://uptimerobot.com/</a> and follow their instructions to send you email notifications whenever a website is detected to be down. </p>
+
+
+
+<h3>Nginx Amplify</h3>
+
+
+
+<p>If
+ you have setup your Nginx server in the previous articles, you can use 
+this free tool to monitor your server. You can get information on how 
+many visitors/connections you have, what kind of errors users are 
+encountering, how often, and how much of your server&#8217;s resources are 
+being used. It is a helpful tool to help you monitor the health of your 
+server. You can sign up at their website here: <a href="https://amplify.nginx.com/login" target="_blank" rel="noreferrer noopener">https://amplify.nginx.com/login</a>
+ and follow their instructions to set this up. It is very fast to setup 
+and their instructions are very clear and straight-forward. Once you 
+have set it up, you can log into their website to check the status of 
+your application at your convenience</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/monitoring/">10. Web Application Monitoring</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>9. Search Engine Optimization (SEO)</title>
+		<link>https://www.mediocreinventions.com/seo/</link>
+		<pubDate>Sat, 29 Dec 2018 23:52:03 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[search engine optimization]]></category>
+		<category><![CDATA[seo]]></category>
+		<category><![CDATA[websites]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1141</guid>
+		<description><![CDATA[<p>Intro After you have made your website live and accessible by the world, you may want to give the public a way to find your website. Search Engine Optimization (SEO) is the practice of making a website more accessible through search engines. This way when people use search engines like Google to search for a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/seo/">9. Search Engine Optimization (SEO)</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>After you have made your website live and accessible by the world, you may want to  give the public a way to find your website. Search Engine Optimization  (SEO) is the practice of making a website more accessible through search  engines. This way when people use search engines like Google to search  for a topic related to your site, your website has a higher chance of  being in the user&#8217;s search results. This article will go through some of  the very basics of SEO that you should be aware of. </p>
+
+
+
+<h2>Search Engines</h2>
+
+
+
+<p>First,
+ let&#8217;s briefly go over what search engines are and how they work. A 
+search engine is an application designed to search the internet for 
+content. Some examples of search engines would be Google, Yahoo, and 
+Bing. When you type in a search term on their website, it searches 
+through their index for relevant content and presents it to you. These 
+indexes are typically built by using programs called web crawlers. Web 
+crawlers are programs that go to websites and visit every link they can 
+see from there, while saving all the content that they are able to save.
+ This means that if no other website has a link to your website, is it 
+unlikely that your website will get found by these crawlers and get 
+indexed in the search engines. However, you can submit your URL to these
+ services so that they can index it for you. </p>
+
+
+
+<h2>SEO</h2>
+
+
+
+<p>Some
+ SEO methods can also change with time, since it depends on how each 
+search engine currently ranks their search results. Sometimes things 
+that worked a few years ago may not work as well in the present. For 
+example, when search engines were still new you could probably show up 
+at the top of the results if you were to spam other websites with links 
+to your own website. This is because some search engines will rank 
+websites higher in their results if they see a site being referenced 
+more, since more references can imply that the website is more credible.
+ As a result, some people may employ the use of bots to mass register on
+ other people&#8217;s websites and post links to their own site, or even write
+ about it in their user profiles to try and trick search engines. 
+However, most search engines will change and improve their ranking 
+system, so these methods may actually be detrimental to your site&#8217;s 
+credibility if done in more recent years. So in the rest of this 
+article, we will go through basic things that seem to have remained 
+consistent with time. </p>
+
+
+
+<h3>Submitting your website</h3>
+
+
+
+<p>Most
+ search engines will allow you to submit your website&#8217;s URL to them so 
+they can start crawling. You can search up each of these search engine 
+for instructions on oing so. For example, Google has this page that 
+provides further instructions: 
+https://www.google.com/webmasters/tools/submit-url</p>
+
+
+
+<h3>Title Tags</h3>
+
+
+
+<p>Title tags determine what is displayed on search engines as the title. In the picture below, this would be the first line that you see in the Search result (the word &#8220;Google&#8221;). </p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/image-1.png" alt="" class="wp-image-1191" srcset="https://www.mediocreinventions.com/wp-content/uploads/image-1.png 583w, https://www.mediocreinventions.com/wp-content/uploads/image-1-300x52.png 300w" sizes="(max-width: 583px) 100vw, 583px" /></figure>
+
+
+
+<p>A title tag goes in you &lt;head&gt; part of the HTML document and should something look like this:</p>
+
+
+
+<pre class="wp-block-preformatted">&lt;title&gt;Your Title&lt;/title&gt;
+</pre>
+
+
+
+<p>This is very important to have since it briefly describes what the page is about. </p>
+
+
+
+<h3>Meta Tag Keywords</h3>
+
+
+
+<p>You
+ may still see this on some sites. This tag includes some keywords that 
+are relevant to the page, but may not be used by some of the major 
+search engines anymore. The meta tag to include keywords should look 
+something like this: </p>
+
+
+
+<pre class="wp-block-preformatted">&lt;meta name="keywords" content="great, tutorials, simple "&gt;
+</pre>
+
+
+
+<h3>Meta Tag Description</h3>
+
+
+
+<p>The description tag 
+briefly summarizes the page and what it is about (in more detail than 
+the title). It is recommended to be less than 160 characters. In the 
+picture above, this would be the third line. The meta tag to include a 
+description should look something like this: </p>
+
+
+
+<pre class="wp-block-preformatted">&lt;meta name="description" content="Simple tutorials to give an idea what to expect. "&gt;
+</pre>
+
+
+
+<p>Including the above elements on your 
+website will help search engines index your site better. Otherwise, they
+ may not know what to display, or see that the site does not have much 
+value and rank it very low. There are a lot of other methods you can use
+ such as adding back links, reducing loading times, and optimizing 
+keywords, but adding the tags above would be a good place to start. You 
+can always search for the most relevant SEO tips of the year to get more
+ up to date information on this topic. There are SEO tools that help 
+automatically assess your website&#8217;s SEO while providing you with tips as
+ well. </p>
+
+
+
+<p><strong>Note: </strong></p>
+
+
+
+<p>For more basics on SEO, this article goes into more detail on some of these topics: <a href="https://www.wordstream.com/blog/ws/2015/04/30/seo-basics" target="_blank" rel="noreferrer noopener">https://www.wordstream.com/blog/ws/2015/04/30/seo-basics</a></p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/seo/">9. Search Engine Optimization (SEO)</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>8. Scripting for Linux Systems</title>
+		<link>https://www.mediocreinventions.com/scripting/</link>
+		<pubDate>Sat, 29 Dec 2018 23:50:09 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[bash]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[scripting]]></category>
+		<category><![CDATA[Ubuntu]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1041</guid>
+		<description><![CDATA[<p>Intro Once you have built a web application, you will have to set up and configure a server before it can be deployed in a production environment. However, before diving into server configurations, learning how to use the terminal is very important. Terminal The terminal is used to execute commands to your server. You can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/scripting/">8. Scripting for Linux Systems</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Once you have built a web application, you will have to set up and configure a server before it can be deployed in a production environment. However, before  diving into server configurations, learning how to use the terminal is  very important. </p>
+
+
+
+<h2>Terminal</h2>
+
+
+
+<p>The terminal is used to execute commands to your server. You can use it to move files, search for text, and install software. It can basically do anything that your normal graphical interface can. It also allows you to automate many things and can accomplish tasks faster as compared to using the graphical interface. </p>
+
+
+
+<p>For example, in Windows Explorer, if you wanted to move all files with the letter S to another folder, you might have to find and drag the files multiple times if there are other files in there without the letter S. However, the command line can accomplish this with one line of code.</p>
+
+
+
+<h2>Other resources<br></h2>
+
+
+
+<p>This  article will go through all the most common commands that is used in  the terminal to help you get familiar with it. However, I would also  recommend doing a quick tutorial on this to grasp the basics here:  https://www.learnshell.org/</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>To access the terminal in Ubuntu, press CTRL + ALT + T.</p>
+
+
+
+<h3>List files and folders</h3>
+
+
+
+<p>Command: ls</p>
+
+
+
+<p>List the contents of current folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls
+</pre>
+
+
+
+<p>List the contents of a folder named test</p>
+
+
+
+<pre class="wp-block-preformatted">ls test
+</pre>
+
+
+
+<p>List the contents of a folder named test3 within another folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls test/test2/test3
+</pre>
+
+
+
+<p>List all the contents in the current folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls -a
+</pre>
+
+
+
+<p>List all the contents in a folder named test</p>
+
+
+
+<pre class="wp-block-preformatted">ls -a test
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>The letter with a dash 
+is called an argument. It lets the computer know to run the command with
+ certain options enabled. Most commands will have the arguments, you can
+ use the &#8220;man&#8221; command to bring up a manual with a list of Instructions 
+on how to use commands. For example, &#8220;man ls&#8221;.</p>
+
+
+
+<p>Some files and 
+folders won&#8217;t be listed by ls without the -a argument. For example, 
+folders that start with a &#8220;.&#8221; like the &#8220;.git&#8221; folder.</p>
+
+
+
+<h3>Changing folders/directories</h3>
+
+
+
+<p>Command: cd</p>
+
+
+
+<p>Change to folder called test</p>
+
+
+
+<pre class="wp-block-preformatted">cd test
+</pre>
+
+
+
+<p>Change to folder called test3 within multiple folders</p>
+
+
+
+<pre class="wp-block-preformatted">cd test/test2/test3
+</pre>
+
+
+
+<p>Change to the folder in the previous level</p>
+
+
+
+<pre class="wp-block-preformatted">cd ..
+</pre>
+
+
+
+<p>Change to your home directory</p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>When you are typing the
+ name of a file or folder, you can press tab and it will autocomplete 
+the name for you. For example, if you have these folder names in your 
+current directory: test, sample, abc, abcdef, example</p>
+
+
+
+<p>Then you can
+ type &#8220;cd t&#8221; and then press tab and it will auto-complete to &#8220;cd test/&#8221;.
+ You can also type cd &#8220;abcd&#8221; then tab to autocomplete to the abcdef 
+folder. However, if you have two or more similar named files/folders, 
+then you will have to keep typing until there is only one option. In 
+that case, you can also press tab twice to see the different names of 
+folders.</p>
+
+
+
+<p>You can also type &#8220;pwd&#8221; to check your current directory.</p>
+
+
+
+<h3>Moving, renaming, creating, removing and copying</h3>
+
+
+
+<p>Command: mv, cp, touch, mkdir, rm</p>
+
+
+
+<p>Move a file called test.txt to the folder test3</p>
+
+
+
+<pre class="wp-block-preformatted">mv test.txt test3/
+</pre>
+
+
+
+<p>Rename a file called test.txt to test3.txt</p>
+
+
+
+<pre class="wp-block-preformatted">mv test.txt test3.txt
+</pre>
+
+
+
+<p>Move all files with the letter &#8220;s&#8221; to a folder called test3</p>
+
+
+
+<pre class="wp-block-preformatted">mv *s* test3
+</pre>
+
+
+
+<p>Copy a file called text3.txt to a file called text4.txt</p>
+
+
+
+<pre class="wp-block-preformatted">cp text3.txt text4.txt
+</pre>
+
+
+
+<p>Create a file called test5.txt</p>
+
+
+
+<pre class="wp-block-preformatted">touch test5.txt
+</pre>
+
+
+
+<p>Delete a file called test5.txt</p>
+
+
+
+<pre class="wp-block-preformatted">rm test5.txt
+</pre>
+
+
+
+<p>Create a folder called test2</p>
+
+
+
+<pre class="wp-block-preformatted">mkdir test2
+</pre>
+
+
+
+<p>Remove a folder called test2</p>
+
+
+
+<pre class="wp-block-preformatted">rmdir test2
+</pre>
+
+
+
+<p>Remove a directory called test2 that contains files/folders</p>
+
+
+
+<pre class="wp-block-preformatted">rm -r test2
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Using the rm functions will remove the files from the system, it does not simply move them to the recycle bin.</p>
+
+
+
+<h3>Output text and values</h3>
+
+
+
+<p>Command: echo</p>
+
+
+
+<p>Output the text &#8220;Hello World&#8221;</p>
+
+
+
+<pre class="wp-block-preformatted">echo "Hello World"
+</pre>
+
+
+
+<p>Output the current user</p>
+
+
+
+<pre class="wp-block-preformatted">echo $USER
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>You can also set 
+variables for your session by. You can type TESTVAR=&#8221;hi&#8221;, press enter 
+then type echo $TESTVAR to see the result.</p>
+
+
+
+<h3>Installing a program</h3>
+
+
+
+<p>Command: apt</p>
+
+
+
+<p>Install a program called curl that helps transfer data</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install curl
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>sudo means to run the 
+command with elevated privileges. Commands such as apt install that 
+install software may require more permissions than a normal user.</p>
+
+
+
+<p>apt
+ is a package manager for Ubuntu (it is a program that helps install 
+programs). In this case, we are telling apt to install a program called 
+curl. Now that you have curl, you can use it to get website contents. 
+Try typing &#8220;curl http://icanhazip.com&#8221; to get your ip address. You can 
+also visit this website in your browser to see the results.</p>
+
+
+
+<h3>Finding text within a file</h3>
+
+
+
+<p>Command: grep</p>
+
+
+
+<p>Find the word &#8220;hello&#8221; in a file called test.txt</p>
+
+
+
+<pre class="wp-block-preformatted">grep "hello" test.txt
+</pre>
+
+
+
+<p>Find the world &#8220;hello&#8221; in a file called test.txt, but case insensitive</p>
+
+
+
+<pre class="wp-block-preformatted">grep -i "hello" test.txt
+</pre>
+
+
+
+<p>Find the word &#8220;hello&#8221; in all the files within this folder and its subfolders, and also case insensitive</p>
+
+
+
+<pre class="wp-block-preformatted">grep -ri "hello" *
+</pre>
+
+
+
+<p>These are some of the most common functions that you  will find yourself using when programming. As you install new programs,  you will also learn their commands. For example, Git and Rails will  have their own functions that you will eventually learn. When you want  to learn how to do something with the terminal, you can just Google  something like &#8220;how to write to file in Bash&#8221; or &#8220;how to manage  permissions with ubuntu terminal&#8221; (Bash is the scripting language that  we covered here).</p>
+
+
+
+<h3>Script File<br></h3>
+
+
+
+<p>Once you have found all the commands  that you want to do for a repetitive task, you can save all those  commands together in a file, and tell the the computer to run it as a  script. For example, if you wanted a script to automatically install  some programs, you can create a new text file called myScript.sh and put  the following inside:</p>
+
+
+
+<pre class="wp-block-preformatted">#!bin/bash
+sudo apt install git
+sudo apt install curl
+echo "Finished installing!
+</pre>
+
+
+
+<p>Then save the file and run it by running this in the terminal</p>
+
+
+
+<pre class="wp-block-preformatted">sh myScript.sh
+</pre>
+
+
+
+<p>That command should then run the commands from top 
+to bottom. You can also  pass different arguments in the sh command for 
+the script to use by adding text to the end. You can access each 
+argument in order with $1, $2, $3, and so on. For example, if your file 
+looked like</p>
+
+
+
+<pre class="wp-block-preformatted">#!bin/bash
+echo $1
+echo $2
+</pre>
+
+
+
+<p>You can run &#8220;sh myScrip.sh myfirstarg mysecondarg&#8221; 
+and watch it print out the arguments. Congratulations, you just created a
+ script!</p>
+
+
+
+<p><strong>Note: </strong></p>
+
+
+
+<p>Windows also has
+ a command line interface called Powershell or cmd. However, their 
+commands are different and it doesn&#8217;t come with a package manager like 
+Ubuntu does.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/scripting/">8. Scripting for Linux Systems</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>7. Encryption and Hashing for Applications</title>
+		<link>https://www.mediocreinventions.com/encryption/</link>
 		<pubDate>Sat, 29 Dec 2018 08:58:49 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Web Application Basics]]></category>
@@ -29,9 +1169,9 @@
 		<category><![CDATA[hashing]]></category>
 		<category><![CDATA[symmetric encryption]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=481</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=481</guid>
 		<description><![CDATA[<p>Encrypting Encrypting is the process of turning data into something that is not understandable. Decrypting is the process of turning this jumbled information back into something readable. This is useful for hiding sensitive information such as credit card numbers and contact information. You can encrypt information in databases so that only authorized people will know [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/encryption/">7. Encryption</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/encryption/">7. Encryption and Hashing for Applications</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Encrypting</h2>
@@ -48,16 +1188,11 @@ authorized people will know how to decrypt it and view the information. </p>
 
 
 
-<p>You
- can also encrypt data that is being transported through a network (such
- as submitting payment information through an ecommerce website). On 
-websites, data being transferred to the server is encrypted if you see 
-https insteald of http in the URL. We will go over this and how to 
-encrypt your website like this later on in the tutorial.&nbsp;</p>
+<p>You can also encrypt data when it is transported through a network. For example, submitting payment information through an ecommerce website. We will go over this and how to encrypt your website like this in the later tutorials. <br></p>
 
 
 
-<p>When information is encrypted, there is usually a key that only authorized people know of that can decrypt this information. Two main types of encrypting information are Symmetric encryption and Asymmetric Encryption. </p>
+<p>Two main types of encrypting information are Symmetric encryption and Asymmetric Encryption. </p>
 
 
 
@@ -65,7 +1200,7 @@ encrypt your website like this later on in the tutorial.&nbsp;</p>
 
 
 
-<p>&nbsp;In this method, the information being encrypted is encrypted and decrypted with the same key.&nbsp;</p>
+<p>In this method, the same key can encrypt and decrypt the information.  <br></p>
 
 
 
@@ -113,7 +1248,7 @@ encrypt your website like this later on in the tutorial.&nbsp;</p>
 
 
 
-<p> In this method, there are two keys involved, 1 for encrypting the information (public key) and one for decrypting the information (private key). </p>
+<p>&nbsp;In this method, there are two keys involved, 1 for encrypting the information (public key) and one for decrypting the information (private key).&nbsp;</p>
 
 
 
@@ -138,10 +1273,7 @@ meaningful.&nbsp;</p>
 
 
 
-<p>Encryption should be used when you have a need to 
-read the original information. For example, sending emails with 
-confidential information. People will need to be able to read this 
-information, so a way to decrypt the message is necessary.&nbsp;</p>
+<p>Encryption should be used when there is a need to read the original information. For example, sending emails with confidential information. People will need to be able to read this information, so a way to decrypt the message is necessary. </p>
 
 
 
@@ -162,15 +1294,13 @@ password in a readable format.&nbsp;</p>
 
 
 
-<ul><li>Encryption
- prevents unauthorized people from seeing information, and can be 
-decrypted by authorized people to view the information.&nbsp;</li><li>Hashing messes up information so that it cannot be decrypted into anything meaningful. </li></ul>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/encryption/">7. Encryption</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<ul><li>Encryption prevents unauthorized people from seeing information, and can be decrypted by authorized people to view the information. </li><li>Hashing will mess up information so that it cannot be decrypted into anything meaningful. </li></ul>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/encryption/">7. Encryption and Hashing for Applications</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>6. Web Servers</title>
-		<link>https://dev.mediocreinventions.com/web-servers/</link>
+		<title>6. Web Servers For Hosting Your Application</title>
+		<link>https://www.mediocreinventions.com/web-servers/</link>
 		<pubDate>Sat, 29 Dec 2018 08:48:31 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Web Application Basics]]></category>
@@ -179,9 +1309,9 @@ decrypted by authorized people to view the information.&nbsp;</li><li>Hashing me
 		<category><![CDATA[servers]]></category>
 		<category><![CDATA[web servers]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=431</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=431</guid>
 		<description><![CDATA[<p>Intro Web servers help your web application serve information to clients. You can run an application with Rails with just its default application server, but it will likely not do too well in a production environment with lots of users trying to use the application at the same time.&#160; Servers There are three main web [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/web-servers/">6. Web Servers For Hosting Your Application</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -244,17 +1374,16 @@ when starting off, but it is good to know that they exist:&nbsp;</p>
 
 
 <p><a href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a></p>
-
 <p><a href="https://www.nginx.com/resources/glossary/reverse-proxy-server/">https://www.nginx.com/resources/glossary/reverse-proxy-server/</a></p>
 
 
 <p>We will go over how to use Nginx with Ruby On Rails in the other articles so that you know how to monitor your application. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/web-servers/">6. Web Servers For Hosting Your Application</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>5. Databases</title>
-		<link>https://dev.mediocreinventions.com/databases/</link>
+		<title>5. Databases and Data Storage Basics</title>
+		<link>https://www.mediocreinventions.com/databases/</link>
 		<pubDate>Sat, 29 Dec 2018 05:15:34 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Web Application Basics]]></category>
@@ -263,9 +1392,9 @@ when starting off, but it is good to know that they exist:&nbsp;</p>
 		<category><![CDATA[nosql]]></category>
 		<category><![CDATA[sql]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=271</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=271</guid>
 		<description><![CDATA[<p>Intro In this article, we will go over some of the most common ways of storing and retrieving data.&#160; Web applications typically use databases to manage their data. There are 2 main types of databases: SQL based databases and NoSQL databases.&#160; SQL Databases SQL databases are relational databses. This means that an entry in a [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/databases/">5. Databases</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/databases/">5. Databases and Data Storage Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -395,21 +1524,21 @@ data base to retrieve the data, then return the results to the requester
 
 
 <p></p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/databases/">5. Databases</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/databases/">5. Databases and Data Storage Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>4. Tools</title>
-		<link>https://dev.mediocreinventions.com/tools/</link>
+		<title>4. Web Application Development Tools</title>
+		<link>https://www.mediocreinventions.com/tools/</link>
 		<pubDate>Sat, 29 Dec 2018 05:13:43 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Web Application Basics]]></category>
 		<category><![CDATA[tools]]></category>
 		<category><![CDATA[web applications]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=251</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=251</guid>
 		<description><![CDATA[<p>Intro This article will go through some helpful tools that are used in web development. The tools/software in this section are what we will be using in this tutorial. Command Line We will be using the operating system Ubuntu 18.04 to create the project. You can open up the command line by pressing ctrl + [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/tools/">4. Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/tools/">4. Web Application Development Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -586,25 +1715,27 @@ commands actually do. </p>
 
 
 
-<p>Other useful tools that you may want to look into: </p>
+<h4>Other Tools<br></h4>
 
 
 
-<p>Fiddler is similar to the Network tab for the browser developer tools, but can show things in more detail. </p>
+<p>Here are some other useful tools that you may want to look into: <br></p>
 
 
 
-<p>Postman helps test out RESTful functions. More on RESTful topics later. </p>
+<p><strong>Fiddler </strong>is similar to the Network tab for the browser developer tools, but can show things in more detail. </p>
 
 
 
-<p>Jing is a great free program for capturing screenshots. Screenshots can help a lot when clarifying things over the internet. </p>
+<p><strong>Postman </strong>helps test out RESTful functions. More on RESTful topics later. </p>
 
 
 
-<p>PGAdmin
- can help view Postgresql databases in a graphical interface. Most 
-databases have a program that can help view things in a GUI. </p>
+<p><strong>Jing </strong>is a great free program for capturing screenshots. Screenshots can help a lot when clarifying things over the internet. </p>
+
+
+
+<p><strong>PGAdmin </strong>can help view Postgresql databases in a graphical interface. Most databases have a program that can help view things in a GUI. </p>
 
 
 
@@ -640,12 +1771,12 @@ Jenkins is free, but need your own server). </p>
 
 
 <p><strong>BitBucket</strong> &#8211; Version control like Git, but allows for free private repositories. (Free)</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/tools/">4. Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/tools/">4. Web Application Development Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
-		<title>3. Testing</title>
-		<link>https://dev.mediocreinventions.com/testing/</link>
+		<title>3. Testing Code in Programming</title>
+		<link>https://www.mediocreinventions.com/testing/</link>
 		<pubDate>Sat, 29 Dec 2018 04:53:38 +0000</pubDate>
 		<dc:creator><![CDATA[Admin]]></dc:creator>
 				<category><![CDATA[Web Application Basics]]></category>
@@ -653,9 +1784,9 @@ Jenkins is free, but need your own server). </p>
 		<category><![CDATA[testing]]></category>
 		<category><![CDATA[unit tests]]></category>
 
-		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=151</guid>
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=151</guid>
 		<description><![CDATA[<p>Testing is an important part of programming that ensures code quality and makes life easier in the long run. Intro If you are a complete beginner and have next to zero programming knowledge, then this section might not make as much sense. It should make more sense after making a few small projects and understanding [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/testing/">3. Testing</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/testing/">3. Testing Code in Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <p>Testing is an important part of programming that ensures code quality and makes life easier in the long run. </p>
@@ -813,263 +1944,7 @@ about the basics of testing from here:&nbsp;</p>
 
 
 <p>For Ruby: <a href="https://www.tutorialspoint.com/rspec/" target="_blank" rel="noreferrer noopener">https://www.tutorialspoint.com/rspec/</a></p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/testing/">3. Testing</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
-]]></content:encoded>
-			</item>
-		<item>
-		<title>2. Programming Basics</title>
-		<link>https://dev.mediocreinventions.com/programming-basics/</link>
-		<pubDate>Sat, 29 Dec 2018 04:28:50 +0000</pubDate>
-		<dc:creator><![CDATA[Admin]]></dc:creator>
-				<category><![CDATA[Web Application Basics]]></category>
-		<category><![CDATA[basics]]></category>
-		<category><![CDATA[data types]]></category>
-		<category><![CDATA[for loop]]></category>
-		<category><![CDATA[if statements]]></category>
-		<category><![CDATA[programming]]></category>
-		<category><![CDATA[while loop]]></category>
-
-		<guid isPermaLink="false">https://localhost/?p=105</guid>
-		<description><![CDATA[<p>Intro This article will briefly review through some of the main features of programming that almost all programming languages require. These features make it possible for programs to implement their logic. Data Types In programming, there are 3 main data types that you will run into (there are a lot more depending on languages, but [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/programming-basics/">2. Programming Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
-]]></description>
-				<content:encoded><![CDATA[
-<h2>Intro</h2>
-
-
-
-<p>This article will briefly review through some of the main features of programming that almost all programming languages require. These features make it possible for programs to implement their logic.</p>
-
-
-
-<h2>Data Types</h2>
-
-
-
-<p>In programming, there are 3 main data types that you will run into (there are a lot more depending on languages, but these should get the point across): </p>
-
-
-
-<ul><li>Integers: These are non-decimal numbers (decimals are called Floats). Below, we will define a valid integer in JavaScript. 
-var x = 1;</li><li>Strings: These are essentially text. Example for declaring a valid string: <br>
-var x = &#8220;This Needs 2 Be Surrounded By Quotes To Be A String!&#8221;;</li><li>Booleans: These are data types that represent true or false: <br>
-var x = false; </li></ul>
-
-
-
-<p>It is important to know that in JavaScript, you can define almost any of these &#8216;primitive&#8217; data types with the &#8216;var&#8217; keyword. Different programming languages may require different keywords. For example, declaring an integer in Java would look like int x = 1;  </p>
-
-
-
-<h2>If Statements</h2>
-
-
-
-<ul><li>&#8220;If statements&#8221; help a program detect conditions and perform actions based on the conditions. For example, a self driving car may want the following logic: IF light is GREEN, press gas. If light is RED, stop. </li><li>In the following example, we make a program says &#8220;Go&#8221; if the variable x is Green and &#8220;Stop&#8221; if the variable is Red: </li><li></li></ul>
-
-
-
-<pre class="wp-block-preformatted">var x = "Green";<br>if (x == "Green")<br>{<br>console.log("Go");<br>}<br>else if (x == "Red")<br>{<br>console.log("Stop");<br>}</pre>
-
-
-
-<p>The double equals sign in the parenthesis just means equals, so if (x == &#8220;Green&#8221;) means &#8220;if the variable x equals the text of Green. &#8220;</p>
-
-
-
-<p>!= would mean &#8216;does not equal&#8217;. These are called comparators and you can find a list of them here for more details: </p>
-
-
-
-<p>Different languages may also have different ways of comparing. For example, in Java, the same statement above would be if (x.equals(&#8220;Green&#8221;)). </p>
-
-
-
-<p>If you are using Google Chrome, you can try running this code in your browser by opening the browser&#8217;s developer tools and typing this into the console. </p>
-
-
-
-<p>Developer tools can be access by pressing the … button at the top &gt; More Tools &gt; Developer Tools &gt; Click on the tab that says Console.</p>
-
-
-
-<p>You can change the x variable to &#8220;Red&#8221; and re-run the code to see what it outputs. </p>
-
-
-
-<p>Note:</p>
-
-
-
-<p>You may have noticed the squiggly brackets {}. These brackets are used to wrap the code that lets the program know what to do under that if condition. Some people may prefer this format where the brackets are on new lines, however, other people may prefer this format: </p>
-
-
-
-<pre class="wp-block-preformatted">var x = "Green";<br>
-if (x == "Green") {<br>
-  console.log("Go");<br>
-} <br>
-else if (x == "Red") {<br>
-  console.log("Stop");<br>
-}</pre>
-
-
-
-<p>These are both valid syntax, and as long as the brackets are there to wrap up the code, the way it&#8217;s styled is just preference. If you choose a bracket/indenting style for a project, the important thing is to be consistent with it. </p>
-
-
-
-<p>Also, be aware that some languages such as Python might take indentation into consideration for valid code, so if you are following other tutorials for different languages, it is recommended to follow their syntax for the project to avoid headaches. </p>
-
-
-
-<h2>Loops</h2>
-
-
-
-<p>There are two main types of loops, the For loop and the While loop.</p>
-
-
-
-<h3>For Loop</h3>
-
-
-
-<p>The For loop looks like this:</p>
-
-
-
-<pre class="wp-block-preformatted">for (i=0; i &lt; 3; i++) {<br>
-    console.log("Walked staircase number " + i);<br>
-}<br>
-console.log("Successfully walked 3 levels. ");</pre>
-
-
-
-<p>The part that says &#8220;i=0; i &lt; 3; i++&#8221; basically means:</p>
-
-
-
-<ol><li>(i=0) Declare the variable &#8220;i&#8221; and that it has a value of 0.</li><li>(i &lt; 3) Continue doing the actions below as long as &#8220;i&#8221; is less than 3.</li><li>(i++) After finishing the actions in the loop, add 1 to the variable &#8220;i&#8221;.</li></ol>
-
-
-
-<p>The console.log between the curly braces is the loop. In this case, the program will write &#8220;Walked staircase number i&#8221; 3 time before printing out &#8220;Successfully walked 3 levels. &#8220;</p>
-
-
-
-<p>If you run the above code (you can run in it your browser console to see), then the output would be:</p>
-
-
-
-<pre class="wp-block-preformatted">Walked staircase number 0<br>Walked staircase number 1<br>Walked staircase number 2<br>Walked staircase number 3<br>Successfully walked 3 levels. <br></pre>
-
-
-
-<p>This type of loop will usually be used if you know how many times you want to run a certain function(s) before moving on with the next steps.</p>
-
-
-
-<h3>While Loop</h3>
-
-
-
-<p>The While loop looks like this (don&#8217;t run this in your browser since it will run forever):</p>
-
-
-
-<pre class="wp-block-preformatted">var button = "on";<br>
-while (button == "on") {<br>
-    console.log("The button is on. ");<br>
-}</pre>
-
-
-
-<p>This is basically saying to print out &#8220;The button is on. &#8221; while a variable called &#8220;button&#8221; has the value of &#8220;on&#8221;. The functions in here can run forever as long as the button variable does not change. in a real program, there would be a way for this variable to change. For example, there could be a function that sets the button&#8217;s value to be &#8220;off&#8221; when someone clicks on a part of the screen. </p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/programming-basics/">2. Programming Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
-]]></content:encoded>
-			</item>
-		<item>
-		<title>1. Internet Basics</title>
-		<link>https://dev.mediocreinventions.com/internet-basics/</link>
-		<pubDate>Sun, 16 Dec 2018 23:15:50 +0000</pubDate>
-		<dc:creator><![CDATA[Admin]]></dc:creator>
-				<category><![CDATA[Web Application Basics]]></category>
-		<category><![CDATA[dns]]></category>
-		<category><![CDATA[internet]]></category>
-		<category><![CDATA[servers]]></category>
-
-		<guid isPermaLink="false">http://localhost/?p=1</guid>
-		<description><![CDATA[<p>This article is a crash course on some of the basics regarding the internet and how it works. Intro It&#8217;s important to understand that the internet is just a bunch of computers and devices connected to each other with wires. Each of these devices is assigned a unique identifier called an IP address. This address [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/internet-basics/">1. Internet Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
-]]></description>
-				<content:encoded><![CDATA[
-<p>This article is a crash course on some of the basics regarding the internet and how it works. <br></p>
-
-
-
-<h2><strong>Intro</strong></h2>
-
-
-
-<p class="has-normal-font-size">It&#8217;s important to understand that the internet is just a bunch of computers and devices connected to each other with wires. Each of these devices is assigned a unique identifier called an IP address. This address is essentially the address that lets other computers/devices know where to find them. </p>
-
-
-
-<h2><strong>DNS</strong></h2>
-
-
-
-<p class="has-normal-font-size">When an internet browser (such as Google Chrome) retrieves a web page for viewing, this is the general process that happens in most modern websites: </p>
-
-
-
-<ol><li>Type in yourwebsite.com into browser and press Enter. </li><li>The browser (or client) goes to a Domain Name Server (DNS) to ask where yourwebsite.com resides. </li><li>The DNS looks through its records and finds that yourwebsite.com should go to a computer with an IP address of 12.123.12.12</li><li>The client then tries to connect to this IP address to retrieve content. </li></ol>
-
-
-
-<p class="has-normal-font-size">The IP Address in this case usually leads to a server that is able to direct the client&#8217;s request to the correct areas. It can be the actual server that hosts the website content, or it could be a &#8220;load balancer&#8221;, which is a server that directs the user to another server that can provide the content (This is usually done so that one server doesn&#8217;t have to handle all the request and get burned out).</p>
-
-
-
-<p class="has-medium-font-size">Below is a diagram illustrating this: </p>
-
-
-
-<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/lb.png" alt="" class="wp-image-96" srcset="https://dev.mediocreinventions.com/wp-content/uploads/lb.png 603w, https://dev.mediocreinventions.com/wp-content/uploads/lb-300x229.png 300w" sizes="(max-width: 603px) 100vw, 603px" /></figure>
-
-
-
-<h2><strong>Rendering</strong></h2>
-
-
-
-<p class="has-normal-font-size">After the content is retrieved and is available for viewing, the internet browser will render this content to be human readable. There are 3 main elements to this that help render content: </p>
-
-
-
-<ul><li>HTML: This is the markup language that tells the browser how to structure the content. For example, the below will ask the browser to render a paragraph that says &#8220;Hello World&#8221;:</li></ul>
-
-
-
-<pre class="wp-block-preformatted">&lt;p&gt;Hello World&lt;/p&gt;</pre>
-
-
-
-<ul><li>CSS: This is a stylesheet that describes how the page should be styled. For example, the below will ask the browser to make all paragraphs (text inside the  tags) red:</li></ul>
-
-
-
-<pre class="wp-block-preformatted">p { color: red; }</pre>
-
-
-
-<ul><li>JavaScript: This is the code that makes some of the elements on the page more interactive. For example, it can tell the browser to change the font color when the page is clicked (JavaScript can be used to accomplish a lot more for modern websites, but handling how elements behave is the main take-away point in this article). </li></ul>
-
-
-
-<p><br></p>
-<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/internet-basics/">1. Internet Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/testing/">3. Testing Code in Programming</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

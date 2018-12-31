@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>8. Scripting for Linux Systems - Mediocre Inventions</title><meta name="description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="8. Scripting for Linux Systems - Mediocre Inventions"><meta property="og:description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta property="og:url" content="https://www.mediocreinventions.com/scripting/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="bash"><meta property="article:tag" content="linux"><meta property="article:tag" content="scripting"><meta property="article:tag" content="Ubuntu"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:50:09+00:00"><meta property="article:modified_time" content="2018-12-31T21:09:22+00:00"><meta property="og:updated_time" content="2018-12-31T21:09:22+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta name="twitter:title" content="8. Scripting for Linux Systems - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-108237564-4');
+			
+		</script></head><body class="post-template-default single single-post postid-1041 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://www.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-1041" class="single-content post-text scroll post-1041 post type-post status-publish format-standard hentry category-web-basics tag-bash tag-linux tag-scripting tag-ubuntu"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>8. Scripting for Linux Systems</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>Once you have built a web application, you will have to set up and configure a server before it can be deployed in a production environment. However, before  diving into server configurations, learning how to use the terminal is  very important. </p>
+
+
+
+<h2>Terminal</h2>
+
+
+
+<p>The terminal is used to execute commands to your server. You can use it to move files, search for text, and install software. It can basically do anything that your normal graphical interface can. It also allows you to automate many things and can accomplish tasks faster as compared to using the graphical interface. </p>
+
+
+
+<p>For example, in Windows Explorer, if you wanted to move all files with the letter S to another folder, you might have to find and drag the files multiple times if there are other files in there without the letter S. However, the command line can accomplish this with one line of code.</p>
+
+
+
+<h2>Other resources<br></h2>
+
+
+
+<p>This  article will go through all the most common commands that is used in  the terminal to help you get familiar with it. However, I would also  recommend doing a quick tutorial on this to grasp the basics here:  https://www.learnshell.org/</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>To access the terminal in Ubuntu, press CTRL + ALT + T.</p>
+
+
+
+<h3>List files and folders</h3>
+
+
+
+<p>Command: ls</p>
+
+
+
+<p>List the contents of current folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls
+</pre>
+
+
+
+<p>List the contents of a folder named test</p>
+
+
+
+<pre class="wp-block-preformatted">ls test
+</pre>
+
+
+
+<p>List the contents of a folder named test3 within another folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls test/test2/test3
+</pre>
+
+
+
+<p>List all the contents in the current folder</p>
+
+
+
+<pre class="wp-block-preformatted">ls -a
+</pre>
+
+
+
+<p>List all the contents in a folder named test</p>
+
+
+
+<pre class="wp-block-preformatted">ls -a test
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>The letter with a dash 
+is called an argument. It lets the computer know to run the command with
+ certain options enabled. Most commands will have the arguments, you can
+ use the &ldquo;man&rdquo; command to bring up a manual with a list of Instructions 
+on how to use commands. For example, &ldquo;man ls&rdquo;.</p>
+
+
+
+<p>Some files and 
+folders won&rsquo;t be listed by ls without the -a argument. For example, 
+folders that start with a &ldquo;.&rdquo; like the &ldquo;.git&rdquo; folder.</p>
+
+
+
+<h3>Changing folders/directories</h3>
+
+
+
+<p>Command: cd</p>
+
+
+
+<p>Change to folder called test</p>
+
+
+
+<pre class="wp-block-preformatted">cd test
+</pre>
+
+
+
+<p>Change to folder called test3 within multiple folders</p>
+
+
+
+<pre class="wp-block-preformatted">cd test/test2/test3
+</pre>
+
+
+
+<p>Change to the folder in the previous level</p>
+
+
+
+<pre class="wp-block-preformatted">cd ..
+</pre>
+
+
+
+<p>Change to your home directory</p>
+
+
+
+<pre class="wp-block-preformatted">cd ~
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>When you are typing the
+ name of a file or folder, you can press tab and it will autocomplete 
+the name for you. For example, if you have these folder names in your 
+current directory: test, sample, abc, abcdef, example</p>
+
+
+
+<p>Then you can
+ type &ldquo;cd t&rdquo; and then press tab and it will auto-complete to &ldquo;cd test/&rdquo;.
+ You can also type cd &ldquo;abcd&rdquo; then tab to autocomplete to the abcdef 
+folder. However, if you have two or more similar named files/folders, 
+then you will have to keep typing until there is only one option. In 
+that case, you can also press tab twice to see the different names of 
+folders.</p>
+
+
+
+<p>You can also type &ldquo;pwd&rdquo; to check your current directory.</p>
+
+
+
+<h3>Moving, renaming, creating, removing and copying</h3>
+
+
+
+<p>Command: mv, cp, touch, mkdir, rm</p>
+
+
+
+<p>Move a file called test.txt to the folder test3</p>
+
+
+
+<pre class="wp-block-preformatted">mv test.txt test3/
+</pre>
+
+
+
+<p>Rename a file called test.txt to test3.txt</p>
+
+
+
+<pre class="wp-block-preformatted">mv test.txt test3.txt
+</pre>
+
+
+
+<p>Move all files with the letter &ldquo;s&rdquo; to a folder called test3</p>
+
+
+
+<pre class="wp-block-preformatted">mv *s* test3
+</pre>
+
+
+
+<p>Copy a file called text3.txt to a file called text4.txt</p>
+
+
+
+<pre class="wp-block-preformatted">cp text3.txt text4.txt
+</pre>
+
+
+
+<p>Create a file called test5.txt</p>
+
+
+
+<pre class="wp-block-preformatted">touch test5.txt
+</pre>
+
+
+
+<p>Delete a file called test5.txt</p>
+
+
+
+<pre class="wp-block-preformatted">rm test5.txt
+</pre>
+
+
+
+<p>Create a folder called test2</p>
+
+
+
+<pre class="wp-block-preformatted">mkdir test2
+</pre>
+
+
+
+<p>Remove a folder called test2</p>
+
+
+
+<pre class="wp-block-preformatted">rmdir test2
+</pre>
+
+
+
+<p>Remove a directory called test2 that contains files/folders</p>
+
+
+
+<pre class="wp-block-preformatted">rm -r test2
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Using the rm functions will remove the files from the system, it does not simply move them to the recycle bin.</p>
+
+
+
+<h3>Output text and values</h3>
+
+
+
+<p>Command: echo</p>
+
+
+
+<p>Output the text &ldquo;Hello World&rdquo;</p>
+
+
+
+<pre class="wp-block-preformatted">echo "Hello World"
+</pre>
+
+
+
+<p>Output the current user</p>
+
+
+
+<pre class="wp-block-preformatted">echo $USER
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>You can also set 
+variables for your session by. You can type TESTVAR=&rdquo;hi&rdquo;, press enter 
+then type echo $TESTVAR to see the result.</p>
+
+
+
+<h3>Installing a program</h3>
+
+
+
+<p>Command: apt</p>
+
+
+
+<p>Install a program called curl that helps transfer data</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install curl
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>sudo means to run the 
+command with elevated privileges. Commands such as apt install that 
+install software may require more permissions than a normal user.</p>
+
+
+
+<p>apt
+ is a package manager for Ubuntu (it is a program that helps install 
+programs). In this case, we are telling apt to install a program called 
+curl. Now that you have curl, you can use it to get website contents. 
+Try typing &ldquo;curl http://icanhazip.com&rdquo; to get your ip address. You can 
+also visit this website in your browser to see the results.</p>
+
+
+
+<h3>Finding text within a file</h3>
+
+
+
+<p>Command: grep</p>
+
+
+
+<p>Find the word &ldquo;hello&rdquo; in a file called test.txt</p>
+
+
+
+<pre class="wp-block-preformatted">grep "hello" test.txt
+</pre>
+
+
+
+<p>Find the world &ldquo;hello&rdquo; in a file called test.txt, but case insensitive</p>
+
+
+
+<pre class="wp-block-preformatted">grep -i "hello" test.txt
+</pre>
+
+
+
+<p>Find the word &ldquo;hello&rdquo; in all the files within this folder and its subfolders, and also case insensitive</p>
+
+
+
+<pre class="wp-block-preformatted">grep -ri "hello" *
+</pre>
+
+
+
+<p>These are some of the most common functions that you  will find yourself using when programming. As you install new programs,  you will also learn their commands. For example, Git and Rails will  have their own functions that you will eventually learn. When you want  to learn how to do something with the terminal, you can just Google  something like &ldquo;how to write to file in Bash&rdquo; or &ldquo;how to manage  permissions with ubuntu terminal&rdquo; (Bash is the scripting language that  we covered here).</p>
+
+
+
+<h3>Script File<br></h3>
+
+
+
+<p>Once you have found all the commands  that you want to do for a repetitive task, you can save all those  commands together in a file, and tell the the computer to run it as a  script. For example, if you wanted a script to automatically install  some programs, you can create a new text file called myScript.sh and put  the following inside:</p>
+
+
+
+<pre class="wp-block-preformatted">#!bin/bash
+sudo apt install git
+sudo apt install curl
+echo "Finished installing!
+</pre>
+
+
+
+<p>Then save the file and run it by running this in the terminal</p>
+
+
+
+<pre class="wp-block-preformatted">sh myScript.sh
+</pre>
+
+
+
+<p>That command should then run the commands from top 
+to bottom. You can also  pass different arguments in the sh command for 
+the script to use by adding text to the end. You can access each 
+argument in order with $1, $2, $3, and so on. For example, if your file 
+looked like</p>
+
+
+
+<pre class="wp-block-preformatted">#!bin/bash
+echo $1
+echo $2
+</pre>
+
+
+
+<p>You can run &ldquo;sh myScrip.sh myfirstarg mysecondarg&rdquo; 
+and watch it print out the arguments. Congratulations, you just created a
+ script!</p>
+
+
+
+<p><strong>Note: </strong></p>
+
+
+
+<p>Windows also has
+ a command line interface called Powershell or cmd. However, their 
+commands are different and it doesn&rsquo;t come with a package manager like 
+Ubuntu does.</p>
+<div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/bash/" rel="tag">bash</a>, <a href="https://www.mediocreinventions.com/tag/linux/" rel="tag">linux</a>, <a href="https://www.mediocreinventions.com/tag/scripting/" rel="tag">scripting</a>, <a href="https://www.mediocreinventions.com/tag/ubuntu/" rel="tag">Ubuntu</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/encryption/" rel="prev">7. Encryption and Hashing for Applications</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/seo/" rel="next">9. Search Engine Optimization (SEO)</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://www.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

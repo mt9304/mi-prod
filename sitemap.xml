@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="//mediocreinventions.herokuapp.com/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
-		<loc>https://dev.mediocreinventions.com/post-sitemap.xml</loc>
-		<lastmod>2018-12-31T03:59:05+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/post-sitemap.xml</loc>
+		<lastmod>2018-12-31T21:38:16+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>https://dev.mediocreinventions.com/page-sitemap.xml</loc>
+		<loc>https://www.mediocreinventions.com/page-sitemap.xml</loc>
 		<lastmod>2018-12-18T05:59:22+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>https://dev.mediocreinventions.com/category-sitemap.xml</loc>
-		<lastmod>2018-12-31T03:59:05+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/category-sitemap.xml</loc>
+		<lastmod>2018-12-31T21:38:16+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>https://dev.mediocreinventions.com/post_tag-sitemap.xml</loc>
-		<lastmod>2018-12-31T03:59:05+00:00</lastmod>
+		<loc>https://www.mediocreinventions.com/post_tag-sitemap.xml</loc>
+		<lastmod>2018-12-31T21:38:16+00:00</lastmod>
 	</sitemap>
 	<sitemap>
-		<loc>https://dev.mediocreinventions.com/author-sitemap.xml</loc>
+		<loc>https://www.mediocreinventions.com/author-sitemap.xml</loc>
 		<lastmod>2018-12-24T03:49:09+00:00</lastmod>
 	</sitemap>
 </sitemapindex>

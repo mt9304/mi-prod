@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>12. Data Structure Basics For Programming - Mediocre Inventions</title><meta name="description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="12. Data Structure Basics For Programming - Mediocre Inventions"><meta property="og:description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta property="og:url" content="https://www.mediocreinventions.com/data-structures/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="array"><meta property="article:tag" content="binary tree"><meta property="article:tag" content="data structures"><meta property="article:tag" content="hash map"><meta property="article:tag" content="javascript"><meta property="article:tag" content="linked list"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:59:12+00:00"><meta property="article:modified_time" content="2018-12-31T21:32:23+00:00"><meta property="og:updated_time" content="2018-12-31T21:32:23+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta name="twitter:title" content="12. Data Structure Basics For Programming - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-108237564-4');
+			
+		</script></head><body class="post-template-default single single-post postid-1311 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://www.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-1311" class="single-content post-text scroll post-1311 post type-post status-publish format-standard hentry category-web-basics tag-array tag-binary-tree tag-data-structures tag-hash-map tag-javascript tag-linked-list"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>12. Data Structure Basics For Programming</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>Knowing
+ various data structures can be very beneficial when creating 
+applications. For example, some data structures are faster to search 
+through and some will be faster for inserting data. Depending on what 
+your use case is, knowing when to use certain data structures and when 
+to avoid certain ones can help your application scale and perform a lot 
+better.&nbsp;This article will go through some of the most important data 
+structures that are implemented in various programming languages. </p>
+
+
+
+<h3>Array</h3>
+
+
+
+<p>Arrays can be declared in JavaScript like this:</p>
+
+
+
+<pre class="wp-block-preformatted">var myArray = ["firstValue", "secondValue", "thirdValue"];
+</pre>
+
+
+
+<p>Arrays store values in different indices and it can 
+be access quickly. In the above example, you can run the following to 
+get the first value stored in the array:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">console.log(myArray[0]);
+</pre>
+
+
+
+<p>The [0] is saying to look at index number 0, or the 
+very first thing inside the array (the count starts from 0, not 1). So 
+running myArray[1] would get the second value of &ldquo;secondValue&rdquo;. If you 
+already know the index of where the value is going to be stored, 
+accessing this value can be very efficient since it runs at constant 
+time, or O(1). However, if you didn&rsquo;t know the index of where the value 
+is, you may have to write a function to search through the array. In 
+that case, it can longer. For example, the following snippet will loop 
+from the whole array to find the value it needs, giving it a linear 
+runtime, or O(n):&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">for (var i = 0; i &lt; myArray.length; i++) {<br>	if (myArray[i] == "thirdValue") {<br>		console.log("Found it!");<br>	}<br>}</pre>
+
+
+
+<p>Inserting and deleting values in the array can also 
+take just as long, since it has to move all the existing other values to
+ fill the gap.&nbsp;</p>
+
+
+
+<h3>Linked List</h3>
+
+
+
+<p>A linked list is a 
+collection of data that is saved in a linear way. Each element points to
+ the next element so that it knows which order it is in. For example, 
+below is a visualization of how a linked list might look like:&nbsp;</p>
+
+
+
+<p>Winter =&gt; Spring =&gt; Summer =&gt; Fall</p>
+
+
+
+<p>In
+ the above example, the first item in the list is &ldquo;Winter&rdquo;, and it knows
+ that its next element will be Spring. Spring will then only know its 
+next element is Summer, and so on. A linked list is very useful if you 
+want to insert or delete values very often, since it would have a 
+constant execution time, or O(n). This is because you would only have to
+ change the pointers of the elements if you wanted to insert something, 
+instead of moving all the other elements around. For example, if we 
+wanted to insert an element between Spring and Summer called 
+&ldquo;Springish&rdquo;, then the process of inserting would be to just change the 
+Spring pointer to Springish and make sure the Springish pointer is set 
+to Summer.&nbsp;</p>
+
+
+
+<p><strong>Notes:&nbsp;</strong></p>
+
+
+
+<p>When 
+inserting at a specific index of a long linked list, you may still have 
+to traverse through the list at a linear execution time to search and 
+find the position.&nbsp;</p>
+
+
+
+<p>A &ldquo;Doubly Linked List&rdquo; is a data structure 
+that points in both directions. So each element knows both its previous 
+and next element. This allows for it to traverse both ways through the 
+list.&nbsp;</p>
+
+
+
+<p>I would recommend looking through this article to get a better idea of how to implement a linked list: <a href="https://www.geeksforgeeks.org/implementation-linkedlist-javascript/">https://www.geeksforgeeks.org/implementation-linkedlist-javascript/</a></p>
+
+
+
+<h3>Hash Map</h3>
+
+
+
+<p>A hash map stores key value pairs and is generally very fast when performing searches, insertion, and deletion. On average, it should have a constant execution time for these actions, but it can also take linear time in the worst case scenario.&nbsp;</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>This
+ is going to be a very simplified explanation of the data structure. The
+ Encryption article briefly explain hashing if you have not learned it 
+yet, or you can read from here: <a href="https://en.wikipedia.org/wiki/Hash_function" target="_blank" rel="noreferrer noopener">https://en.wikipedia.org/wiki/Hash_function</a></p>
+
+
+
+<p>Below is a pseudo-code snippet of a hash map that stored the names of different animals:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">myHashMap = { "dog" =&gt; "Skippy", "cat" =&gt; "Garfield", "squirrel" =&gt; "Ralph" }
+</pre>
+
+
+
+<p>To map the values, the value of dog may be hashed to
+ become a number like 4. In that case, the value of &ldquo;dog&rdquo; would be 
+stored in an array-like structure at the 4th index. Since arrays have 
+constant access time, searching for a value in the hash map will be 
+constant in this case, since it just has to find the 4th index and 
+retrieve the value stored in there (which would be &ldquo;Skippy&rdquo;). However, 
+if another word happens to be hashed into 4, then they will both share 
+the same index. If all of the items happened to fall in the 4th index, 
+then it could take linear execution time to traverse through that bucket
+ before finding the value. This collision here can be handled 
+differently depending on the developer, but it is usually handled like a
+ linked list.&nbsp;</p>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>You may 
+see a lot of resources reference Hash Table and Hash Map. They are 
+similar data structures, but do have a few differences. A good 
+explanation of this can be found here: <a href="https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable" target="_blank" rel="noreferrer noopener">https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable</a></p>
+
+
+
+<h3>Binary Tree</h3>
+
+
+
+<p>A
+ binary tree is made up of a bunch of nodes, and each node points to 2 
+other nodes, the left and the right. Below would be a visualization of a
+ tree (you can also google a binary tree visualization for a proper 
+image):&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">       (5)<br>      /   \<br>    (3)   (7)<br>   / \     / \<br>(2) (4)   (6) (8)</pre>
+
+
+
+<p>For each node, the left node should be smaller than 
+the parent node and the right node should be bigger. When sorted and 
+balanced like this properly, it becomes very fast to find the value that
+ you need. This is because if you need to find a value, you don&rsquo;t need 
+to traverse through every node to find a match like a linked list would.
+ For example, if you wanted to find the value of 4 in the above tree, it
+ would start at the top and see that 4 is less than 5. Since the left 
+node is supposed to be less than the parent, it would then go to the 
+left node and do the same thing. Now 4 is more than 3, so it would look 
+to the right because the right node is larger than the parent. By 
+following this logic, even very large trees (as long as it is balanced) 
+will have very fast and scalable execution times for access, search, 
+delete, and insert functions (O(log(n))).&nbsp;</p>
+
+
+
+<p>In the worst
+ case scenario though, if the tree is completely unbalanced, it might 
+just look like an ordered linked list. Below is an example visualization
+ of an unbalanced tree:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">(1)<br>  \<br>  (2)<br>    \<br>    (3)<br>      \<br>      (4)</pre>
+
+
+
+<p>In that case, finding the value 4 would take linear execution time, since it has to traverse through everything.&nbsp;</p>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>For more details on this data structure and how it is implemented, this is a good article to start: <a href="https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/" target="_blank" rel="noreferrer noopener">https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/</a></p>
+<div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/array/" rel="tag">array</a>, <a href="https://www.mediocreinventions.com/tag/binary-tree/" rel="tag">binary tree</a>, <a href="https://www.mediocreinventions.com/tag/data-structures/" rel="tag">data structures</a>, <a href="https://www.mediocreinventions.com/tag/hash-map/" rel="tag">hash map</a>, <a href="https://www.mediocreinventions.com/tag/javascript/" rel="tag">javascript</a>, <a href="https://www.mediocreinventions.com/tag/linked-list/" rel="tag">linked list</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/big-o/" rel="prev">11. Big O Notation Basics For Programming</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/rails-setup/" rel="next">1. Setting up Ruby on Rails Environment</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://www.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>let&#8217;s encrypt &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/lets-encrypt/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 21:38:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>8. Nginx and Let&#8217;s Encrypt (SSL)</title>
+		<link>https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/</link>
+		<pubDate>Mon, 31 Dec 2018 20:42:12 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[https]]></category>
+		<category><![CDATA[let's encrypt]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[server]]></category>
+		<category><![CDATA[ssl]]></category>
+		<category><![CDATA[Ubuntu]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[web server]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=1621</guid>
+		<description><![CDATA[<p>Intro If you have setup your Nginx server on Ubuntu 18.04 then this article will walk you through how to add an SSL certificate using Let&#8217;s Encrypt to your website so that it uses https instead of http. If you chose to use Heroku, then you can skip this article. Please note that this article [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h3>Intro</h3>
+
+
+
+<p>If you 
+have setup your Nginx server on Ubuntu 18.04 then this article will walk
+ you through how to add an SSL certificate using Let&#8217;s Encrypt to your 
+website so that it uses https instead of http. If you chose to use 
+Heroku, then you can skip this article. Please note that this article 
+will require you to own a domain name already. This will be a quick 
+summary to get you up and running, but a more detailed article on this 
+topic can be found here if you are interested: <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04" target="_blank" rel="noreferrer noopener">https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04 </a></p>
+
+
+
+<h3>Setup</h3>
+
+
+
+<p>First, let&#8217;s install Certbot:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo add-apt-repository ppa:certbot/certbot
+sudo apt install python-certbot-nginx
+</pre>
+
+
+
+<p>Double check that you have your domains entered 
+properly in /etc/nginx/sites-available/yourdomain.com or sudo nano 
+/etc/nginx/sites-available/default. There should be a line with 
+server_name that follows with your domain. For example: </p>
+
+
+
+<pre class="wp-block-preformatted">server_name yourdomain.com www.yourdomain.com;
+</pre>
+
+
+
+<p>If you had to make any changes, make sure to open the file as &#8220;sudo&#8221;, save then and run</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl reload nginx
+</pre>
+
+
+
+<p>If you have your firewall on (you can check its 
+status by running sudo ufw status), remember to configure your firewall 
+for this:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+</pre>
+
+
+
+<p>Then run you can run this to make sure nothing is wrong with the status</p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw status
+</pre>
+
+
+
+<p>Now you can run the following to finish setting up SSL for your website:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+</pre>
+
+
+
+<p>This certificate should auto-renew itself when it expires now. </p>
+
+
+
+<p>Congratulations, you have just secured your website with SSL and it should be ready for production!</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>
