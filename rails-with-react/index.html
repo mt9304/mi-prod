@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>5. Rails With React - Mediocre Inventions</title><meta name="description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="5. Rails With React - Mediocre Inventions"><meta property="og:description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta property="og:url" content="https://dev.mediocreinventions.com/rails-with-react/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="React"><meta property="article:tag" content="React.js"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Rails With React"><meta property="article:published_time" content="2018-12-30T03:15:22+00:00"><meta property="article:modified_time" content="2018-12-31T03:59:05+00:00"><meta property="og:updated_time" content="2018-12-31T03:59:05+00:00"><meta property="og:image" content="https://dev.mediocreinventions.com/wp-content/uploads/books.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta name="twitter:title" content="5. Rails With React - Mediocre Inventions"><meta name="twitter:image" content="https://dev.mediocreinventions.com/wp-content/uploads/books.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script></head><body class="post-template-default single single-post postid-791 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://dev.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-791" class="single-content post-text scroll post-791 post type-post status-publish format-standard hentry category-rails-to-production category-rails-react tag-react tag-react-js tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>5. Rails With React</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://dev.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://dev.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails To Production</a>, <a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/" rel="category tag">Rails With React</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>This article is going to be a very brief 
+rundown of what React.js is and how to use it with your application. 
+React is a very popular JavaScript library and there are a lot of 
+courses out there that can teach you its ins and outs in detail. 
+However, if you just want to get up and running and figure out the 
+details later when you need to, then this article with go through just 
+that. We will cover how to Create, Read, Update, and Delete objects in 
+our database using React and AJAX to interact with our Rails API. </p>
+
+
+
+<p>React
+ is a JavaScript library that allows developers to create a website&rsquo;s UI
+ by using small pieces of code (JavaScript files called Components). You
+ can use these components to display dynamic data (eg: data from your 
+api or database) as well as static elements (regular HTML elements like 
+&lt;p&gt; or even &lt;script&gt; snippets for regular JavaScript). This 
+allows for a cleaner and more maintainable way to build your front-end 
+compared to writing massive custom JavaScript and HTML files. </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>For more information on this topic, you can find a similar tutorial here: <a href="https://www.nopio.com/blog/react-rails-part-1-tutorial/" target="_blank" rel="noreferrer noopener">https://www.nopio.com/blog/react-rails-part-1-tutorial/</a></p>
+
+
+
+<p>This
+ tutorial is based on the above article, however, they seem to be using 
+an older version of React so some of the functions might not work 
+anymore. If you followed that tutorial and created the React components 
+with React.createClass, then you might run into some JavaScript errors 
+in your browser console such as </p>
+
+
+
+<p>TypeError: React.createClass is not a function</p>
+
+
+
+<p>This
+ is because React.createClass is no longer used for creating components.
+ This article will aim to make this work using React 16.2, Rails 5.2 and
+ the latest version of JavaScript at this time (2018). </p>
+
+
+
+<h2>React</h2>
+
+
+
+<p>In
+ our setup article, we ran rails g react:install to setup React to work 
+with Rails. Now we can focus on creating the components. React&rsquo;s 
+components are stored in the /apps/assets/javascripts/components/ 
+folder. We can start by creating a new folder here called book inside of
+ this components folder, then create a new file here called 
+book_app.js.jsx. Your folder stucture should now be as such: 
+/apps/assets/javascripts/components/book/book_app.js.jsx. </p>
+
+
+
+<p>Now let&rsquo;s populate this book_app component with code so that it looks like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/3d165e7b5f052d5595ad7bdc564b3f6c" target="_blank">https://gist.github.com/mt9304/3d165e7b5f052d5595ad7bdc564b3f6c</a></p>
+
+
+
+<script src="https://gist.github.com/mt9304/3d165e7b5f052d5595ad7bdc564b3f6c.js"></script><p>If
+ you are curious, you can find out more about React functions at their 
+website here: https://reactjs.org/docs/react-component.html. However, if
+ you just want the cliff notes of what is relevant in this project, I 
+will explain it here. </p>
+
+
+
+<p>You declare a React component with the line: </p>
+
+
+
+<pre class="wp-block-preformatted">class BookApp extends React.Component { 
+...
+} 
+</pre>
+
+
+
+<p>Inside this class, there are certain default functions that 
+React will load in a set order. The functions are called: constructor(),
+ static getDerivedStateFromPropers(), render(), and componentDidMount().
+ So everytime you load a React component on a page, these functions will
+ be called in that order. The constructor() initiates the component and 
+the render() function renders the HTML for the page. Then if that state 
+of the component changes, the render() function gets called again. </p>
+
+
+
+<p>Here is the general flow of what is happening here in our component: </p>
+
+
+
+<p>The
+ constructor initiates the component in our BookApp by setting the state
+ with an empty array of &ldquo;books&rdquo;. The &ldquo;state&rdquo; in this case can be thought
+ of as the place to store variables so that our page can use it and 
+render dynamic content. Then it renders text that says &ldquo;Loading&hellip;&rdquo; for a
+ bit before calling componentDidMount(), which runs a custom function we
+ created called getDataFromApi(). This function then uses AJAX 
+(basically JavaScript that can interact with our API) to get Book data 
+from our database and store it in the &ldquo;state&rdquo;. Now that the state has 
+changed again, render is called and updates the &ldquo;Loading&hellip;&rdquo; to &ldquo;Your 
+books will go here!&rdquo;. </p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>The getDataFromApi()
+ function stores variables called error and isLoaded in the state, and 
+sets their values depending on how the API called goes. This helps with 
+troubleshooting because the render() function will print out errors if 
+it does run into any. </p>
+
+
+
+<p>Now that we have the component, 
+lets go into /app/views/homepage/index.html.erb and change it so that it
+ renders our component instead of the default text. Replace everything 
+in the index.html.erb file with: </p>
+
+
+
+<pre class="wp-block-preformatted">&lt;%= react_component 'BookApp' %&gt;
+</pre>
+
+
+
+<p>This tells the application to render the React component we just created. You can start your server again and refresh the page to see it. Your page should now look like this: </p>
+
+
+
+<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://dev.mediocreinventions.com/wp-content/uploads/books.png 955w, https://dev.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px"></figure><p>Now
+ we can work on populating this area with a table to render all our book
+ entries. Fortunately, React allows you to render other components 
+within a component so that we don&rsquo;t have to stack one file with so much 
+code. So let&rsquo;s start by creating some new files called book_table.js.jsx
+ and book.js.jsx in the same folder as book_app.js.jsx. Fill out the 
+table file so that it looks like this: <a href="https://gist.github.com/mt9304/fe72fac20278203c3ece7263536a741e" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/fe72fac20278203c3ece7263536a741e</a> and the book file should look like this: <a href="https://gist.github.com/mt9304/266b22788e8a7f6144c026abffbc9441" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/266b22788e8a7f6144c026abffbc9441</a></p>
+
+
+
+<p>If all went well, then you page should now look something like this: </p>
+
+
+
+<figure class="wp-block-image"><img src="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png" alt="" class="wp-image-922" srcset="https://dev.mediocreinventions.com/wp-content/uploads/book_table-1024x459.png 1024w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-300x135.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/book_table-768x344.png 768w, https://dev.mediocreinventions.com/wp-content/uploads/book_table.png 1055w" sizes="(max-width: 1024px) 100vw, 1024px"></figure><p>Now you should have a working delete button that should delete the entries when clicked! You can then implement the rest of the functions as you would like to build on this application. For some examples on implementing adding and editing with React, this article seems to cover the rest: <a href="https://www.nopio.com/blog/react-rails-part-1-tutorial/">https://www.nopio.com/blog/react-rails-part-1-tutorial/</a></p>
+
+
+
+<p>For our purposes, this basic application should be enough to deploy to a Production environment. The next articles will go through some common options for hosting your web application. <br></p>
+<div class="tags-links bfade">Tagged: <a href="https://dev.mediocreinventions.com/tag/react/" rel="tag">React</a>, <a href="https://dev.mediocreinventions.com/tag/react-js/" rel="tag">React.js</a>, <a href="https://dev.mediocreinventions.com/tag/ruby/" rel="tag">Ruby</a>, <a href="https://dev.mediocreinventions.com/tag/ruby-on-rails/" rel="tag">Ruby on Rails</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://dev.mediocreinventions.com/rails-authorization/" rel="prev">4. Rails Authorization</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://dev.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://dev.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://dev.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

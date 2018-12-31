@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>3. Testing - Mediocre Inventions</title><meta name="description" content="Testing software is an important part of development. It helps ensure that your program continues to function correctly when you add new features."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="3. Testing - Mediocre Inventions"><meta property="og:description" content="Testing software is an important part of development. It helps ensure that your program continues to function correctly when you add new features."><meta property="og:url" content="https://dev.mediocreinventions.com/testing/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="programming"><meta property="article:tag" content="testing"><meta property="article:tag" content="unit tests"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T04:53:38+00:00"><meta property="article:modified_time" content="2018-12-29T05:02:43+00:00"><meta property="og:updated_time" content="2018-12-29T05:02:43+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Testing software is an important part of development. It helps ensure that your program continues to function correctly when you add new features."><meta name="twitter:title" content="3. Testing - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script></head><body class="post-template-default single single-post postid-151 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://dev.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-151" class="single-content post-text scroll post-151 post type-post status-publish format-standard hentry category-web-basics tag-programming tag-testing tag-unit-tests"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>3. Testing</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://dev.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://dev.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<p>Testing is an important part of programming that ensures code quality and makes life easier in the long run. </p>
+
+
+
+<h2><strong>Intro</strong></h2>
+
+
+
+<p>If
+ you are a complete beginner and have next to zero programming 
+knowledge, then this section might not make as much sense. It should 
+make more sense after making a few small projects and understanding how 
+coding works in general. We won&rsquo;t actually go deep into testing in these
+ series of articles, so you can skim through it if you want, but this is
+ definitely an important topic to know about somewhere down the line.&nbsp;</p>
+
+
+
+<p>In
+ this article, we will briefly discuss the importance of testing code. 
+When writing code, it is good practice to write tests for the code as 
+well. This way, if you make any changes to the application in the 
+future, you can run the tests to see if they still work as intended 
+without having to manually test every function again to see if they were
+ affected. We will go through a few testing topics below just to get an 
+understanding of it. </p>
+
+
+
+<h2><strong>Unit Tests</strong></h2>
+
+
+
+<p>Unit tests are essentially pieces of code that test other code. For example, if we have the below function in Java:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">int x = 1;
+
+int addYToX(int y)&nbsp;
+{
+&nbsp;return x + y;
+}
+</pre>
+
+
+
+<p>A test for this function could look like this:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">public void testAddYToX()&nbsp;
+{
+&nbsp;&nbsp;int result = addYToX(2);
+&nbsp;&nbsp;assertEquals(3, result);
+}
+</pre>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>&ndash; You can ignore the 
+&ldquo;public void&rdquo; part for now if you are not familiar with it. The main 
+point of the first function is to take a variable &lsquo;y&rsquo; and add it to x, 
+which has an initial value of 1. The test below then tests it by giving 
+the addYtoX a value of 2. The &ldquo;assertEquals&rdquo; function then checks to 
+verify if adding 2 to x that the function will return 3.&nbsp;</p>
+
+
+
+<h3><strong>Test Driven development (TDD)</strong></h3>
+
+
+
+<p>This
+ is a style of development that is very popular for companies today. TDD
+ means that you are writing your tests first before writing the code. 
+This makes it more likely for developers to cover more of their code 
+with tests.&nbsp;</p>
+
+
+
+<p>In some cases, writing tests can also help a person 
+write better code. This is because, writing testable code usually 
+involves breaking a function down into smaller/testable pieces, which 
+prevents functions from getting too convoluted. Making functions 
+simpler, more readable, and shorter is usually a good way to prevent 
+headaches in the future.&nbsp;</p>
+
+
+
+<p>Additionally, writing tests also help 
+you think about covering edge cases and how the functions should handle 
+unexpected input. This can make the code more robust and less likely to 
+error out with unusual inputs.&nbsp;</p>
+
+
+
+<h3><strong>Behaviour Driven Development (BDD)</strong></h3>
+
+
+
+<p>Behaviour
+ Driven Development just is a way to write or implement the tests. In 
+the above example, we tested whether adding 2 to x will equal 3 if x 
+starts at 1. This may work if x is always expect to be 1, but if x 
+starts at 2, then we would have to rewrite the test to to check if 
+adding 2 to x equals 4.&nbsp;</p>
+
+
+
+<p>To help prevent the need of rewriting 
+this, we can test the behaviour the function instead of hard-coding 
+things in. In this case, the behaviour of the function &ldquo;addYToX&rdquo; is to 
+add the variable y to the variable x, so we can specify that in the test
+ instead:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">public void testAddYToX()&nbsp;
+{
+&nbsp;&nbsp;int result = addYToX(2);
+&nbsp;&nbsp;assertEquals(x + y, result);
+}
+</pre>
+
+
+
+<p>This way instead of changing and specifying the 
+expected result each time, the test is saying that the expected result 
+should be x + y.&nbsp;</p>
+
+
+
+<p>For more details on testing, please feel free to refer to this article:&nbsp;</p>
+
+
+<p><a href="http://softwaretestingfundamentals.com/unit-testing/" target="_blank" rel="noreferrer noopener">http://softwaretestingfundamentals.com/unit-testing/</a></p>
+
+
+<p>Most
+ programming languages have a unit testing framework to help you get 
+started with implementing tests for the project. You can learn more 
+about the basics of testing from here:&nbsp;</p>
+
+
+
+<p>For Java: <a href="https://www.tutorialspoint.com/junit/" target="_blank" rel="noreferrer noopener">https://www.tutorialspoint.com/junit/</a></p>
+
+
+
+<p>For Ruby: <a href="https://www.tutorialspoint.com/rspec/" target="_blank" rel="noreferrer noopener">https://www.tutorialspoint.com/rspec/</a></p>
+<div class="tags-links bfade">Tagged: <a href="https://dev.mediocreinventions.com/tag/programming/" rel="tag">programming</a>, <a href="https://dev.mediocreinventions.com/tag/testing/" rel="tag">testing</a>, <a href="https://dev.mediocreinventions.com/tag/unit-tests/" rel="tag">unit tests</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://dev.mediocreinventions.com/programming-basics/" rel="prev">2. Programming Basics</a></div><div class="nav-next"><a href="https://dev.mediocreinventions.com/tools/" rel="next">4. Tools</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://dev.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://dev.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://dev.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

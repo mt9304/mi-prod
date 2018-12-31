@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Rails and Nginx &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/category/rails-to-production/rails-nginx/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>2. Ruby on Rails API</title>
+		<link>https://dev.mediocreinventions.com/ruby-on-rails-api/</link>
+		<pubDate>Sun, 30 Dec 2018 02:58:49 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails Authentication/Authorization]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[Rails With React]]></category>
+		<category><![CDATA[API]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=641</guid>
+		<description><![CDATA[<p>Intro Now that we have the environment setup, we can finally start building our API for the web application. This article will go through how to create a basic REST API for perform CRUD (Create, Read, Update, Delete) operations. Start Lets start by creating the home page. Generate files needed for the home page by [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Now that we have the environment setup, we can finally start building our API for the web application. This article will go through how to create a basic REST API for perform CRUD (Create, Read, Update, Delete) operations. </p>
+
+
+
+<h2>Start</h2>
+
+
+
+<p>Lets start by creating the home page. Generate files needed for the home page by typing:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails g controller home_page index
+</pre>
+
+
+
+<p>Create the resources for an object called book.&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails g resource book title author:text description:text pages:integer published:date
+</pre>
+
+
+
+<p>Migrate the database</p>
+
+
+
+<pre class="wp-block-preformatted">rake db:migrate
+</pre>
+
+
+
+<p><strong>Notes:</strong></p>
+
+
+
+<p>If this is the first 
+time you are seeing the above commands, here is what it is doing in a 
+nutshell for our purposes. &#8216;g&#8217; is short for generate, so in the commands
+ above we are telling rails to generate things such as a controller or 
+resource. The index part is just the page itself (index.html) where you 
+can write HTML in and the controller allows for this page to interact 
+with the server (to get information from the database). Generating the 
+resource in this case allows us to add the routes (or URL paths) for 
+getting information about the book. This book is then set represented by
+ a title, author (in text format), description, number of pages (in 
+integer format), and when it was published (in date format).&nbsp;</p>
+
+
+
+<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">root 'home_page#index'
+namespace :api do
+&nbsp;resources :books
+end
+</pre>
+
+
+
+<p>The routes.rb file should look like this:&nbsp;<a rel="noreferrer noopener" href="https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf" target="_blank">https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf</a><br><br></p>
+<script src="https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf.js"></script>
+
+
+
+<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">module Api
+&nbsp;class EventsController &lt; ApplicationController
+&nbsp;&nbsp;def index
+&nbsp;&nbsp;&nbsp;render json: Book.all
+&nbsp;&nbsp;end
+&nbsp;end
+end
+</pre>
+
+
+
+<p>Now go into /app/controllers and create an folder 
+called api, then move the books_controller under there. New path should 
+be /app/controllers/api/books_controller.rb</p>
+
+
+
+<p>Any API related controllers should now go in that folder.&nbsp;</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Putting
+ books under the :api namespace and api folder allows you to access the 
+resource in the URL after /api. So in this case, it would be <a href="http://website.com/api/books" target="_blank" rel="noreferrer noopener">website.com/api/books</a>.
+ Making books a resource by writing &#8220;resources :book&#8221; allows users to 
+access books through its RESTful URLs. Below are the following URLs you 
+will be able to use to get data about the books. Since we have the index
+ method in the controller and views for books, you should be able to 
+visit that page (we haven&#8217;t added any book records in the database yet, 
+so these URLs wouldn&#8217;t return anything right now).&nbsp;</p>
+
+
+
+<p>GET		/api/books(.:format)			api/books#index</p>
+
+
+
+<p>POST	/api/books(.:format)			api/books#create</p>
+
+
+
+<p>GET 	/api/books/new(.:format)		api/books#new</p>
+
+
+
+<p>GET 	/api/books/:id/edit(.:format) 	api/books#edit</p>
+
+
+
+<p>GET 	/api/books/:id(.:format) 		api/books#show</p>
+
+
+
+<p>PATCH 	/api/books/:id(.:format) 		api/books#update</p>
+
+
+
+<p>PUT 	/api/books/:id(.:format) 		api/books#update</p>
+
+
+
+<p>DELETE 	/api/books/:id(.:format)</p>
+
+
+
+<p>More information on REST here: <a href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank" rel="noreferrer noopener">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
+
+
+
+<p>Here are the basics that you need to know in Rails regarding these APIs and routes:&nbsp;</p>
+
+
+
+<p>&#8211; Controllers will have a few standard methods:&nbsp;</p>
+
+
+
+<p>	index method for showing all the books (/books)</p>
+
+
+
+<p>	create method for creating a new book (/books/new)</p>
+
+
+
+<p>	show method for showing one particular book (/books/id where id is the book&#8217;s id in the database)</p>
+
+
+
+<p>	update method for updating an existing book (/books/id/edit)</p>
+
+
+
+<p>	destroy method for deleting an existing book (/books/id/ but with a DELETE method)</p>
+
+
+
+<p>Here
+ we will fill out the rest of the controller methods to allow for the 
+above behavior through the API. Change your books controller so that it 
+is:&nbsp;<a href="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc</a></p>
+<script src="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc.js"></script>
+
+
+
+<h2>Adding Books</h2>
+
+
+
+<p>Now let&#8217;s add some Books to our database so that we can test out the API. Go into the Rails console by typing in the terminal:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails c
+</pre>
+
+
+
+<p>(Make sure you are in the project&#8217;s folder)</p>
+
+
+
+<p>The
+ Rails console lets you run Ruby code in. real time to make changes to 
+your application. In this case, we want to add a new Book, so let&#8217;s type
+ in:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">b = Book.create :title =&gt; "How To Cook", :author =&gt; "Bob", :description =&gt; "Teaches you how to cook. ", :pages =&gt; 20, :published =&gt; "2018-11-03"
+b2 = Book.create :title =&gt; "How To Bake", :author =&gt; "Bill", :description =&gt; "Teaches you how to bake. ", :pages =&gt; 15, :published =&gt; "2018-02-03"
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>While in the console, type &#8220;quit&#8221; to exit.&nbsp;</p>
+
+
+
+<p>This
+ will create 2 entries in our database in the Books table. The database 
+right now is stored in /db/development.sqlite3. You can open this with 
+sqlitebrowser.&nbsp;</p>
+
+
+
+<p>If you haven&#8217;t downloaded it yet, you can install it by running these commands in the terminal:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">sudo add-apt-repository ppa:linuxgndu/sqlitebrowser-testing
+sudo apt-get update &amp;&amp; sudo apt-get install sqlitebrowser
+</pre>
+
+
+
+<p>Then you can go into your project folder and open it with the sqlitebrowser command:</p>
+
+
+
+<pre class="wp-block-preformatted">sqlitebrowser db/development.sqlite3
+</pre>
+
+
+
+<p>You can right click the Books option and see your 
+entries in there. Now you can try out the API urls above to see it in 
+action (Make sure you start your server first by running: rails s). For 
+example, go to localhost:3000/api/books/1</p>
+
+
+
+<p>You should 
+receive a page with information about one of the books we just created 
+in JSON format. The &#8220;1&#8221; at the end of the URL represent&#8217;s the ID, which 
+is found in the ID column of the Books table in the database. So if you 
+go to localhost:3000/api/books/2 then it will give you information on 
+the other book. </p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>1. Rails Setup</title>
+		<link>https://dev.mediocreinventions.com/rails-setup/</link>
+		<pubDate>Sun, 30 Dec 2018 02:35:16 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails Authentication/Authorization]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[Rails With React]]></category>
+		<category><![CDATA[install]]></category>
+		<category><![CDATA[React]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+		<category><![CDATA[setup]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=531</guid>
+		<description><![CDATA[<p>Intro In this series of tutorials, we will go through how to build a Rails application with authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this series of tutorials, we will go through how to build a Rails application with  authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. </p>
+
+
+
+<p>To  make sure you are on the same page, you can start on a brand new virtual machine running Ubuntu 18.04. You can download virtual machines  from here:&nbsp;</p>
+
+
+
+<p><a href="https://www.vmware.com/ca.html" target="_blank" rel="noreferrer noopener">https://www.vmware.com/ca.html</a> for VMware (free for Windows) or <a href="https://www.virtualbox.org/" target="_blank" rel="noreferrer noopener">https://www.virtualbox.org/</a> for VirtualBox (free for MacOS and Windows).&nbsp;</p>
+
+
+
+<p>Ubuntu Desktop operating system can be download here: <a href="https://www.ubuntu.com/download" target="_blank" rel="noreferrer noopener">https://www.ubuntu.com/download</a> or if 18.04 is not the latest version anymore, you can also check here: <a href="http://old-releases.ubuntu.com/releases/" target="_blank" rel="noreferrer noopener">http://old-releases.ubuntu.com/releases/</a></p>
+
+
+
+<h2>Start</h2>
+
+
+
+<p>To start, we will install the dependencies needed to install Ruby on Rails:&nbsp;</p>
+
+
+
+<p>Open
+ up the terminal by pressing ctrl + alt + T and type in the following to
+ start installing (make sure you wait for each command to finish before 
+running the next):&nbsp;</p>
+
+
+
+<h3>Install Git for version control</h3>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git
+</pre>
+
+
+
+<h3>Install libraries and other dependencies</h3>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update
+sudo apt install curl
+sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
+</pre>
+
+
+
+<h3>Installs RVM for managing Ruby environments</h3>
+
+
+
+<pre class="wp-block-preformatted">git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.bashrc
+echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bashrc
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>If at any point the 
+terminal says you have not installed or function is not found when you 
+have just installed the program succesfully, an easy workaround is just 
+close the terminal and open it again. You can also type source ~/.bashrc
+ or source ~/.bash_profile to see if it works. If it still doesn&#8217;t work,
+ make sure the program was properly installed and there were no error 
+messages in the logs.&nbsp;</p>
+
+
+
+<h3>Continue setting up ruby environment</h3>
+
+
+
+<pre class="wp-block-preformatted">rbenv install 2.5.1
+rbenv global 2.5.1
+echo "gem: --no-document" &gt; ~/.gemrc
+gem install rails -v 5.2.0
+rbenv rehash
+</pre>
+
+
+
+<h3>Install NodeJS (JavaScript Runtime environment)</h3>
+
+
+
+<pre class="wp-block-preformatted">cd /tmp
+\curl -sSL https://deb.nodesource.com/setup_6.x -o nodejs.sh
+cat /tmp/nodejs.sh | sudo -E bash -
+sudo apt install -y nodejs
+</pre>
+
+
+
+<h3>Cleanup</h3>
+
+
+
+<p>Almost done the setup, let&#8217;s do some cleaning up and updating just to be sure</p>
+
+
+
+<pre class="wp-block-preformatted">cd ~/.rbenv
+git pull
+cd ~
+sudo apt install postgresql postgresql-contrib libpq-dev
+sudo apt update
+</pre>
+
+
+
+<p>Now we should be ready to begin creating the app.</p>
+
+
+
+<h2>Creating The App</h2>
+
+
+
+<p>Create the application</p>
+
+
+
+<pre class="wp-block-preformatted">rails new rails_template
+cd rails_template
+</pre>
+
+
+
+<p>Make sure you have installed a text editor so that we can edit some files For Sublime text install, do:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
+</pre>
+
+
+
+<p>For Vim install, do:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install vim
+</pre>
+
+
+
+<p>Then open up the Gemfile edit it to include the 
+proper gems. In particular, we are going to need Devise for 
+authentication and CanCanCan for authorization. Authentication would 
+mean the parts responsible for logging in a user, whereas authorization 
+would be permissions for which types of users (roles) are allowed to do 
+certain actions. These are usually very important for people to define 
+in projects, since you wouldn&#8217;t want a guest to be able to access Admin 
+level functions (such as deleting users).&nbsp;</p>
+
+
+
+<p>The Gemfile should look like this: <a href="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e</a></p>
+<script src="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e.js"></script>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>If
+ you are unfamiliar with gems, you can think of them as additional 
+programs, plugins/extensions, or libraries that the application can use.
+ </p>
+
+
+
+<p>We also need to remove Turbo Links since it can cause  issues with some of the other technologies we are going to use later  on. Remove the &#8220;//= require turbolinks&#8221; line from  app/assets/javascripts/application.js. Remove the two  &#8220;data-turbolinks-track&#8221; =&gt; true hash key/value pairs from your  app/views/layouts/application.html.erb. </p>
+
+
+
+<p>
+The application.html.erb file  should look like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292" target="_blank">https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292﻿</a></p>
+<script src="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292.js"></script>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>The
+ application.html.erb file here determines how your pages should look. 
+In general, all your pages in this application will use the HTML here 
+for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
+depending on the page. </p>
+
+
+
+<p>After this, let&#8217;s run the following to install our database</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install libsqlite3-dev
+sudo apt install sqlite3
+</pre>
+
+
+
+<p>We will change to using Postgres database later</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Sqlite
+ is a lightweight database good for development, but not that great at 
+handling a lot of connections. So we will use Postgresql later on when 
+we move it into production.&nbsp;</p>
+
+
+
+<p>Now that we have saved the new Gemfile, run the following command inside the application&#8217;s directory to install the gems:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">bundle install
+</pre>
+
+
+
+<p>Let&#8217;s generate the files for React so we can use them later on:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails g react:install
+</pre>
+
+
+
+<p>After everything has been installs, run the 
+following to start the server, then visit localhost:3000 to see if the 
+application started successfully.&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails s
+</pre>
+
+
+
+<p>If all is successful so far, it should say Yay! you&#8217;re on Rails!</p>
+
+
+
+<p>To stop the application server from running, press <strong>CTRL+ C</strong> at the terminal to stop the process.&nbsp;</p>
+
+
+
+<p>Now that the application is up and running, we can start making a basic API.</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

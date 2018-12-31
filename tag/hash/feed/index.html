@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>hash &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/hash/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>7. Encryption</title>
+		<link>https://dev.mediocreinventions.com/encryption/</link>
+		<pubDate>Sat, 29 Dec 2018 08:58:49 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[asymmetric encryption]]></category>
+		<category><![CDATA[encryption]]></category>
+		<category><![CDATA[hash]]></category>
+		<category><![CDATA[hashing]]></category>
+		<category><![CDATA[symmetric encryption]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=481</guid>
+		<description><![CDATA[<p>Encrypting Encrypting is the process of turning data into something that is not understandable. Decrypting is the process of turning this jumbled information back into something readable. This is useful for hiding sensitive information such as credit card numbers and contact information. You can encrypt information in databases so that only authorized people will know [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/encryption/">7. Encryption</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Encrypting</h2>
+
+
+
+<p>Encrypting
+ is the process of turning data into something that is not 
+understandable. Decrypting is the process of turning this jumbled 
+information back into something readable. This is useful for hiding 
+sensitive information such as credit card numbers and contact 
+information. You can encrypt information in databases so that only 
+authorized people will know how to decrypt it and view the information. </p>
+
+
+
+<p>You
+ can also encrypt data that is being transported through a network (such
+ as submitting payment information through an ecommerce website). On 
+websites, data being transferred to the server is encrypted if you see 
+https insteald of http in the URL. We will go over this and how to 
+encrypt your website like this later on in the tutorial.&nbsp;</p>
+
+
+
+<p>When information is encrypted, there is usually a key that only authorized people know of that can decrypt this information. Two main types of encrypting information are Symmetric encryption and Asymmetric Encryption. </p>
+
+
+
+<h3>Symmetric encryption:&nbsp;</h3>
+
+
+
+<p>&nbsp;In this method, the information being encrypted is encrypted and decrypted with the same key.&nbsp;</p>
+
+
+
+<p>A very simplified illustration of encryption is below</p>
+
+
+
+<p><strong>Message</strong>: </p>
+
+
+
+<p>  I like apples</p>
+
+
+
+<p><strong>Encryption Algorithm: </strong></p>
+
+
+
+<p>Makes every letter increase by 1</p>
+
+
+
+<p><strong>Encrypted Message: </strong></p>
+
+
+
+<p>  j mjlf bqqmft</p>
+
+
+
+<p>Send encrypted message</p>
+
+
+
+<p>Receive encrypted message</p>
+
+
+
+<p>Decrypt by moving every letter back by 1 to get message.&nbsp;</p>
+
+
+
+<h3>Asymmetric encryption:&nbsp;</h3>
+
+
+
+<p> In this method, there are two keys involved, 1 for encrypting the information (public key) and one for decrypting the information (private key). </p>
+
+
+
+<p>A friendly introduction to asymmetric encryption can be found here: <br><a href="https://hackernoon.com/asymmetric-encryption-explained-using-chocolate-boxes-5a329ea6813e">https://hackernoon.com/asymmetric-encryption-explained-using-chocolate-boxes-5a329ea6813e</a><br></p>
+
+
+
+<h2>Hashing</h2>
+
+
+
+<p>Hashing
+ also turns information into something not understandable. However, the 
+algorithms are designed so that it is supposed to be impossible to 
+decrypt back into something meaningful. This is a good way to hide 
+information if there is need to decrypt the information. For example, 
+some media sharing websites may have URLs that look like <a href="http://www.website.com/video/3yKoHgjtyenCOIRayhdtyj" target="_blank" rel="noreferrer noopener">www.website.com/video/3yKoHgjtyenCOIRayhdtyj</a>.
+ That text at the end could be a hashed version of a very long title. In
+ this case, visiting the URL with jumbled up text will lead to the 
+correct video, so there is no need to decrypt it into something 
+meaningful.&nbsp;</p>
+
+
+
+<p>Encryption should be used when you have a need to 
+read the original information. For example, sending emails with 
+confidential information. People will need to be able to read this 
+information, so a way to decrypt the message is necessary.&nbsp;</p>
+
+
+
+<p>Hashing
+ is more secure and should be used if it is not necessary to decrypt the
+ information. For example, passwords usually do not need to be 
+decrypted. When you create an account for most websites, the password 
+you enter does not get stored in the database. The password is hashed, 
+and then the resulting hash is stored in the database. So when you 
+login, it is comparing the hashed value of what you entered with what is
+ stored in the database. This is why &#8220;Forgot my password&#8221; functions do 
+not send you your password, because they do not actually keep the 
+password in a readable format.&nbsp;</p>
+
+
+
+<p><strong>The main points in this article are:&nbsp;</strong></p>
+
+
+
+<ul><li>Encryption
+ prevents unauthorized people from seeing information, and can be 
+decrypted by authorized people to view the information.&nbsp;</li><li>Hashing messes up information so that it cannot be decrypted into anything meaningful. </li></ul>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/encryption/">7. Encryption</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

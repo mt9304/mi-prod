@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Authentication &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/authentication/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>3. Rails Authentication</title>
+		<link>https://dev.mediocreinventions.com/rails-authentication/</link>
+		<pubDate>Sun, 30 Dec 2018 03:06:25 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails Authentication/Authorization]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[Authentication]]></category>
+		<category><![CDATA[devise]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=691</guid>
+		<description><![CDATA[<p>Note:A more detailed article on this topic can be found here: https://www.nopio.com/blog/authentication-authorization-rails/ Intro If you have followed through the previous article, then we should now have a basic API for retrieving information about our Books. Since our website now has some purpose, we should add some authentication functions so that users can sign up and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<p><strong>Note:</strong><br>A more detailed article on this topic can be found here: <a href="https://www.nopio.com/blog/authentication-authorization-rails/">https://www.nopio.com/blog/authentication-authorization-rails/</a><br></p>
+
+
+
+<h2>Intro</h2>
+
+
+
+<p>If you have followed through the previous article, then we should now have a basic API for retrieving information about our Books. Since our website now has some purpose, we should add some authentication functions so that users can sign up and log into the site. This can help us track users and implement authorization later on.</p>
+
+
+
+<p>Let&#8217;s generate some components needed for this:</p>
+
+
+
+<pre class="wp-block-preformatted">rails generate devise:install</pre>
+
+
+
+<p>Generate the views for the authentication pages:</p>
+
+
+
+<pre class="wp-block-preformatted">rails g devise:views</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Devise is the gem (plugin/library for rails) that has a bunch of pre-built functions we can use to implement authentication.</p>
+
+
+
+<h2>Users</h2>
+
+
+
+<p>We can now run the follow to generate the User model for our database:</p>
+
+
+
+<pre class="wp-block-preformatted">rails generate devise User<br>
+rake db:migrate</pre>
+
+
+
+<p>You should now have a basic login screen for the website! To check, restart your rails server and visit http://localhost:3000/users/sign_in</p>
+
+
+
+<p>Click on Sign up and create a user</p>
+
+
+
+<p>After you create the user, you should be automatically signed in. Or you can sign in through /users/sign_in (if you are already signed in, it will just take you to the home page). Now we just need a way to let users know that they are signed in.</p>
+
+
+
+<p>Let&#8217;s add a navigation bar at the top of the page for User related options like signing in and signing out. Go to /app/views/layous/ and open up your application&#8217;s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
+
+
+
+<script src="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b.js"></script>
+
+
+
+<p>Now, we can add some CSS to style the page just a bit. Open up /app/assets/stylesheets/ and rename the application.css to application.scss. Then edit the contents in there to include bootstrap and add some styling: <a href="https://gist.github.com/mt9304/e9087f054ee8fb773f0180caeb75ab5c">https://gist.github.com/mt9304/e9087f054ee8fb773f0180caeb75ab5c</a></p>
+
+
+
+<script src="https://gist.github.com/mt9304/e9087f054ee8fb773f0180caeb75ab5c.js"></script>
+
+
+
+<p><strong>Notes:</strong></p>
+
+
+
+<p>The @import bootstrap line lets us use a very popular css library. More information on Bootstrap here: http://getbootstrap.com/</p>
+
+
+
+<p>It essentially has a bunch of prebuild styles that we can use to make a website so that we don&#8217;t have to style it from scratch.</p>
+
+
+
+<p>When you start the server and look at the website, you should now see a navigation bar at the home with a Dropdown menu for Users at the top right. Right now, clicking it won&#8217;t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap&#8217;s JavaScript library to help us handle dropdown menues.</p>
+
+
+
+<p>Go to /app/assets/javascripts/application.js and add //= require bootstrap-sprockets to the very bottom of the page and save. Now when you click on the User button at the top right, you should be able to see the menu drop down and show actions such as Login and Logout. These buttons should work already since the Devise gem has taken care of the authentication functions for us, but since we want users to know when they are logged in, we will make some changes to this menu.</p>
+
+
+
+<p>Let&#8217;s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let&#8217;s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section (around lined 32):</p>
+
+
+
+<pre class="wp-block-preformatted">&lt;% if user_signed_in? %&gt;<br>   &lt;%= link_to "Edit profile", edit_user_registration_path %&gt;<br>&lt;% else %&gt;<br>   &lt;%= link_to "Sign up", new_user_registration_path %&gt;<br>   &lt;%= link_to "Login", new_user_session_path %&gt;<br>&lt;% end %&gt;<br>&lt;% if user_signed_in? %&gt;<br>   &lt;%= link_to "Logout", destroy_user_session_path, method: :delete %&gt;<br>&lt;% end %&gt;</pre>
+
+
+
+<p>Your application.html.erb file should now look something like this: <a href="https://gist.github.com/mt9304/3a87440097d5de9e16ef40c704270528">https://gist.github.com/mt9304/3a87440097d5de9e16ef40c704270528</a></p>
+
+
+
+<script src="https://gist.github.com/mt9304/3a87440097d5de9e16ef40c704270528.js"></script>
+
+
+
+<p><strong>Notes:</strong></p>
+
+
+
+<p>In Ruby on Rails, the .html part of the file name shows it is an HTML file, and the erb extension at the end let&#8217;s the server know that this can accept Ruby code as well. The parts in between the angle bracket/percentage signs (&lt;% some_code %&gt;) are to indicate Ruby code, which is usually programming logic that HTML files would otherwise not be able to use. The brackets without &#8216;=&#8217; signs like &lt;% some_code %&gt; are indicators of Ruby code that do not need to render anything, while the &#8216;=&#8217; signs like &lt;%= some_code %&gt; indicates that something should be rendered. In this case, we can see that the &#8220;if else&#8221; logic of checking a user&#8217;s authentication does not need rendering, while the actual links to the Login/Logout functions need rendering, since they are actual buttons on the page.</p>
+
+
+
+The code that says something like link_to and new_user_session_path are just pre-built functions to make it more convenient (it also looks more readable, since it spells out exactly what it does). The Login line of code &lt;%= link_to &#8220;Login&#8221;, new_user_session_path %&gt; is essentially just <a href="/users/sign_in">Login</a> and you can try replacing this just to see for yourself.
+
+
+
+<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: 
+&lt;% if user_signed_in? %&gt;
+   
+Yay, you are logged in!&lt;% end %&gt;
+</p>
+
+
+
+<p>This is how the login page should look like now:</p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/image.png" alt="" class="wp-image-872" srcset="https://dev.mediocreinventions.com/wp-content/uploads/image.png 1014w, https://dev.mediocreinventions.com/wp-content/uploads/image-300x130.png 300w, https://dev.mediocreinventions.com/wp-content/uploads/image-768x334.png 768w" sizes="(max-width: 1014px) 100vw, 1014px" /></figure>
+
+
+
+<p>In the next article, we will go through Authorization, which means giving different users certain roles (such as Admin or Client) and allowing each of these roles to see different content. </p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

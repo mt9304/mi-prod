@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>5. Databases - Mediocre Inventions</title><meta name="description" content="This article goes over the basics of how most modern web applications store data. Some of the topics covered include SQL, NoSQL, and JSON."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="5. Databases - Mediocre Inventions"><meta property="og:description" content="This article goes over the basics of how most modern web applications store data. Some of the topics covered include SQL, NoSQL, and JSON."><meta property="og:url" content="https://dev.mediocreinventions.com/databases/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="databases"><meta property="article:tag" content="json"><meta property="article:tag" content="nosql"><meta property="article:tag" content="sql"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T05:15:34+00:00"><meta property="article:modified_time" content="2018-12-29T08:45:56+00:00"><meta property="og:updated_time" content="2018-12-29T08:45:56+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article goes over the basics of how most modern web applications store data. Some of the topics covered include SQL, NoSQL, and JSON."><meta name="twitter:title" content="5. Databases - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script></head><body class="post-template-default single single-post postid-271 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://dev.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-271" class="single-content post-text scroll post-271 post type-post status-publish format-standard hentry category-web-basics tag-databases tag-json tag-nosql tag-sql"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>5. Databases</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://dev.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://dev.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will go over some of the most common ways of storing and retrieving data.&nbsp;</p>
+
+
+
+<p>Web
+ applications typically use databases to manage their data. There are 2 
+main types of databases: SQL based databases and NoSQL databases.&nbsp;</p>
+
+
+
+<h2>SQL Databases</h2>
+
+
+
+<p>SQL
+ databases are relational databses. This means that an entry in a row 
+can be related to another entry somewhere else in the database. For 
+example, if you have a database that stores Books and Authors such as 
+below:&nbsp;</p>
+
+
+
+<p><strong>Books</strong></p>
+
+
+
+<p>_______________________<br>|___Id_|__Title___|_Author_|<br>|___0__|Aligators_|__Bob__|<br>|___1__|Squirrels_|__Joe__|<br>|___2__|Pumpkins|__Bob__|<br>|___3__|Eggplants|__Susie_|<br></p>
+
+
+
+<p><strong>Authors</strong></p>
+
+
+
+<p>_______________________<br>|__Id__|__Name__|_Age___|<br>|___0__|___Bob__|___23__|<br>|___1__|___Joe__|___27__|<br>|___2__|_Susie__|___29__|<br></p>
+
+
+
+<p>Books
+ with Ids 0 and 2 can be enforced to belong to the Author with an Id of 
+0. SQL databases enforce this relationship so that if there is a 
+conflict with these relationships, then it will let you know (in more 
+cases, it won&rsquo;t let oyu make the change or it will throw and error).&nbsp;</p>
+
+
+
+<p>To learn more about SQL, this is a good interactive site for starting out:&nbsp;</p>
+
+
+<p><a href="https://sqlbolt.com/">https://sqlbolt.com/</a></p>
+
+
+<p>Examples of SQL relational databases: Postgresql, MySQL.&nbsp;</p>
+
+
+
+<p><strong>Notes:&nbsp;</strong></p>
+
+
+
+<p>&ndash; Databases can have tables. Tables can have Rows and Columns for storing information.&nbsp;</p>
+
+
+
+<p>&ndash;
+ SQL itself stands for Structured Query Language. It is a language that 
+is used to query databases to retrieve and store information.&nbsp;</p>
+
+
+
+<h2>NoSQL Databases</h2>
+
+
+
+<p>NoSQL
+ databases can also be queries with SQL. However, these databases do not
+ enforce the relationships between the entries. So in theory, SQL 
+dabases would be more stable, since it has these rules to keep the 
+object relationships in check. However, having these rules enforced 
+means more overhead in performance, so NoSQL databases will be faster in
+ some areas.&nbsp;</p>
+
+
+
+<p>For more details on SQL vs NoSQL differences, see this article:&nbsp;</p>
+
+
+<p><a href="https://www.thegeekstuff.com/2014/01/sql-vs-nosql-db/?utm_source=tuicool">https://www.thegeekstuff.com/2014/01/sql-vs-nosql-db/?utm_source=tuicool</a></p>
+
+
+<p>Examples of NoSQL databases: <strong>MongoDB</strong>, <strong>Couchbase</strong></p>
+
+
+
+<h2>JSON</h2>
+
+
+
+<p>JSON
+ is another way to manage data. It is a data structure stored in text 
+format that a lot of languages/tools are able to interpret. In web 
+development, this is usually used to communicate data between servers. 
+When requesting information from a server, the server can go into the 
+data base to retrieve the data, then return the results to the requester
+ in JSON format.&nbsp;</p>
+
+
+
+<p>A JSON object looks like this:&nbsp;</p>
+
+
+
+<p>{title: &ldquo;Aligators&rdquo;, Author: &ldquo;Bob&rdquo;};</p>
+
+
+
+<p>For more information on JSON, refer to this article:&nbsp;</p>
+
+
+<p><a href="https://www.w3schools.com/js/js_json_intro.asp">https://www.w3schools.com/js/js_json_intro.asp</a></p>
+
+
+<p></p>
+<div class="tags-links bfade">Tagged: <a href="https://dev.mediocreinventions.com/tag/databases/" rel="tag">databases</a>, <a href="https://dev.mediocreinventions.com/tag/json/" rel="tag">json</a>, <a href="https://dev.mediocreinventions.com/tag/nosql/" rel="tag">nosql</a>, <a href="https://dev.mediocreinventions.com/tag/sql/" rel="tag">sql</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://dev.mediocreinventions.com/tools/" rel="prev">4. Tools</a></div><div class="nav-next"><a href="https://dev.mediocreinventions.com/web-servers/" rel="next">6. Web Servers</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://dev.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://dev.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://dev.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

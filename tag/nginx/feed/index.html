@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nginx &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/nginx/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>6. Web Servers</title>
+		<link>https://dev.mediocreinventions.com/web-servers/</link>
+		<pubDate>Sat, 29 Dec 2018 08:48:31 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[http]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[servers]]></category>
+		<category><![CDATA[web servers]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=431</guid>
+		<description><![CDATA[<p>Intro Web servers help your web application serve information to clients. You can run an application with Rails with just its default application server, but it will likely not do too well in a production environment with lots of users trying to use the application at the same time.&#160; Servers There are three main web [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Web
+ servers help your web application serve information to clients. You can
+ run an application with Rails with just its default application server,
+ but it will likely not do too well in a production environment with 
+lots of users trying to use the application at the same time.&nbsp;</p>
+
+
+
+<h2>Servers</h2>
+
+
+
+<p>There
+ are three main web servers used for web applications today: Apache HTTP
+ Server, Nginx, and IIS. Setting up servers like Nginx can also allow 
+you to scale better when your application gets more users. For example, 
+it can act as a load balancer that helps distribute traffic to different
+ servers when one server becomes too overloaded with work.&nbsp;</p>
+
+
+
+<p><strong>Brief note on scaling:&nbsp;</strong></p>
+
+
+
+<p>There
+ are two main types of scaling, scaling vertically and scaling 
+horizontally. Scaling vertically in this context means adding more power
+ to your machines (for example, more ram, cpu cores, etc). Scaling 
+horizontally means adding more machine to help distribute the load. 
+Scaling vertically can be very expensive at a certain point and may not 
+yield as much performance/dollar when compared to horizontal scaling.&nbsp;</p>
+
+
+
+<p>Web
+ servers can also help with configuring things such as SSL (the 
+certificate that secures your website and gives it the HTTPS instead of 
+HTTP in the URL).&nbsp;</p>
+
+
+
+<p>This article outlines in more detail on the difference between servers:&nbsp;</p>
+
+
+<p><a href="https://lunarpages.com/apache-vs-iis-which-web-server-should-you-choose/">https://lunarpages.com/apache-vs-iis-which-web-server-should-you-choose/</a></p>
+
+
+<p>I
+ would also recommend reading more about load balancer and reverse 
+proxies since these topics come up pretty often when configuring 
+production environments. You likely will not need to know about these 
+when starting off, but it is good to know that they exist:&nbsp;</p>
+
+
+<p><a href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a></p>
+
+<p><a href="https://www.nginx.com/resources/glossary/reverse-proxy-server/">https://www.nginx.com/resources/glossary/reverse-proxy-server/</a></p>
+
+
+<p>We will go over how to use Nginx with Ruby On Rails in the other articles so that you know how to monitor your application. </p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

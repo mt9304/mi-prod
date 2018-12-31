@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>testing &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/testing/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>3. Testing</title>
+		<link>https://dev.mediocreinventions.com/testing/</link>
+		<pubDate>Sat, 29 Dec 2018 04:53:38 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[testing]]></category>
+		<category><![CDATA[unit tests]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=151</guid>
+		<description><![CDATA[<p>Testing is an important part of programming that ensures code quality and makes life easier in the long run. Intro If you are a complete beginner and have next to zero programming knowledge, then this section might not make as much sense. It should make more sense after making a few small projects and understanding [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/testing/">3. Testing</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<p>Testing is an important part of programming that ensures code quality and makes life easier in the long run. </p>
+
+
+
+<h2><strong>Intro</strong></h2>
+
+
+
+<p>If
+ you are a complete beginner and have next to zero programming 
+knowledge, then this section might not make as much sense. It should 
+make more sense after making a few small projects and understanding how 
+coding works in general. We won&#8217;t actually go deep into testing in these
+ series of articles, so you can skim through it if you want, but this is
+ definitely an important topic to know about somewhere down the line.&nbsp;</p>
+
+
+
+<p>In
+ this article, we will briefly discuss the importance of testing code. 
+When writing code, it is good practice to write tests for the code as 
+well. This way, if you make any changes to the application in the 
+future, you can run the tests to see if they still work as intended 
+without having to manually test every function again to see if they were
+ affected. We will go through a few testing topics below just to get an 
+understanding of it. </p>
+
+
+
+<h2><strong>Unit Tests</strong></h2>
+
+
+
+<p>Unit tests are essentially pieces of code that test other code. For example, if we have the below function in Java:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">int x = 1;
+
+int addYToX(int y)&nbsp;
+{
+&nbsp;return x + y;
+}
+</pre>
+
+
+
+<p>A test for this function could look like this:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">public void testAddYToX()&nbsp;
+{
+&nbsp;&nbsp;int result = addYToX(2);
+&nbsp;&nbsp;assertEquals(3, result);
+}
+</pre>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>&#8211; You can ignore the 
+&#8220;public void&#8221; part for now if you are not familiar with it. The main 
+point of the first function is to take a variable &#8216;y&#8217; and add it to x, 
+which has an initial value of 1. The test below then tests it by giving 
+the addYtoX a value of 2. The &#8220;assertEquals&#8221; function then checks to 
+verify if adding 2 to x that the function will return 3.&nbsp;</p>
+
+
+
+<h3><strong>Test Driven development (TDD)</strong></h3>
+
+
+
+<p>This
+ is a style of development that is very popular for companies today. TDD
+ means that you are writing your tests first before writing the code. 
+This makes it more likely for developers to cover more of their code 
+with tests.&nbsp;</p>
+
+
+
+<p>In some cases, writing tests can also help a person 
+write better code. This is because, writing testable code usually 
+involves breaking a function down into smaller/testable pieces, which 
+prevents functions from getting too convoluted. Making functions 
+simpler, more readable, and shorter is usually a good way to prevent 
+headaches in the future.&nbsp;</p>
+
+
+
+<p>Additionally, writing tests also help 
+you think about covering edge cases and how the functions should handle 
+unexpected input. This can make the code more robust and less likely to 
+error out with unusual inputs.&nbsp;</p>
+
+
+
+<h3><strong>Behaviour Driven Development (BDD)</strong></h3>
+
+
+
+<p>Behaviour
+ Driven Development just is a way to write or implement the tests. In 
+the above example, we tested whether adding 2 to x will equal 3 if x 
+starts at 1. This may work if x is always expect to be 1, but if x 
+starts at 2, then we would have to rewrite the test to to check if 
+adding 2 to x equals 4.&nbsp;</p>
+
+
+
+<p>To help prevent the need of rewriting 
+this, we can test the behaviour the function instead of hard-coding 
+things in. In this case, the behaviour of the function &#8220;addYToX&#8221; is to 
+add the variable y to the variable x, so we can specify that in the test
+ instead:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">public void testAddYToX()&nbsp;
+{
+&nbsp;&nbsp;int result = addYToX(2);
+&nbsp;&nbsp;assertEquals(x + y, result);
+}
+</pre>
+
+
+
+<p>This way instead of changing and specifying the 
+expected result each time, the test is saying that the expected result 
+should be x + y.&nbsp;</p>
+
+
+
+<p>For more details on testing, please feel free to refer to this article:&nbsp;</p>
+
+
+<p><a href="http://softwaretestingfundamentals.com/unit-testing/" target="_blank" rel="noreferrer noopener">http://softwaretestingfundamentals.com/unit-testing/</a></p>
+
+
+<p>Most
+ programming languages have a unit testing framework to help you get 
+started with implementing tests for the project. You can learn more 
+about the basics of testing from here:&nbsp;</p>
+
+
+
+<p>For Java: <a href="https://www.tutorialspoint.com/junit/" target="_blank" rel="noreferrer noopener">https://www.tutorialspoint.com/junit/</a></p>
+
+
+
+<p>For Ruby: <a href="https://www.tutorialspoint.com/rspec/" target="_blank" rel="noreferrer noopener">https://www.tutorialspoint.com/rspec/</a></p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/testing/">3. Testing</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Web Application Basics &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/category/web-basics/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>7. Encryption</title>
+		<link>https://dev.mediocreinventions.com/encryption/</link>
+		<pubDate>Sat, 29 Dec 2018 08:58:49 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[asymmetric encryption]]></category>
+		<category><![CDATA[encryption]]></category>
+		<category><![CDATA[hash]]></category>
+		<category><![CDATA[hashing]]></category>
+		<category><![CDATA[symmetric encryption]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=481</guid>
+		<description><![CDATA[<p>Encrypting Encrypting is the process of turning data into something that is not understandable. Decrypting is the process of turning this jumbled information back into something readable. This is useful for hiding sensitive information such as credit card numbers and contact information. You can encrypt information in databases so that only authorized people will know [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/encryption/">7. Encryption</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Encrypting</h2>
+
+
+
+<p>Encrypting
+ is the process of turning data into something that is not 
+understandable. Decrypting is the process of turning this jumbled 
+information back into something readable. This is useful for hiding 
+sensitive information such as credit card numbers and contact 
+information. You can encrypt information in databases so that only 
+authorized people will know how to decrypt it and view the information. </p>
+
+
+
+<p>You
+ can also encrypt data that is being transported through a network (such
+ as submitting payment information through an ecommerce website). On 
+websites, data being transferred to the server is encrypted if you see 
+https insteald of http in the URL. We will go over this and how to 
+encrypt your website like this later on in the tutorial.&nbsp;</p>
+
+
+
+<p>When information is encrypted, there is usually a key that only authorized people know of that can decrypt this information. Two main types of encrypting information are Symmetric encryption and Asymmetric Encryption. </p>
+
+
+
+<h3>Symmetric encryption:&nbsp;</h3>
+
+
+
+<p>&nbsp;In this method, the information being encrypted is encrypted and decrypted with the same key.&nbsp;</p>
+
+
+
+<p>A very simplified illustration of encryption is below</p>
+
+
+
+<p><strong>Message</strong>: </p>
+
+
+
+<p>  I like apples</p>
+
+
+
+<p><strong>Encryption Algorithm: </strong></p>
+
+
+
+<p>Makes every letter increase by 1</p>
+
+
+
+<p><strong>Encrypted Message: </strong></p>
+
+
+
+<p>  j mjlf bqqmft</p>
+
+
+
+<p>Send encrypted message</p>
+
+
+
+<p>Receive encrypted message</p>
+
+
+
+<p>Decrypt by moving every letter back by 1 to get message.&nbsp;</p>
+
+
+
+<h3>Asymmetric encryption:&nbsp;</h3>
+
+
+
+<p> In this method, there are two keys involved, 1 for encrypting the information (public key) and one for decrypting the information (private key). </p>
+
+
+
+<p>A friendly introduction to asymmetric encryption can be found here: <br><a href="https://hackernoon.com/asymmetric-encryption-explained-using-chocolate-boxes-5a329ea6813e">https://hackernoon.com/asymmetric-encryption-explained-using-chocolate-boxes-5a329ea6813e</a><br></p>
+
+
+
+<h2>Hashing</h2>
+
+
+
+<p>Hashing
+ also turns information into something not understandable. However, the 
+algorithms are designed so that it is supposed to be impossible to 
+decrypt back into something meaningful. This is a good way to hide 
+information if there is need to decrypt the information. For example, 
+some media sharing websites may have URLs that look like <a href="http://www.website.com/video/3yKoHgjtyenCOIRayhdtyj" target="_blank" rel="noreferrer noopener">www.website.com/video/3yKoHgjtyenCOIRayhdtyj</a>.
+ That text at the end could be a hashed version of a very long title. In
+ this case, visiting the URL with jumbled up text will lead to the 
+correct video, so there is no need to decrypt it into something 
+meaningful.&nbsp;</p>
+
+
+
+<p>Encryption should be used when you have a need to 
+read the original information. For example, sending emails with 
+confidential information. People will need to be able to read this 
+information, so a way to decrypt the message is necessary.&nbsp;</p>
+
+
+
+<p>Hashing
+ is more secure and should be used if it is not necessary to decrypt the
+ information. For example, passwords usually do not need to be 
+decrypted. When you create an account for most websites, the password 
+you enter does not get stored in the database. The password is hashed, 
+and then the resulting hash is stored in the database. So when you 
+login, it is comparing the hashed value of what you entered with what is
+ stored in the database. This is why &#8220;Forgot my password&#8221; functions do 
+not send you your password, because they do not actually keep the 
+password in a readable format.&nbsp;</p>
+
+
+
+<p><strong>The main points in this article are:&nbsp;</strong></p>
+
+
+
+<ul><li>Encryption
+ prevents unauthorized people from seeing information, and can be 
+decrypted by authorized people to view the information.&nbsp;</li><li>Hashing messes up information so that it cannot be decrypted into anything meaningful. </li></ul>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/encryption/">7. Encryption</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>6. Web Servers</title>
+		<link>https://dev.mediocreinventions.com/web-servers/</link>
+		<pubDate>Sat, 29 Dec 2018 08:48:31 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[http]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[servers]]></category>
+		<category><![CDATA[web servers]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=431</guid>
+		<description><![CDATA[<p>Intro Web servers help your web application serve information to clients. You can run an application with Rails with just its default application server, but it will likely not do too well in a production environment with lots of users trying to use the application at the same time.&#160; Servers There are three main web [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Web
+ servers help your web application serve information to clients. You can
+ run an application with Rails with just its default application server,
+ but it will likely not do too well in a production environment with 
+lots of users trying to use the application at the same time.&nbsp;</p>
+
+
+
+<h2>Servers</h2>
+
+
+
+<p>There
+ are three main web servers used for web applications today: Apache HTTP
+ Server, Nginx, and IIS. Setting up servers like Nginx can also allow 
+you to scale better when your application gets more users. For example, 
+it can act as a load balancer that helps distribute traffic to different
+ servers when one server becomes too overloaded with work.&nbsp;</p>
+
+
+
+<p><strong>Brief note on scaling:&nbsp;</strong></p>
+
+
+
+<p>There
+ are two main types of scaling, scaling vertically and scaling 
+horizontally. Scaling vertically in this context means adding more power
+ to your machines (for example, more ram, cpu cores, etc). Scaling 
+horizontally means adding more machine to help distribute the load. 
+Scaling vertically can be very expensive at a certain point and may not 
+yield as much performance/dollar when compared to horizontal scaling.&nbsp;</p>
+
+
+
+<p>Web
+ servers can also help with configuring things such as SSL (the 
+certificate that secures your website and gives it the HTTPS instead of 
+HTTP in the URL).&nbsp;</p>
+
+
+
+<p>This article outlines in more detail on the difference between servers:&nbsp;</p>
+
+
+<p><a href="https://lunarpages.com/apache-vs-iis-which-web-server-should-you-choose/">https://lunarpages.com/apache-vs-iis-which-web-server-should-you-choose/</a></p>
+
+
+<p>I
+ would also recommend reading more about load balancer and reverse 
+proxies since these topics come up pretty often when configuring 
+production environments. You likely will not need to know about these 
+when starting off, but it is good to know that they exist:&nbsp;</p>
+
+
+<p><a href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a></p>
+
+<p><a href="https://www.nginx.com/resources/glossary/reverse-proxy-server/">https://www.nginx.com/resources/glossary/reverse-proxy-server/</a></p>
+
+
+<p>We will go over how to use Nginx with Ruby On Rails in the other articles so that you know how to monitor your application. </p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>5. Databases</title>
+		<link>https://dev.mediocreinventions.com/databases/</link>
+		<pubDate>Sat, 29 Dec 2018 05:15:34 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[databases]]></category>
+		<category><![CDATA[json]]></category>
+		<category><![CDATA[nosql]]></category>
+		<category><![CDATA[sql]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=271</guid>
+		<description><![CDATA[<p>Intro In this article, we will go over some of the most common ways of storing and retrieving data.&#160; Web applications typically use databases to manage their data. There are 2 main types of databases: SQL based databases and NoSQL databases.&#160; SQL Databases SQL databases are relational databses. This means that an entry in a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/databases/">5. Databases</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will go over some of the most common ways of storing and retrieving data.&nbsp;</p>
+
+
+
+<p>Web
+ applications typically use databases to manage their data. There are 2 
+main types of databases: SQL based databases and NoSQL databases.&nbsp;</p>
+
+
+
+<h2>SQL Databases</h2>
+
+
+
+<p>SQL
+ databases are relational databses. This means that an entry in a row 
+can be related to another entry somewhere else in the database. For 
+example, if you have a database that stores Books and Authors such as 
+below:&nbsp;</p>
+
+
+
+<p><strong>Books</strong></p>
+
+
+
+<p>_______________________<br>|___Id_|__Title___|_Author_|<br>|___0__|Aligators_|__Bob__|<br>|___1__|Squirrels_|__Joe__|<br>|___2__|Pumpkins|__Bob__|<br>|___3__|Eggplants|__Susie_|<br></p>
+
+
+
+<p><strong>Authors</strong></p>
+
+
+
+<p>_______________________<br>|__Id__|__Name__|_Age___|<br>|___0__|___Bob__|___23__|<br>|___1__|___Joe__|___27__|<br>|___2__|_Susie__|___29__|<br></p>
+
+
+
+<p>Books
+ with Ids 0 and 2 can be enforced to belong to the Author with an Id of 
+0. SQL databases enforce this relationship so that if there is a 
+conflict with these relationships, then it will let you know (in more 
+cases, it won&#8217;t let oyu make the change or it will throw and error).&nbsp;</p>
+
+
+
+<p>To learn more about SQL, this is a good interactive site for starting out:&nbsp;</p>
+
+
+<p><a href="https://sqlbolt.com/">https://sqlbolt.com/</a></p>
+
+
+<p>Examples of SQL relational databases: Postgresql, MySQL.&nbsp;</p>
+
+
+
+<p><strong>Notes:&nbsp;</strong></p>
+
+
+
+<p>&#8211; Databases can have tables. Tables can have Rows and Columns for storing information.&nbsp;</p>
+
+
+
+<p>&#8211;
+ SQL itself stands for Structured Query Language. It is a language that 
+is used to query databases to retrieve and store information.&nbsp;</p>
+
+
+
+<h2>NoSQL Databases</h2>
+
+
+
+<p>NoSQL
+ databases can also be queries with SQL. However, these databases do not
+ enforce the relationships between the entries. So in theory, SQL 
+dabases would be more stable, since it has these rules to keep the 
+object relationships in check. However, having these rules enforced 
+means more overhead in performance, so NoSQL databases will be faster in
+ some areas.&nbsp;</p>
+
+
+
+<p>For more details on SQL vs NoSQL differences, see this article:&nbsp;</p>
+
+
+<p><a href="https://www.thegeekstuff.com/2014/01/sql-vs-nosql-db/?utm_source=tuicool">https://www.thegeekstuff.com/2014/01/sql-vs-nosql-db/?utm_source=tuicool</a></p>
+
+
+<p>Examples of NoSQL databases: <strong>MongoDB</strong>, <strong>Couchbase</strong></p>
+
+
+
+<h2>JSON</h2>
+
+
+
+<p>JSON
+ is another way to manage data. It is a data structure stored in text 
+format that a lot of languages/tools are able to interpret. In web 
+development, this is usually used to communicate data between servers. 
+When requesting information from a server, the server can go into the 
+data base to retrieve the data, then return the results to the requester
+ in JSON format.&nbsp;</p>
+
+
+
+<p>A JSON object looks like this:&nbsp;</p>
+
+
+
+<p>{title: &#8220;Aligators&#8221;, Author: &#8220;Bob&#8221;};</p>
+
+
+
+<p>For more information on JSON, refer to this article:&nbsp;</p>
+
+
+<p><a href="https://www.w3schools.com/js/js_json_intro.asp">https://www.w3schools.com/js/js_json_intro.asp</a></p>
+
+
+<p></p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/databases/">5. Databases</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>4. Tools</title>
+		<link>https://dev.mediocreinventions.com/tools/</link>
+		<pubDate>Sat, 29 Dec 2018 05:13:43 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[tools]]></category>
+		<category><![CDATA[web applications]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=251</guid>
+		<description><![CDATA[<p>Intro This article will go through some helpful tools that are used in web development. The tools/software in this section are what we will be using in this tutorial. Command Line We will be using the operating system Ubuntu 18.04 to create the project. You can open up the command line by pressing ctrl + [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/tools/">4. Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>This
+ article will go through some helpful tools that are used in web 
+development. The tools/software in this section are what we will be 
+using in this tutorial. </p>
+
+
+
+<h3>Command Line</h3>
+
+
+
+<p>We
+ will be using the operating system Ubuntu 18.04 to create the project. 
+You can open up the command line by pressing ctrl + alt + t. This is 
+where you issue commands to the computer to do things. You can search 
+online for interactive linux tutorials to learn more about using the 
+command line. </p>
+
+
+
+<h3>Virtual Machines</h3>
+
+
+
+<p>Virtual
+ machines can help you run the different operating systems if you do not
+ want to buy a new machine or reformat your computer. It is also good to
+ test out server related functions in an isolated environment later on 
+in the tutorial. If something happens to go wrong and it breaks, your 
+actual machine should still be fine and you can just create another 
+virtual machine to start over. </p>
+
+
+
+<p>These two virtual machines below are ones that I have used to develop on: </p>
+
+
+
+<p>VMware: Pretty straightforward to use and the free version includes all the basic functions needed to start web development. </p>
+
+
+
+<p>VirtualBox:
+ The free version has the ability to create snapshots/backups of the 
+state of the machine, incase anything were to go wrong. </p>
+
+
+
+<h3>Browser developer tools</h3>
+
+
+
+<p>For Chrome, you can access this by pressing F12 or going into &#8230; &gt; More Tools &gt; Developer Tools</p>
+
+
+
+<p>The
+ tabs you will likely use the most for troubleshooting will be Console 
+and Network. The console tab shows errors or important messages when the
+ page is loaded. You can also run JavaScript on it to interact with the 
+page. The network tab can also show some errors and check responses from
+ the server. </p>
+
+
+
+<h3>Integrated Development Environment (IDE) and text editors</h3>
+
+
+
+<p>IDEs
+ can help check the syntax for programming languages. They can also 
+auto-complete certain keywords and generate commonly used functions. 
+Most IDEs out there are very powerful and can help speed up the 
+development process by a lot. However, in this tutorial we will be using
+ normal text editors to build the program. Being too reliant on IDEs for
+ checking errors or auto-generating code might build some bad habbits, 
+so I tend to use text editors where possible. They are usually more 
+light-weight so you can start programming on any old machine pretty 
+fast. It&#8217;s also helpful to know how to use editors like Vim when editing
+ on a server without a graphic interface. </p>
+
+
+
+<p>Here are 
+some good text editors to use (there are a lot of them out there, but 
+these are the one&#8217;s I have used and liked so far): </p>
+
+
+
+<p>&#8211; Sublime Text</p>
+
+
+
+<p>&#8211; Atom</p>
+
+
+
+<p>&#8211; Vim</p>
+
+
+
+<p>&#8211; Nano</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Vim and Nano are text editors used in the command line. You can install it by typing in the terminal</p>
+
+
+
+<p>sudo apt install vim</p>
+
+
+
+<p>Then open up a new file by typing</p>
+
+
+
+<p>vim yourfile.txt</p>
+
+
+
+<p>Once
+ you are in text editing mode, press esc, then a to start inserting 
+words. If you want to quit without saving, press esc then type :q! and 
+press enter. If you want to exit and save, press esc then type :wq</p>
+
+
+
+<p>If
+ you get trapped in Vim and can&#8217;t figure out how to exit, you can 
+restart your machine and start with using Nano instead. The commands are
+ right on the screen so it&#8217;s more straightforward for beginners. </p>
+
+
+
+<h3>Version Control: Git</h3>
+
+
+
+<p>You can install Git by typing in sudo apt install git</p>
+
+
+
+<p>Git
+ is a tool that helps keep track of changes you make to your code. It 
+essentially helps you save drafts of your code, so that if you mess up, 
+you can revert back to an old working version of the code. Before 
+learning about Git, I used to copy my entire source code folder to make a
+ backup, and name it something like code_backup_20180910 to keep track 
+of the different version of my program. This can take a while and get 
+pretty messy. With Git, whenever you get to a checkpoint in the project 
+where you are happy with saving (maybe you finished a feature), you can 
+just type git add . then git commit -m &#8220;Enter here a short description 
+of the draft or changes that you made&#8221; then git push</p>
+
+
+
+<p>Those three 
+commands above will be the majority of commands that you will use in the
+ beginning. After that, you will eventually learn how to put code into 
+different branches and organize your progress/features for team 
+development. I will leave it up to you to Google what each of those 
+commands actually do. </p>
+
+
+
+<p>Other useful tools that you may want to look into: </p>
+
+
+
+<p>Fiddler is similar to the Network tab for the browser developer tools, but can show things in more detail. </p>
+
+
+
+<p>Postman helps test out RESTful functions. More on RESTful topics later. </p>
+
+
+
+<p>Jing is a great free program for capturing screenshots. Screenshots can help a lot when clarifying things over the internet. </p>
+
+
+
+<p>PGAdmin
+ can help view Postgresql databases in a graphical interface. Most 
+databases have a program that can help view things in a GUI. </p>
+
+
+
+<p>You
+ may not need the below tools for personal development, but most tech 
+companies nowadays seem to use these so it is good to know they exist so
+ you can read up on them: </p>
+
+
+
+<p><strong>JIRA and Redmine </strong>&#8211;
+ Helps keep track of tasks, bugs, and improvement requests. People can 
+easily log bug reports or see what they need to do for the day. (Redmine
+ is open source and free). </p>
+
+
+
+<p><strong>Splunk </strong>&#8211; Indexes your
+ data and provides search utilities for it. When indexing log files, it 
+can help troubleshoot server issues. (Free)</p>
+
+
+
+<p><strong>Jenkins and Travis C</strong>I
+ &#8211; For continuous integration. Essentially makes sure your application 
+passes its tests whenever someone pushes a changes. (Travis CI is free, 
+Jenkins is free, but need your own server). </p>
+
+
+
+<p><strong>Codecov </strong>&#8211; Helps keep track of how much of the code is covered by tests. (Free)</p>
+
+
+
+<p><strong>BitBucket</strong> &#8211; Version control like Git, but allows for free private repositories. (Free)</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/tools/">4. Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>3. Testing</title>
+		<link>https://dev.mediocreinventions.com/testing/</link>
+		<pubDate>Sat, 29 Dec 2018 04:53:38 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[testing]]></category>
+		<category><![CDATA[unit tests]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=151</guid>
+		<description><![CDATA[<p>Testing is an important part of programming that ensures code quality and makes life easier in the long run. Intro If you are a complete beginner and have next to zero programming knowledge, then this section might not make as much sense. It should make more sense after making a few small projects and understanding [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/testing/">3. Testing</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<p>Testing is an important part of programming that ensures code quality and makes life easier in the long run. </p>
+
+
+
+<h2><strong>Intro</strong></h2>
+
+
+
+<p>If
+ you are a complete beginner and have next to zero programming 
+knowledge, then this section might not make as much sense. It should 
+make more sense after making a few small projects and understanding how 
+coding works in general. We won&#8217;t actually go deep into testing in these
+ series of articles, so you can skim through it if you want, but this is
+ definitely an important topic to know about somewhere down the line.&nbsp;</p>
+
+
+
+<p>In
+ this article, we will briefly discuss the importance of testing code. 
+When writing code, it is good practice to write tests for the code as 
+well. This way, if you make any changes to the application in the 
+future, you can run the tests to see if they still work as intended 
+without having to manually test every function again to see if they were
+ affected. We will go through a few testing topics below just to get an 
+understanding of it. </p>
+
+
+
+<h2><strong>Unit Tests</strong></h2>
+
+
+
+<p>Unit tests are essentially pieces of code that test other code. For example, if we have the below function in Java:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">int x = 1;
+
+int addYToX(int y)&nbsp;
+{
+&nbsp;return x + y;
+}
+</pre>
+
+
+
+<p>A test for this function could look like this:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">public void testAddYToX()&nbsp;
+{
+&nbsp;&nbsp;int result = addYToX(2);
+&nbsp;&nbsp;assertEquals(3, result);
+}
+</pre>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>&#8211; You can ignore the 
+&#8220;public void&#8221; part for now if you are not familiar with it. The main 
+point of the first function is to take a variable &#8216;y&#8217; and add it to x, 
+which has an initial value of 1. The test below then tests it by giving 
+the addYtoX a value of 2. The &#8220;assertEquals&#8221; function then checks to 
+verify if adding 2 to x that the function will return 3.&nbsp;</p>
+
+
+
+<h3><strong>Test Driven development (TDD)</strong></h3>
+
+
+
+<p>This
+ is a style of development that is very popular for companies today. TDD
+ means that you are writing your tests first before writing the code. 
+This makes it more likely for developers to cover more of their code 
+with tests.&nbsp;</p>
+
+
+
+<p>In some cases, writing tests can also help a person 
+write better code. This is because, writing testable code usually 
+involves breaking a function down into smaller/testable pieces, which 
+prevents functions from getting too convoluted. Making functions 
+simpler, more readable, and shorter is usually a good way to prevent 
+headaches in the future.&nbsp;</p>
+
+
+
+<p>Additionally, writing tests also help 
+you think about covering edge cases and how the functions should handle 
+unexpected input. This can make the code more robust and less likely to 
+error out with unusual inputs.&nbsp;</p>
+
+
+
+<h3><strong>Behaviour Driven Development (BDD)</strong></h3>
+
+
+
+<p>Behaviour
+ Driven Development just is a way to write or implement the tests. In 
+the above example, we tested whether adding 2 to x will equal 3 if x 
+starts at 1. This may work if x is always expect to be 1, but if x 
+starts at 2, then we would have to rewrite the test to to check if 
+adding 2 to x equals 4.&nbsp;</p>
+
+
+
+<p>To help prevent the need of rewriting 
+this, we can test the behaviour the function instead of hard-coding 
+things in. In this case, the behaviour of the function &#8220;addYToX&#8221; is to 
+add the variable y to the variable x, so we can specify that in the test
+ instead:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">public void testAddYToX()&nbsp;
+{
+&nbsp;&nbsp;int result = addYToX(2);
+&nbsp;&nbsp;assertEquals(x + y, result);
+}
+</pre>
+
+
+
+<p>This way instead of changing and specifying the 
+expected result each time, the test is saying that the expected result 
+should be x + y.&nbsp;</p>
+
+
+
+<p>For more details on testing, please feel free to refer to this article:&nbsp;</p>
+
+
+<p><a href="http://softwaretestingfundamentals.com/unit-testing/" target="_blank" rel="noreferrer noopener">http://softwaretestingfundamentals.com/unit-testing/</a></p>
+
+
+<p>Most
+ programming languages have a unit testing framework to help you get 
+started with implementing tests for the project. You can learn more 
+about the basics of testing from here:&nbsp;</p>
+
+
+
+<p>For Java: <a href="https://www.tutorialspoint.com/junit/" target="_blank" rel="noreferrer noopener">https://www.tutorialspoint.com/junit/</a></p>
+
+
+
+<p>For Ruby: <a href="https://www.tutorialspoint.com/rspec/" target="_blank" rel="noreferrer noopener">https://www.tutorialspoint.com/rspec/</a></p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/testing/">3. Testing</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>2. Programming Basics</title>
+		<link>https://dev.mediocreinventions.com/programming-basics/</link>
+		<pubDate>Sat, 29 Dec 2018 04:28:50 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[basics]]></category>
+		<category><![CDATA[data types]]></category>
+		<category><![CDATA[for loop]]></category>
+		<category><![CDATA[if statements]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[while loop]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=105</guid>
+		<description><![CDATA[<p>Intro This article will briefly review through some of the main features of programming that almost all programming languages require. These features make it possible for programs to implement their logic. Data Types In programming, there are 3 main data types that you will run into (there are a lot more depending on languages, but [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/programming-basics/">2. Programming Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>This article will briefly review through some of the main features of programming that almost all programming languages require. These features make it possible for programs to implement their logic.</p>
+
+
+
+<h2>Data Types</h2>
+
+
+
+<p>In programming, there are 3 main data types that you will run into (there are a lot more depending on languages, but these should get the point across): </p>
+
+
+
+<ul><li>Integers: These are non-decimal numbers (decimals are called Floats). Below, we will define a valid integer in JavaScript. 
+var x = 1;</li><li>Strings: These are essentially text. Example for declaring a valid string: <br>
+var x = &#8220;This Needs 2 Be Surrounded By Quotes To Be A String!&#8221;;</li><li>Booleans: These are data types that represent true or false: <br>
+var x = false; </li></ul>
+
+
+
+<p>It is important to know that in JavaScript, you can define almost any of these &#8216;primitive&#8217; data types with the &#8216;var&#8217; keyword. Different programming languages may require different keywords. For example, declaring an integer in Java would look like int x = 1;  </p>
+
+
+
+<h2>If Statements</h2>
+
+
+
+<ul><li>&#8220;If statements&#8221; help a program detect conditions and perform actions based on the conditions. For example, a self driving car may want the following logic: IF light is GREEN, press gas. If light is RED, stop. </li><li>In the following example, we make a program says &#8220;Go&#8221; if the variable x is Green and &#8220;Stop&#8221; if the variable is Red: </li><li></li></ul>
+
+
+
+<pre class="wp-block-preformatted">var x = "Green";<br>if (x == "Green")<br>{<br>console.log("Go");<br>}<br>else if (x == "Red")<br>{<br>console.log("Stop");<br>}</pre>
+
+
+
+<p>The double equals sign in the parenthesis just means equals, so if (x == &#8220;Green&#8221;) means &#8220;if the variable x equals the text of Green. &#8220;</p>
+
+
+
+<p>!= would mean &#8216;does not equal&#8217;. These are called comparators and you can find a list of them here for more details: </p>
+
+
+
+<p>Different languages may also have different ways of comparing. For example, in Java, the same statement above would be if (x.equals(&#8220;Green&#8221;)). </p>
+
+
+
+<p>If you are using Google Chrome, you can try running this code in your browser by opening the browser&#8217;s developer tools and typing this into the console. </p>
+
+
+
+<p>Developer tools can be access by pressing the … button at the top &gt; More Tools &gt; Developer Tools &gt; Click on the tab that says Console.</p>
+
+
+
+<p>You can change the x variable to &#8220;Red&#8221; and re-run the code to see what it outputs. </p>
+
+
+
+<p>Note:</p>
+
+
+
+<p>You may have noticed the squiggly brackets {}. These brackets are used to wrap the code that lets the program know what to do under that if condition. Some people may prefer this format where the brackets are on new lines, however, other people may prefer this format: </p>
+
+
+
+<pre class="wp-block-preformatted">var x = "Green";<br>
+if (x == "Green") {<br>
+  console.log("Go");<br>
+} <br>
+else if (x == "Red") {<br>
+  console.log("Stop");<br>
+}</pre>
+
+
+
+<p>These are both valid syntax, and as long as the brackets are there to wrap up the code, the way it&#8217;s styled is just preference. If you choose a bracket/indenting style for a project, the important thing is to be consistent with it. </p>
+
+
+
+<p>Also, be aware that some languages such as Python might take indentation into consideration for valid code, so if you are following other tutorials for different languages, it is recommended to follow their syntax for the project to avoid headaches. </p>
+
+
+
+<h2>Loops</h2>
+
+
+
+<p>There are two main types of loops, the For loop and the While loop.</p>
+
+
+
+<h3>For Loop</h3>
+
+
+
+<p>The For loop looks like this:</p>
+
+
+
+<pre class="wp-block-preformatted">for (i=0; i &lt; 3; i++) {<br>
+    console.log("Walked staircase number " + i);<br>
+}<br>
+console.log("Successfully walked 3 levels. ");</pre>
+
+
+
+<p>The part that says &#8220;i=0; i &lt; 3; i++&#8221; basically means:</p>
+
+
+
+<ol><li>(i=0) Declare the variable &#8220;i&#8221; and that it has a value of 0.</li><li>(i &lt; 3) Continue doing the actions below as long as &#8220;i&#8221; is less than 3.</li><li>(i++) After finishing the actions in the loop, add 1 to the variable &#8220;i&#8221;.</li></ol>
+
+
+
+<p>The console.log between the curly braces is the loop. In this case, the program will write &#8220;Walked staircase number i&#8221; 3 time before printing out &#8220;Successfully walked 3 levels. &#8220;</p>
+
+
+
+<p>If you run the above code (you can run in it your browser console to see), then the output would be:</p>
+
+
+
+<pre class="wp-block-preformatted">Walked staircase number 0<br>Walked staircase number 1<br>Walked staircase number 2<br>Walked staircase number 3<br>Successfully walked 3 levels. <br></pre>
+
+
+
+<p>This type of loop will usually be used if you know how many times you want to run a certain function(s) before moving on with the next steps.</p>
+
+
+
+<h3>While Loop</h3>
+
+
+
+<p>The While loop looks like this (don&#8217;t run this in your browser since it will run forever):</p>
+
+
+
+<pre class="wp-block-preformatted">var button = "on";<br>
+while (button == "on") {<br>
+    console.log("The button is on. ");<br>
+}</pre>
+
+
+
+<p>This is basically saying to print out &#8220;The button is on. &#8221; while a variable called &#8220;button&#8221; has the value of &#8220;on&#8221;. The functions in here can run forever as long as the button variable does not change. in a real program, there would be a way for this variable to change. For example, there could be a function that sets the button&#8217;s value to be &#8220;off&#8221; when someone clicks on a part of the screen. </p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/programming-basics/">2. Programming Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>1. Internet Basics</title>
+		<link>https://dev.mediocreinventions.com/internet-basics/</link>
+		<pubDate>Sun, 16 Dec 2018 23:15:50 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[dns]]></category>
+		<category><![CDATA[internet]]></category>
+		<category><![CDATA[servers]]></category>
+
+		<guid isPermaLink="false">http://localhost/?p=1</guid>
+		<description><![CDATA[<p>This article is a crash course on some of the basics regarding the internet and how it works. Intro It&#8217;s important to understand that the internet is just a bunch of computers and devices connected to each other with wires. Each of these devices is assigned a unique identifier called an IP address. This address [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/internet-basics/">1. Internet Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<p>This article is a crash course on some of the basics regarding the internet and how it works. <br></p>
+
+
+
+<h2><strong>Intro</strong></h2>
+
+
+
+<p class="has-normal-font-size">It&#8217;s important to understand that the internet is just a bunch of computers and devices connected to each other with wires. Each of these devices is assigned a unique identifier called an IP address. This address is essentially the address that lets other computers/devices know where to find them. </p>
+
+
+
+<h2><strong>DNS</strong></h2>
+
+
+
+<p class="has-normal-font-size">When an internet browser (such as Google Chrome) retrieves a web page for viewing, this is the general process that happens in most modern websites: </p>
+
+
+
+<ol><li>Type in yourwebsite.com into browser and press Enter. </li><li>The browser (or client) goes to a Domain Name Server (DNS) to ask where yourwebsite.com resides. </li><li>The DNS looks through its records and finds that yourwebsite.com should go to a computer with an IP address of 12.123.12.12</li><li>The client then tries to connect to this IP address to retrieve content. </li></ol>
+
+
+
+<p class="has-normal-font-size">The IP Address in this case usually leads to a server that is able to direct the client&#8217;s request to the correct areas. It can be the actual server that hosts the website content, or it could be a &#8220;load balancer&#8221;, which is a server that directs the user to another server that can provide the content (This is usually done so that one server doesn&#8217;t have to handle all the request and get burned out).</p>
+
+
+
+<p class="has-medium-font-size">Below is a diagram illustrating this: </p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/lb.png" alt="" class="wp-image-96" srcset="https://dev.mediocreinventions.com/wp-content/uploads/lb.png 603w, https://dev.mediocreinventions.com/wp-content/uploads/lb-300x229.png 300w" sizes="(max-width: 603px) 100vw, 603px" /></figure>
+
+
+
+<h2><strong>Rendering</strong></h2>
+
+
+
+<p class="has-normal-font-size">After the content is retrieved and is available for viewing, the internet browser will render this content to be human readable. There are 3 main elements to this that help render content: </p>
+
+
+
+<ul><li>HTML: This is the markup language that tells the browser how to structure the content. For example, the below will ask the browser to render a paragraph that says &#8220;Hello World&#8221;:</li></ul>
+
+
+
+<pre class="wp-block-preformatted">&lt;p&gt;Hello World&lt;/p&gt;</pre>
+
+
+
+<ul><li>CSS: This is a stylesheet that describes how the page should be styled. For example, the below will ask the browser to make all paragraphs (text inside the  tags) red:</li></ul>
+
+
+
+<pre class="wp-block-preformatted">p { color: red; }</pre>
+
+
+
+<ul><li>JavaScript: This is the code that makes some of the elements on the page more interactive. For example, it can tell the browser to change the font color when the page is clicked (JavaScript can be used to accomplish a lot more for modern websites, but handling how elements behave is the main take-away point in this article). </li></ul>
+
+
+
+<p><br></p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/internet-basics/">1. Internet Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

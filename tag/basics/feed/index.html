@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>basics &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/basics/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>2. Programming Basics</title>
+		<link>https://dev.mediocreinventions.com/programming-basics/</link>
+		<pubDate>Sat, 29 Dec 2018 04:28:50 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[basics]]></category>
+		<category><![CDATA[data types]]></category>
+		<category><![CDATA[for loop]]></category>
+		<category><![CDATA[if statements]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[while loop]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=105</guid>
+		<description><![CDATA[<p>Intro This article will briefly review through some of the main features of programming that almost all programming languages require. These features make it possible for programs to implement their logic. Data Types In programming, there are 3 main data types that you will run into (there are a lot more depending on languages, but [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/programming-basics/">2. Programming Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>This article will briefly review through some of the main features of programming that almost all programming languages require. These features make it possible for programs to implement their logic.</p>
+
+
+
+<h2>Data Types</h2>
+
+
+
+<p>In programming, there are 3 main data types that you will run into (there are a lot more depending on languages, but these should get the point across): </p>
+
+
+
+<ul><li>Integers: These are non-decimal numbers (decimals are called Floats). Below, we will define a valid integer in JavaScript. 
+var x = 1;</li><li>Strings: These are essentially text. Example for declaring a valid string: <br>
+var x = &#8220;This Needs 2 Be Surrounded By Quotes To Be A String!&#8221;;</li><li>Booleans: These are data types that represent true or false: <br>
+var x = false; </li></ul>
+
+
+
+<p>It is important to know that in JavaScript, you can define almost any of these &#8216;primitive&#8217; data types with the &#8216;var&#8217; keyword. Different programming languages may require different keywords. For example, declaring an integer in Java would look like int x = 1;  </p>
+
+
+
+<h2>If Statements</h2>
+
+
+
+<ul><li>&#8220;If statements&#8221; help a program detect conditions and perform actions based on the conditions. For example, a self driving car may want the following logic: IF light is GREEN, press gas. If light is RED, stop. </li><li>In the following example, we make a program says &#8220;Go&#8221; if the variable x is Green and &#8220;Stop&#8221; if the variable is Red: </li><li></li></ul>
+
+
+
+<pre class="wp-block-preformatted">var x = "Green";<br>if (x == "Green")<br>{<br>console.log("Go");<br>}<br>else if (x == "Red")<br>{<br>console.log("Stop");<br>}</pre>
+
+
+
+<p>The double equals sign in the parenthesis just means equals, so if (x == &#8220;Green&#8221;) means &#8220;if the variable x equals the text of Green. &#8220;</p>
+
+
+
+<p>!= would mean &#8216;does not equal&#8217;. These are called comparators and you can find a list of them here for more details: </p>
+
+
+
+<p>Different languages may also have different ways of comparing. For example, in Java, the same statement above would be if (x.equals(&#8220;Green&#8221;)). </p>
+
+
+
+<p>If you are using Google Chrome, you can try running this code in your browser by opening the browser&#8217;s developer tools and typing this into the console. </p>
+
+
+
+<p>Developer tools can be access by pressing the … button at the top &gt; More Tools &gt; Developer Tools &gt; Click on the tab that says Console.</p>
+
+
+
+<p>You can change the x variable to &#8220;Red&#8221; and re-run the code to see what it outputs. </p>
+
+
+
+<p>Note:</p>
+
+
+
+<p>You may have noticed the squiggly brackets {}. These brackets are used to wrap the code that lets the program know what to do under that if condition. Some people may prefer this format where the brackets are on new lines, however, other people may prefer this format: </p>
+
+
+
+<pre class="wp-block-preformatted">var x = "Green";<br>
+if (x == "Green") {<br>
+  console.log("Go");<br>
+} <br>
+else if (x == "Red") {<br>
+  console.log("Stop");<br>
+}</pre>
+
+
+
+<p>These are both valid syntax, and as long as the brackets are there to wrap up the code, the way it&#8217;s styled is just preference. If you choose a bracket/indenting style for a project, the important thing is to be consistent with it. </p>
+
+
+
+<p>Also, be aware that some languages such as Python might take indentation into consideration for valid code, so if you are following other tutorials for different languages, it is recommended to follow their syntax for the project to avoid headaches. </p>
+
+
+
+<h2>Loops</h2>
+
+
+
+<p>There are two main types of loops, the For loop and the While loop.</p>
+
+
+
+<h3>For Loop</h3>
+
+
+
+<p>The For loop looks like this:</p>
+
+
+
+<pre class="wp-block-preformatted">for (i=0; i &lt; 3; i++) {<br>
+    console.log("Walked staircase number " + i);<br>
+}<br>
+console.log("Successfully walked 3 levels. ");</pre>
+
+
+
+<p>The part that says &#8220;i=0; i &lt; 3; i++&#8221; basically means:</p>
+
+
+
+<ol><li>(i=0) Declare the variable &#8220;i&#8221; and that it has a value of 0.</li><li>(i &lt; 3) Continue doing the actions below as long as &#8220;i&#8221; is less than 3.</li><li>(i++) After finishing the actions in the loop, add 1 to the variable &#8220;i&#8221;.</li></ol>
+
+
+
+<p>The console.log between the curly braces is the loop. In this case, the program will write &#8220;Walked staircase number i&#8221; 3 time before printing out &#8220;Successfully walked 3 levels. &#8220;</p>
+
+
+
+<p>If you run the above code (you can run in it your browser console to see), then the output would be:</p>
+
+
+
+<pre class="wp-block-preformatted">Walked staircase number 0<br>Walked staircase number 1<br>Walked staircase number 2<br>Walked staircase number 3<br>Successfully walked 3 levels. <br></pre>
+
+
+
+<p>This type of loop will usually be used if you know how many times you want to run a certain function(s) before moving on with the next steps.</p>
+
+
+
+<h3>While Loop</h3>
+
+
+
+<p>The While loop looks like this (don&#8217;t run this in your browser since it will run forever):</p>
+
+
+
+<pre class="wp-block-preformatted">var button = "on";<br>
+while (button == "on") {<br>
+    console.log("The button is on. ");<br>
+}</pre>
+
+
+
+<p>This is basically saying to print out &#8220;The button is on. &#8221; while a variable called &#8220;button&#8221; has the value of &#8220;on&#8221;. The functions in here can run forever as long as the button variable does not change. in a real program, there would be a way for this variable to change. For example, there could be a function that sets the button&#8217;s value to be &#8220;off&#8221; when someone clicks on a part of the screen. </p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/programming-basics/">2. Programming Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

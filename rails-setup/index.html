@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>1. Rails Setup - Mediocre Inventions</title><meta name="description" content="In this series of tutorials, we will go through how to build a Rails application with authentication/authorization and use React.js with it."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="1. Rails Setup - Mediocre Inventions"><meta property="og:description" content="In this series of tutorials, we will go through how to build a Rails application with authentication/authorization and use React.js with it."><meta property="og:url" content="https://dev.mediocreinventions.com/rails-setup/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="install"><meta property="article:tag" content="React"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:tag" content="setup"><meta property="article:section" content="Rails With React"><meta property="article:published_time" content="2018-12-30T02:35:16+00:00"><meta property="article:modified_time" content="2018-12-30T21:11:01+00:00"><meta property="og:updated_time" content="2018-12-30T21:11:01+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this series of tutorials, we will go through how to build a Rails application with authentication/authorization and use React.js with it."><meta name="twitter:title" content="1. Rails Setup - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://dev.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script></head><body class="post-template-default single single-post postid-531 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://dev.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                                  
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-531" class="single-content post-text scroll post-531 post type-post status-publish format-standard hentry category-rails-nginx category-rails-authentication-authorization category-rails-to-production category-rails-react tag-install tag-react tag-ruby tag-ruby-on-rails tag-setup"><div class=" content-media"> 
+                            	                            </div>
+                            <header class=" text-header"><h2>1. Rails Setup</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://dev.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-nginx/" rel="category tag">Rails and Nginx</a>, <a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" rel="category tag">Rails Authentication/Authorization</a>, <a href="https://dev.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails To Production</a>, <a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/" rel="category tag">Rails With React</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>In this series of tutorials, we will go through how to build a Rails application with  authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. </p>
+
+
+
+<p>To  make sure you are on the same page, you can start on a brand new virtual machine running Ubuntu 18.04. You can download virtual machines  from here:&nbsp;</p>
+
+
+
+<p><a href="https://www.vmware.com/ca.html" target="_blank" rel="noreferrer noopener">https://www.vmware.com/ca.html</a> for VMware (free for Windows) or <a href="https://www.virtualbox.org/" target="_blank" rel="noreferrer noopener">https://www.virtualbox.org/</a> for VirtualBox (free for MacOS and Windows).&nbsp;</p>
+
+
+
+<p>Ubuntu Desktop operating system can be download here: <a href="https://www.ubuntu.com/download" target="_blank" rel="noreferrer noopener">https://www.ubuntu.com/download</a> or if 18.04 is not the latest version anymore, you can also check here: <a href="http://old-releases.ubuntu.com/releases/" target="_blank" rel="noreferrer noopener">http://old-releases.ubuntu.com/releases/</a></p>
+
+
+
+<h2>Start</h2>
+
+
+
+<p>To start, we will install the dependencies needed to install Ruby on Rails:&nbsp;</p>
+
+
+
+<p>Open
+ up the terminal by pressing ctrl + alt + T and type in the following to
+ start installing (make sure you wait for each command to finish before 
+running the next):&nbsp;</p>
+
+
+
+<h3>Install Git for version control</h3>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git
+</pre>
+
+
+
+<h3>Install libraries and other dependencies</h3>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update
+sudo apt install curl
+sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
+</pre>
+
+
+
+<h3>Installs RVM for managing Ruby environments</h3>
+
+
+
+<pre class="wp-block-preformatted">git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.bashrc
+echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bashrc
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>If at any point the 
+terminal says you have not installed or function is not found when you 
+have just installed the program succesfully, an easy workaround is just 
+close the terminal and open it again. You can also type source ~/.bashrc
+ or source ~/.bash_profile to see if it works. If it still doesn&rsquo;t work,
+ make sure the program was properly installed and there were no error 
+messages in the logs.&nbsp;</p>
+
+
+
+<h3>Continue setting up ruby environment</h3>
+
+
+
+<pre class="wp-block-preformatted">rbenv install 2.5.1
+rbenv global 2.5.1
+echo "gem: --no-document" &gt; ~/.gemrc
+gem install rails -v 5.2.0
+rbenv rehash
+</pre>
+
+
+
+<h3>Install NodeJS (JavaScript Runtime environment)</h3>
+
+
+
+<pre class="wp-block-preformatted">cd /tmp
+\curl -sSL https://deb.nodesource.com/setup_6.x -o nodejs.sh
+cat /tmp/nodejs.sh | sudo -E bash -
+sudo apt install -y nodejs
+</pre>
+
+
+
+<h3>Cleanup</h3>
+
+
+
+<p>Almost done the setup, let&rsquo;s do some cleaning up and updating just to be sure</p>
+
+
+
+<pre class="wp-block-preformatted">cd ~/.rbenv
+git pull
+cd ~
+sudo apt install postgresql postgresql-contrib libpq-dev
+sudo apt update
+</pre>
+
+
+
+<p>Now we should be ready to begin creating the app.</p>
+
+
+
+<h2>Creating The App</h2>
+
+
+
+<p>Create the application</p>
+
+
+
+<pre class="wp-block-preformatted">rails new rails_template
+cd rails_template
+</pre>
+
+
+
+<p>Make sure you have installed a text editor so that we can edit some files For Sublime text install, do:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
+</pre>
+
+
+
+<p>For Vim install, do:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install vim
+</pre>
+
+
+
+<p>Then open up the Gemfile edit it to include the 
+proper gems. In particular, we are going to need Devise for 
+authentication and CanCanCan for authorization. Authentication would 
+mean the parts responsible for logging in a user, whereas authorization 
+would be permissions for which types of users (roles) are allowed to do 
+certain actions. These are usually very important for people to define 
+in projects, since you wouldn&rsquo;t want a guest to be able to access Admin 
+level functions (such as deleting users).&nbsp;</p>
+
+
+
+<p>The Gemfile should look like this: <a href="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e</a></p>
+<script src="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e.js"></script><p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>If
+ you are unfamiliar with gems, you can think of them as additional 
+programs, plugins/extensions, or libraries that the application can use.
+ </p>
+
+
+
+<p>We also need to remove Turbo Links since it can cause  issues with some of the other technologies we are going to use later  on. Remove the &ldquo;//= require turbolinks&rdquo; line from  app/assets/javascripts/application.js. Remove the two  &ldquo;data-turbolinks-track&rdquo; =&gt; true hash key/value pairs from your  app/views/layouts/application.html.erb. </p>
+
+
+
+<p>
+The application.html.erb file  should look like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292" target="_blank">https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292&#65279;</a></p>
+<script src="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292.js"></script><p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>The
+ application.html.erb file here determines how your pages should look. 
+In general, all your pages in this application will use the HTML here 
+for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
+depending on the page. </p>
+
+
+
+<p>After this, let&rsquo;s run the following to install our database</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install libsqlite3-dev
+sudo apt install sqlite3
+</pre>
+
+
+
+<p>We will change to using Postgres database later</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Sqlite
+ is a lightweight database good for development, but not that great at 
+handling a lot of connections. So we will use Postgresql later on when 
+we move it into production.&nbsp;</p>
+
+
+
+<p>Now that we have saved the new Gemfile, run the following command inside the application&rsquo;s directory to install the gems:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">bundle install
+</pre>
+
+
+
+<p>Let&rsquo;s generate the files for React so we can use them later on:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails g react:install
+</pre>
+
+
+
+<p>After everything has been installs, run the 
+following to start the server, then visit localhost:3000 to see if the 
+application started successfully.&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails s
+</pre>
+
+
+
+<p>If all is successful so far, it should say Yay! you&rsquo;re on Rails!</p>
+
+
+
+<p>To stop the application server from running, press <strong>CTRL+ C</strong> at the terminal to stop the process.&nbsp;</p>
+
+
+
+<p>Now that the application is up and running, we can start making a basic API.</p>
+<div class="tags-links bfade">Tagged: <a href="https://dev.mediocreinventions.com/tag/install/" rel="tag">install</a>, <a href="https://dev.mediocreinventions.com/tag/react/" rel="tag">React</a>, <a href="https://dev.mediocreinventions.com/tag/ruby/" rel="tag">Ruby</a>, <a href="https://dev.mediocreinventions.com/tag/ruby-on-rails/" rel="tag">Ruby on Rails</a>, <a href="https://dev.mediocreinventions.com/tag/setup/" rel="tag">setup</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://dev.mediocreinventions.com/encryption/" rel="prev">7. Encryption</a></div><div class="nav-next"><a href="https://dev.mediocreinventions.com/ruby-on-rails-api/" rel="next">2. Ruby on Rails API</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://dev.mediocreinventions.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s"></label>
+				<input type="submit" class="search-submit" value="Search"></form></section><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Posts</h3>		<ul><li>
+					<a href="https://dev.mediocreinventions.com/rails-with-react/">5. Rails With React</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authorization/">4. Rails Authorization</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-authentication/">3. Rails Authentication</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/ruby-on-rails-api/">2. Ruby on Rails API</a>
+									</li>
+											<li>
+					<a href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul><li class="cat-item cat-item-8"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails application with Nginx and Puma (Ubuntu 18.04). ">Rails and Nginx</a>
+</li>
+	<li class="cat-item cat-item-281"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application that has authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://dev.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React  (16.2) and pushing it into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails To Production</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://dev.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). ">Rails With React</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://dev.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here to make sure you are familiar with these concepts. 
+The articles in this category cover some of the basic topics that are relevant to programming, web application development, and the internet. These are mainly brief articles that are meant to be a crash course on the topic to get you an idea of what to expect. 
+You can read these in order starting from 1., but the other tutorials on this site will also reference specific articles here when relevant. 
+">Web Application Basics</a>
+</li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://dev.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

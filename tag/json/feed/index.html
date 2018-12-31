@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>json &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/json/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>5. Databases</title>
+		<link>https://dev.mediocreinventions.com/databases/</link>
+		<pubDate>Sat, 29 Dec 2018 05:15:34 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[databases]]></category>
+		<category><![CDATA[json]]></category>
+		<category><![CDATA[nosql]]></category>
+		<category><![CDATA[sql]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=271</guid>
+		<description><![CDATA[<p>Intro In this article, we will go over some of the most common ways of storing and retrieving data.&#160; Web applications typically use databases to manage their data. There are 2 main types of databases: SQL based databases and NoSQL databases.&#160; SQL Databases SQL databases are relational databses. This means that an entry in a [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/databases/">5. Databases</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will go over some of the most common ways of storing and retrieving data.&nbsp;</p>
+
+
+
+<p>Web
+ applications typically use databases to manage their data. There are 2 
+main types of databases: SQL based databases and NoSQL databases.&nbsp;</p>
+
+
+
+<h2>SQL Databases</h2>
+
+
+
+<p>SQL
+ databases are relational databses. This means that an entry in a row 
+can be related to another entry somewhere else in the database. For 
+example, if you have a database that stores Books and Authors such as 
+below:&nbsp;</p>
+
+
+
+<p><strong>Books</strong></p>
+
+
+
+<p>_______________________<br>|___Id_|__Title___|_Author_|<br>|___0__|Aligators_|__Bob__|<br>|___1__|Squirrels_|__Joe__|<br>|___2__|Pumpkins|__Bob__|<br>|___3__|Eggplants|__Susie_|<br></p>
+
+
+
+<p><strong>Authors</strong></p>
+
+
+
+<p>_______________________<br>|__Id__|__Name__|_Age___|<br>|___0__|___Bob__|___23__|<br>|___1__|___Joe__|___27__|<br>|___2__|_Susie__|___29__|<br></p>
+
+
+
+<p>Books
+ with Ids 0 and 2 can be enforced to belong to the Author with an Id of 
+0. SQL databases enforce this relationship so that if there is a 
+conflict with these relationships, then it will let you know (in more 
+cases, it won&#8217;t let oyu make the change or it will throw and error).&nbsp;</p>
+
+
+
+<p>To learn more about SQL, this is a good interactive site for starting out:&nbsp;</p>
+
+
+<p><a href="https://sqlbolt.com/">https://sqlbolt.com/</a></p>
+
+
+<p>Examples of SQL relational databases: Postgresql, MySQL.&nbsp;</p>
+
+
+
+<p><strong>Notes:&nbsp;</strong></p>
+
+
+
+<p>&#8211; Databases can have tables. Tables can have Rows and Columns for storing information.&nbsp;</p>
+
+
+
+<p>&#8211;
+ SQL itself stands for Structured Query Language. It is a language that 
+is used to query databases to retrieve and store information.&nbsp;</p>
+
+
+
+<h2>NoSQL Databases</h2>
+
+
+
+<p>NoSQL
+ databases can also be queries with SQL. However, these databases do not
+ enforce the relationships between the entries. So in theory, SQL 
+dabases would be more stable, since it has these rules to keep the 
+object relationships in check. However, having these rules enforced 
+means more overhead in performance, so NoSQL databases will be faster in
+ some areas.&nbsp;</p>
+
+
+
+<p>For more details on SQL vs NoSQL differences, see this article:&nbsp;</p>
+
+
+<p><a href="https://www.thegeekstuff.com/2014/01/sql-vs-nosql-db/?utm_source=tuicool">https://www.thegeekstuff.com/2014/01/sql-vs-nosql-db/?utm_source=tuicool</a></p>
+
+
+<p>Examples of NoSQL databases: <strong>MongoDB</strong>, <strong>Couchbase</strong></p>
+
+
+
+<h2>JSON</h2>
+
+
+
+<p>JSON
+ is another way to manage data. It is a data structure stored in text 
+format that a lot of languages/tools are able to interpret. In web 
+development, this is usually used to communicate data between servers. 
+When requesting information from a server, the server can go into the 
+data base to retrieve the data, then return the results to the requester
+ in JSON format.&nbsp;</p>
+
+
+
+<p>A JSON object looks like this:&nbsp;</p>
+
+
+
+<p>{title: &#8220;Aligators&#8221;, Author: &#8220;Bob&#8221;};</p>
+
+
+
+<p>For more information on JSON, refer to this article:&nbsp;</p>
+
+
+<p><a href="https://www.w3schools.com/js/js_json_intro.asp">https://www.w3schools.com/js/js_json_intro.asp</a></p>
+
+
+<p></p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/databases/">5. Databases</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

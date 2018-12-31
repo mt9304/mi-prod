@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>setup &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/setup/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>1. Rails Setup</title>
+		<link>https://dev.mediocreinventions.com/rails-setup/</link>
+		<pubDate>Sun, 30 Dec 2018 02:35:16 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Rails and Nginx]]></category>
+		<category><![CDATA[Rails Authentication/Authorization]]></category>
+		<category><![CDATA[Rails To Production]]></category>
+		<category><![CDATA[Rails With React]]></category>
+		<category><![CDATA[install]]></category>
+		<category><![CDATA[React]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[Ruby on Rails]]></category>
+		<category><![CDATA[setup]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=531</guid>
+		<description><![CDATA[<p>Intro In this series of tutorials, we will go through how to build a Rails application with authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this series of tutorials, we will go through how to build a Rails application with  authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. </p>
+
+
+
+<p>To  make sure you are on the same page, you can start on a brand new virtual machine running Ubuntu 18.04. You can download virtual machines  from here:&nbsp;</p>
+
+
+
+<p><a href="https://www.vmware.com/ca.html" target="_blank" rel="noreferrer noopener">https://www.vmware.com/ca.html</a> for VMware (free for Windows) or <a href="https://www.virtualbox.org/" target="_blank" rel="noreferrer noopener">https://www.virtualbox.org/</a> for VirtualBox (free for MacOS and Windows).&nbsp;</p>
+
+
+
+<p>Ubuntu Desktop operating system can be download here: <a href="https://www.ubuntu.com/download" target="_blank" rel="noreferrer noopener">https://www.ubuntu.com/download</a> or if 18.04 is not the latest version anymore, you can also check here: <a href="http://old-releases.ubuntu.com/releases/" target="_blank" rel="noreferrer noopener">http://old-releases.ubuntu.com/releases/</a></p>
+
+
+
+<h2>Start</h2>
+
+
+
+<p>To start, we will install the dependencies needed to install Ruby on Rails:&nbsp;</p>
+
+
+
+<p>Open
+ up the terminal by pressing ctrl + alt + T and type in the following to
+ start installing (make sure you wait for each command to finish before 
+running the next):&nbsp;</p>
+
+
+
+<h3>Install Git for version control</h3>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git
+</pre>
+
+
+
+<h3>Install libraries and other dependencies</h3>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update
+sudo apt install curl
+sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
+</pre>
+
+
+
+<h3>Installs RVM for managing Ruby environments</h3>
+
+
+
+<pre class="wp-block-preformatted">git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.bashrc
+echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bashrc
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+</pre>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>If at any point the 
+terminal says you have not installed or function is not found when you 
+have just installed the program succesfully, an easy workaround is just 
+close the terminal and open it again. You can also type source ~/.bashrc
+ or source ~/.bash_profile to see if it works. If it still doesn&#8217;t work,
+ make sure the program was properly installed and there were no error 
+messages in the logs.&nbsp;</p>
+
+
+
+<h3>Continue setting up ruby environment</h3>
+
+
+
+<pre class="wp-block-preformatted">rbenv install 2.5.1
+rbenv global 2.5.1
+echo "gem: --no-document" &gt; ~/.gemrc
+gem install rails -v 5.2.0
+rbenv rehash
+</pre>
+
+
+
+<h3>Install NodeJS (JavaScript Runtime environment)</h3>
+
+
+
+<pre class="wp-block-preformatted">cd /tmp
+\curl -sSL https://deb.nodesource.com/setup_6.x -o nodejs.sh
+cat /tmp/nodejs.sh | sudo -E bash -
+sudo apt install -y nodejs
+</pre>
+
+
+
+<h3>Cleanup</h3>
+
+
+
+<p>Almost done the setup, let&#8217;s do some cleaning up and updating just to be sure</p>
+
+
+
+<pre class="wp-block-preformatted">cd ~/.rbenv
+git pull
+cd ~
+sudo apt install postgresql postgresql-contrib libpq-dev
+sudo apt update
+</pre>
+
+
+
+<p>Now we should be ready to begin creating the app.</p>
+
+
+
+<h2>Creating The App</h2>
+
+
+
+<p>Create the application</p>
+
+
+
+<pre class="wp-block-preformatted">rails new rails_template
+cd rails_template
+</pre>
+
+
+
+<p>Make sure you have installed a text editor so that we can edit some files For Sublime text install, do:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
+</pre>
+
+
+
+<p>For Vim install, do:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install vim
+</pre>
+
+
+
+<p>Then open up the Gemfile edit it to include the 
+proper gems. In particular, we are going to need Devise for 
+authentication and CanCanCan for authorization. Authentication would 
+mean the parts responsible for logging in a user, whereas authorization 
+would be permissions for which types of users (roles) are allowed to do 
+certain actions. These are usually very important for people to define 
+in projects, since you wouldn&#8217;t want a guest to be able to access Admin 
+level functions (such as deleting users).&nbsp;</p>
+
+
+
+<p>The Gemfile should look like this: <a href="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e</a></p>
+<script src="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e.js"></script>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>If
+ you are unfamiliar with gems, you can think of them as additional 
+programs, plugins/extensions, or libraries that the application can use.
+ </p>
+
+
+
+<p>We also need to remove Turbo Links since it can cause  issues with some of the other technologies we are going to use later  on. Remove the &#8220;//= require turbolinks&#8221; line from  app/assets/javascripts/application.js. Remove the two  &#8220;data-turbolinks-track&#8221; =&gt; true hash key/value pairs from your  app/views/layouts/application.html.erb. </p>
+
+
+
+<p>
+The application.html.erb file  should look like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292" target="_blank">https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292﻿</a></p>
+<script src="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292.js"></script>
+
+
+
+<p><strong>Note:&nbsp;</strong></p>
+
+
+
+<p>The
+ application.html.erb file here determines how your pages should look. 
+In general, all your pages in this application will use the HTML here 
+for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
+depending on the page. </p>
+
+
+
+<p>After this, let&#8217;s run the following to install our database</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install libsqlite3-dev
+sudo apt install sqlite3
+</pre>
+
+
+
+<p>We will change to using Postgres database later</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Sqlite
+ is a lightweight database good for development, but not that great at 
+handling a lot of connections. So we will use Postgresql later on when 
+we move it into production.&nbsp;</p>
+
+
+
+<p>Now that we have saved the new Gemfile, run the following command inside the application&#8217;s directory to install the gems:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">bundle install
+</pre>
+
+
+
+<p>Let&#8217;s generate the files for React so we can use them later on:&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails g react:install
+</pre>
+
+
+
+<p>After everything has been installs, run the 
+following to start the server, then visit localhost:3000 to see if the 
+application started successfully.&nbsp;</p>
+
+
+
+<pre class="wp-block-preformatted">rails s
+</pre>
+
+
+
+<p>If all is successful so far, it should say Yay! you&#8217;re on Rails!</p>
+
+
+
+<p>To stop the application server from running, press <strong>CTRL+ C</strong> at the terminal to stop the process.&nbsp;</p>
+
+
+
+<p>Now that the application is up and running, we can start making a basic API.</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/rails-setup/">1. Rails Setup</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

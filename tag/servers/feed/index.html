@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>servers &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/servers/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>6. Web Servers</title>
+		<link>https://dev.mediocreinventions.com/web-servers/</link>
+		<pubDate>Sat, 29 Dec 2018 08:48:31 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[http]]></category>
+		<category><![CDATA[nginx]]></category>
+		<category><![CDATA[servers]]></category>
+		<category><![CDATA[web servers]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=431</guid>
+		<description><![CDATA[<p>Intro Web servers help your web application serve information to clients. You can run an application with Rails with just its default application server, but it will likely not do too well in a production environment with lots of users trying to use the application at the same time.&#160; Servers There are three main web [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>Web
+ servers help your web application serve information to clients. You can
+ run an application with Rails with just its default application server,
+ but it will likely not do too well in a production environment with 
+lots of users trying to use the application at the same time.&nbsp;</p>
+
+
+
+<h2>Servers</h2>
+
+
+
+<p>There
+ are three main web servers used for web applications today: Apache HTTP
+ Server, Nginx, and IIS. Setting up servers like Nginx can also allow 
+you to scale better when your application gets more users. For example, 
+it can act as a load balancer that helps distribute traffic to different
+ servers when one server becomes too overloaded with work.&nbsp;</p>
+
+
+
+<p><strong>Brief note on scaling:&nbsp;</strong></p>
+
+
+
+<p>There
+ are two main types of scaling, scaling vertically and scaling 
+horizontally. Scaling vertically in this context means adding more power
+ to your machines (for example, more ram, cpu cores, etc). Scaling 
+horizontally means adding more machine to help distribute the load. 
+Scaling vertically can be very expensive at a certain point and may not 
+yield as much performance/dollar when compared to horizontal scaling.&nbsp;</p>
+
+
+
+<p>Web
+ servers can also help with configuring things such as SSL (the 
+certificate that secures your website and gives it the HTTPS instead of 
+HTTP in the URL).&nbsp;</p>
+
+
+
+<p>This article outlines in more detail on the difference between servers:&nbsp;</p>
+
+
+<p><a href="https://lunarpages.com/apache-vs-iis-which-web-server-should-you-choose/">https://lunarpages.com/apache-vs-iis-which-web-server-should-you-choose/</a></p>
+
+
+<p>I
+ would also recommend reading more about load balancer and reverse 
+proxies since these topics come up pretty often when configuring 
+production environments. You likely will not need to know about these 
+when starting off, but it is good to know that they exist:&nbsp;</p>
+
+
+<p><a href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a></p>
+
+<p><a href="https://www.nginx.com/resources/glossary/reverse-proxy-server/">https://www.nginx.com/resources/glossary/reverse-proxy-server/</a></p>
+
+
+<p>We will go over how to use Nginx with Ruby On Rails in the other articles so that you know how to monitor your application. </p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/web-servers/">6. Web Servers</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>1. Internet Basics</title>
+		<link>https://dev.mediocreinventions.com/internet-basics/</link>
+		<pubDate>Sun, 16 Dec 2018 23:15:50 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[dns]]></category>
+		<category><![CDATA[internet]]></category>
+		<category><![CDATA[servers]]></category>
+
+		<guid isPermaLink="false">http://localhost/?p=1</guid>
+		<description><![CDATA[<p>This article is a crash course on some of the basics regarding the internet and how it works. Intro It&#8217;s important to understand that the internet is just a bunch of computers and devices connected to each other with wires. Each of these devices is assigned a unique identifier called an IP address. This address [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/internet-basics/">1. Internet Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<p>This article is a crash course on some of the basics regarding the internet and how it works. <br></p>
+
+
+
+<h2><strong>Intro</strong></h2>
+
+
+
+<p class="has-normal-font-size">It&#8217;s important to understand that the internet is just a bunch of computers and devices connected to each other with wires. Each of these devices is assigned a unique identifier called an IP address. This address is essentially the address that lets other computers/devices know where to find them. </p>
+
+
+
+<h2><strong>DNS</strong></h2>
+
+
+
+<p class="has-normal-font-size">When an internet browser (such as Google Chrome) retrieves a web page for viewing, this is the general process that happens in most modern websites: </p>
+
+
+
+<ol><li>Type in yourwebsite.com into browser and press Enter. </li><li>The browser (or client) goes to a Domain Name Server (DNS) to ask where yourwebsite.com resides. </li><li>The DNS looks through its records and finds that yourwebsite.com should go to a computer with an IP address of 12.123.12.12</li><li>The client then tries to connect to this IP address to retrieve content. </li></ol>
+
+
+
+<p class="has-normal-font-size">The IP Address in this case usually leads to a server that is able to direct the client&#8217;s request to the correct areas. It can be the actual server that hosts the website content, or it could be a &#8220;load balancer&#8221;, which is a server that directs the user to another server that can provide the content (This is usually done so that one server doesn&#8217;t have to handle all the request and get burned out).</p>
+
+
+
+<p class="has-medium-font-size">Below is a diagram illustrating this: </p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/lb.png" alt="" class="wp-image-96" srcset="https://dev.mediocreinventions.com/wp-content/uploads/lb.png 603w, https://dev.mediocreinventions.com/wp-content/uploads/lb-300x229.png 300w" sizes="(max-width: 603px) 100vw, 603px" /></figure>
+
+
+
+<h2><strong>Rendering</strong></h2>
+
+
+
+<p class="has-normal-font-size">After the content is retrieved and is available for viewing, the internet browser will render this content to be human readable. There are 3 main elements to this that help render content: </p>
+
+
+
+<ul><li>HTML: This is the markup language that tells the browser how to structure the content. For example, the below will ask the browser to render a paragraph that says &#8220;Hello World&#8221;:</li></ul>
+
+
+
+<pre class="wp-block-preformatted">&lt;p&gt;Hello World&lt;/p&gt;</pre>
+
+
+
+<ul><li>CSS: This is a stylesheet that describes how the page should be styled. For example, the below will ask the browser to make all paragraphs (text inside the  tags) red:</li></ul>
+
+
+
+<pre class="wp-block-preformatted">p { color: red; }</pre>
+
+
+
+<ul><li>JavaScript: This is the code that makes some of the elements on the page more interactive. For example, it can tell the browser to change the font color when the page is clicked (JavaScript can be used to accomplish a lot more for modern websites, but handling how elements behave is the main take-away point in this article). </li></ul>
+
+
+
+<p><br></p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/internet-basics/">1. Internet Basics</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

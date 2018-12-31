@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>web applications &#8211; Mediocre Inventions</title>
+	<atom:link href="https://dev.mediocreinventions.com/tag/web-applications/feed/" rel="self" type="application/rss+xml" />
+	<link>http://mediocreinventions.herokuapp.com</link>
+	<description></description>
+	<lastBuildDate>Mon, 31 Dec 2018 03:59:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>4. Tools</title>
+		<link>https://dev.mediocreinventions.com/tools/</link>
+		<pubDate>Sat, 29 Dec 2018 05:13:43 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Web Application Basics]]></category>
+		<category><![CDATA[tools]]></category>
+		<category><![CDATA[web applications]]></category>
+
+		<guid isPermaLink="false">https://dev.mediocreinventions.com/?p=251</guid>
+		<description><![CDATA[<p>Intro This article will go through some helpful tools that are used in web development. The tools/software in this section are what we will be using in this tutorial. Command Line We will be using the operating system Ubuntu 18.04 to create the project. You can open up the command line by pressing ctrl + [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/tools/">4. Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>This
+ article will go through some helpful tools that are used in web 
+development. The tools/software in this section are what we will be 
+using in this tutorial. </p>
+
+
+
+<h3>Command Line</h3>
+
+
+
+<p>We
+ will be using the operating system Ubuntu 18.04 to create the project. 
+You can open up the command line by pressing ctrl + alt + t. This is 
+where you issue commands to the computer to do things. You can search 
+online for interactive linux tutorials to learn more about using the 
+command line. </p>
+
+
+
+<h3>Virtual Machines</h3>
+
+
+
+<p>Virtual
+ machines can help you run the different operating systems if you do not
+ want to buy a new machine or reformat your computer. It is also good to
+ test out server related functions in an isolated environment later on 
+in the tutorial. If something happens to go wrong and it breaks, your 
+actual machine should still be fine and you can just create another 
+virtual machine to start over. </p>
+
+
+
+<p>These two virtual machines below are ones that I have used to develop on: </p>
+
+
+
+<p>VMware: Pretty straightforward to use and the free version includes all the basic functions needed to start web development. </p>
+
+
+
+<p>VirtualBox:
+ The free version has the ability to create snapshots/backups of the 
+state of the machine, incase anything were to go wrong. </p>
+
+
+
+<h3>Browser developer tools</h3>
+
+
+
+<p>For Chrome, you can access this by pressing F12 or going into &#8230; &gt; More Tools &gt; Developer Tools</p>
+
+
+
+<p>The
+ tabs you will likely use the most for troubleshooting will be Console 
+and Network. The console tab shows errors or important messages when the
+ page is loaded. You can also run JavaScript on it to interact with the 
+page. The network tab can also show some errors and check responses from
+ the server. </p>
+
+
+
+<h3>Integrated Development Environment (IDE) and text editors</h3>
+
+
+
+<p>IDEs
+ can help check the syntax for programming languages. They can also 
+auto-complete certain keywords and generate commonly used functions. 
+Most IDEs out there are very powerful and can help speed up the 
+development process by a lot. However, in this tutorial we will be using
+ normal text editors to build the program. Being too reliant on IDEs for
+ checking errors or auto-generating code might build some bad habbits, 
+so I tend to use text editors where possible. They are usually more 
+light-weight so you can start programming on any old machine pretty 
+fast. It&#8217;s also helpful to know how to use editors like Vim when editing
+ on a server without a graphic interface. </p>
+
+
+
+<p>Here are 
+some good text editors to use (there are a lot of them out there, but 
+these are the one&#8217;s I have used and liked so far): </p>
+
+
+
+<p>&#8211; Sublime Text</p>
+
+
+
+<p>&#8211; Atom</p>
+
+
+
+<p>&#8211; Vim</p>
+
+
+
+<p>&#8211; Nano</p>
+
+
+
+<p><strong>Note:</strong></p>
+
+
+
+<p>Vim and Nano are text editors used in the command line. You can install it by typing in the terminal</p>
+
+
+
+<p>sudo apt install vim</p>
+
+
+
+<p>Then open up a new file by typing</p>
+
+
+
+<p>vim yourfile.txt</p>
+
+
+
+<p>Once
+ you are in text editing mode, press esc, then a to start inserting 
+words. If you want to quit without saving, press esc then type :q! and 
+press enter. If you want to exit and save, press esc then type :wq</p>
+
+
+
+<p>If
+ you get trapped in Vim and can&#8217;t figure out how to exit, you can 
+restart your machine and start with using Nano instead. The commands are
+ right on the screen so it&#8217;s more straightforward for beginners. </p>
+
+
+
+<h3>Version Control: Git</h3>
+
+
+
+<p>You can install Git by typing in sudo apt install git</p>
+
+
+
+<p>Git
+ is a tool that helps keep track of changes you make to your code. It 
+essentially helps you save drafts of your code, so that if you mess up, 
+you can revert back to an old working version of the code. Before 
+learning about Git, I used to copy my entire source code folder to make a
+ backup, and name it something like code_backup_20180910 to keep track 
+of the different version of my program. This can take a while and get 
+pretty messy. With Git, whenever you get to a checkpoint in the project 
+where you are happy with saving (maybe you finished a feature), you can 
+just type git add . then git commit -m &#8220;Enter here a short description 
+of the draft or changes that you made&#8221; then git push</p>
+
+
+
+<p>Those three 
+commands above will be the majority of commands that you will use in the
+ beginning. After that, you will eventually learn how to put code into 
+different branches and organize your progress/features for team 
+development. I will leave it up to you to Google what each of those 
+commands actually do. </p>
+
+
+
+<p>Other useful tools that you may want to look into: </p>
+
+
+
+<p>Fiddler is similar to the Network tab for the browser developer tools, but can show things in more detail. </p>
+
+
+
+<p>Postman helps test out RESTful functions. More on RESTful topics later. </p>
+
+
+
+<p>Jing is a great free program for capturing screenshots. Screenshots can help a lot when clarifying things over the internet. </p>
+
+
+
+<p>PGAdmin
+ can help view Postgresql databases in a graphical interface. Most 
+databases have a program that can help view things in a GUI. </p>
+
+
+
+<p>You
+ may not need the below tools for personal development, but most tech 
+companies nowadays seem to use these so it is good to know they exist so
+ you can read up on them: </p>
+
+
+
+<p><strong>JIRA and Redmine </strong>&#8211;
+ Helps keep track of tasks, bugs, and improvement requests. People can 
+easily log bug reports or see what they need to do for the day. (Redmine
+ is open source and free). </p>
+
+
+
+<p><strong>Splunk </strong>&#8211; Indexes your
+ data and provides search utilities for it. When indexing log files, it 
+can help troubleshoot server issues. (Free)</p>
+
+
+
+<p><strong>Jenkins and Travis C</strong>I
+ &#8211; For continuous integration. Essentially makes sure your application 
+passes its tests whenever someone pushes a changes. (Travis CI is free, 
+Jenkins is free, but need your own server). </p>
+
+
+
+<p><strong>Codecov </strong>&#8211; Helps keep track of how much of the code is covered by tests. (Free)</p>
+
+
+
+<p><strong>BitBucket</strong> &#8211; Version control like Git, but allows for free private repositories. (Free)</p>
+<p>The post <a rel="nofollow" href="https://dev.mediocreinventions.com/tools/">4. Tools</a> appeared first on <a rel="nofollow" href="http://mediocreinventions.herokuapp.com">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>
