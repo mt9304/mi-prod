@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>2. Creating the Ruby on Rails API - Mediocre Inventions</title><meta name="description" content="In this part, we will begin creating the Ruby on Rails application and setup a basic API to perform CRUD (Create, Read, Update, Delete) operations."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="2. Creating the Ruby on Rails API - Mediocre Inventions"><meta property="og:description" content="In this part, we will begin creating the Ruby on Rails application and setup a basic API to perform CRUD (Create, Read, Update, Delete) operations."><meta property="og:url" content="https://www.mediocreinventions.com/ruby-on-rails-api/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="API"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Ruby on Rails With React"><meta property="article:published_time" content="2018-12-30T02:58:49+00:00"><meta property="article:modified_time" content="2018-12-31T21:17:06+00:00"><meta property="og:updated_time" content="2018-12-31T21:17:06+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this part, we will begin creating the Ruby on Rails application and setup a basic API to perform CRUD (Create, Read, Update, Delete) operations."><meta name="twitter:title" content="2. Creating the Ruby on Rails API - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>2. Creating the Ruby on Rails API - Mediocre Inventions</title><meta name="description" content="In this part, we will begin creating the Ruby on Rails application and setup a basic API to perform CRUD (Create, Read, Update, Delete) operations."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="2. Creating the Ruby on Rails API - Mediocre Inventions"><meta property="og:description" content="In this part, we will begin creating the Ruby on Rails application and setup a basic API to perform CRUD (Create, Read, Update, Delete) operations."><meta property="og:url" content="https://www.mediocreinventions.com/ruby-on-rails-api/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="API"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Ruby on Rails With React"><meta property="article:published_time" content="2018-12-30T02:58:49+00:00"><meta property="article:modified_time" content="2019-01-28T01:42:41+00:00"><meta property="og:updated_time" content="2019-01-28T01:42:41+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png"><meta property="og:image:width" content="800"><meta property="og:image:height" content="348"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this part, we will begin creating the Ruby on Rails application and setup a basic API to perform CRUD (Create, Read, Update, Delete) operations."><meta name="twitter:title" content="2. Creating the Ruby on Rails API - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
@@ -25,7 +25,7 @@
 			                        
                     </div>
                     
-                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="https://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
 <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
 </ul></div>                 
                 </div>
@@ -36,8 +36,18 @@
         	<div class="row"> 
             	<div class="col-sm-9">
 
-				<article id="post-641" class="single-content post-text scroll post-641 post type-post status-publish format-standard hentry category-rails-to-production category-rails-authentication-authorization category-rails-react category-rails-nginx tag-api tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
-                            	                            </div>
+				<article id="post-641" class="single-content post-text scroll post-641 post type-post status-publish format-standard has-post-thumbnail hentry category-rails-to-production category-rails-authentication-authorization category-rails-react category-rails-nginx tag-api tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="800" height="348" src="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png 800w, https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231-300x131.png 300w, https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231-768x334.png 768w" sizes="(max-width: 800px) 100vw, 800px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/ruby-on-rails-api/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=2.%20Creating%20the%20Ruby%20on%20Rails%20API&url=https://www.mediocreinventions.com/ruby-on-rails-api/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/ruby-on-rails-api/&description=2.%20Creating%20the%20Ruby%20on%20Rails%20API"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/ruby-on-rails-api/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
                             <header class=" text-header"><h2>2. Creating the Ruby on Rails API</h2>                                                            <div class="post-meta"> 
                                    <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
                                                                        <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails and React To Production (Nginx)</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" rel="category tag">Rails Authentication/Authorization</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" rel="category tag">Ruby on Rails With React</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" rel="category tag">Ruby on Rails, Nginx and Puma</a></span>
@@ -58,7 +68,7 @@
 
 
 
-<p>Lets start by creating the home page. Generate files needed for the home page by typing:&nbsp;</p>
+<p>Lets start by creating the home page. Generate files needed for the home page by typing: </p>
 
 
 
@@ -67,7 +77,7 @@
 
 
 
-<p>Create the resources for an object called book.&nbsp;</p>
+<p>Create the resources for an object called book. </p>
 
 
 
@@ -91,7 +101,7 @@
 
 <p>If this is the first 
 time you are seeing the above commands, here is what it is doing in a 
-nutshell for our purposes. &lsquo;g&rsquo; is short for generate, so in the commands
+nutshell for our purposes. ‘g’ is short for generate, so in the commands
  above we are telling rails to generate things such as a controller or 
 resource. The index part is just the page itself (index.html) where you 
 can write HTML in and the controller allows for this page to interact 
@@ -99,7 +109,7 @@ with the server (to get information from the database). Generating the
 resource in this case allows us to add the routes (or URL paths) for 
 getting information about the book. This book is then set represented by
  a title, author (in text format), description, number of pages (in 
-integer format), and when it was published (in date format).&nbsp;</p>
+integer format), and when it was published (in date format). </p>
 
 
 
@@ -107,33 +117,33 @@ integer format), and when it was published (in date format).&nbsp;</p>
 
 
 
-<p>Let&rsquo;s add the routes for the api we are making. In the config/routes.rb file, add the lines:&nbsp;</p>
+<p>Let’s add the routes for the api we are making. In the config/routes.rb file, add the lines: </p>
 
 
 
 <pre class="wp-block-preformatted">root 'home_page#index'
 namespace :api do
-&nbsp;resources :books
+ resources :books
 end
 </pre>
 
 
 
-<p>The routes.rb file should look like this:&nbsp;<a rel="noreferrer noopener" href="https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf" target="_blank">https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf</a><br><br></p>
+<p>The routes.rb file should look like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf" target="_blank">https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf</a><br><br></p>
 <script src="https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf.js"></script><h4>Controller</h4>
 
 
 
-<p>Now let&rsquo;s replace the contents in the books controller in /app/controllers/books_controller.rb to be:&nbsp;</p>
+<p>Now let’s replace the contents in the books controller in /app/controllers/books_controller.rb to be: </p>
 
 
 
 <pre class="wp-block-preformatted">module Api
-&nbsp;class EventsController &lt; ApplicationController
-&nbsp;&nbsp;def index
-&nbsp;&nbsp;&nbsp;render json: Book.all
-&nbsp;&nbsp;end
-&nbsp;end
+ class EventsController < ApplicationController
+  def index
+   render json: Book.all
+  end
+ end
 end
 </pre>
 
@@ -145,7 +155,7 @@ be /app/controllers/api/books_controller.rb</p>
 
 
 
-<p>Any API related controllers should now go in that folder.&nbsp;</p>
+<p>Any API related controllers should now go in that folder. </p>
 
 
 
@@ -156,12 +166,12 @@ be /app/controllers/api/books_controller.rb</p>
 <p>Putting
  books under the :api namespace and api folder allows you to access the 
 resource in the URL after /api. So in this case, it would be <a href="http://website.com/api/books" target="_blank" rel="noreferrer noopener">website.com/api/books</a>.
- Making books a resource by writing &ldquo;resources :book&rdquo; allows users to 
+ Making books a resource by writing “resources :book” allows users to 
 access books through its RESTful URLs. Below are the following URLs you 
 will be able to use to get data about the books. Since we have the index
  method in the controller and views for books, you should be able to 
-visit that page (we haven&rsquo;t added any book records in the database yet, 
-so these URLs wouldn&rsquo;t return anything right now).&nbsp;</p>
+visit that page (we haven’t added any book records in the database yet, 
+so these URLs wouldn’t return anything right now). </p>
 
 
 
@@ -173,11 +183,11 @@ so these URLs wouldn&rsquo;t return anything right now).&nbsp;</p>
 
 
 
-<p>Here are the basics that you need to know in Rails regarding these APIs and routes:&nbsp;</p>
+<p>Here are the basics that you need to know in Rails regarding these APIs and routes: </p>
 
 
 
-<p>&ndash; Controllers will have a few standard methods:&nbsp;</p>
+<p>– Controllers will have a few standard methods: </p>
 
 
 
@@ -189,7 +199,7 @@ so these URLs wouldn&rsquo;t return anything right now).&nbsp;</p>
 
 
 
-<p>	show method for showing one particular book (/books/id where id is the book&rsquo;s id in the database)</p>
+<p>	show method for showing one particular book (/books/id where id is the book’s id in the database)</p>
 
 
 
@@ -204,12 +214,12 @@ so these URLs wouldn&rsquo;t return anything right now).&nbsp;</p>
 <p>Here
  we will fill out the rest of the controller methods to allow for the 
 above behavior through the API. Change your books controller so that it 
-is:&nbsp;<a href="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc</a></p>
+is: <a href="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc</a></p>
 <script src="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc.js"></script><h2>Adding Books</h2>
 
 
 
-<p>Now let&rsquo;s add some Books to our database so that we can test out the API. Go into the Rails console by typing in the terminal:&nbsp;</p>
+<p>Now let’s add some Books to our database so that we can test out the API. Go into the Rails console by typing in the terminal: </p>
 
 
 
@@ -218,19 +228,19 @@ is:&nbsp;<a href="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538d
 
 
 
-<p>(Make sure you are in the project&rsquo;s folder)</p>
+<p>(Make sure you are in the project’s folder)</p>
 
 
 
 <p>The
  Rails console lets you run Ruby code in. real time to make changes to 
-your application. In this case, we want to add a new Book, so let&rsquo;s type
- in:&nbsp;</p>
+your application. In this case, we want to add a new Book, so let’s type
+ in: </p>
 
 
 
-<pre class="wp-block-preformatted">b = Book.create :title =&gt; "How To Cook", :author =&gt; "Bob", :description =&gt; "Teaches you how to cook. ", :pages =&gt; 20, :published =&gt; "2018-11-03"
-b2 = Book.create :title =&gt; "How To Bake", :author =&gt; "Bill", :description =&gt; "Teaches you how to bake. ", :pages =&gt; 15, :published =&gt; "2018-02-03"
+<pre class="wp-block-preformatted">b = Book.create :title => "How To Cook", :author => "Bob", :description => "Teaches you how to cook. ", :pages => 20, :published => "2018-11-03"
+b2 = Book.create :title => "How To Bake", :author => "Bill", :description => "Teaches you how to bake. ", :pages => 15, :published => "2018-02-03"
 </pre>
 
 
@@ -239,23 +249,23 @@ b2 = Book.create :title =&gt; "How To Bake", :author =&gt; "Bill", :description 
 
 
 
-<p>While in the console, type &ldquo;quit&rdquo; to exit.&nbsp;</p>
+<p>While in the console, type “quit” to exit. </p>
 
 
 
 <p>This
  will create 2 entries in our database in the Books table. The database 
 right now is stored in /db/development.sqlite3. You can open this with 
-sqlitebrowser.&nbsp;</p>
+sqlitebrowser. </p>
 
 
 
-<p>If you haven&rsquo;t downloaded it yet, you can install it by running these commands in the terminal:&nbsp;</p>
+<p>If you haven’t downloaded it yet, you can install it by running these commands in the terminal: </p>
 
 
 
 <pre class="wp-block-preformatted">sudo add-apt-repository ppa:linuxgndu/sqlitebrowser-testing
-sudo apt-get update &amp;&amp; sudo apt-get install sqlitebrowser
+sudo apt-get update && sudo apt-get install sqlitebrowser
 </pre>
 
 
@@ -278,7 +288,7 @@ example, go to localhost:3000/api/books/1</p>
 
 <p>You should 
 receive a page with information about one of the books we just created 
-in JSON format. The &ldquo;1&rdquo; at the end of the URL represent&rsquo;s the ID, which 
+in JSON format. The “1” at the end of the URL represent’s the ID, which 
 is found in the ID column of the Books table in the database. So if you 
 go to localhost:3000/api/books/2 then it will give you information on 
 the other book. </p>
@@ -290,13 +300,13 @@ the other book. </p>
 								<div class="col-sm-3"> 
 				
 <aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
-					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
 									</li>
 					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
 <ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
@@ -311,6 +321,12 @@ The articles in this category cover some of the basic topics that are relevant t
 You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
 ">Web Application Basics</a>
 </li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
 		</ul></section></aside></div>
 							</div>
 		</div>

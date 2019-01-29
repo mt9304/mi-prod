@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>8. Scripting for Linux Systems - Mediocre Inventions</title><meta name="description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="8. Scripting for Linux Systems - Mediocre Inventions"><meta property="og:description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta property="og:url" content="https://www.mediocreinventions.com/scripting/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="bash"><meta property="article:tag" content="linux"><meta property="article:tag" content="scripting"><meta property="article:tag" content="Ubuntu"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:50:09+00:00"><meta property="article:modified_time" content="2018-12-31T21:09:22+00:00"><meta property="og:updated_time" content="2018-12-31T21:09:22+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta name="twitter:title" content="8. Scripting for Linux Systems - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>8. Scripting for Linux Systems - Mediocre Inventions</title><meta name="description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="8. Scripting for Linux Systems - Mediocre Inventions"><meta property="og:description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta property="og:url" content="https://www.mediocreinventions.com/scripting/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="bash"><meta property="article:tag" content="linux"><meta property="article:tag" content="scripting"><meta property="article:tag" content="Ubuntu"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:50:09+00:00"><meta property="article:modified_time" content="2019-01-28T05:51:45+00:00"><meta property="og:updated_time" content="2019-01-28T05:51:45+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/ubuntu-logo-e1548641439893.png"><meta property="og:image:width" content="796"><meta property="og:image:height" content="308"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article will go through how scripting works in Bash. It will show examples of some of the most commonly used Bash commands and explain how to use them."><meta name="twitter:title" content="8. Scripting for Linux Systems - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/ubuntu-logo-e1548641439893.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
@@ -25,7 +25,7 @@
 			                        
                     </div>
                     
-                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="https://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
 <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
 </ul></div>                 
                 </div>
@@ -36,8 +36,18 @@
         	<div class="row"> 
             	<div class="col-sm-9">
 
-				<article id="post-1041" class="single-content post-text scroll post-1041 post type-post status-publish format-standard hentry category-web-basics tag-bash tag-linux tag-scripting tag-ubuntu"><div class=" content-media"> 
-                            	                            </div>
+				<article id="post-1041" class="single-content post-text scroll post-1041 post type-post status-publish format-standard has-post-thumbnail hentry category-web-basics tag-bash tag-linux tag-scripting tag-ubuntu"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="796" height="308" src="https://www.mediocreinventions.com/wp-content/uploads/ubuntu-logo-e1548641439893.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/ubuntu-logo-e1548641439893.png 796w, https://www.mediocreinventions.com/wp-content/uploads/ubuntu-logo-e1548641439893-300x116.png 300w, https://www.mediocreinventions.com/wp-content/uploads/ubuntu-logo-e1548641439893-768x297.png 768w" sizes="(max-width: 796px) 100vw, 796px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/scripting/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=8.%20Scripting%20for%20Linux%20Systems&url=https://www.mediocreinventions.com/scripting/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/scripting/&description=8.%20Scripting%20for%20Linux%20Systems"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/scripting/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
                             <header class=" text-header"><h2>8. Scripting for Linux Systems</h2>                                                            <div class="post-meta"> 
                                    <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
                                                                        <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
@@ -142,14 +152,14 @@
 <p>The letter with a dash 
 is called an argument. It lets the computer know to run the command with
  certain options enabled. Most commands will have the arguments, you can
- use the &ldquo;man&rdquo; command to bring up a manual with a list of Instructions 
-on how to use commands. For example, &ldquo;man ls&rdquo;.</p>
+ use the “man” command to bring up a manual with a list of Instructions 
+on how to use commands. For example, “man ls”.</p>
 
 
 
 <p>Some files and 
-folders won&rsquo;t be listed by ls without the -a argument. For example, 
-folders that start with a &ldquo;.&rdquo; like the &ldquo;.git&rdquo; folder.</p>
+folders won’t be listed by ls without the -a argument. For example, 
+folders that start with a “.” like the “.git” folder.</p>
 
 
 
@@ -209,8 +219,8 @@ current directory: test, sample, abc, abcdef, example</p>
 
 
 <p>Then you can
- type &ldquo;cd t&rdquo; and then press tab and it will auto-complete to &ldquo;cd test/&rdquo;.
- You can also type cd &ldquo;abcd&rdquo; then tab to autocomplete to the abcdef 
+ type “cd t” and then press tab and it will auto-complete to “cd test/”.
+ You can also type cd “abcd” then tab to autocomplete to the abcdef 
 folder. However, if you have two or more similar named files/folders, 
 then you will have to keep typing until there is only one option. In 
 that case, you can also press tab twice to see the different names of 
@@ -218,7 +228,7 @@ folders.</p>
 
 
 
-<p>You can also type &ldquo;pwd&rdquo; to check your current directory.</p>
+<p>You can also type “pwd” to check your current directory.</p>
 
 
 
@@ -248,7 +258,7 @@ folders.</p>
 
 
 
-<p>Move all files with the letter &ldquo;s&rdquo; to a folder called test3</p>
+<p>Move all files with the letter “s” to a folder called test3</p>
 
 
 
@@ -327,7 +337,7 @@ folders.</p>
 
 
 
-<p>Output the text &ldquo;Hello World&rdquo;</p>
+<p>Output the text “Hello World”</p>
 
 
 
@@ -350,7 +360,7 @@ folders.</p>
 
 
 <p>You can also set 
-variables for your session by. You can type TESTVAR=&rdquo;hi&rdquo;, press enter 
+variables for your session by. You can type TESTVAR=”hi”, press enter 
 then type echo $TESTVAR to see the result.</p>
 
 
@@ -386,7 +396,7 @@ install software may require more permissions than a normal user.</p>
  is a package manager for Ubuntu (it is a program that helps install 
 programs). In this case, we are telling apt to install a program called 
 curl. Now that you have curl, you can use it to get website contents. 
-Try typing &ldquo;curl http://icanhazip.com&rdquo; to get your ip address. You can 
+Try typing “curl http://icanhazip.com” to get your ip address. You can 
 also visit this website in your browser to see the results.</p>
 
 
@@ -399,7 +409,7 @@ also visit this website in your browser to see the results.</p>
 
 
 
-<p>Find the word &ldquo;hello&rdquo; in a file called test.txt</p>
+<p>Find the word “hello” in a file called test.txt</p>
 
 
 
@@ -408,7 +418,7 @@ also visit this website in your browser to see the results.</p>
 
 
 
-<p>Find the world &ldquo;hello&rdquo; in a file called test.txt, but case insensitive</p>
+<p>Find the world “hello” in a file called test.txt, but case insensitive</p>
 
 
 
@@ -417,7 +427,7 @@ also visit this website in your browser to see the results.</p>
 
 
 
-<p>Find the word &ldquo;hello&rdquo; in all the files within this folder and its subfolders, and also case insensitive</p>
+<p>Find the word “hello” in all the files within this folder and its subfolders, and also case insensitive</p>
 
 
 
@@ -426,7 +436,7 @@ also visit this website in your browser to see the results.</p>
 
 
 
-<p>These are some of the most common functions that you  will find yourself using when programming. As you install new programs,  you will also learn their commands. For example, Git and Rails will  have their own functions that you will eventually learn. When you want  to learn how to do something with the terminal, you can just Google  something like &ldquo;how to write to file in Bash&rdquo; or &ldquo;how to manage  permissions with ubuntu terminal&rdquo; (Bash is the scripting language that  we covered here).</p>
+<p>These are some of the most common functions that you  will find yourself using when programming. As you install new programs,  you will also learn their commands. For example, Git and Rails will  have their own functions that you will eventually learn. When you want  to learn how to do something with the terminal, you can just Google  something like “how to write to file in Bash” or “how to manage  permissions with ubuntu terminal” (Bash is the scripting language that  we covered here).</p>
 
 
 
@@ -470,7 +480,7 @@ echo $2
 
 
 
-<p>You can run &ldquo;sh myScrip.sh myfirstarg mysecondarg&rdquo; 
+<p>You can run “sh myScrip.sh myfirstarg mysecondarg” 
 and watch it print out the arguments. Congratulations, you just created a
  script!</p>
 
@@ -482,7 +492,7 @@ and watch it print out the arguments. Congratulations, you just created a
 
 <p>Windows also has
  a command line interface called Powershell or cmd. However, their 
-commands are different and it doesn&rsquo;t come with a package manager like 
+commands are different and it doesn’t come with a package manager like 
 Ubuntu does.</p>
 <div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/bash/" rel="tag">bash</a>, <a href="https://www.mediocreinventions.com/tag/linux/" rel="tag">linux</a>, <a href="https://www.mediocreinventions.com/tag/scripting/" rel="tag">scripting</a>, <a href="https://www.mediocreinventions.com/tag/ubuntu/" rel="tag">Ubuntu</a></div>								</div>
                             </div>
@@ -492,13 +502,13 @@ Ubuntu does.</p>
 								<div class="col-sm-3"> 
 				
 <aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
-					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
 									</li>
 					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
 <ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
@@ -513,6 +523,12 @@ The articles in this category cover some of the basic topics that are relevant t
 You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
 ">Web Application Basics</a>
 </li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
 		</ul></section></aside></div>
 							</div>
 		</div>

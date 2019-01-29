@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>11. Big O Notation Basics For Programming - Mediocre Inventions</title><meta name="description" content="This article introduces the basics of Big O Notation. It will explain why understanding this topic is important for improving the efficiency of code."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="11. Big O Notation Basics For Programming - Mediocre Inventions"><meta property="og:description" content="This article introduces the basics of Big O Notation. It will explain why understanding this topic is important for improving the efficiency of code."><meta property="og:url" content="https://www.mediocreinventions.com/big-o/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="big o"><meta property="article:tag" content="efficiency"><meta property="article:tag" content="programming"><meta property="article:tag" content="time complexity"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:57:06+00:00"><meta property="article:modified_time" content="2019-01-01T01:16:30+00:00"><meta property="og:updated_time" content="2019-01-01T01:16:30+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article introduces the basics of Big O Notation. It will explain why understanding this topic is important for improving the efficiency of code."><meta name="twitter:title" content="11. Big O Notation Basics For Programming - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>11. Big O Notation Basics For Programming - Mediocre Inventions</title><meta name="description" content="This article introduces the basics of Big O Notation. It will explain why understanding this topic is important for improving the efficiency of code."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="11. Big O Notation Basics For Programming - Mediocre Inventions"><meta property="og:description" content="This article introduces the basics of Big O Notation. It will explain why understanding this topic is important for improving the efficiency of code."><meta property="og:url" content="https://www.mediocreinventions.com/big-o/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="big o"><meta property="article:tag" content="efficiency"><meta property="article:tag" content="programming"><meta property="article:tag" content="time complexity"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:57:06+00:00"><meta property="article:modified_time" content="2019-01-28T05:53:40+00:00"><meta property="og:updated_time" content="2019-01-28T05:53:40+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png"><meta property="og:image:width" content="800"><meta property="og:image:height" content="272"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article introduces the basics of Big O Notation. It will explain why understanding this topic is important for improving the efficiency of code."><meta name="twitter:title" content="11. Big O Notation Basics For Programming - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
@@ -25,7 +25,7 @@
 			                        
                     </div>
                     
-                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="https://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
 <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
 </ul></div>                 
                 </div>
@@ -36,8 +36,18 @@
         	<div class="row"> 
             	<div class="col-sm-9">
 
-				<article id="post-1271" class="single-content post-text scroll post-1271 post type-post status-publish format-standard hentry category-web-basics tag-big-o tag-efficiency tag-programming tag-time-complexity"><div class=" content-media"> 
-                            	                            </div>
+				<article id="post-1271" class="single-content post-text scroll post-1271 post type-post status-publish format-standard has-post-thumbnail hentry category-web-basics tag-big-o tag-efficiency tag-programming tag-time-complexity"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="800" height="272" src="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png 800w, https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878-300x102.png 300w, https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878-768x261.png 768w" sizes="(max-width: 800px) 100vw, 800px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/big-o/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=11.%20Big%20O%20Notation%20Basics%20For%20Programming&url=https://www.mediocreinventions.com/big-o/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/big-o/&description=11.%20Big%20O%20Notation%20Basics%20For%20Programming"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/big-o/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
                             <header class=" text-header"><h2>11. Big O Notation Basics For Programming</h2>                                                            <div class="post-meta"> 
                                    <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
                                                                        <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
@@ -65,7 +75,7 @@ then the application will naturally take longer to process this. In
 these cases, you will want to make sure that your code is as optimal as 
 you can make it so that the application can keep running fast and scale 
 better with time. For example, if you are implementing a search 
-function, you don&rsquo;t want the code to go through a simple For Loop and 
+function, you don’t want the code to go through a simple For Loop and 
 loop through the millions of books before finding the resulting book. </p>
 
 
@@ -89,7 +99,7 @@ about. </p>
 representation that describes how much time and space an algorithm 
 requires as the input grows. We are going to go over 4 different run 
 times that are most commonly seen: O(n), O(n^2), O(log n), and O(1). If 
-you are afraid of math and feel like this makes no sense already, don&rsquo;t 
+you are afraid of math and feel like this makes no sense already, don’t 
 worry. I will go over this in plain English and will give simple 
 examples to illustrate what each of these mean. This also means that the
  explanations in this article will be very basic and will definitely not
@@ -107,16 +117,16 @@ is very valuable and will help you improve the way you code. </p>
 
 <p>When
  people refer to something as having a run time of O(n), it means that 
-it will take as long as the size of &ldquo;n&rdquo; (the variable). For example, the
+it will take as long as the size of “n” (the variable). For example, the
  below code would be considered to have O(n) run time: </p>
 
 
 
-<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	console.log("I will run n times. ");<br>}</pre>
+<pre class="wp-block-preformatted">for (i = 0; i < n; i++) {<br>	console.log("I will run n times. ");<br>}</pre>
 
 
 
-<p>If you recall from the <a href="https://www.mediocreinventions.com/programming-basics/" target="_blank" rel="noreferrer noopener" aria-label="If you recall from the Programming article, the for loop will run as long as the condition of &quot;i &lt; n&quot; is true. This means that this function will run 5 times if the value of &quot;n&quot; is 5, and 5000 times if the value of &quot;n&quot; is 5000. This has a &quot;linear&quot; run time because the size of &quot;n&quot; is proportionate to how many times it will run at a 1:1 ratio. So in the Search function example above, if the function loops through a million Book entries in alphabetical order, users will have to wait for the function to run a million times before it reaches the end. In the best case (&quot;maybe the book being searched starts with &quot;A&quot;), it might only have to loop through a handful of times before returning the result. Similarly, in the worst case scenario (maybe a Book's name is &quot;ZZZZZZ&quot;), then it will run the whole million times before returning the result. Although this can be very fast if the book's name started with &quot;A&quot;, Big O generally refers to the worst case scenario as its run time. So a simple for loop in this case would be O(n).  (opens in a new tab)">Programming</a> article, the for loop will run as long as the condition of &ldquo;i &lt; n&rdquo; is true. This means that this function will run 5 times if the value of &ldquo;n&rdquo; is 5, and 5000 times if the value of &ldquo;n&rdquo; is 5000. This has a &ldquo;linear&rdquo; run time because the size of &ldquo;n&rdquo; is proportionate to how many times it will run at a 1:1 ratio. So in the Search function example above, if the function loops through a million Book entries in alphabetical order, users will have to wait for the function to run a million times before it reaches the end. In the best case (&ldquo;maybe the book being searched starts with &ldquo;A&rdquo;), it might only have to loop through a handful of times before returning the result. Similarly, in the worst case scenario (maybe a Book&rsquo;s name is &ldquo;ZZZZZZ&rdquo;), then it will run the whole million times before returning the result. Although this can be very fast if the book&rsquo;s name started with &ldquo;A&rdquo;, Big O generally refers to the worst case scenario as its run time. So a simple for loop in this case would be O(n). </p>
+<p>If you recall from the <a href="https://www.mediocreinventions.com/programming-basics/" target="_blank" rel="noreferrer noopener" aria-label="If you recall from the Programming article, the for loop will run as long as the condition of "i < n" is true. This means that this function will run 5 times if the value of "n" is 5, and 5000 times if the value of "n" is 5000. This has a "linear" run time because the size of "n" is proportionate to how many times it will run at a 1:1 ratio. So in the Search function example above, if the function loops through a million Book entries in alphabetical order, users will have to wait for the function to run a million times before it reaches the end. In the best case ("maybe the book being searched starts with "A"), it might only have to loop through a handful of times before returning the result. Similarly, in the worst case scenario (maybe a Book's name is "ZZZZZZ"), then it will run the whole million times before returning the result. Although this can be very fast if the book's name started with "A", Big O generally refers to the worst case scenario as its run time. So a simple for loop in this case would be O(n).  (opens in a new tab)">Programming</a> article, the for loop will run as long as the condition of “i < n” is true. This means that this function will run 5 times if the value of “n” is 5, and 5000 times if the value of “n” is 5000. This has a “linear” run time because the size of “n” is proportionate to how many times it will run at a 1:1 ratio. So in the Search function example above, if the function loops through a million Book entries in alphabetical order, users will have to wait for the function to run a million times before it reaches the end. In the best case (“maybe the book being searched starts with “A”), it might only have to loop through a handful of times before returning the result. Similarly, in the worst case scenario (maybe a Book’s name is “ZZZZZZ”), then it will run the whole million times before returning the result. Although this can be very fast if the book’s name started with “A”, Big O generally refers to the worst case scenario as its run time. So a simple for loop in this case would be O(n). </p>
 
 
 
@@ -128,15 +138,15 @@ it will take as long as the size of &ldquo;n&rdquo; (the variable). For example,
 
 
 
-<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	for (j =0; j &lt; n; i++) {<br>	console.log("I will run n * n times. ");	<br>	}<br>}</pre>
+<pre class="wp-block-preformatted">for (i = 0; i < n; i++) {<br>	for (j =0; j < n; i++) {<br>	console.log("I will run n * n times. ");	<br>	}<br>}</pre>
 
 
 
 <p>You can see that there is a for loop nested within a for loop, 
-and both of them depend on the size of &ldquo;n&rdquo;. Which means that if n is 10,
- then both the &ldquo;j&rdquo; and &ldquo;i&rdquo; loops have to run 10 times each. Since the 
-&ldquo;j&rdquo; loop is nested within the &ldquo;i&rdquo; loop, the &ldquo;j&rdquo; loop has to run 10 times
- before the &ldquo;i&rdquo; value increments by 1. To finish, &ldquo;i&rdquo; will also need to 
+and both of them depend on the size of “n”. Which means that if n is 10,
+ then both the “j” and “i” loops have to run 10 times each. Since the 
+“j” loop is nested within the “i” loop, the “j” loop has to run 10 times
+ before the “i” value increments by 1. To finish, “i” will also need to 
 run 10 times, which means 10 times 10. The point here is that both loops
  depend on the same variable and one of the loops is nested in the 
 other. This makes it take exponentially longer to run as the size of n 
@@ -156,19 +166,19 @@ concept is much easier to understand. Algorithms that have a O(log n) or
 
 
 
-<pre class="wp-block-preformatted">function divideByTwo(n) {&nbsp;&nbsp;&nbsp;<br>   if (n == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>&nbsp;&nbsp;&nbsp;} else if (n &gt; 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var previousNumber = divideByTwo(n / 2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>&nbsp;&nbsp;&nbsp;}<br>}</pre>
+<pre class="wp-block-preformatted">function divideByTwo(n) {   <br>   if (n == 1) {<br>      console.log(n);<br>      return 1;<br>   } else if (n > 1) {<br>      var previousNumber = divideByTwo(n / 2);<br>      console.log(n);<br>      return n;<br>   }<br>}</pre>
 
 
 
-<p>We haven&rsquo;t went through &ldquo;recursion&rdquo; so the above code might 
+<p>We haven’t went through “recursion” so the above code might 
 look a bit confusing (recursion is essentially a function that calls 
-itself). The code takes the input &ldquo;n&rdquo;, prints out the number, then 
+itself). The code takes the input “n”, prints out the number, then 
 divide it by 2, and print out that number, then divide by 2 and so on 
 until the resulting number is less than 1. You can see that this is 
 scalable because even if the input is a million, if you keep dividing it
  by 2, the number of times this function has to run is still less than 
 30. The number of times this function has to run only increases by 1 
-every time &ldquo;n&rdquo; doubles in size. </p>
+every time “n” doubles in size. </p>
 
 
 
@@ -176,10 +186,10 @@ every time &ldquo;n&rdquo; doubles in size. </p>
 functions in real life all the time. For example, when you open up a 
 dictionary and want to find a word, you only need to flip through the 
 dictionary a few times before you find your word even though it may have
- thousands of pages. If the word is &ldquo;happy&rdquo;, you might start by opening 
-the dictionary from the middle. If you reach the &ldquo;m&rdquo; section, you 
+ thousands of pages. If the word is “happy”, you might start by opening 
+the dictionary from the middle. If you reach the “m” section, you 
 automatically flip back (maybe halfway). If this next section starts 
-with &ldquo;e&rdquo;, then you flip forward again and repeat until you reach the &ldquo;h&rdquo;
+with “e”, then you flip forward again and repeat until you reach the “h”
  section to find your word. No matter how big the dictionary is, it is 
 always a doable task because you are able to halve your results with 
 each flip. This is much more efficient than flipping through each page 
@@ -192,7 +202,7 @@ one at a time, similar to what a for loop would do. </p>
 
 
 <p>This
- one just means constant time. It doesn&rsquo;t depend on any input size, the 
+ one just means constant time. It doesn’t depend on any input size, the 
 amount of time it runs is always going to be the same. A function like 
 below would be considered constant time: </p>
 
@@ -223,13 +233,13 @@ is always going to be O(1) run time because there is no variable input. </p>
 								<div class="col-sm-3"> 
 				
 <aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
-					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
 									</li>
 					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
 <ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
@@ -244,6 +254,12 @@ The articles in this category cover some of the basic topics that are relevant t
 You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
 ">Web Application Basics</a>
 </li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
 		</ul></section></aside></div>
 							</div>
 		</div>

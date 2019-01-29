@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>3. Ruby on Rails Authentication - Mediocre Inventions</title><meta name="description" content="In this article, we will go over how to use the Devise gem to implement authentication for your Ruby on Rails web application so that users and login."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="3. Ruby on Rails Authentication - Mediocre Inventions"><meta property="og:description" content="In this article, we will go over how to use the Devise gem to implement authentication for your Ruby on Rails web application so that users and login."><meta property="og:url" content="https://www.mediocreinventions.com/rails-authentication/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="Authentication"><meta property="article:tag" content="devise"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Rails Authentication/Authorization"><meta property="article:published_time" content="2018-12-30T03:06:25+00:00"><meta property="article:modified_time" content="2018-12-31T21:24:53+00:00"><meta property="og:updated_time" content="2018-12-31T21:24:53+00:00"><meta property="og:image" content="https://localhost/wp-content/uploads/image.png"><meta property="og:image:secure_url" content="https://localhost/wp-content/uploads/image.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this article, we will go over how to use the Devise gem to implement authentication for your Ruby on Rails web application so that users and login."><meta name="twitter:title" content="3. Ruby on Rails Authentication - Mediocre Inventions"><meta name="twitter:image" content="https://localhost/wp-content/uploads/image.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>3. Ruby on Rails Authentication - Mediocre Inventions</title><meta name="description" content="In this article, we will go over how to use the Devise gem to implement authentication for your Ruby on Rails web application so that users and login."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="3. Ruby on Rails Authentication - Mediocre Inventions"><meta property="og:description" content="In this article, we will go over how to use the Devise gem to implement authentication for your Ruby on Rails web application so that users and login."><meta property="og:url" content="https://www.mediocreinventions.com/rails-authentication/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="Authentication"><meta property="article:tag" content="devise"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Rails Authentication/Authorization"><meta property="article:published_time" content="2018-12-30T03:06:25+00:00"><meta property="article:modified_time" content="2019-01-28T01:45:56+00:00"><meta property="og:updated_time" content="2019-01-28T01:45:56+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png"><meta property="og:image:width" content="800"><meta property="og:image:height" content="348"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this article, we will go over how to use the Devise gem to implement authentication for your Ruby on Rails web application so that users and login."><meta name="twitter:title" content="3. Ruby on Rails Authentication - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
@@ -25,7 +25,7 @@
 			                        
                     </div>
                     
-                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="https://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
 <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
 </ul></div>                 
                 </div>
@@ -36,8 +36,18 @@
         	<div class="row"> 
             	<div class="col-sm-9">
 
-				<article id="post-691" class="single-content post-text scroll post-691 post type-post status-publish format-standard hentry category-rails-to-production category-rails-authentication-authorization tag-authentication tag-devise tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
-                            	                            </div>
+				<article id="post-691" class="single-content post-text scroll post-691 post type-post status-publish format-standard has-post-thumbnail hentry category-rails-to-production category-rails-authentication-authorization tag-authentication tag-devise tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="800" height="348" src="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231.png 800w, https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231-300x131.png 300w, https://www.mediocreinventions.com/wp-content/uploads/rails-logo-e1548640038231-768x334.png 768w" sizes="(max-width: 800px) 100vw, 800px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/rails-authentication/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=3.%20Ruby%20on%20Rails%20Authentication&url=https://www.mediocreinventions.com/rails-authentication/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/rails-authentication/&description=3.%20Ruby%20on%20Rails%20Authentication"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/rails-authentication/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
                             <header class=" text-header"><h2>3. Ruby on Rails Authentication</h2>                                                            <div class="post-meta"> 
                                    <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
                                                                        <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails and React To Production (Nginx)</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" rel="category tag">Rails Authentication/Authorization</a></span>
@@ -58,7 +68,7 @@
 
 
 
-<p>Let&rsquo;s generate some components needed for this:</p>
+<p>Let’s generate some components needed for this:</p>
 
 
 
@@ -111,7 +121,7 @@ rake db:migrate</pre>
 
 
 
-<p>Let&rsquo;s add a navigation bar at the top of the page for User options like signing in and signing out. Go to /app/views/layouts/ and open up your application&rsquo;s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
+<p>Let’s add a navigation bar at the top of the page for User options like signing in and signing out. Go to /app/views/layouts/ and open up your application’s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
 
 
 
@@ -127,11 +137,11 @@ rake db:migrate</pre>
 
 
 
-<p>It essentially has a bunch of pre-built styles we can use to make a website so we don&rsquo;t have to style it from scratch.</p>
+<p>It essentially has a bunch of pre-built styles we can use to make a website so we don’t have to style it from scratch.</p>
 
 
 
-<p>When you start the server and look at the website, you should now see a navigation bar at the top with a Dropdown menu for Users at the top right. Right now, clicking it won&rsquo;t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap&rsquo;s JavaScript library to help us handle dropdown menues.</p>
+<p>When you start the server and look at the website, you should now see a navigation bar at the top with a Dropdown menu for Users at the top right. Right now, clicking it won’t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap’s JavaScript library to help us handle dropdown menues.</p>
 
 
 
@@ -143,11 +153,11 @@ rake db:migrate</pre>
 
 
 
-<p>Let&rsquo;s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let&rsquo;s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section. (around lined 32):</p>
+<p>Let’s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let’s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section. (around lined 32):</p>
 
 
 
-<pre class="wp-block-preformatted">&lt;% if user_signed_in? %&gt;<br>   &lt;%= link_to "Edit profile", edit_user_registration_path %&gt;<br>&lt;% else %&gt;<br>   &lt;%= link_to "Sign up", new_user_registration_path %&gt;<br>   &lt;%= link_to "Login", new_user_session_path %&gt;<br>&lt;% end %&gt;<br>&lt;% if user_signed_in? %&gt;<br>   &lt;%= link_to "Logout", destroy_user_session_path, method: :delete %&gt;<br>&lt;% end %&gt;</pre>
+<pre class="wp-block-preformatted"><% if user_signed_in? %><br>   <%= link_to "Edit profile", edit_user_registration_path %><br><% else %><br>   <%= link_to "Sign up", new_user_registration_path %><br>   <%= link_to "Login", new_user_session_path %><br><% end %><br><% if user_signed_in? %><br>   <%= link_to "Logout", destroy_user_session_path, method: :delete %><br><% end %></pre>
 
 
 
@@ -159,11 +169,11 @@ rake db:migrate</pre>
 
 
 
-<p>In Ruby on Rails, the .html part of the file name shows it is an HTML file, and the erb extension at the end let&rsquo;s the server know that this can accept Ruby code as well. The parts in between the angle bracket/percentage signs (&lt;% some_code %&gt;) are to indicate Ruby code, which is usually programming logic that HTML files would otherwise not be able to use. The brackets without &lsquo;=&rsquo; signs like &lt;% some_code %&gt; are indicators of Ruby code that do not need to render anything, while the &lsquo;=&rsquo; signs like &lt;%= some_code %&gt; indicates that something should be rendered. In this case, we can see that the &ldquo;if else&rdquo; logic of checking a user&rsquo;s authentication does not need rendering, while the actual links to the Login/Logout functions need rendering, since they are actual buttons on the page.</p>
+<p>In Ruby on Rails, the .html part of the file name shows it is an HTML file, and the erb extension at the end let’s the server know that this can accept Ruby code as well. The parts in between the angle bracket/percentage signs (<% some_code %>) are to indicate Ruby code, which is usually programming logic that HTML files would otherwise not be able to use. The brackets without ‘=’ signs like <% some_code %> are indicators of Ruby code that do not need to render anything, while the ‘=’ signs like <%= some_code %> indicates that something should be rendered. In this case, we can see that the “if else” logic of checking a user’s authentication does not need rendering, while the actual links to the Login/Logout functions need rendering, since they are actual buttons on the page.</p>
 
 
 
-The code that says something like link_to and new_user_session_path are just pre-built functions to make it more convenient (it also looks more readable, since it spells out exactly what it does). The Login line of code &lt;%= link_to &ldquo;Login&rdquo;, new_user_session_path %&gt; is essentially just <a href="/users/sign_in">Login</a> and you can try replacing this just to see for yourself.
+The code that says something like link_to and new_user_session_path are just pre-built functions to make it more convenient (it also looks more readable, since it spells out exactly what it does). The Login line of code <%= link_to “Login”, new_user_session_path %> is essentially just <a href="/users/sign_in">Login</a> and you can try replacing this just to see for yourself.
 
 
 
@@ -171,7 +181,7 @@ The code that says something like link_to and new_user_session_path are just pre
 
 
 
-<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: &lt;% if user_signed_in? %&gt;   Yay, you are logged in!&lt;% end %&gt;</p>
+<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: <% if user_signed_in? %>   Yay, you are logged in!<% end %></p>
 
 
 
@@ -188,13 +198,13 @@ The code that says something like link_to and new_user_session_path are just pre
 								<div class="col-sm-3"> 
 				
 <aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
-					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
 									</li>
 					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
 <ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
@@ -209,6 +219,12 @@ The articles in this category cover some of the basic topics that are relevant t
 You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
 ">Web Application Basics</a>
 </li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
 		</ul></section></aside></div>
 							</div>
 		</div>

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Installing WordPress &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.mediocreinventions.com/</link>
+	<description></description>
+	<lastBuildDate>Tue, 29 Jan 2019 06:50:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>3. WordPress Configurations And Preparation</title>
+		<link>https://www.mediocreinventions.com/wordpress-configurations-and-preparation/</link>
+		<pubDate>Mon, 28 Jan 2019 07:24:47 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[configurations]]></category>
+		<category><![CDATA[plugins]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=2400</guid>
+		<description><![CDATA[<p>Intro In this article, we go over some useful plugins that will help with your WordPress development. We will also go over some configuration changes to help resolve some common issues we might encounter later on. Plugins WP2Static &#8211; We will be converting our website to a static website for a faster user experience (and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we go over some useful plugins that will help with your WordPress development. We will also go over some configuration changes to help resolve some common issues we might encounter later on. <br></p>
+
+
+
+<h2>Plugins</h2>
+
+
+
+<p><strong>WP2Static</strong> &#8211; We will be converting our website to a static website for a faster user experience (and free hosting options). </p>
+
+
+
+<p> <strong>Yoast SEO</strong> &#8211; Helps with search engine optimizing so that you can improve your website traffic. </p>
+
+
+
+<p> <strong>GA Google Analytics</strong> &#8211; Helps intergrate your website with Google Analytics so you can track your website&#8217;s traffic better. </p>
+
+
+
+<p> <strong>Google XML Sitemaps</strong>&#8211; Helps with generating a simple sitemap for SEO purposes. Yoast SEO can also do this, this plugin may be better for our purposes in the later tutorials. </p>
+
+
+
+<p> <strong>Header Footer Code Manager</strong> &#8211; Helps us inject JavaScript snippets on your website&#8217;s pages incase you want to integrate with other services later (Such as AdSense or Amazon Associates). </p>
+
+
+
+<p> <strong>Optimize Database after Deleting Revisions</strong> &#8211; Since the service we will be using later on has a very strict database limit (but it&#8217;s free!), this will be crucial for keeping our database size smaller. </p>
+
+
+
+<p> <strong>Page Builder by SiteOrigin</strong> &#8211; Helps speed up page designing when editing your website. </p>
+
+
+
+<p> <strong>Upload Max File Size</strong> &#8211; By default, WordPress may only limit files to only be 2MB when uploading. This can help increase the limit in a easy and convenient way. If you still get an error saying a file is too big, it might be the resolution of the picture file. <br> <strong>WP Performance Score Booster</strong> &#8211; Helps speed up your website&#8217;s loading speed and performance score. Services such as <a href="https://tools.pingdom.com/">Pingdom</a> and <a href="https://gtmetrix.com/">GTmetrix</a> can help evaluate page speeds. <br>If you activate this plugin on your localhost and you get a 500 server error, you can check your Apache log files in /var/logs/apache2/ and find the error.log file. In the latest entry at the bottom, you should be able to see what the error is. If it says something along the lines of: </p>
+
+
+
+<p class="has-text-color has-vivid-red-color">&#8230; /var/www/yourwebsite/.htaccess: Invalid command &#8216;Header&#8217;, perhaps misspelled or defined by a module not included in the server configuration</p>
+
+
+
+<p>Then you will likely need to enable the Header module for Apache2 and restart the web server:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo a2enmod headers<br>
+sudo systemctl restart apache2
+</pre>
+
+
+
+<h2>Fixing Permalink Issue</h2>
+
+
+
+<p>By default, switching the permalink functions in WordPress might break your website. The pages and links to your posts might give you a 404 error saying it cannot be found. If this is happening, you can resolve this by doing the following: </p>
+
+
+
+<p>Open the file in a text editor with elevated priviledges (Nano or Vim): /etc/apache2/apache2.conf</p>
+
+
+
+<p>To edit this file, you may need elevated priviledges. You can use a text editor like nano by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/apache2.conf</pre>
+
+
+
+<p>Find the section that says  Directory /var/www/ and edit it so that AllowOverride is set to &#8220;All&#8221;. Below is what the file should look like in that section after editing. </p>
+
+
+
+<script src="https://gist.github.com/mt9304/88f86a9b518403907e5cb19183e0c5e5.js"></script>
+
+
+
+<p>Then restart the web server by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>You should be able to switch your permalink options around without breaking the links now. </p>
+
+
+
+<h2>Optimize Database</h2>
+
+
+
+<p>The database service we will be using only limits our database to be 5MB. Since it is such a small limit, we will use the Optimize Database after Deleting Revisions&#8221; plugin to reduce our database size. After installing and activating the plugin, you can access it through the WordPress Admin Panel &gt; Settings &gt; Optimize Database. Make sure to check off all the revisions area, because it can free a lot of space. </p>
+
+
+
+<h2>Disable Comments</h2>
+
+
+
+<p>Since we will be turning our website into a static website, we won&#8217;t be able to allow users to post comments. You can disable it in the WordPress Admin Panel &gt; Settings &gt; Discussion area. </p>
+
+
+
+<p>Now that this is done, we can proceed with deploying our application onto Heroku in the next article. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>2. Installing And Configuring WordPress (LAMP)</title>
+		<link>https://www.mediocreinventions.com/installing-wordpress/</link>
+		<pubDate>Sun, 13 Jan 2019 20:32:36 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[apache]]></category>
+		<category><![CDATA[installing]]></category>
+		<category><![CDATA[mysql]]></category>
+		<category><![CDATA[php]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=2291</guid>
+		<description><![CDATA[<p>Intro In this article, we will install WordPress as fast as we can. We will be using the LAMP environment we just setup in the previous article. This is on Ubuntu 18.04 and the WordPress version we are using will be 5.0.2. If have not set this up yet, feel free to visit the LAMP [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-wordpress/">2. Installing And Configuring WordPress (LAMP)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will install WordPress as fast as we can. We will be using the LAMP environment we just setup in the previous article. This is on Ubuntu 18.04 and the WordPress version we are using will be 5.0.2. If have not set this up yet, feel free to visit the LAMP installation <a href="https://mediocreinventions.com/installing-lamp-stack">article</a>. </p>
+
+
+
+<h2>Database</h2>
+
+
+
+<p>The database by default won&#8217;t allow you to run some of the commands below with the user and password arguments. To fix this, let&#8217;s run </p>
+
+
+
+<pre class="wp-block-preformatted">sudo mysql</pre>
+
+
+
+<p>Then once you are the console, run (remember to replace CHANGEME with the password):</p>
+
+
+
+<pre class="wp-block-preformatted">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'CHANGEME';<br>
+FLUSH PRIVILEGES;
+</pre>
+
+
+
+<p>Now we can start setting up the database by running the command below (change the password section and YOUSITENAME to the site or database name that you want): </p>
+
+
+
+<pre class="wp-block-preformatted">mysql --user="root" --password="CHANGEME" -e "CREATE DATABASE YOURSITENAME DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"</pre>
+
+
+
+<p>This creates the database that we will be using for the website. </p>
+
+
+
+<p><strong>Note:</strong><br>
+For this tutorial, we will be using the root user in our local environment, but you can create your own user if you wish. We will be migrating this project to a free hosting service in the later articles so this doesn&#8217;t matter too much for our purposes. </p>
+
+
+
+<h2>Server Configurations</h2>
+
+
+
+<p>Let&#8217;s create our website folder for the server to use by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo mkdir /var/www/YOURSITENAME</pre>
+
+
+
+<p>Then we can download the the WordPress files in a temp folder. </p>
+
+
+
+<pre class="wp-block-preformatted">cd /tmp<br>
+curl -O https://wordpress.org/latest.tar.gz<br>
+tar xzvf latest.tar.gz<br>
+touch /tmp/wordpress/.htaccess<br>
+mkdir /tmp/wordpress/wp-content/upgrade
+</pre>
+
+
+
+<h2>Permissions</h2>
+
+
+
+<p>Finally, we can copy the folders to the correct place and set its permissions so that everything goes smoothly. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo cp -a /tmp/wordpress/. /var/www/YOURSITENAME<br>
+sudo chown -R www-data:www-data /var/www/YOURSITENAME<br>
+sudo find /var/www/YOURSITENAME/ -type d -exec chmod 750 {} \;<br>
+sudo find /var/www/YOURSITENAME/ -type f -exec chmod 640 {} \;
+</pre>
+
+
+
+<p>Then we can change the document root in the configuration file to point to your website&#8217;s folder. Open up the file at /etc/apache2/sites-available/000-default.conf. You will need to run it with elevated priviledges, so if you are using the Nano text editor you can add sudo at the beginning like this: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/sites-available/000-default.conf</pre>
+
+
+
+<p>Or with Vim:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo vi /etc/apache2/sites-available/000-default.conf</pre>
+
+
+
+<p>Then change the line after Document root to be /var/www/YOURWEBSITEFOLDER</p>
+
+
+
+<p>Then restart the web server by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>Now you can visit the website at http://localhost</p>
+
+
+
+<p>The page that opens up should look like this:</p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/localhost.png" alt="" class="wp-image-2332" srcset="https://www.mediocreinventions.com/wp-content/uploads/localhost.png 452w, https://www.mediocreinventions.com/wp-content/uploads/localhost-173x300.png 173w" sizes="(max-width: 452px) 100vw, 452px" /></figure>
+
+
+
+<p><strong>Note:</strong><br>
+There is a section in the wp-config.php file that you can change to make it more secure. </p>
+
+
+
+<p>For this part, we need to generate some texts with the &#8216;Curl&#8217; program. You can install Curl by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install curl</pre>
+
+
+
+<p>Then make sure you copy or save the text you get from running this:</p>
+
+
+
+<pre class="wp-block-preformatted">curl -s https://api.wordpress.org/secret-key/1.1/salt/</pre>
+
+
+
+<p>Now we can open up then config file in /var/www/wp-config.php (using sudo) and replace the section that looks similar to what we just generated above. </p>
+
+
+
+<p>Before opening the file, you might also need to change the permissions of your folder at /var/www/YOURWEBSITENAME by running: <br>
+sudo chmod 777 /var/www/YOURWEBSITENAME</p>
+
+
+
+<p>This makes it less secure if you are hosting the website on your current machine, but shouldn&#8217;t matter if you are just testing around. </p>
+
+
+
+<h2>Installation</h2>
+
+
+
+<p>To finish the installation, you can just follow through the instructions on the localhost page. After that, you are done, WordPress is now installed on your machine!</p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/wpscreen.png" alt="" class="wp-image-2333" srcset="https://www.mediocreinventions.com/wp-content/uploads/wpscreen.png 776w, https://www.mediocreinventions.com/wp-content/uploads/wpscreen-291x300.png 291w, https://www.mediocreinventions.com/wp-content/uploads/wpscreen-768x793.png 768w" sizes="(max-width: 776px) 100vw, 776px" /></figure>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-wordpress/">2. Installing And Configuring WordPress (LAMP)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>1. Installing LAMP Stack For WordPress</title>
+		<link>https://www.mediocreinventions.com/installing-lamp-stack/</link>
+		<pubDate>Sun, 13 Jan 2019 20:28:59 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[installing]]></category>
+		<category><![CDATA[lamp]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=2261</guid>
+		<description><![CDATA[<p>Intro In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP. Linux is the operating system, Apache is the web server for the application, MySQL is the database, and PHP is the programming language. To follow through this tutorial, you can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-lamp-stack/">1. Installing LAMP Stack For WordPress</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP. Linux is the operating system, Apache is the web server for the application, MySQL is the database, and PHP is the programming language. To follow through this tutorial, you can use a virtual machine and spin up a new Ubuntu 18.04 server (it&#8217;s free). For some more information virtual machines, please visit this article: <a href="https://www.mediocreinventions.com/tools/">https://www.mediocreinventions.com/tools/</a></p>
+
+
+
+<p>If you already know how to do this and just want to set everything up as fast as possible, there is a script here that should get everything setup for installing LAMP stack and a WordPress site (You may have to change a few things in the script, like the database password. The comments should help explain what the script does): <a href="https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh">https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh</a>. To run it, just run &#8220;bash lamp.sh full&#8221; and make sure it has the proper permissions. </p>
+
+
+
+<p>A more detailed article on this can be found at <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a>. This article pretty much covers the same thing, but the one on this page is just much shorter and gets straight to the point. </p>
+
+
+
+<h2>Apache</h2>
+
+
+
+<p>To start, let&#8217;s run the following commands: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update<br>
+sudo apt install apache2
+</pre>
+
+
+
+<p>Now let&#8217;s make sure the firewall doesn&#8217;t interfere with our web server by running this: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw allow in "Apache Full"<br>
+sudo systemctl restart apache2
+</pre>
+
+
+
+<h2>MySQL</h2>
+
+
+
+<p>We will now install the database by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install mysql-server</pre>
+
+
+
+<p>The command below is just a security script that helps remove some potentially dangerous settings. You can answer Yes for most of them. The MySQL section in this article here explains it in more detail: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a></p>
+
+
+
+<pre class="wp-block-preformatted">sudo mysql_secure_installation</pre>
+
+
+
+<p>The settings are up to you, but here are what I answered for this project: <br>
+Password validate plug: N<br>
+New Password: CHANGEME<br>
+Confirm Passowrd: CHANGEME<br>
+Remove anonymous users: Y<br>
+Disallow root login remotely: N<br>
+Remove test database: Y<br>
+Reload priviledge table: Y</p>
+
+
+
+<p>The password you set above will be for the &#8216;root&#8217; user. </p>
+
+
+
+<h2>PHP</h2>
+
+
+
+<p>Now we can install PHP on the server along with some dependencies by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php libapache2-mod-php php-mysql</pre>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip</pre>
+
+
+
+<p>Then we can set it so that Apache prioritizes php files by opening up /etc/apache2/mods-enabled/dir.conf and change the order of the entries there so that it looks like this: </p>
+
+
+
+<pre class="wp-block-preformatted"><br>
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm<br>
+
+</pre>
+
+
+
+<p>Now let&#8217;s restart the Apache server for the changes to take affect</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>The LAMP stack should be all setup now! In the next article, we will use this to install WordPress onto our server. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-lamp-stack/">1. Installing LAMP Stack For WordPress</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

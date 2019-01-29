@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>lamp &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/lamp/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.mediocreinventions.com/</link>
+	<description></description>
+	<lastBuildDate>Tue, 29 Jan 2019 06:50:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>1. Installing LAMP Stack For WordPress</title>
+		<link>https://www.mediocreinventions.com/installing-lamp-stack/</link>
+		<pubDate>Sun, 13 Jan 2019 20:28:59 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[installing]]></category>
+		<category><![CDATA[lamp]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=2261</guid>
+		<description><![CDATA[<p>Intro In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP. Linux is the operating system, Apache is the web server for the application, MySQL is the database, and PHP is the programming language. To follow through this tutorial, you can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-lamp-stack/">1. Installing LAMP Stack For WordPress</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP. Linux is the operating system, Apache is the web server for the application, MySQL is the database, and PHP is the programming language. To follow through this tutorial, you can use a virtual machine and spin up a new Ubuntu 18.04 server (it&#8217;s free). For some more information virtual machines, please visit this article: <a href="https://www.mediocreinventions.com/tools/">https://www.mediocreinventions.com/tools/</a></p>
+
+
+
+<p>If you already know how to do this and just want to set everything up as fast as possible, there is a script here that should get everything setup for installing LAMP stack and a WordPress site (You may have to change a few things in the script, like the database password. The comments should help explain what the script does): <a href="https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh">https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh</a>. To run it, just run &#8220;bash lamp.sh full&#8221; and make sure it has the proper permissions. </p>
+
+
+
+<p>A more detailed article on this can be found at <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a>. This article pretty much covers the same thing, but the one on this page is just much shorter and gets straight to the point. </p>
+
+
+
+<h2>Apache</h2>
+
+
+
+<p>To start, let&#8217;s run the following commands: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update<br>
+sudo apt install apache2
+</pre>
+
+
+
+<p>Now let&#8217;s make sure the firewall doesn&#8217;t interfere with our web server by running this: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw allow in "Apache Full"<br>
+sudo systemctl restart apache2
+</pre>
+
+
+
+<h2>MySQL</h2>
+
+
+
+<p>We will now install the database by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install mysql-server</pre>
+
+
+
+<p>The command below is just a security script that helps remove some potentially dangerous settings. You can answer Yes for most of them. The MySQL section in this article here explains it in more detail: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a></p>
+
+
+
+<pre class="wp-block-preformatted">sudo mysql_secure_installation</pre>
+
+
+
+<p>The settings are up to you, but here are what I answered for this project: <br>
+Password validate plug: N<br>
+New Password: CHANGEME<br>
+Confirm Passowrd: CHANGEME<br>
+Remove anonymous users: Y<br>
+Disallow root login remotely: N<br>
+Remove test database: Y<br>
+Reload priviledge table: Y</p>
+
+
+
+<p>The password you set above will be for the &#8216;root&#8217; user. </p>
+
+
+
+<h2>PHP</h2>
+
+
+
+<p>Now we can install PHP on the server along with some dependencies by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php libapache2-mod-php php-mysql</pre>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip</pre>
+
+
+
+<p>Then we can set it so that Apache prioritizes php files by opening up /etc/apache2/mods-enabled/dir.conf and change the order of the entries there so that it looks like this: </p>
+
+
+
+<pre class="wp-block-preformatted"><br>
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm<br>
+
+</pre>
+
+
+
+<p>Now let&#8217;s restart the Apache server for the changes to take affect</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>The LAMP stack should be all setup now! In the next article, we will use this to install WordPress onto our server. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-lamp-stack/">1. Installing LAMP Stack For WordPress</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

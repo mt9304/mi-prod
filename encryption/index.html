@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>7. Encryption and Hashing for Applications - Mediocre Inventions</title><meta name="description" content="This page explains what encryption is and how it is used in web applications. Also goes over symmetric and asymmetric encryption as well as hashing."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="7. Encryption and Hashing for Applications - Mediocre Inventions"><meta property="og:description" content="This page explains what encryption is and how it is used in web applications. Also goes over symmetric and asymmetric encryption as well as hashing."><meta property="og:url" content="https://www.mediocreinventions.com/encryption/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="asymmetric encryption"><meta property="article:tag" content="encryption"><meta property="article:tag" content="hash"><meta property="article:tag" content="hashing"><meta property="article:tag" content="symmetric encryption"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T08:58:49+00:00"><meta property="article:modified_time" content="2018-12-31T21:07:22+00:00"><meta property="og:updated_time" content="2018-12-31T21:07:22+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This page explains what encryption is and how it is used in web applications. Also goes over symmetric and asymmetric encryption as well as hashing."><meta name="twitter:title" content="7. Encryption and Hashing for Applications - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>7. Encryption and Hashing for Applications - Mediocre Inventions</title><meta name="description" content="This page explains what encryption is and how it is used in web applications. Also goes over symmetric and asymmetric encryption as well as hashing."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="7. Encryption and Hashing for Applications - Mediocre Inventions"><meta property="og:description" content="This page explains what encryption is and how it is used in web applications. Also goes over symmetric and asymmetric encryption as well as hashing."><meta property="og:url" content="https://www.mediocreinventions.com/encryption/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="asymmetric encryption"><meta property="article:tag" content="encryption"><meta property="article:tag" content="hash"><meta property="article:tag" content="hashing"><meta property="article:tag" content="symmetric encryption"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T08:58:49+00:00"><meta property="article:modified_time" content="2019-01-28T05:50:44+00:00"><meta property="og:updated_time" content="2019-01-28T05:50:44+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png"><meta property="og:image:width" content="800"><meta property="og:image:height" content="272"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This page explains what encryption is and how it is used in web applications. Also goes over symmetric and asymmetric encryption as well as hashing."><meta name="twitter:title" content="7. Encryption and Hashing for Applications - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
@@ -25,7 +25,7 @@
 			                        
                     </div>
                     
-                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="https://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
 <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
 </ul></div>                 
                 </div>
@@ -36,8 +36,18 @@
         	<div class="row"> 
             	<div class="col-sm-9">
 
-				<article id="post-481" class="single-content post-text scroll post-481 post type-post status-publish format-standard hentry category-web-basics tag-asymmetric-encryption tag-encryption tag-hash tag-hashing tag-symmetric-encryption"><div class=" content-media"> 
-                            	                            </div>
+				<article id="post-481" class="single-content post-text scroll post-481 post type-post status-publish format-standard has-post-thumbnail hentry category-web-basics tag-asymmetric-encryption tag-encryption tag-hash tag-hashing tag-symmetric-encryption"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="800" height="272" src="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png 800w, https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878-300x102.png 300w, https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878-768x261.png 768w" sizes="(max-width: 800px) 100vw, 800px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/encryption/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=7.%20Encryption%20and%20Hashing%20for%20Applications&url=https://www.mediocreinventions.com/encryption/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/encryption/&description=7.%20Encryption%20and%20Hashing%20for%20Applications"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/encryption/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
                             <header class=" text-header"><h2>7. Encryption and Hashing for Applications</h2>                                                            <div class="post-meta"> 
                                    <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
                                                                        <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
@@ -64,15 +74,15 @@ authorized people will know how to decrypt it and view the information. </p>
 
 
 
-<p>Two main types of encrypting information are Symmetric encryption and Asymmetric Encryption.&nbsp;</p>
+<p>Two main types of encrypting information are Symmetric encryption and Asymmetric Encryption. </p>
 
 
 
-<h3>Symmetric encryption:&nbsp;</h3>
+<h3>Symmetric encryption: </h3>
 
 
 
-<p>In this method, the same key can encrypt and decrypt the information.&nbsp; <br></p>
+<p>In this method, the same key can encrypt and decrypt the information.  <br></p>
 
 
 
@@ -112,15 +122,15 @@ authorized people will know how to decrypt it and view the information. </p>
 
 
 
-<p>Decrypt by moving every letter back by 1 to get message.&nbsp;</p>
+<p>Decrypt by moving every letter back by 1 to get message. </p>
 
 
 
-<h3>Asymmetric encryption:&nbsp;</h3>
+<h3>Asymmetric encryption: </h3>
 
 
 
-<p>&nbsp;In this method, there are two keys involved, 1 for encrypting the information (public key) and one for decrypting the information (private key).&nbsp;</p>
+<p> In this method, there are two keys involved, 1 for encrypting the information (public key) and one for decrypting the information (private key). </p>
 
 
 
@@ -141,11 +151,11 @@ some media sharing websites may have URLs that look like <a href="http://www.web
  That text at the end could be a hashed version of a very long title. In
  this case, visiting the URL with jumbled up text will lead to the 
 correct video, so there is no need to decrypt it into something 
-meaningful.&nbsp;</p>
+meaningful. </p>
 
 
 
-<p>Encryption should be used when there is a need to read the original information. For example, sending emails with confidential information. People will need to be able to read this information, so a way to decrypt the message is necessary.&nbsp;</p>
+<p>Encryption should be used when there is a need to read the original information. For example, sending emails with confidential information. People will need to be able to read this information, so a way to decrypt the message is necessary. </p>
 
 
 
@@ -156,17 +166,17 @@ decrypted. When you create an account for most websites, the password
 you enter does not get stored in the database. The password is hashed, 
 and then the resulting hash is stored in the database. So when you 
 login, it is comparing the hashed value of what you entered with what is
- stored in the database. This is why &ldquo;Forgot my password&rdquo; functions do 
+ stored in the database. This is why “Forgot my password” functions do 
 not send you your password, because they do not actually keep the 
-password in a readable format.&nbsp;</p>
+password in a readable format. </p>
 
 
 
-<p><strong>The main points in this article are:&nbsp;</strong></p>
+<p><strong>The main points in this article are: </strong></p>
 
 
 
-<ul><li>Encryption prevents unauthorized people from seeing information, and can be decrypted by authorized people to view the information.&nbsp;</li><li>Hashing will mess up information so that it cannot be decrypted into anything meaningful. </li></ul><div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/asymmetric-encryption/" rel="tag">asymmetric encryption</a>, <a href="https://www.mediocreinventions.com/tag/encryption/" rel="tag">encryption</a>, <a href="https://www.mediocreinventions.com/tag/hash/" rel="tag">hash</a>, <a href="https://www.mediocreinventions.com/tag/hashing/" rel="tag">hashing</a>, <a href="https://www.mediocreinventions.com/tag/symmetric-encryption/" rel="tag">symmetric encryption</a></div>								</div>
+<ul><li>Encryption prevents unauthorized people from seeing information, and can be decrypted by authorized people to view the information. </li><li>Hashing will mess up information so that it cannot be decrypted into anything meaningful. </li></ul><div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/asymmetric-encryption/" rel="tag">asymmetric encryption</a>, <a href="https://www.mediocreinventions.com/tag/encryption/" rel="tag">encryption</a>, <a href="https://www.mediocreinventions.com/tag/hash/" rel="tag">hash</a>, <a href="https://www.mediocreinventions.com/tag/hashing/" rel="tag">hashing</a>, <a href="https://www.mediocreinventions.com/tag/symmetric-encryption/" rel="tag">symmetric encryption</a></div>								</div>
                             </div>
         </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
 		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/web-servers/" rel="prev">6. Web Servers For Hosting Your Application</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/scripting/" rel="next">8. Scripting for Linux Systems</a></div></div>
@@ -174,13 +184,13 @@ password in a readable format.&nbsp;</p>
 								<div class="col-sm-3"> 
 				
 <aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
-					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
 									</li>
 					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
 <ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
@@ -195,6 +205,12 @@ The articles in this category cover some of the basic topics that are relevant t
 You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
 ">Web Application Basics</a>
 </li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
 		</ul></section></aside></div>
 							</div>
 		</div>

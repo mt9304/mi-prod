@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>configurations &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/configurations/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.mediocreinventions.com/</link>
+	<description></description>
+	<lastBuildDate>Tue, 29 Jan 2019 06:50:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>3. WordPress Configurations And Preparation</title>
+		<link>https://www.mediocreinventions.com/wordpress-configurations-and-preparation/</link>
+		<pubDate>Mon, 28 Jan 2019 07:24:47 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[configurations]]></category>
+		<category><![CDATA[plugins]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=2400</guid>
+		<description><![CDATA[<p>Intro In this article, we go over some useful plugins that will help with your WordPress development. We will also go over some configuration changes to help resolve some common issues we might encounter later on. Plugins WP2Static &#8211; We will be converting our website to a static website for a faster user experience (and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we go over some useful plugins that will help with your WordPress development. We will also go over some configuration changes to help resolve some common issues we might encounter later on. <br></p>
+
+
+
+<h2>Plugins</h2>
+
+
+
+<p><strong>WP2Static</strong> &#8211; We will be converting our website to a static website for a faster user experience (and free hosting options). </p>
+
+
+
+<p> <strong>Yoast SEO</strong> &#8211; Helps with search engine optimizing so that you can improve your website traffic. </p>
+
+
+
+<p> <strong>GA Google Analytics</strong> &#8211; Helps intergrate your website with Google Analytics so you can track your website&#8217;s traffic better. </p>
+
+
+
+<p> <strong>Google XML Sitemaps</strong>&#8211; Helps with generating a simple sitemap for SEO purposes. Yoast SEO can also do this, this plugin may be better for our purposes in the later tutorials. </p>
+
+
+
+<p> <strong>Header Footer Code Manager</strong> &#8211; Helps us inject JavaScript snippets on your website&#8217;s pages incase you want to integrate with other services later (Such as AdSense or Amazon Associates). </p>
+
+
+
+<p> <strong>Optimize Database after Deleting Revisions</strong> &#8211; Since the service we will be using later on has a very strict database limit (but it&#8217;s free!), this will be crucial for keeping our database size smaller. </p>
+
+
+
+<p> <strong>Page Builder by SiteOrigin</strong> &#8211; Helps speed up page designing when editing your website. </p>
+
+
+
+<p> <strong>Upload Max File Size</strong> &#8211; By default, WordPress may only limit files to only be 2MB when uploading. This can help increase the limit in a easy and convenient way. If you still get an error saying a file is too big, it might be the resolution of the picture file. <br> <strong>WP Performance Score Booster</strong> &#8211; Helps speed up your website&#8217;s loading speed and performance score. Services such as <a href="https://tools.pingdom.com/">Pingdom</a> and <a href="https://gtmetrix.com/">GTmetrix</a> can help evaluate page speeds. <br>If you activate this plugin on your localhost and you get a 500 server error, you can check your Apache log files in /var/logs/apache2/ and find the error.log file. In the latest entry at the bottom, you should be able to see what the error is. If it says something along the lines of: </p>
+
+
+
+<p class="has-text-color has-vivid-red-color">&#8230; /var/www/yourwebsite/.htaccess: Invalid command &#8216;Header&#8217;, perhaps misspelled or defined by a module not included in the server configuration</p>
+
+
+
+<p>Then you will likely need to enable the Header module for Apache2 and restart the web server:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo a2enmod headers<br>
+sudo systemctl restart apache2
+</pre>
+
+
+
+<h2>Fixing Permalink Issue</h2>
+
+
+
+<p>By default, switching the permalink functions in WordPress might break your website. The pages and links to your posts might give you a 404 error saying it cannot be found. If this is happening, you can resolve this by doing the following: </p>
+
+
+
+<p>Open the file in a text editor with elevated priviledges (Nano or Vim): /etc/apache2/apache2.conf</p>
+
+
+
+<p>To edit this file, you may need elevated priviledges. You can use a text editor like nano by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/apache2.conf</pre>
+
+
+
+<p>Find the section that says  Directory /var/www/ and edit it so that AllowOverride is set to &#8220;All&#8221;. Below is what the file should look like in that section after editing. </p>
+
+
+
+<script src="https://gist.github.com/mt9304/88f86a9b518403907e5cb19183e0c5e5.js"></script>
+
+
+
+<p>Then restart the web server by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>You should be able to switch your permalink options around without breaking the links now. </p>
+
+
+
+<h2>Optimize Database</h2>
+
+
+
+<p>The database service we will be using only limits our database to be 5MB. Since it is such a small limit, we will use the Optimize Database after Deleting Revisions&#8221; plugin to reduce our database size. After installing and activating the plugin, you can access it through the WordPress Admin Panel &gt; Settings &gt; Optimize Database. Make sure to check off all the revisions area, because it can free a lot of space. </p>
+
+
+
+<h2>Disable Comments</h2>
+
+
+
+<p>Since we will be turning our website into a static website, we won&#8217;t be able to allow users to post comments. You can disable it in the WordPress Admin Panel &gt; Settings &gt; Discussion area. </p>
+
+
+
+<p>Now that this is done, we can proceed with deploying our application onto Heroku in the next article. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

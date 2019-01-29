@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>12. Data Structure Basics For Programming - Mediocre Inventions</title><meta name="description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="12. Data Structure Basics For Programming - Mediocre Inventions"><meta property="og:description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta property="og:url" content="https://www.mediocreinventions.com/data-structures/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="array"><meta property="article:tag" content="binary tree"><meta property="article:tag" content="data structures"><meta property="article:tag" content="hash map"><meta property="article:tag" content="javascript"><meta property="article:tag" content="linked list"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:59:12+00:00"><meta property="article:modified_time" content="2018-12-31T21:32:23+00:00"><meta property="og:updated_time" content="2018-12-31T21:32:23+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta name="twitter:title" content="12. Data Structure Basics For Programming - Mediocre Inventions"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>12. Data Structure Basics For Programming - Mediocre Inventions</title><meta name="description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="12. Data Structure Basics For Programming - Mediocre Inventions"><meta property="og:description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta property="og:url" content="https://www.mediocreinventions.com/data-structures/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="array"><meta property="article:tag" content="binary tree"><meta property="article:tag" content="data structures"><meta property="article:tag" content="hash map"><meta property="article:tag" content="javascript"><meta property="article:tag" content="linked list"><meta property="article:section" content="Web Application Basics"><meta property="article:published_time" content="2018-12-29T23:59:12+00:00"><meta property="article:modified_time" content="2019-01-28T05:53:58+00:00"><meta property="og:updated_time" content="2019-01-28T05:53:58+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png"><meta property="og:image:width" content="800"><meta property="og:image:height" content="272"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Some data structures are better at certain tasks than others. Knowing when to use different data structures can help improve your application's performance."><meta name="twitter:title" content="12. Data Structure Basics For Programming - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
@@ -25,7 +25,7 @@
 			                        
                     </div>
                     
-                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="https://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
 <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
 </ul></div>                 
                 </div>
@@ -36,8 +36,18 @@
         	<div class="row"> 
             	<div class="col-sm-9">
 
-				<article id="post-1311" class="single-content post-text scroll post-1311 post type-post status-publish format-standard hentry category-web-basics tag-array tag-binary-tree tag-data-structures tag-hash-map tag-javascript tag-linked-list"><div class=" content-media"> 
-                            	                            </div>
+				<article id="post-1311" class="single-content post-text scroll post-1311 post type-post status-publish format-standard has-post-thumbnail hentry category-web-basics tag-array tag-binary-tree tag-data-structures tag-hash-map tag-javascript tag-linked-list"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="800" height="272" src="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878.png 800w, https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878-300x102.png 300w, https://www.mediocreinventions.com/wp-content/uploads/general-logo-e1548654491878-768x261.png 768w" sizes="(max-width: 800px) 100vw, 800px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/data-structures/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=12.%20Data%20Structure%20Basics%20For%20Programming&url=https://www.mediocreinventions.com/data-structures/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/data-structures/&description=12.%20Data%20Structure%20Basics%20For%20Programming"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/data-structures/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
                             <header class=" text-header"><h2>12. Data Structure Basics For Programming</h2>                                                            <div class="post-meta"> 
                                    <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
                                                                        <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/web-basics/" rel="category tag">Web Application Basics</a></span>
@@ -56,7 +66,7 @@ applications. For example, some data structures are faster to search
 through and some will be faster for inserting data. Depending on what 
 your use case is, knowing when to use certain data structures and when 
 to avoid certain ones can help your application scale and perform a lot 
-better.&nbsp;This article will go through some of the most important data 
+better. This article will go through some of the most important data 
 structures that are implemented in various programming languages. </p>
 
 
@@ -76,7 +86,7 @@ structures that are implemented in various programming languages. </p>
 
 <p>Arrays store values in different indices and it can 
 be access quickly. In the above example, you can run the following to 
-get the first value stored in the array:&nbsp;</p>
+get the first value stored in the array: </p>
 
 
 
@@ -87,24 +97,24 @@ get the first value stored in the array:&nbsp;</p>
 
 <p>The [0] is saying to look at index number 0, or the 
 very first thing inside the array (the count starts from 0, not 1). So 
-running myArray[1] would get the second value of &ldquo;secondValue&rdquo;. If you 
+running myArray[1] would get the second value of “secondValue”. If you 
 already know the index of where the value is going to be stored, 
 accessing this value can be very efficient since it runs at constant 
-time, or O(1). However, if you didn&rsquo;t know the index of where the value 
+time, or O(1). However, if you didn’t know the index of where the value 
 is, you may have to write a function to search through the array. In 
 that case, it can longer. For example, the following snippet will loop 
 from the whole array to find the value it needs, giving it a linear 
-runtime, or O(n):&nbsp;</p>
+runtime, or O(n): </p>
 
 
 
-<pre class="wp-block-preformatted">for (var i = 0; i &lt; myArray.length; i++) {<br>	if (myArray[i] == "thirdValue") {<br>		console.log("Found it!");<br>	}<br>}</pre>
+<pre class="wp-block-preformatted">for (var i = 0; i < myArray.length; i++) {<br>	if (myArray[i] == "thirdValue") {<br>		console.log("Found it!");<br>	}<br>}</pre>
 
 
 
 <p>Inserting and deleting values in the array can also 
 take just as long, since it has to move all the existing other values to
- fill the gap.&nbsp;</p>
+ fill the gap. </p>
 
 
 
@@ -115,16 +125,16 @@ take just as long, since it has to move all the existing other values to
 <p>A linked list is a 
 collection of data that is saved in a linear way. Each element points to
  the next element so that it knows which order it is in. For example, 
-below is a visualization of how a linked list might look like:&nbsp;</p>
+below is a visualization of how a linked list might look like: </p>
 
 
 
-<p>Winter =&gt; Spring =&gt; Summer =&gt; Fall</p>
+<p>Winter => Spring => Summer => Fall</p>
 
 
 
 <p>In
- the above example, the first item in the list is &ldquo;Winter&rdquo;, and it knows
+ the above example, the first item in the list is “Winter”, and it knows
  that its next element will be Spring. Spring will then only know its 
 next element is Summer, and so on. A linked list is very useful if you 
 want to insert or delete values very often, since it would have a 
@@ -132,27 +142,27 @@ constant execution time, or O(n). This is because you would only have to
  change the pointers of the elements if you wanted to insert something, 
 instead of moving all the other elements around. For example, if we 
 wanted to insert an element between Spring and Summer called 
-&ldquo;Springish&rdquo;, then the process of inserting would be to just change the 
+“Springish”, then the process of inserting would be to just change the 
 Spring pointer to Springish and make sure the Springish pointer is set 
-to Summer.&nbsp;</p>
+to Summer. </p>
 
 
 
-<p><strong>Notes:&nbsp;</strong></p>
+<p><strong>Notes: </strong></p>
 
 
 
 <p>When 
 inserting at a specific index of a long linked list, you may still have 
 to traverse through the list at a linear execution time to search and 
-find the position.&nbsp;</p>
+find the position. </p>
 
 
 
-<p>A &ldquo;Doubly Linked List&rdquo; is a data structure 
+<p>A “Doubly Linked List” is a data structure 
 that points in both directions. So each element knows both its previous 
 and next element. This allows for it to traverse both ways through the 
-list.&nbsp;</p>
+list. </p>
 
 
 
@@ -164,7 +174,7 @@ list.&nbsp;</p>
 
 
 
-<p>A hash map stores key value pairs and is generally very fast when performing searches, insertion, and deletion. On average, it should have a constant execution time for these actions, but it can also take linear time in the worst case scenario.&nbsp;</p>
+<p>A hash map stores key value pairs and is generally very fast when performing searches, insertion, and deletion. On average, it should have a constant execution time for these actions, but it can also take linear time in the worst case scenario. </p>
 
 
 
@@ -179,31 +189,31 @@ yet, or you can read from here: <a href="https://en.wikipedia.org/wiki/Hash_func
 
 
 
-<p>Below is a pseudo-code snippet of a hash map that stored the names of different animals:&nbsp;</p>
+<p>Below is a pseudo-code snippet of a hash map that stored the names of different animals: </p>
 
 
 
-<pre class="wp-block-preformatted">myHashMap = { "dog" =&gt; "Skippy", "cat" =&gt; "Garfield", "squirrel" =&gt; "Ralph" }
+<pre class="wp-block-preformatted">myHashMap = { "dog" => "Skippy", "cat" => "Garfield", "squirrel" => "Ralph" }
 </pre>
 
 
 
 <p>To map the values, the value of dog may be hashed to
- become a number like 4. In that case, the value of &ldquo;dog&rdquo; would be 
+ become a number like 4. In that case, the value of “dog” would be 
 stored in an array-like structure at the 4th index. Since arrays have 
 constant access time, searching for a value in the hash map will be 
 constant in this case, since it just has to find the 4th index and 
-retrieve the value stored in there (which would be &ldquo;Skippy&rdquo;). However, 
+retrieve the value stored in there (which would be “Skippy”). However, 
 if another word happens to be hashed into 4, then they will both share 
 the same index. If all of the items happened to fall in the 4th index, 
 then it could take linear execution time to traverse through that bucket
  before finding the value. This collision here can be handled 
 differently depending on the developer, but it is usually handled like a
- linked list.&nbsp;</p>
+ linked list. </p>
 
 
 
-<p><strong>Note:&nbsp;</strong></p>
+<p><strong>Note: </strong></p>
 
 
 
@@ -222,7 +232,7 @@ explanation of this can be found here: <a href="https://stackoverflow.com/questi
  binary tree is made up of a bunch of nodes, and each node points to 2 
 other nodes, the left and the right. Below would be a visualization of a
  tree (you can also google a binary tree visualization for a proper 
-image):&nbsp;</p>
+image): </p>
 
 
 
@@ -233,7 +243,7 @@ image):&nbsp;</p>
 <p>For each node, the left node should be smaller than 
 the parent node and the right node should be bigger. When sorted and 
 balanced like this properly, it becomes very fast to find the value that
- you need. This is because if you need to find a value, you don&rsquo;t need 
+ you need. This is because if you need to find a value, you don’t need 
 to traverse through every node to find a match like a linked list would.
  For example, if you wanted to find the value of 4 in the above tree, it
  would start at the top and see that 4 is less than 5. Since the left 
@@ -242,14 +252,14 @@ left node and do the same thing. Now 4 is more than 3, so it would look
 to the right because the right node is larger than the parent. By 
 following this logic, even very large trees (as long as it is balanced) 
 will have very fast and scalable execution times for access, search, 
-delete, and insert functions (O(log(n))).&nbsp;</p>
+delete, and insert functions (O(log(n))). </p>
 
 
 
 <p>In the worst
  case scenario though, if the tree is completely unbalanced, it might 
 just look like an ordered linked list. Below is an example visualization
- of an unbalanced tree:&nbsp;</p>
+ of an unbalanced tree: </p>
 
 
 
@@ -257,11 +267,11 @@ just look like an ordered linked list. Below is an example visualization
 
 
 
-<p>In that case, finding the value 4 would take linear execution time, since it has to traverse through everything.&nbsp;</p>
+<p>In that case, finding the value 4 would take linear execution time, since it has to traverse through everything. </p>
 
 
 
-<p><strong>Note:&nbsp;</strong></p>
+<p><strong>Note: </strong></p>
 
 
 
@@ -274,13 +284,13 @@ just look like an ordered linked list. Below is an example visualization
 								<div class="col-sm-3"> 
 				
 <aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
-					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
 									</li>
 					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
 <ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
@@ -295,6 +305,12 @@ The articles in this category cover some of the basic topics that are relevant t
 You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
 ">Web Application Basics</a>
 </li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
 		</ul></section></aside></div>
 							</div>
 		</div>

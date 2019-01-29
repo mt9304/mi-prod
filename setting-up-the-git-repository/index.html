@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>4. Setting Up The Git Repository - Mediocre Inventions</title><meta name="description" content="This article walks through how to set up our Git repository to store our code. We will also go over the basics of environment variables and how to use them."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="4. Setting Up The Git Repository - Mediocre Inventions"><meta property="og:description" content="This article walks through how to set up our Git repository to store our code. We will also go over the basics of environment variables and how to use them."><meta property="og:url" content="https://www.mediocreinventions.com/setting-up-the-git-repository/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="git"><meta property="article:tag" content="github"><meta property="article:tag" content="wordpress"><meta property="article:section" content="Wordpress Hosting Options"><meta property="article:published_time" content="2019-01-28T07:38:57+00:00"><meta property="article:modified_time" content="2019-01-29T05:59:56+00:00"><meta property="og:updated_time" content="2019-01-29T05:59:56+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/wordpress-github-logo-e1548744857978.png"><meta property="og:image:width" content="800"><meta property="og:image:height" content="290"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="This article walks through how to set up our Git repository to store our code. We will also go over the basics of environment variables and how to use them."><meta name="twitter:title" content="4. Setting Up The Git Repository - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/wordpress-github-logo-e1548744857978.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-108237564-4');
+			
+		</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6991926516512109",
+    enable_page_level_ads: true
+  });
+</script></head><body class="post-template-default single single-post postid-2404 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://www.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
+</ul></div>                 
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-2404" class="single-content post-text scroll post-2404 post type-post status-publish format-standard has-post-thumbnail hentry category-wordpress-free-hosting category-wordpress-hosting-options tag-git tag-github tag-wordpress"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="800" height="290" src="https://www.mediocreinventions.com/wp-content/uploads/wordpress-github-logo-e1548744857978.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/wordpress-github-logo-e1548744857978.png 800w, https://www.mediocreinventions.com/wp-content/uploads/wordpress-github-logo-e1548744857978-300x109.png 300w, https://www.mediocreinventions.com/wp-content/uploads/wordpress-github-logo-e1548744857978-768x278.png 768w" sizes="(max-width: 800px) 100vw, 800px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/setting-up-the-git-repository/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=4.%20Setting%20Up%20The%20Git%20Repository&url=https://www.mediocreinventions.com/setting-up-the-git-repository/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/setting-up-the-git-repository/&description=4.%20Setting%20Up%20The%20Git%20Repository"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/setting-up-the-git-repository/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
+                            <header class=" text-header"><h2>4. Setting Up The Git Repository</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" rel="category tag">Wordpress Free Hosting Workaround</a>, <a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" rel="category tag">Wordpress Hosting Options</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>This article will walk through how to set up our Git repository to store our code. The repository will be used by Heroku for live deployment on a free hosting environment. We will also go over environment variables and how they are important to consider when using third party services to host your website files. <br></p>
+
+
+
+<h2>Environment Variables</h2>
+
+
+
+<p>Sometimes your files in the website folder will contain confidential information such database users and passwords (in this case, the wp-config.php file contains this confidential information). If someone happens to get ahold of the file, then our database could be in trouble (maybe someone accidentally makes the repository public or the file gets sent across an unsecure network). Since we will be putting our files on third party services, we should start by adressing this submitting any files. One possible approach to address this is by using Environment variables. In a nutshell, environment variables are variables that only the server knows. </p>
+
+
+
+<h3>Apache Variables<br></h3>
+
+
+
+<p>Go to your website’s folder (should be in /var/www/yourwebsite) and open up the wp-config.php file: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /var/www/yourwebsite/wp-config.php</pre>
+
+
+
+<p>You should see some lines that say something like: </p>
+
+
+
+<pre class="wp-block-preformatted">define('DB_USER', 'yourdatabasename');<br>
+define('DB_USER', 'root');<br>
+define('DB_PASSWORD', 'CHANGEME');<br>
+define('DB_HOST', 'localhost');
+...
+</pre>
+
+
+
+<p>There should also be a similar section that defintes the AUTH_KEY, AUTH_SALT, and other key/salt variables. Since we wouldn’t want any unauthorized people to see this information, we will want to hide this information. To do this, let’s replace these values with keywords that let our server know to retrive them from the environment variables instead of the file. The lines should now look something like this: </p>
+
+
+
+<pre class="wp-block-preformatted">define('DB_USER', getenv('DB_NAME'));<br>
+define('DB_USER', getenv('DB_USER'));<br>
+define('DB_PASSWORD', getenv('DB_PASSWORD'));<br>
+define('DB_HOST', getenv('DB_PASSWORD'));
+...
+</pre>
+
+
+
+<p>Then we will configure the Apache web server’s environment variables so that these variables have the proper values associated with them. You can open up the envvars file in the /etcs/apache2/ folder: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/envvars</pre>
+
+
+
+<p>At the top of the file, there should be a section to add our environment variables. We will define these variables by entering lines like the following: </p>
+
+
+
+<pre class="wp-block-preformatted">export DB_NAME="yourdatabasename"
+export DB_USER="root"
+export DB_PASSWORD="CHANGEME"
+export DB_HOST="localhost"
+...
+</pre>
+
+
+
+<p>Double check that you entered everything correctly and replaced the values above with your own. Then you can restart the web server and visit your webpage (localhost) to see if everything still works. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>Remember the variable names that we set (like DB_NAME and DB_USER) since we will be using these for Heroku later. </p>
+
+
+
+<h2>Git</h2>
+
+
+
+<p>If you haven’t installed Git already, install it by running</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git</pre>
+
+
+
+<p>Then make sure to sign up for an account on their <a href="https://github.com/">website</a>. You can read more about Git on their website. There is also an article here that goes over it pretty well: <a href="https://kinsta.com/knowledgebase/what-is-github/">https://kinsta.com/knowledgebase/what-is-github/</a>. For our purposes, Github if the place where we will hold our website’s files and will help us with moving our changes onto the servers that will host our live websites (Heroku/Github Pages). </p>
+
+
+
+<h3>Git repository Setup</h3>
+
+
+
+<p>Once you have signed up for an account, create a new repository by hovering over the “+” icon on the top panel. Enter your application’s name to create your respository. This is where we will be story our application’s code/files. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/git0-1024x54.png" alt="" class="wp-image-2370" srcset="https://www.mediocreinventions.com/wp-content/uploads/git0-1024x54.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/git0-300x16.png 300w, https://www.mediocreinventions.com/wp-content/uploads/git0-768x41.png 768w, https://www.mediocreinventions.com/wp-content/uploads/git0.png 1325w" sizes="(max-width: 1024px) 100vw, 1024px"></figure><p><strong>Note:</strong><br>
+You should be able to select Private Repository so that only you are able to view the code on the site (this feature was just recently made free at the time of writing this article!). Public repositories allow everyone on the internet to see it. Making it private can prevent people from seein sensitive information. For example, the wp-config.php file might contain your database name, username, and password. </p>
+
+
+
+<p>Once you have created the repository, the page should open up with some instructions. We will run similar commands below. Make sure to change your directory to where your website files before running the commands. </p>
+
+
+
+<pre class="wp-block-preformatted">cd /var/www/yourwebsite</pre>
+
+
+
+<p><strong>Note:</strong><br>If you get a permission error, you can change the permissions of this folder to allow anyone to access it. This is generally not recommended due to security concerns, but since it is on our local machine this should be fine. Run the following to make the permission change: </p>
+
+
+
+<pre class="wp-block-preformatted">chmod -R 777 /var/www/yourwebsite</pre>
+
+
+
+<p>Then you can change directories to the website folder again.</p>
+
+
+
+<h3>Pushing Changes<br></h3>
+
+
+
+<p>Once you are in the folder, proceed with the Git commands: </p>
+
+
+
+<pre class="wp-block-preformatted">git init<br>
+git add .<br>
+git commit -m "first commit"<br>
+git remote add origin https://github.com/youruser/yourrepo.git<br>
+git push -u origin master
+</pre>
+
+
+
+<p><strong>Notes:</strong></p>
+
+
+
+<ul><li>‘init’ initializes the folder so that your computer knows it is version controlled (creates the local repository). </li><li>‘add .’ adds all the files in your folder to prepare it for loading into repositories. </li><li>‘commit’ saves your changes to your local repository (needs to be done before moving to the remote repository on github.com).</li><li>‘remote add’ adds the URL of the remote repository on Github, so that it knows where to push the changes. </li><li>‘push’ moves the changes onto the remote repository. </li></ul><p>Once you have done this, you can refresh your page and you should see your files in the Github repository. Now everytime you make changes to your files or add new files that you want to move to the live website (we have not set this up yet), you just have to go to the website directory on your computer and type the following: </p>
+
+
+
+<pre class="wp-block-preformatted">git add .<br>
+git commit -m "A message about what changes were made. "<br>
+git push
+</pre>
+<div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/git/" rel="tag">git</a>, <a href="https://www.mediocreinventions.com/tag/github/" rel="tag">github</a>, <a href="https://www.mediocreinventions.com/tag/wordpress/" rel="tag">wordpress</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/" rel="prev">3. WordPress Configurations And Preparation</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/" rel="next">5. Deploying WordPress To Heroku</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
+<ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). We will build an API using Rails and interact with it using AJAX to get our information. ">Ruby on Rails With React</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails web application. We will be using Nginx and Puma on a Ubuntu 18.04 server to accomplish this. ">Ruby on Rails, Nginx and Puma</a>
+</li>
+</ul></li>
+	<li class="cat-item cat-item-10"><a href="https://www.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here. This is to make sure you are familiar with the relevant concepts for this site. 
+The articles in this category cover some of the basic topics that are relevant to web application development. These are brief articles that are meant to get you an idea of what to expect. 
+You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
+">Web Application Basics</a>
+</li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

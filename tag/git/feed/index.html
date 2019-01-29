@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>git &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/git/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.mediocreinventions.com/</link>
+	<description></description>
+	<lastBuildDate>Tue, 29 Jan 2019 06:50:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>4. Setting Up The Git Repository</title>
+		<link>https://www.mediocreinventions.com/setting-up-the-git-repository/</link>
+		<pubDate>Mon, 28 Jan 2019 07:38:57 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[Wordpress Hosting Options]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[github]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=2404</guid>
+		<description><![CDATA[<p>Intro This article will walk through how to set up our Git repository to store our code. The repository will be used by Heroku for live deployment on a free hosting environment. We will also go over environment variables and how they are important to consider when using third party services to host your website [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>This article will walk through how to set up our Git repository to store our code. The repository will be used by Heroku for live deployment on a free hosting environment. We will also go over environment variables and how they are important to consider when using third party services to host your website files. <br></p>
+
+
+
+<h2>Environment Variables</h2>
+
+
+
+<p>Sometimes your files in the website folder will contain confidential information such database users and passwords (in this case, the wp-config.php file contains this confidential information). If someone happens to get ahold of the file, then our database could be in trouble (maybe someone accidentally makes the repository public or the file gets sent across an unsecure network). Since we will be putting our files on third party services, we should start by adressing this submitting any files. One possible approach to address this is by using Environment variables. In a nutshell, environment variables are variables that only the server knows. </p>
+
+
+
+<h3>Apache Variables<br></h3>
+
+
+
+<p>Go to your website&#8217;s folder (should be in /var/www/yourwebsite) and open up the wp-config.php file: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /var/www/yourwebsite/wp-config.php</pre>
+
+
+
+<p>You should see some lines that say something like: </p>
+
+
+
+<pre class="wp-block-preformatted">define('DB_USER', 'yourdatabasename');<br>
+define('DB_USER', 'root');<br>
+define('DB_PASSWORD', 'CHANGEME');<br>
+define('DB_HOST', 'localhost');
+...
+</pre>
+
+
+
+<p>There should also be a similar section that defintes the AUTH_KEY, AUTH_SALT, and other key/salt variables. Since we wouldn&#8217;t want any unauthorized people to see this information, we will want to hide this information. To do this, let&#8217;s replace these values with keywords that let our server know to retrive them from the environment variables instead of the file. The lines should now look something like this: </p>
+
+
+
+<pre class="wp-block-preformatted">define('DB_USER', getenv('DB_NAME'));<br>
+define('DB_USER', getenv('DB_USER'));<br>
+define('DB_PASSWORD', getenv('DB_PASSWORD'));<br>
+define('DB_HOST', getenv('DB_PASSWORD'));
+...
+</pre>
+
+
+
+<p>Then we will configure the Apache web server&#8217;s environment variables so that these variables have the proper values associated with them. You can open up the envvars file in the /etcs/apache2/ folder: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/envvars</pre>
+
+
+
+<p>At the top of the file, there should be a section to add our environment variables. We will define these variables by entering lines like the following: </p>
+
+
+
+<pre class="wp-block-preformatted">export DB_NAME="yourdatabasename"
+export DB_USER="root"
+export DB_PASSWORD="CHANGEME"
+export DB_HOST="localhost"
+...
+</pre>
+
+
+
+<p>Double check that you entered everything correctly and replaced the values above with your own. Then you can restart the web server and visit your webpage (localhost) to see if everything still works. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>Remember the variable names that we set (like DB_NAME and DB_USER) since we will be using these for Heroku later. </p>
+
+
+
+<h2>Git</h2>
+
+
+
+<p>If you haven&#8217;t installed Git already, install it by running</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git</pre>
+
+
+
+<p>Then make sure to sign up for an account on their <a href="https://github.com/">website</a>. You can read more about Git on their website. There is also an article here that goes over it pretty well: <a href="https://kinsta.com/knowledgebase/what-is-github/">https://kinsta.com/knowledgebase/what-is-github/</a>. For our purposes, Github if the place where we will hold our website&#8217;s files and will help us with moving our changes onto the servers that will host our live websites (Heroku/Github Pages). </p>
+
+
+
+<h3>Git repository Setup</h3>
+
+
+
+<p>Once you have signed up for an account, create a new repository by hovering over the &#8220;+&#8221; icon on the top panel. Enter your application&#8217;s name to create your respository. This is where we will be story our application&#8217;s code/files. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/git0-1024x54.png" alt="" class="wp-image-2370" srcset="https://www.mediocreinventions.com/wp-content/uploads/git0-1024x54.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/git0-300x16.png 300w, https://www.mediocreinventions.com/wp-content/uploads/git0-768x41.png 768w, https://www.mediocreinventions.com/wp-content/uploads/git0.png 1325w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p><strong>Note:</strong><br>
+You should be able to select Private Repository so that only you are able to view the code on the site (this feature was just recently made free at the time of writing this article!). Public repositories allow everyone on the internet to see it. Making it private can prevent people from seein sensitive information. For example, the wp-config.php file might contain your database name, username, and password. </p>
+
+
+
+<p>Once you have created the repository, the page should open up with some instructions. We will run similar commands below. Make sure to change your directory to where your website files before running the commands. </p>
+
+
+
+<pre class="wp-block-preformatted">cd /var/www/yourwebsite</pre>
+
+
+
+<p><strong>Note:</strong><br>If you get a permission error, you can change the permissions of this folder to allow anyone to access it. This is generally not recommended due to security concerns, but since it is on our local machine this should be fine. Run the following to make the permission change: </p>
+
+
+
+<pre class="wp-block-preformatted">chmod -R 777 /var/www/yourwebsite</pre>
+
+
+
+<p>Then you can change directories to the website folder again.</p>
+
+
+
+<h3>Pushing Changes<br></h3>
+
+
+
+<p>Once you are in the folder, proceed with the Git commands: </p>
+
+
+
+<pre class="wp-block-preformatted">git init<br>
+git add .<br>
+git commit -m "first commit"<br>
+git remote add origin https://github.com/youruser/yourrepo.git<br>
+git push -u origin master
+</pre>
+
+
+
+<p><strong>Notes:</strong></p>
+
+
+
+<ul><li>&#8216;init&#8217; initializes the folder so that your computer knows it is version controlled (creates the local repository). </li><li>&#8216;add .&#8217; adds all the files in your folder to prepare it for loading into repositories. </li><li>&#8216;commit&#8217; saves your changes to your local repository (needs to be done before moving to the remote repository on github.com).</li><li>&#8216;remote add&#8217; adds the URL of the remote repository on Github, so that it knows where to push the changes. </li><li>&#8216;push&#8217; moves the changes onto the remote repository. </li></ul>
+
+
+
+<p>Once you have done this, you can refresh your page and you should see your files in the Github repository. Now everytime you make changes to your files or add new files that you want to move to the live website (we have not set this up yet), you just have to go to the website directory on your computer and type the following: </p>
+
+
+
+<pre class="wp-block-preformatted">git add .<br>
+git commit -m "A message about what changes were made. "<br>
+git push
+</pre>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

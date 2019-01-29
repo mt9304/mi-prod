@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>php &#8211; Mediocre Inventions</title>
+	<atom:link href="https://www.mediocreinventions.com/tag/php/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.mediocreinventions.com/</link>
+	<description></description>
+	<lastBuildDate>Tue, 29 Jan 2019 06:50:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.0.1</generator>
+	<item>
+		<title>2. Installing And Configuring WordPress (LAMP)</title>
+		<link>https://www.mediocreinventions.com/installing-wordpress/</link>
+		<pubDate>Sun, 13 Jan 2019 20:32:36 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[apache]]></category>
+		<category><![CDATA[installing]]></category>
+		<category><![CDATA[mysql]]></category>
+		<category><![CDATA[php]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=2291</guid>
+		<description><![CDATA[<p>Intro In this article, we will install WordPress as fast as we can. We will be using the LAMP environment we just setup in the previous article. This is on Ubuntu 18.04 and the WordPress version we are using will be 5.0.2. If have not set this up yet, feel free to visit the LAMP [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-wordpress/">2. Installing And Configuring WordPress (LAMP)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will install WordPress as fast as we can. We will be using the LAMP environment we just setup in the previous article. This is on Ubuntu 18.04 and the WordPress version we are using will be 5.0.2. If have not set this up yet, feel free to visit the LAMP installation <a href="https://mediocreinventions.com/installing-lamp-stack">article</a>. </p>
+
+
+
+<h2>Database</h2>
+
+
+
+<p>The database by default won&#8217;t allow you to run some of the commands below with the user and password arguments. To fix this, let&#8217;s run </p>
+
+
+
+<pre class="wp-block-preformatted">sudo mysql</pre>
+
+
+
+<p>Then once you are the console, run (remember to replace CHANGEME with the password):</p>
+
+
+
+<pre class="wp-block-preformatted">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'CHANGEME';<br>
+FLUSH PRIVILEGES;
+</pre>
+
+
+
+<p>Now we can start setting up the database by running the command below (change the password section and YOUSITENAME to the site or database name that you want): </p>
+
+
+
+<pre class="wp-block-preformatted">mysql --user="root" --password="CHANGEME" -e "CREATE DATABASE YOURSITENAME DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"</pre>
+
+
+
+<p>This creates the database that we will be using for the website. </p>
+
+
+
+<p><strong>Note:</strong><br>
+For this tutorial, we will be using the root user in our local environment, but you can create your own user if you wish. We will be migrating this project to a free hosting service in the later articles so this doesn&#8217;t matter too much for our purposes. </p>
+
+
+
+<h2>Server Configurations</h2>
+
+
+
+<p>Let&#8217;s create our website folder for the server to use by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo mkdir /var/www/YOURSITENAME</pre>
+
+
+
+<p>Then we can download the the WordPress files in a temp folder. </p>
+
+
+
+<pre class="wp-block-preformatted">cd /tmp<br>
+curl -O https://wordpress.org/latest.tar.gz<br>
+tar xzvf latest.tar.gz<br>
+touch /tmp/wordpress/.htaccess<br>
+mkdir /tmp/wordpress/wp-content/upgrade
+</pre>
+
+
+
+<h2>Permissions</h2>
+
+
+
+<p>Finally, we can copy the folders to the correct place and set its permissions so that everything goes smoothly. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo cp -a /tmp/wordpress/. /var/www/YOURSITENAME<br>
+sudo chown -R www-data:www-data /var/www/YOURSITENAME<br>
+sudo find /var/www/YOURSITENAME/ -type d -exec chmod 750 {} \;<br>
+sudo find /var/www/YOURSITENAME/ -type f -exec chmod 640 {} \;
+</pre>
+
+
+
+<p>Then we can change the document root in the configuration file to point to your website&#8217;s folder. Open up the file at /etc/apache2/sites-available/000-default.conf. You will need to run it with elevated priviledges, so if you are using the Nano text editor you can add sudo at the beginning like this: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/sites-available/000-default.conf</pre>
+
+
+
+<p>Or with Vim:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo vi /etc/apache2/sites-available/000-default.conf</pre>
+
+
+
+<p>Then change the line after Document root to be /var/www/YOURWEBSITEFOLDER</p>
+
+
+
+<p>Then restart the web server by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>Now you can visit the website at http://localhost</p>
+
+
+
+<p>The page that opens up should look like this:</p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/localhost.png" alt="" class="wp-image-2332" srcset="https://www.mediocreinventions.com/wp-content/uploads/localhost.png 452w, https://www.mediocreinventions.com/wp-content/uploads/localhost-173x300.png 173w" sizes="(max-width: 452px) 100vw, 452px" /></figure>
+
+
+
+<p><strong>Note:</strong><br>
+There is a section in the wp-config.php file that you can change to make it more secure. </p>
+
+
+
+<p>For this part, we need to generate some texts with the &#8216;Curl&#8217; program. You can install Curl by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install curl</pre>
+
+
+
+<p>Then make sure you copy or save the text you get from running this:</p>
+
+
+
+<pre class="wp-block-preformatted">curl -s https://api.wordpress.org/secret-key/1.1/salt/</pre>
+
+
+
+<p>Now we can open up then config file in /var/www/wp-config.php (using sudo) and replace the section that looks similar to what we just generated above. </p>
+
+
+
+<p>Before opening the file, you might also need to change the permissions of your folder at /var/www/YOURWEBSITENAME by running: <br>
+sudo chmod 777 /var/www/YOURWEBSITENAME</p>
+
+
+
+<p>This makes it less secure if you are hosting the website on your current machine, but shouldn&#8217;t matter if you are just testing around. </p>
+
+
+
+<h2>Installation</h2>
+
+
+
+<p>To finish the installation, you can just follow through the instructions on the localhost page. After that, you are done, WordPress is now installed on your machine!</p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/wpscreen.png" alt="" class="wp-image-2333" srcset="https://www.mediocreinventions.com/wp-content/uploads/wpscreen.png 776w, https://www.mediocreinventions.com/wp-content/uploads/wpscreen-291x300.png 291w, https://www.mediocreinventions.com/wp-content/uploads/wpscreen-768x793.png 768w" sizes="(max-width: 776px) 100vw, 776px" /></figure>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-wordpress/">2. Installing And Configuring WordPress (LAMP)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+	</channel>
+</rss>

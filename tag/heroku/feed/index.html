@@ -10,14 +10,430 @@
 <channel>
 	<title>heroku &#8211; Mediocre Inventions</title>
 	<atom:link href="https://www.mediocreinventions.com/tag/heroku/feed/" rel="self" type="application/rss+xml" />
-	<link>http://dev.mediocreinventions.com</link>
+	<link>http://www.mediocreinventions.com/</link>
 	<description></description>
-	<lastBuildDate>Thu, 03 Jan 2019 03:43:44 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 29 Jan 2019 06:50:31 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
+		<title>5. Deploying WordPress To Heroku</title>
+		<link>https://www.mediocreinventions.com/deploying-wordpress-to-heroku/</link>
+		<pubDate>Mon, 28 Jan 2019 07:56:25 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[Wordpress Hosting Options]]></category>
+		<category><![CDATA[cleardb]]></category>
+		<category><![CDATA[heroku]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=2412</guid>
+		<description><![CDATA[<p>Intro In this article, we will deploy our WordPress website onto Heroku, a web application hosting service. We are using Heroku because it has a free plan, but it does come with a couple of drawbacks. We will also go over the limitations of this in this article. Heroku Let&#8217;s start by installing Heroku&#8217;s command [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will deploy our WordPress website onto Heroku, a web application hosting service. We are using Heroku because it has a free plan, but it does come with a couple of drawbacks. We will also go over the limitations of this in this article. <br></p>
+
+
+
+<h2>Heroku</h2>
+
+
+
+<p>Let&#8217;s start by installing Heroku&#8217;s command line interface by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo snap install --classic heroku</pre>
+
+
+
+<p>Heroku is a free hosting service that we will use to host our website. The service is extremely convenient to use, but the free tier has a couple of limitations and is usually not suitable for a production/customer facing website hosting. Here are some of the notable downside for the free tier: </p>
+
+
+
+<ul><li>If the application is inactive for a while, it will go to sleep. When a user visits the application/website for the first time, it will take more time to load and wake up. </li><li>The MySQL database size is only 5mb. </li><li>It has an ephemeral file system. This just means that any file changes or new files uploaded on the server will be undone after the server restarts. This means that users should not be uploading files on here through WordPress or making any changes tothe files. </li><li>Limited performance. </li></ul>
+
+
+
+<p>However, since we will only be using the website here as a development website, these limitations shouldn&#8217;t be too much. If you database does happen to get big and need to go over the 5mb (even with the WordPress database optimizing addon), you have the option to upgrade to their paid tier to significantly increase the limits. </p>
+
+
+
+<h3>Heroku Setup</h3>
+
+
+
+<p>Make sure you sign up on their website: https://www.heroku.com/<br>
+Once you have signed up, you should be able to go to the <a href="https://dashboard.heroku.com/apps">dashboard</a> and create a new application. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/heroku0-1024x84.png" alt="" class="wp-image-2372" srcset="https://www.mediocreinventions.com/wp-content/uploads/heroku0-1024x84.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/heroku0-300x25.png 300w, https://www.mediocreinventions.com/wp-content/uploads/heroku0-768x63.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Enter the name of your new application and in the Deploy section, choose the deployment method that you prefer. For this tutorial, I will choose the Github option to simplify things. This makes it so that every time you move your changes onto Github, it will also move the changes onto Heroku, where we will be hosting our development site. To enable this automatic process, go down to the Automatic deploys section and enable it on the master branch. We won&#8217;t go into detail about Github&#8217;s branches, but you can read more about it here: https://guides.github.com/introduction/flow/</p>
+
+
+
+<h3>Heroku Database</h3>
+
+
+
+<p>Now we need to setup our database on Heroku. Go to the Resources section and click on Find more add-ons. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/heroku1-1024x385.png" alt="" class="wp-image-2373" srcset="https://www.mediocreinventions.com/wp-content/uploads/heroku1-1024x385.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/heroku1-300x113.png 300w, https://www.mediocreinventions.com/wp-content/uploads/heroku1-768x289.png 768w, https://www.mediocreinventions.com/wp-content/uploads/heroku1.png 1528w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>In the Data Stores section, find the addon that says ClearDB MySQL and click it. Once you are on that addon&#8217;s page, click on Install ClearDB MySQL and enter your application&#8217;s name to install it for the app (make sure the plan is on Ignite &#8211; Free). </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/heroku2-1024x474.png" alt="" class="wp-image-2374" srcset="https://www.mediocreinventions.com/wp-content/uploads/heroku2-1024x474.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/heroku2-300x139.png 300w, https://www.mediocreinventions.com/wp-content/uploads/heroku2-768x355.png 768w, https://www.mediocreinventions.com/wp-content/uploads/heroku2.png 1492w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h3>ClearDB</h3>
+
+
+
+<p>Once you have installed the database, you can access this on the Resources tab in Heroku and select ClearDB &#8211; MySQL. This should take you to your database&#8217;s page on ClearDB. From here, you can see your database in the Community Edition tab. It should be called something like heroku_4536dfb43tbdf. Click into this and then go to the System Information tab. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/cleardb0-1024x195.png" alt="" class="wp-image-2368" srcset="https://www.mediocreinventions.com/wp-content/uploads/cleardb0-1024x195.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/cleardb0-300x57.png 300w, https://www.mediocreinventions.com/wp-content/uploads/cleardb0-768x146.png 768w, https://www.mediocreinventions.com/wp-content/uploads/cleardb0.png 1559w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>From here you can see your database&#8217;s username and password. Make sure to make note of this as we will be using it later. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/cleardb1-1024x327.png" alt="" class="wp-image-2369" srcset="https://www.mediocreinventions.com/wp-content/uploads/cleardb1-1024x327.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/cleardb1-300x96.png 300w, https://www.mediocreinventions.com/wp-content/uploads/cleardb1-768x245.png 768w, https://www.mediocreinventions.com/wp-content/uploads/cleardb1.png 1180w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h3>Local Database</h3>
+
+
+
+<p>If you haven&#8217;t already, you can install MySQL Workbench to access your database through a GUI: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install mysql-workbench</pre>
+
+
+
+<p>You can then start the program by finding it on the launcher or typing mysql-workbench in the terminal. Once opened, you should be able to click into the Local instance to access your local database. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/mysql0.png" alt="" class="wp-image-2375" srcset="https://www.mediocreinventions.com/wp-content/uploads/mysql0.png 726w, https://www.mediocreinventions.com/wp-content/uploads/mysql0-300x187.png 300w" sizes="(max-width: 726px) 100vw, 726px" /></figure>
+
+
+
+<h3>Database Size</h3>
+
+
+
+<p>Since our database on Heroku only allows for 5MB, let&#8217;s open up our local instance to check its size. Once opened, the bottom left should have a SCHEMAS section that contains your database. Right-click your database and select &#8220;Set as Default Schema&#8221;. Then click on the textbox in the middle to type in the Query tab and paste this in the box:</p>
+
+
+
+<pre class="wp-block-preformatted">SELECT table_schema AS "Database", <br>
+ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" <br>
+FROM information_schema.TABLES <br>
+GROUP BY table_schema;
+</pre>
+
+
+
+<p>Then go to Query at the top and select &#8220;Execute (All of Selection)&#8221; or press Shift + Ctrl + Return. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/mysql1.png" alt="" class="wp-image-2376" srcset="https://www.mediocreinventions.com/wp-content/uploads/mysql1.png 806w, https://www.mediocreinventions.com/wp-content/uploads/mysql1-300x180.png 300w, https://www.mediocreinventions.com/wp-content/uploads/mysql1-768x461.png 768w" sizes="(max-width: 806px) 100vw, 806px" /></figure>
+
+
+
+<p>A results table should show up showing the size of the database right beside the name of your database. If this is under 5MB then we are good to go! If not, then we may have to delete some unnecesarry data from there. You can make use of the &#8220;Optimize Database after Deleting Revisions&#8221; WordPress plugin to delete a lot of data from your database. A lot of the space can be a result of old revisions of posts that you no longer need. </p>
+
+
+
+<p>If the above method still does not reduce the database tp below 5MB, then you may need to upgrade the database to a paid tier to continue. </p>
+
+
+
+<h3>ClearDB Remote Database</h3>
+
+
+
+<p>Let&#8217;s press the Home icon on the top left of MySQL Workbench now and try to connect to our ClearDB database that we just cretaed on Heroku. Click on the &#8220;+&#8221; icon next to the title that says &#8220;MySQL Connections&#8221; to start adding another connection. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/mysql2.png" alt="" class="wp-image-2377" srcset="https://www.mediocreinventions.com/wp-content/uploads/mysql2.png 1022w, https://www.mediocreinventions.com/wp-content/uploads/mysql2-300x208.png 300w, https://www.mediocreinventions.com/wp-content/uploads/mysql2-768x532.png 768w" sizes="(max-width: 1022px) 100vw, 1022px" /></figure>
+
+
+
+<p>To get the Hostname, go back to your website folder in your terminal and run the following Heroku command (make sure you have installed the Heroku CLI as mentioned at the top): </p>
+
+
+
+<pre class="wp-block-preformatted">heroku config --app yourappname</pre>
+
+
+
+<p>Remember to replace yourappname with the name of your application on Heroku. You should get an output that says CLEARDB_DATABASE_URL and a bunch of text after it. The Hostname is the value after the @ sign and before the forward slash &#8220;/&#8221;. It might look something like us-cdbr-iron-east-03.cleardb.net</p>
+
+
+
+<h3>Connecting</h3>
+
+
+
+<p>The port should be 3305, username/password should be the one we got from the System Information tab on the ClearDB website earlier. The Default Schema is the database name on ClearDB, which should look something like heroku_resgerhreshrhhs3542. It can be found on the System Information tab as well as the part from the heroku config command after the forward slash and before the question mark. Connecting to it may prompt a password, which is the one from the System Information tab. </p>
+
+
+
+<p>Once you have tested and saved the connection, the MySQL-Workbench home page should now have an extra tile to connect to this database now. Click into it to make sure everything connects properly. </p>
+
+
+
+<h3>Heroku Config Variables</h3>
+
+
+
+<p>Now that we have our ClearDB credentails from above, we need to let Heroku know this information. Heroku also similar to our Apache&#8217;s environment variables, Heroku has a section called Config Variables where it gets these values. Go into the Heroku Dashboard again and go to the Settings section. There should be a button called Reveal Config Vars. Click this to reveal the variables. </p>
+
+
+
+<p>By default, the ClearDB database URL should be populated already. If not, you can get this URL by running the &#8220;heroku config &#8211;app yourappname&#8221; command again. Since we specified the named of the environment variables in the wp-config.php file earlier (such as DB_NAME, DB_USER, DB_PASSWORD, DB_HOST), we can add this easily in the Reveal Config Vars section. </p>
+
+
+
+<h3>Double Checking</h3>
+
+
+
+<p>Make sure to add all the environment variables that we have defined in this area and fill the values in with the ClearDB values. Double check that there are no trailing or prepended spaces in these values that are not supposed to be there.</p>
+
+
+
+<p>Now check that your file changes are all on the remote repository on Github. You can go to your website folder and type &#8216;git status&#8217; to check if there are any changes that need to be put on there. Once everything is up to date there, you can manually deploy the changes to Heroku by going to the Heroku Dashboard &gt; Deploy and scroll to the Manual Deploy section to deploy. </p>
+
+
+
+<h3>Pushing Database Changes</h3>
+
+
+
+<p>Right now our ClearDB database is blank, so we want to make sure we move our local database values onto the ClearDB database. To do this, we will create a backup file from our local database, then restore it to the ClearDB one. Let&#8217;s start by creating a new folder on our machine to store the database files: </p>
+
+
+
+<pre class="wp-block-preformatted">mkdir ~/mysql-db-files
+cd ~/mysql-db-files
+</pre>
+
+
+
+<p>Make sure you don&#8217;t create these files in your website&#8217;s folder, because it contains sensitive information and can accidentally be pushed into Github if not careful. Once you are in this new folder, you can then then run the following to create the database backup file: </p>
+
+
+
+<pre class="wp-block-preformatted">mysqldump -u root -pCHANGEME databasename &gt; nameofoutputfile.sql</pre>
+
+
+
+<p>Make sure &#8220;root&#8221; is changed to your user and the CHANGEME value right after -p (no space in between) is your database user&#8217;s password. Remember to change the databasename to the name of your own database on your local machine. Then the part after the right angle bracket &#8220;&gt;&#8221; is just the name that you want the file to be called (make sure it ends with .sql).</p>
+
+
+
+<h3>Double Checking</h3>
+
+
+
+<p>Run the &#8220;ls&#8221; command just to check that your file has been created. Now we can run the next command to restore our ClearDB database using this file: </p>
+
+
+
+<pre class="wp-block-preformatted">mysql --host=changeme --user=changeme --password=changeme --reconnect heroku_changeme &lt; nameofoutputfile.sql</pre>
+
+
+
+<p>Make sure you change all these values to the ones we got for the ClearDB database above and the filename at the end to the one we just generated. </p>
+
+
+
+<p><strong>Note:</strong><br>
+You will likely get an error that says: </p>
+
+
+
+<pre class="wp-block-preformatted">ERROR 1273 (HY000) at line 25: Unknown collation: 'utf8mb4_unicode_ci'</pre>
+
+
+
+<p>If that happens, you can read about why this occurs here so you can make a more informed decision: <a href="https://stackoverflow.com/questions/42385099/1273-unknown-collation-utf8mb4-unicode-520-ci">https://stackoverflow.com/questions/42385099/1273-unknown-collation-utf8mb4-unicode-520-ci</a></p>
+
+
+
+<p>If you just want to resolve this quick and don&#8217;t care about the details/implicates, you can just run the following: </p>
+
+
+
+<pre class="wp-block-preformatted">sed -i -e "s/utf8mb4_unicode_ci/utf8mb4_unicode_ci/g" nameofoutputfile.sql</pre>
+
+
+
+<p>Just make sure to change the filename at the end to the file we just generated. This command just replaces the text that is causing issues in our database file. After running it, you can try running the mysql command again to make the changes again. You can now go into MySQL-Workbench again, refresh everything and see if the ClearDB database has received all the changes. </p>
+
+
+
+<h3>WordPress URL Values</h3>
+
+
+
+<p>One thing to watch out for are the URLs stored in the database. While you are connected to the ClearDB database with MySQL-Workbench, run the following command to see the WordPress options table: </p>
+
+
+
+<pre class="wp-block-preformatted">SELECT * FROM wp_options;</pre>
+
+
+
+<p>You should notice some columns called &#8220;siteurl&#8221; and &#8220;home&#8221;. These are currently set to http://localhost, but when you have deployed this to Heroku, it would be a different URL. You can find this URL by going into the Heroku Dashboard &gt; Settings &gt; and scroll down to the Domains and Certificates section. You should be able to see your application&#8217;s URL on Heroku that looks something like https://yourappname.herokuapp.com/</p>
+
+
+
+<p>We should replace the localhost URL in our ClearDB database to avoid issues. Run the following SQL Query on the ClearDB database to update this: </p>
+
+
+
+<pre class="wp-block-preformatted">update wp_options<br>
+set option_value = "http://yourappname.herokuapp.com"<br>
+where option_name = "siteurl";<br>
+
+update wp_options<br>
+set option_value = "http://yourappname.herokuapp.com"<br>
+where option_name = "home";
+</pre>
+
+
+
+<p>Make sure that this is set to http instead of https. </p>
+
+
+
+<p><strong>Note:</strong><br>
+Please note that we will not be able to use https properly in this tutorial, since if you are using a custom domain name, you will have to upgrade to a paid plan to implement SSL certificates. If you plan to use the default Herokuapp domain, then it might require more steps to get https to work. I may write an article on this in the future, but for now we will work with this. </p>
+
+
+
+<p>Once this is done, run the SELECT command again to see if it has changed properly. </p>
+
+
+
+<h3>Visiting the Site</h3>
+
+
+
+<p>With all the changes being made, let&#8217;s restart our application by going to the Heroku dashboard, click on More and select Restart all Dynos. Now you can visit your site&#8217;s URL and see the error that shows up!</p>
+
+
+
+<p>If it says something about a database error, check your wp-config.php file to make sure the database values are correct and you didnt mispell anything. Since we are using environment variables for them, you can also have to check the Reveal Config Vars section in the Heroku Settings section to see if anything was entered wrong (for example, unexpected trailing or prepended spaces). </p>
+
+
+
+<p>If you get an error saying the site redirected too many times, check your database value for the siteurl and home columns and make sure that their values are NOT https and the domain name matches what is listed on Heroku. If you have made changes and it keeps trying to redirect you to the https site, the redirect might be cached in your browser. In that case you can either clear your browse cache or try browsing in a new incognito tab. </p>
+
+
+
+<p>If your CSS (styling) of the website is all off, but the page loads the content, then double check that your website is serving everything through http and your current URL is using http. </p>
+
+
+
+<p>Once the website is loading properly, you can visit the login page as normal by going into /wp-login.php or your custom login URL if you have configured it. </p>
+
+
+
+<h3>Workflow</h3>
+
+
+
+<p>If you have followed through everything in these series of tutorials, then these are the current things that we have: </p>
+
+
+
+<ul><li>Local WordPress website (local database, files, server, etc). Visited through http://localhost</li><li>Github remote repository for files. </li><li>Heroku remote for files (ephemeral). </li><li>ClearDB remote database. Visited through http://yourappname.herokuapp.com/ </li></ul>
+
+
+
+<p>Since the Heroku file system is ephemeral, you would not be able to login to the Heroku instance and upload files (pictures, media, etc) through the website. The files would just get deleted once the instance is restarted. In this case, everytime you want to make changes to the files or add posts that include pictures, you should make them on your local instance and push the file changes to Github/Heroku and the Database changes to ClearDB. </p>
+
+
+
+<h3>Workarounds</h3>
+
+
+
+<p>This all seems very tedious, but the benefit of this is that everything we use here in this series of tutorials is free. If you don&#8217;t like the ephemeral file system of Heroku, you can just avoid it by using AWS and spinning up your own web server to host your WordPress site. They also have a free trial for a year and a very cheap (around $3 a month) plan. </p>
+
+
+
+<p>To make life easier for pushing database changes between your ClearDB and your local database, I have created some scripts below to help with this. </p>
+
+
+
+<p>This one creates a database backup file and pushes it from your local database to ClearDB. It automatically modifies the siteurl and home values to your Herokuapp url. Make sure to change all the values to match yours if you want to use it (database name, user, siteurl, etc). </p>
+
+
+
+<p>I have named the file local_to_cleardb.sh to be self explanatory. Make sure to run this in a folder NOT within your website folder by running: </p>
+
+
+
+<pre class="wp-block-preformatted">bash local_to_cleardb.sh</pre>
+
+
+
+<p>This file (cleardb_to_local.sh) does the opposite and creates a backup database file from your ClearDB database and restores it onto your local database. Make sure to change all the values in this as well and run it in a folder that is NOT your website folder: </p>
+
+
+
+<pre class="wp-block-preformatted">bash cleardb_to_local.sh</pre>
+
+
+
+<h3>Other Notes</h3>
+
+
+
+<p>I might also look into making a plugin in the future to work around the ephemeral file system. </p>
+
+
+
+<p>Alternatively, you can also find some plugins that save the media on Amazon S3 instead of the Website file system. The cost can be around $0.023 per GB for the first 50TB so it&#8217;s almost free. </p>
+
+
+
+<p>Since the free Heroku instance might not be able to handle a lot of traffic, we will only use the Heroku site as a development site if you need to add some text-only posts from other devices. We will add more to the workflow in the next tutorial as well so that we can have a website that can actually handle more traffic and activity (for free!). </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
 		<title>6. Ruby on Rails Hosting Options</title>
 		<link>https://www.mediocreinventions.com/ruby-on-rails-hosting/</link>
 		<pubDate>Mon, 31 Dec 2018 19:51:49 +0000</pubDate>
@@ -32,7 +448,7 @@
 
 		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=1371</guid>
 		<description><![CDATA[<p>Intro If you have followed through the Ruby on Rails tutorial in the previous posts, then you should have a basic Ruby on Rails web application on your local machine. The next step would be to move this onto a Production level web server so that the public can access it. In this article, we [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -359,7 +775,7 @@ instructions here: <a href="https://docs.aws.amazon.com/Route53/latest/Developer
  your AWS server is now up and running! Now our next few articles will 
 go over how to set up these servers to be a proper Production 
 environment for your application. </p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>1. Installing LAMP Stack For Wordpress - Mediocre Inventions</title><meta name="description" content="In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="1. Installing LAMP Stack For Wordpress - Mediocre Inventions"><meta property="og:description" content="In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP."><meta property="og:url" content="https://www.mediocreinventions.com/installing-lamp-stack/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="installing"><meta property="article:tag" content="lamp"><meta property="article:tag" content="Ubuntu 18.04"><meta property="article:tag" content="wordpress"><meta property="article:section" content="Installing Wordpress"><meta property="article:published_time" content="2019-01-13T20:28:59+00:00"><meta property="article:modified_time" content="2019-01-28T02:14:00+00:00"><meta property="og:updated_time" content="2019-01-28T02:14:00+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/apache-logo-e1548641515428.png"><meta property="og:image:width" content="790"><meta property="og:image:height" content="288"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP."><meta name="twitter:title" content="1. Installing LAMP Stack For Wordpress - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/apache-logo-e1548641515428.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-108237564-4');
+			
+		</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6991926516512109",
+    enable_page_level_ads: true
+  });
+</script></head><body class="post-template-default single single-post postid-2261 single-format-standard">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	  
+	      
+        <header id="site-head"><nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top gold-nav"><div class="container">
+                    
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        				<h1 class="site-title"><a href="https://www.mediocreinventions.com/" rel="home">Mediocre Inventions</a></h1>
+			                        
+                    </div>
+                    
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
+</ul></div>                 
+                </div>
+                
+            </nav></header><div id="content" class="site-content">
+
+	<section class="entry-content section-padding"><div class="container"> 
+        	<div class="row"> 
+            	<div class="col-sm-9">
+
+				<article id="post-2261" class="single-content post-text scroll post-2261 post type-post status-publish format-standard has-post-thumbnail hentry category-installing-wordpress category-wordpress-free-hosting tag-installing tag-lamp tag-ubuntu-18-04 tag-wordpress"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="790" height="288" src="https://www.mediocreinventions.com/wp-content/uploads/apache-logo-e1548641515428.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/apache-logo-e1548641515428.png 790w, https://www.mediocreinventions.com/wp-content/uploads/apache-logo-e1548641515428-300x109.png 300w, https://www.mediocreinventions.com/wp-content/uploads/apache-logo-e1548641515428-768x280.png 768w" sizes="(max-width: 790px) 100vw, 790px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/installing-lamp-stack/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=1.%20Installing%20LAMP%20Stack%20For%20WordPress&url=https://www.mediocreinventions.com/installing-lamp-stack/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/installing-lamp-stack/&description=1.%20Installing%20LAMP%20Stack%20For%20WordPress"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/installing-lamp-stack/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
+                            <header class=" text-header"><h2>1. Installing LAMP Stack For WordPress</h2>                                                            <div class="post-meta"> 
+                                   <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
+                                                                       <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" rel="category tag">Installing Wordpress</a>, <a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" rel="category tag">Wordpress Free Hosting Workaround</a></span>
+                                                                   
+                                </div>
+                                                        </header><div class=" ufade post-content"> 
+                               	<div class="entry-content">
+									
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP. Linux is the operating system, Apache is the web server for the application, MySQL is the database, and PHP is the programming language. To follow through this tutorial, you can use a virtual machine and spin up a new Ubuntu 18.04 server (it’s free). For some more information virtual machines, please visit this article: <a href="https://www.mediocreinventions.com/tools/">https://www.mediocreinventions.com/tools/</a></p>
+
+
+
+<p>If you already know how to do this and just want to set everything up as fast as possible, there is a script here that should get everything setup for installing LAMP stack and a WordPress site (You may have to change a few things in the script, like the database password. The comments should help explain what the script does): <a href="https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh">https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh</a>. To run it, just run “bash lamp.sh full” and make sure it has the proper permissions. </p>
+
+
+
+<p>A more detailed article on this can be found at <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a>. This article pretty much covers the same thing, but the one on this page is just much shorter and gets straight to the point. </p>
+
+
+
+<h2>Apache</h2>
+
+
+
+<p>To start, let’s run the following commands: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update<br>
+sudo apt install apache2
+</pre>
+
+
+
+<p>Now let’s make sure the firewall doesn’t interfere with our web server by running this: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw allow in "Apache Full"<br>
+sudo systemctl restart apache2
+</pre>
+
+
+
+<h2>MySQL</h2>
+
+
+
+<p>We will now install the database by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install mysql-server</pre>
+
+
+
+<p>The command below is just a security script that helps remove some potentially dangerous settings. You can answer Yes for most of them. The MySQL section in this article here explains it in more detail: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a></p>
+
+
+
+<pre class="wp-block-preformatted">sudo mysql_secure_installation</pre>
+
+
+
+<p>The settings are up to you, but here are what I answered for this project: <br>
+Password validate plug: N<br>
+New Password: CHANGEME<br>
+Confirm Passowrd: CHANGEME<br>
+Remove anonymous users: Y<br>
+Disallow root login remotely: N<br>
+Remove test database: Y<br>
+Reload priviledge table: Y</p>
+
+
+
+<p>The password you set above will be for the ‘root’ user. </p>
+
+
+
+<h2>PHP</h2>
+
+
+
+<p>Now we can install PHP on the server along with some dependencies by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php libapache2-mod-php php-mysql</pre>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip</pre>
+
+
+
+<p>Then we can set it so that Apache prioritizes php files by opening up /etc/apache2/mods-enabled/dir.conf and change the order of the entries there so that it looks like this: </p>
+
+
+
+<pre class="wp-block-preformatted"><br>
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm<br></pre>
+
+
+
+<p>Now let’s restart the Apache server for the changes to take affect</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>The LAMP stack should be all setup now! In the next article, we will use this to install WordPress onto our server. </p>
+<div class="tags-links bfade">Tagged: <a href="https://www.mediocreinventions.com/tag/installing/" rel="tag">installing</a>, <a href="https://www.mediocreinventions.com/tag/lamp/" rel="tag">lamp</a>, <a href="https://www.mediocreinventions.com/tag/ubuntu-18-04/" rel="tag">Ubuntu 18.04</a>, <a href="https://www.mediocreinventions.com/tag/wordpress/" rel="tag">wordpress</a></div>								</div>
+                            </div>
+        </article><nav class="navigation post-navigation" role="navigation"><h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/" rel="prev">8. Nginx and Let’s Encrypt (SSL)</a></div><div class="nav-next"><a href="https://www.mediocreinventions.com/installing-wordpress/" rel="next">2. Installing And Configuring WordPress (LAMP)</a></div></div>
+	</nav></div>
+								<div class="col-sm-3"> 
+				
+<aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
+									</li>
+											<li>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
+									</li>
+					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
+<ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" title="Tutorial for creating a React (16.2) website using Ruby on Rails (5.2). We will build an API using Rails and interact with it using AJAX to get our information. ">Ruby on Rails With React</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/" title="A collection of tutorials on how to deploy a Ruby on Rails web application. We will be using Nginx and Puma on a Ubuntu 18.04 server to accomplish this. ">Ruby on Rails, Nginx and Puma</a>
+</li>
+</ul></li>
+	<li class="cat-item cat-item-10"><a href="https://www.mediocreinventions.com/category/web-basics/" title="Before starting some of the tutorials on this website, it is recommended to review some of the topics here. This is to make sure you are familiar with the relevant concepts for this site. 
+The articles in this category cover some of the basic topics that are relevant to web application development. These are brief articles that are meant to get you an idea of what to expect. 
+You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
+">Web Application Basics</a>
+</li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
+		</ul></section></aside></div>
+							</div>
+		</div>
+	</section></div>
+
+        <footer class="footer-section"><div class="container"> 
+                <div class="footer-bottom"> 
+                    <div class="copy-text">
+                    	<p>Mediocre Inventions | 2018</p>
+                    </div>
+                </div>
+            </div>
+        </footer></div>
+
+<script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/plugins.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/scrollreveal.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/owl.carousel.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/main.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/skip-link-focus-fix.js"></script></body></html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>5. Ruby on Rails With React - Mediocre Inventions</title><meta name="description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="5. Ruby on Rails With React - Mediocre Inventions"><meta property="og:description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta property="og:url" content="https://www.mediocreinventions.com/rails-with-react/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="React"><meta property="article:tag" content="React.js"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Ruby on Rails With React"><meta property="article:published_time" content="2018-12-30T03:15:22+00:00"><meta property="article:modified_time" content="2018-12-31T21:29:37+00:00"><meta property="og:updated_time" content="2018-12-31T21:29:37+00:00"><meta property="og:image" content="http://mediocreinventions.herokuapp.com/wp-content/uploads/books.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta name="twitter:title" content="5. Ruby on Rails With React - Mediocre Inventions"><meta name="twitter:image" content="http://mediocreinventions.herokuapp.com/wp-content/uploads/books.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&amp;subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>5. Ruby on Rails With React - Mediocre Inventions</title><meta name="description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="5. Ruby on Rails With React - Mediocre Inventions"><meta property="og:description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta property="og:url" content="https://www.mediocreinventions.com/rails-with-react/"><meta property="og:site_name" content="Mediocre Inventions"><meta property="article:tag" content="React"><meta property="article:tag" content="React.js"><meta property="article:tag" content="Ruby"><meta property="article:tag" content="Ruby on Rails"><meta property="article:section" content="Ruby on Rails With React"><meta property="article:published_time" content="2018-12-30T03:15:22+00:00"><meta property="article:modified_time" content="2019-01-28T02:09:42+00:00"><meta property="og:updated_time" content="2019-01-28T02:09:42+00:00"><meta property="og:image" content="https://www.mediocreinventions.com/wp-content/uploads/react-logo-e1548641359613.png"><meta property="og:image:width" content="800"><meta property="og:image:height" content="274"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="In this article, we will use React (16.2) to create and delete objects in our database by using AJAX to interact with our Rails API."><meta name="twitter:title" content="5. Ruby on Rails With React - Mediocre Inventions"><meta name="twitter:image" content="https://www.mediocreinventions.com/wp-content/uploads/react-logo-e1548641359613.png"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="wp-block-library-theme-css" href="https://www.mediocreinventions.com/wp-includes/css/dist/block-library/theme.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-font-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CPoppins%3A300%2C400%7Cfamily%3DSlabo%2B27px%3A300%2C400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="animate-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/animate.css" type="text/css" media="all"><link rel="stylesheet" id="owl.carousel-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/owl.carousel.min.css" type="text/css" media="all"><link rel="stylesheet" id="material-design-iconic-font-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/material-design-iconic-font.min.css" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-default-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/default.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/style.css" type="text/css" media="all"><link rel="stylesheet" id="block-style-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/block.css" type="text/css" media="all"><link rel="stylesheet" id="blog-bank-responsive-css" href="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/css/responsive.css" type="text/css" media="all"><script type="text/javascript" src="https://www.mediocreinventions.com/wp-content/themes/blog-bank/assets/js/vendor/modernizr-2.8.3.min.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://www.mediocreinventions.com/wp-includes/js/jquery/jquery-migrate.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-108237564-4"></script><script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
@@ -25,7 +25,7 @@
 			                        
                     </div>
                     
-                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="https://www.mediocreinventions.com/" class="nav-link">Home</a></li>
+                 <div id="main_menu" class="collapse navbar-collapse"><ul id="menu-menu" class="nav navbar-nav navbar-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2121 nav-item"><a title="Home" href="http://www.mediocreinventions.com/" class="nav-link">Home</a></li>
 <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2181 nav-item"><a title="Privacy Policy" href="https://www.mediocreinventions.com/privacy/" class="nav-link">Privacy Policy</a></li>
 </ul></div>                 
                 </div>
@@ -36,8 +36,18 @@
         	<div class="row"> 
             	<div class="col-sm-9">
 
-				<article id="post-791" class="single-content post-text scroll post-791 post type-post status-publish format-standard hentry category-rails-to-production category-rails-react tag-react tag-react-js tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
-                            	                            </div>
+				<article id="post-791" class="single-content post-text scroll post-791 post type-post status-publish format-standard has-post-thumbnail hentry category-rails-to-production category-rails-react tag-react tag-react-js tag-ruby tag-ruby-on-rails"><div class=" content-media"> 
+                            	                                
+			<div class="post-thumbnail">
+				<img width="800" height="274" src="https://www.mediocreinventions.com/wp-content/uploads/react-logo-e1548641359613.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://www.mediocreinventions.com/wp-content/uploads/react-logo-e1548641359613.png 800w, https://www.mediocreinventions.com/wp-content/uploads/react-logo-e1548641359613-300x103.png 300w, https://www.mediocreinventions.com/wp-content/uploads/react-logo-e1548641359613-768x263.png 768w" sizes="(max-width: 800px) 100vw, 800px"></div>
+
+		                                <div class="content-social"> 
+                                    <ul><li><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https://www.mediocreinventions.com/rails-with-react/&display=popup"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/intent/tweet?text=5.%20Ruby%20on%20Rails%20With%20React&url=https://www.mediocreinventions.com/rails-with-react/"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://www.mediocreinventions.com/rails-with-react/&description=5.%20Ruby%20on%20Rails%20With%20React"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" href="https://plus.google.com/share?url=https://www.mediocreinventions.com/rails-with-react/"> <i class="fa fa-google-plus"></i></a></li>
+                                    </ul></div>
+                                                        </div>
                             <header class=" text-header"><h2>5. Ruby on Rails With React</h2>                                                            <div class="post-meta"> 
                                    <a href="https://www.mediocreinventions.com/author/mt9304gmail-com/"><span class="post-author"><i class="zmdi zmdi-account-circle"> Admin</i></span></a>
                                                                        <span class="post-cat"><i class="fa fa-book"></i> <a href="https://www.mediocreinventions.com/category/rails-to-production/" rel="category tag">Rails and React To Production (Nginx)</a>, <a href="https://www.mediocreinventions.com/category/rails-to-production/rails-react/" rel="category tag">Ruby on Rails With React</a></span>
@@ -62,11 +72,11 @@ our database using React and AJAX to interact with our Rails API. </p>
 
 
 <p>React
- is a JavaScript library that allows developers to create a website&rsquo;s UI
+ is a JavaScript library that allows developers to create a website’s UI
  by using small pieces of code (JavaScript files called Components). You
  can use these components to display dynamic data (eg: data from your 
 api or database) as well as static elements (regular HTML elements like 
-&lt;p&gt; or even &lt;script&gt; snippets for regular JavaScript). This 
+<p> or even <script> snippets for regular JavaScript). This 
 allows for a cleaner and more maintainable way to build your front-end 
 compared to writing massive custom JavaScript and HTML files. </p>
 
@@ -106,7 +116,7 @@ in your browser console such as </p>
 
 <p>In
  our setup article, we ran rails g react:install to setup React to work 
-with Rails. Now we can focus on creating the components. React&rsquo;s 
+with Rails. Now we can focus on creating the components. React’s 
 components are stored in the /apps/assets/javascripts/components/ 
 folder. We can start by creating a new folder here called book inside of
  this components folder, then create a new file here called 
@@ -115,7 +125,7 @@ book_app.js.jsx. Your folder stucture should now be as such:
 
 
 
-<p>Now let&rsquo;s populate this book_app component with code so that it looks like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/3d165e7b5f052d5595ad7bdc564b3f6c" target="_blank">https://gist.github.com/mt9304/3d165e7b5f052d5595ad7bdc564b3f6c</a></p>
+<p>Now let’s populate this book_app component with code so that it looks like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/3d165e7b5f052d5595ad7bdc564b3f6c" target="_blank">https://gist.github.com/mt9304/3d165e7b5f052d5595ad7bdc564b3f6c</a></p>
 
 
 
@@ -158,15 +168,15 @@ of the component changes, the render() function gets called again. </p>
 
 <p>The
  constructor initiates the component in our BookApp by setting the state
- with an empty array of &ldquo;books&rdquo;. The &ldquo;state&rdquo; in this case can be thought
+ with an empty array of “books”. The “state” in this case can be thought
  of as the place to store variables so that our page can use it and 
-render dynamic content. Then it renders text that says &ldquo;Loading&hellip;&rdquo; for a
+render dynamic content. Then it renders text that says “Loading…” for a
  bit before calling componentDidMount(), which runs a custom function we
  created called getDataFromApi(). This function then uses AJAX 
 (basically JavaScript that can interact with our API) to get Book data 
-from our database and store it in the &ldquo;state&rdquo;. Now that the state has 
-changed again, render is called and updates the &ldquo;Loading&hellip;&rdquo; to &ldquo;Your 
-books will go here!&rdquo;. </p>
+from our database and store it in the “state”. Now that the state has 
+changed again, render is called and updates the “Loading…” to “Your 
+books will go here!”. </p>
 
 
 
@@ -190,7 +200,7 @@ it does run into any. </p>
 
 
 
-<pre class="wp-block-preformatted">&lt;%= react_component 'BookApp' %&gt;
+<pre class="wp-block-preformatted"><%= react_component 'BookApp' %>
 </pre>
 
 
@@ -202,8 +212,8 @@ it does run into any. </p>
 <figure class="wp-block-image"><img src="http://mediocreinventions.herokuapp.com/wp-content/uploads/books.png" alt="" class="wp-image-921" srcset="https://www.mediocreinventions.com/wp-content/uploads/books.png 955w, https://www.mediocreinventions.com/wp-content/uploads/books-300x63.png 300w, https://www.mediocreinventions.com/wp-content/uploads/books-768x161.png 768w" sizes="(max-width: 955px) 100vw, 955px"></figure><p>Now
  we can work on populating this area with a table to render all our book
  entries. Fortunately, React allows you to render other components 
-within a component so that we don&rsquo;t have to stack one file with so much 
-code. So let&rsquo;s start by creating some new files called book_table.js.jsx
+within a component so that we don’t have to stack one file with so much 
+code. So let’s start by creating some new files called book_table.js.jsx
  and book.js.jsx in the same folder as book_app.js.jsx. Fill out the 
 table file so that it looks like this: <a href="https://gist.github.com/mt9304/fe72fac20278203c3ece7263536a741e" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/fe72fac20278203c3ece7263536a741e</a> and the book file should look like this: <a href="https://gist.github.com/mt9304/266b22788e8a7f6144c026abffbc9441" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/266b22788e8a7f6144c026abffbc9441</a></p>
 
@@ -226,13 +236,13 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 								<div class="col-sm-3"> 
 				
 <aside id="secondary" class="widget-area"><section id="recent-posts-2" class="widget widget_recent_entries"><h3 class="widget-title">Recent Tutorials</h3>		<ul><li>
-					<a href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&rsquo;s Encrypt (SSL)</a>
+					<a href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a>
+					<a href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a>
 									</li>
 											<li>
-					<a href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a>
+					<a href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a>
 									</li>
 					</ul></section><section id="categories-2" class="widget widget_categories"><h3 class="widget-title">Tutorials</h3>		<ul><li class="cat-item cat-item-9"><a href="https://www.mediocreinventions.com/category/rails-to-production/" title="A collection of tutorials on creating a Ruby on Rails (5.2) web application with React (16.2). These tutorials will walk through how to push the application into a Production environment. The Production environments can be Heroku or AWS with a Ubuntu 18.04 server using Nginx and Puma. Some articles will also cover how to monitor the application. ">Rails and React To Production (Nginx)</a>
 <ul class="children"><li class="cat-item cat-item-281"><a href="https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/" title="This portion of the tutorial is for building a simple Ruby on Rails application. It will use Rolify, CanCanCan, and Devise to implement authentication and authorization. ">Rails Authentication/Authorization</a>
@@ -247,6 +257,12 @@ The articles in this category cover some of the basic topics that are relevant t
 You can read these in order starting from 1., but it is not necessary. Some of the tutorials later on will reference specific articles here if needed. 
 ">Web Application Basics</a>
 </li>
+	<li class="cat-item cat-item-611"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/" title="These tutorials will explain how to leverage a variety of free services to host a Wordpress website for free. It will also show oyu how to install Wordpress using Linux, Apache, MySQL, and PHP (LAMP stack). Services explores will include Heroku, Github Pages, and Cloudflare. ">Wordpress Free Hosting Workaround</a>
+<ul class="children"><li class="cat-item cat-item-612"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/" title="These tutorials will walk through how to install Wordpress using the Lamp stack (Linux, Apache, MySQL, and PHP). ">Installing Wordpress</a>
+</li>
+	<li class="cat-item cat-item-613"><a href="https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/" title="These articles will explore some free hosting options for Wordpress. We will go through services such as Heroku, Github Pages, and Cloudflare. ">Wordpress Hosting Options</a>
+</li>
+</ul></li>
 		</ul></section></aside></div>
 							</div>
 		</div>

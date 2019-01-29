@@ -10,14 +10,1080 @@
 <channel>
 	<title>Mediocre Inventions</title>
 	<atom:link href="https://www.mediocreinventions.com/feed/" rel="self" type="application/rss+xml" />
-	<link>http://dev.mediocreinventions.com</link>
+	<link>http://www.mediocreinventions.com/</link>
 	<description></description>
-	<lastBuildDate>Thu, 03 Jan 2019 03:43:44 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 29 Jan 2019 06:50:31 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.0.1</generator>
 	<item>
+		<title>5. Deploying WordPress To Heroku</title>
+		<link>https://www.mediocreinventions.com/deploying-wordpress-to-heroku/</link>
+		<pubDate>Mon, 28 Jan 2019 07:56:25 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[Wordpress Hosting Options]]></category>
+		<category><![CDATA[cleardb]]></category>
+		<category><![CDATA[heroku]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=2412</guid>
+		<description><![CDATA[<p>Intro In this article, we will deploy our WordPress website onto Heroku, a web application hosting service. We are using Heroku because it has a free plan, but it does come with a couple of drawbacks. We will also go over the limitations of this in this article. Heroku Let&#8217;s start by installing Heroku&#8217;s command [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will deploy our WordPress website onto Heroku, a web application hosting service. We are using Heroku because it has a free plan, but it does come with a couple of drawbacks. We will also go over the limitations of this in this article. <br></p>
+
+
+
+<h2>Heroku</h2>
+
+
+
+<p>Let&#8217;s start by installing Heroku&#8217;s command line interface by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo snap install --classic heroku</pre>
+
+
+
+<p>Heroku is a free hosting service that we will use to host our website. The service is extremely convenient to use, but the free tier has a couple of limitations and is usually not suitable for a production/customer facing website hosting. Here are some of the notable downside for the free tier: </p>
+
+
+
+<ul><li>If the application is inactive for a while, it will go to sleep. When a user visits the application/website for the first time, it will take more time to load and wake up. </li><li>The MySQL database size is only 5mb. </li><li>It has an ephemeral file system. This just means that any file changes or new files uploaded on the server will be undone after the server restarts. This means that users should not be uploading files on here through WordPress or making any changes tothe files. </li><li>Limited performance. </li></ul>
+
+
+
+<p>However, since we will only be using the website here as a development website, these limitations shouldn&#8217;t be too much. If you database does happen to get big and need to go over the 5mb (even with the WordPress database optimizing addon), you have the option to upgrade to their paid tier to significantly increase the limits. </p>
+
+
+
+<h3>Heroku Setup</h3>
+
+
+
+<p>Make sure you sign up on their website: https://www.heroku.com/<br>
+Once you have signed up, you should be able to go to the <a href="https://dashboard.heroku.com/apps">dashboard</a> and create a new application. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/heroku0-1024x84.png" alt="" class="wp-image-2372" srcset="https://www.mediocreinventions.com/wp-content/uploads/heroku0-1024x84.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/heroku0-300x25.png 300w, https://www.mediocreinventions.com/wp-content/uploads/heroku0-768x63.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Enter the name of your new application and in the Deploy section, choose the deployment method that you prefer. For this tutorial, I will choose the Github option to simplify things. This makes it so that every time you move your changes onto Github, it will also move the changes onto Heroku, where we will be hosting our development site. To enable this automatic process, go down to the Automatic deploys section and enable it on the master branch. We won&#8217;t go into detail about Github&#8217;s branches, but you can read more about it here: https://guides.github.com/introduction/flow/</p>
+
+
+
+<h3>Heroku Database</h3>
+
+
+
+<p>Now we need to setup our database on Heroku. Go to the Resources section and click on Find more add-ons. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/heroku1-1024x385.png" alt="" class="wp-image-2373" srcset="https://www.mediocreinventions.com/wp-content/uploads/heroku1-1024x385.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/heroku1-300x113.png 300w, https://www.mediocreinventions.com/wp-content/uploads/heroku1-768x289.png 768w, https://www.mediocreinventions.com/wp-content/uploads/heroku1.png 1528w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>In the Data Stores section, find the addon that says ClearDB MySQL and click it. Once you are on that addon&#8217;s page, click on Install ClearDB MySQL and enter your application&#8217;s name to install it for the app (make sure the plan is on Ignite &#8211; Free). </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/heroku2-1024x474.png" alt="" class="wp-image-2374" srcset="https://www.mediocreinventions.com/wp-content/uploads/heroku2-1024x474.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/heroku2-300x139.png 300w, https://www.mediocreinventions.com/wp-content/uploads/heroku2-768x355.png 768w, https://www.mediocreinventions.com/wp-content/uploads/heroku2.png 1492w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h3>ClearDB</h3>
+
+
+
+<p>Once you have installed the database, you can access this on the Resources tab in Heroku and select ClearDB &#8211; MySQL. This should take you to your database&#8217;s page on ClearDB. From here, you can see your database in the Community Edition tab. It should be called something like heroku_4536dfb43tbdf. Click into this and then go to the System Information tab. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/cleardb0-1024x195.png" alt="" class="wp-image-2368" srcset="https://www.mediocreinventions.com/wp-content/uploads/cleardb0-1024x195.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/cleardb0-300x57.png 300w, https://www.mediocreinventions.com/wp-content/uploads/cleardb0-768x146.png 768w, https://www.mediocreinventions.com/wp-content/uploads/cleardb0.png 1559w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>From here you can see your database&#8217;s username and password. Make sure to make note of this as we will be using it later. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/cleardb1-1024x327.png" alt="" class="wp-image-2369" srcset="https://www.mediocreinventions.com/wp-content/uploads/cleardb1-1024x327.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/cleardb1-300x96.png 300w, https://www.mediocreinventions.com/wp-content/uploads/cleardb1-768x245.png 768w, https://www.mediocreinventions.com/wp-content/uploads/cleardb1.png 1180w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h3>Local Database</h3>
+
+
+
+<p>If you haven&#8217;t already, you can install MySQL Workbench to access your database through a GUI: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install mysql-workbench</pre>
+
+
+
+<p>You can then start the program by finding it on the launcher or typing mysql-workbench in the terminal. Once opened, you should be able to click into the Local instance to access your local database. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/mysql0.png" alt="" class="wp-image-2375" srcset="https://www.mediocreinventions.com/wp-content/uploads/mysql0.png 726w, https://www.mediocreinventions.com/wp-content/uploads/mysql0-300x187.png 300w" sizes="(max-width: 726px) 100vw, 726px" /></figure>
+
+
+
+<h3>Database Size</h3>
+
+
+
+<p>Since our database on Heroku only allows for 5MB, let&#8217;s open up our local instance to check its size. Once opened, the bottom left should have a SCHEMAS section that contains your database. Right-click your database and select &#8220;Set as Default Schema&#8221;. Then click on the textbox in the middle to type in the Query tab and paste this in the box:</p>
+
+
+
+<pre class="wp-block-preformatted">SELECT table_schema AS "Database", <br>
+ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" <br>
+FROM information_schema.TABLES <br>
+GROUP BY table_schema;
+</pre>
+
+
+
+<p>Then go to Query at the top and select &#8220;Execute (All of Selection)&#8221; or press Shift + Ctrl + Return. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/mysql1.png" alt="" class="wp-image-2376" srcset="https://www.mediocreinventions.com/wp-content/uploads/mysql1.png 806w, https://www.mediocreinventions.com/wp-content/uploads/mysql1-300x180.png 300w, https://www.mediocreinventions.com/wp-content/uploads/mysql1-768x461.png 768w" sizes="(max-width: 806px) 100vw, 806px" /></figure>
+
+
+
+<p>A results table should show up showing the size of the database right beside the name of your database. If this is under 5MB then we are good to go! If not, then we may have to delete some unnecesarry data from there. You can make use of the &#8220;Optimize Database after Deleting Revisions&#8221; WordPress plugin to delete a lot of data from your database. A lot of the space can be a result of old revisions of posts that you no longer need. </p>
+
+
+
+<p>If the above method still does not reduce the database tp below 5MB, then you may need to upgrade the database to a paid tier to continue. </p>
+
+
+
+<h3>ClearDB Remote Database</h3>
+
+
+
+<p>Let&#8217;s press the Home icon on the top left of MySQL Workbench now and try to connect to our ClearDB database that we just cretaed on Heroku. Click on the &#8220;+&#8221; icon next to the title that says &#8220;MySQL Connections&#8221; to start adding another connection. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://www.mediocreinventions.com/wp-content/uploads/mysql2.png" alt="" class="wp-image-2377" srcset="https://www.mediocreinventions.com/wp-content/uploads/mysql2.png 1022w, https://www.mediocreinventions.com/wp-content/uploads/mysql2-300x208.png 300w, https://www.mediocreinventions.com/wp-content/uploads/mysql2-768x532.png 768w" sizes="(max-width: 1022px) 100vw, 1022px" /></figure>
+
+
+
+<p>To get the Hostname, go back to your website folder in your terminal and run the following Heroku command (make sure you have installed the Heroku CLI as mentioned at the top): </p>
+
+
+
+<pre class="wp-block-preformatted">heroku config --app yourappname</pre>
+
+
+
+<p>Remember to replace yourappname with the name of your application on Heroku. You should get an output that says CLEARDB_DATABASE_URL and a bunch of text after it. The Hostname is the value after the @ sign and before the forward slash &#8220;/&#8221;. It might look something like us-cdbr-iron-east-03.cleardb.net</p>
+
+
+
+<h3>Connecting</h3>
+
+
+
+<p>The port should be 3305, username/password should be the one we got from the System Information tab on the ClearDB website earlier. The Default Schema is the database name on ClearDB, which should look something like heroku_resgerhreshrhhs3542. It can be found on the System Information tab as well as the part from the heroku config command after the forward slash and before the question mark. Connecting to it may prompt a password, which is the one from the System Information tab. </p>
+
+
+
+<p>Once you have tested and saved the connection, the MySQL-Workbench home page should now have an extra tile to connect to this database now. Click into it to make sure everything connects properly. </p>
+
+
+
+<h3>Heroku Config Variables</h3>
+
+
+
+<p>Now that we have our ClearDB credentails from above, we need to let Heroku know this information. Heroku also similar to our Apache&#8217;s environment variables, Heroku has a section called Config Variables where it gets these values. Go into the Heroku Dashboard again and go to the Settings section. There should be a button called Reveal Config Vars. Click this to reveal the variables. </p>
+
+
+
+<p>By default, the ClearDB database URL should be populated already. If not, you can get this URL by running the &#8220;heroku config &#8211;app yourappname&#8221; command again. Since we specified the named of the environment variables in the wp-config.php file earlier (such as DB_NAME, DB_USER, DB_PASSWORD, DB_HOST), we can add this easily in the Reveal Config Vars section. </p>
+
+
+
+<h3>Double Checking</h3>
+
+
+
+<p>Make sure to add all the environment variables that we have defined in this area and fill the values in with the ClearDB values. Double check that there are no trailing or prepended spaces in these values that are not supposed to be there.</p>
+
+
+
+<p>Now check that your file changes are all on the remote repository on Github. You can go to your website folder and type &#8216;git status&#8217; to check if there are any changes that need to be put on there. Once everything is up to date there, you can manually deploy the changes to Heroku by going to the Heroku Dashboard &gt; Deploy and scroll to the Manual Deploy section to deploy. </p>
+
+
+
+<h3>Pushing Database Changes</h3>
+
+
+
+<p>Right now our ClearDB database is blank, so we want to make sure we move our local database values onto the ClearDB database. To do this, we will create a backup file from our local database, then restore it to the ClearDB one. Let&#8217;s start by creating a new folder on our machine to store the database files: </p>
+
+
+
+<pre class="wp-block-preformatted">mkdir ~/mysql-db-files
+cd ~/mysql-db-files
+</pre>
+
+
+
+<p>Make sure you don&#8217;t create these files in your website&#8217;s folder, because it contains sensitive information and can accidentally be pushed into Github if not careful. Once you are in this new folder, you can then then run the following to create the database backup file: </p>
+
+
+
+<pre class="wp-block-preformatted">mysqldump -u root -pCHANGEME databasename &gt; nameofoutputfile.sql</pre>
+
+
+
+<p>Make sure &#8220;root&#8221; is changed to your user and the CHANGEME value right after -p (no space in between) is your database user&#8217;s password. Remember to change the databasename to the name of your own database on your local machine. Then the part after the right angle bracket &#8220;&gt;&#8221; is just the name that you want the file to be called (make sure it ends with .sql).</p>
+
+
+
+<h3>Double Checking</h3>
+
+
+
+<p>Run the &#8220;ls&#8221; command just to check that your file has been created. Now we can run the next command to restore our ClearDB database using this file: </p>
+
+
+
+<pre class="wp-block-preformatted">mysql --host=changeme --user=changeme --password=changeme --reconnect heroku_changeme &lt; nameofoutputfile.sql</pre>
+
+
+
+<p>Make sure you change all these values to the ones we got for the ClearDB database above and the filename at the end to the one we just generated. </p>
+
+
+
+<p><strong>Note:</strong><br>
+You will likely get an error that says: </p>
+
+
+
+<pre class="wp-block-preformatted">ERROR 1273 (HY000) at line 25: Unknown collation: 'utf8mb4_unicode_ci'</pre>
+
+
+
+<p>If that happens, you can read about why this occurs here so you can make a more informed decision: <a href="https://stackoverflow.com/questions/42385099/1273-unknown-collation-utf8mb4-unicode-520-ci">https://stackoverflow.com/questions/42385099/1273-unknown-collation-utf8mb4-unicode-520-ci</a></p>
+
+
+
+<p>If you just want to resolve this quick and don&#8217;t care about the details/implicates, you can just run the following: </p>
+
+
+
+<pre class="wp-block-preformatted">sed -i -e "s/utf8mb4_unicode_ci/utf8mb4_unicode_ci/g" nameofoutputfile.sql</pre>
+
+
+
+<p>Just make sure to change the filename at the end to the file we just generated. This command just replaces the text that is causing issues in our database file. After running it, you can try running the mysql command again to make the changes again. You can now go into MySQL-Workbench again, refresh everything and see if the ClearDB database has received all the changes. </p>
+
+
+
+<h3>WordPress URL Values</h3>
+
+
+
+<p>One thing to watch out for are the URLs stored in the database. While you are connected to the ClearDB database with MySQL-Workbench, run the following command to see the WordPress options table: </p>
+
+
+
+<pre class="wp-block-preformatted">SELECT * FROM wp_options;</pre>
+
+
+
+<p>You should notice some columns called &#8220;siteurl&#8221; and &#8220;home&#8221;. These are currently set to http://localhost, but when you have deployed this to Heroku, it would be a different URL. You can find this URL by going into the Heroku Dashboard &gt; Settings &gt; and scroll down to the Domains and Certificates section. You should be able to see your application&#8217;s URL on Heroku that looks something like https://yourappname.herokuapp.com/</p>
+
+
+
+<p>We should replace the localhost URL in our ClearDB database to avoid issues. Run the following SQL Query on the ClearDB database to update this: </p>
+
+
+
+<pre class="wp-block-preformatted">update wp_options<br>
+set option_value = "http://yourappname.herokuapp.com"<br>
+where option_name = "siteurl";<br>
+
+update wp_options<br>
+set option_value = "http://yourappname.herokuapp.com"<br>
+where option_name = "home";
+</pre>
+
+
+
+<p>Make sure that this is set to http instead of https. </p>
+
+
+
+<p><strong>Note:</strong><br>
+Please note that we will not be able to use https properly in this tutorial, since if you are using a custom domain name, you will have to upgrade to a paid plan to implement SSL certificates. If you plan to use the default Herokuapp domain, then it might require more steps to get https to work. I may write an article on this in the future, but for now we will work with this. </p>
+
+
+
+<p>Once this is done, run the SELECT command again to see if it has changed properly. </p>
+
+
+
+<h3>Visiting the Site</h3>
+
+
+
+<p>With all the changes being made, let&#8217;s restart our application by going to the Heroku dashboard, click on More and select Restart all Dynos. Now you can visit your site&#8217;s URL and see the error that shows up!</p>
+
+
+
+<p>If it says something about a database error, check your wp-config.php file to make sure the database values are correct and you didnt mispell anything. Since we are using environment variables for them, you can also have to check the Reveal Config Vars section in the Heroku Settings section to see if anything was entered wrong (for example, unexpected trailing or prepended spaces). </p>
+
+
+
+<p>If you get an error saying the site redirected too many times, check your database value for the siteurl and home columns and make sure that their values are NOT https and the domain name matches what is listed on Heroku. If you have made changes and it keeps trying to redirect you to the https site, the redirect might be cached in your browser. In that case you can either clear your browse cache or try browsing in a new incognito tab. </p>
+
+
+
+<p>If your CSS (styling) of the website is all off, but the page loads the content, then double check that your website is serving everything through http and your current URL is using http. </p>
+
+
+
+<p>Once the website is loading properly, you can visit the login page as normal by going into /wp-login.php or your custom login URL if you have configured it. </p>
+
+
+
+<h3>Workflow</h3>
+
+
+
+<p>If you have followed through everything in these series of tutorials, then these are the current things that we have: </p>
+
+
+
+<ul><li>Local WordPress website (local database, files, server, etc). Visited through http://localhost</li><li>Github remote repository for files. </li><li>Heroku remote for files (ephemeral). </li><li>ClearDB remote database. Visited through http://yourappname.herokuapp.com/ </li></ul>
+
+
+
+<p>Since the Heroku file system is ephemeral, you would not be able to login to the Heroku instance and upload files (pictures, media, etc) through the website. The files would just get deleted once the instance is restarted. In this case, everytime you want to make changes to the files or add posts that include pictures, you should make them on your local instance and push the file changes to Github/Heroku and the Database changes to ClearDB. </p>
+
+
+
+<h3>Workarounds</h3>
+
+
+
+<p>This all seems very tedious, but the benefit of this is that everything we use here in this series of tutorials is free. If you don&#8217;t like the ephemeral file system of Heroku, you can just avoid it by using AWS and spinning up your own web server to host your WordPress site. They also have a free trial for a year and a very cheap (around $3 a month) plan. </p>
+
+
+
+<p>To make life easier for pushing database changes between your ClearDB and your local database, I have created some scripts below to help with this. </p>
+
+
+
+<p>This one creates a database backup file and pushes it from your local database to ClearDB. It automatically modifies the siteurl and home values to your Herokuapp url. Make sure to change all the values to match yours if you want to use it (database name, user, siteurl, etc). </p>
+
+
+
+<p>I have named the file local_to_cleardb.sh to be self explanatory. Make sure to run this in a folder NOT within your website folder by running: </p>
+
+
+
+<pre class="wp-block-preformatted">bash local_to_cleardb.sh</pre>
+
+
+
+<p>This file (cleardb_to_local.sh) does the opposite and creates a backup database file from your ClearDB database and restores it onto your local database. Make sure to change all the values in this as well and run it in a folder that is NOT your website folder: </p>
+
+
+
+<pre class="wp-block-preformatted">bash cleardb_to_local.sh</pre>
+
+
+
+<h3>Other Notes</h3>
+
+
+
+<p>I might also look into making a plugin in the future to work around the ephemeral file system. </p>
+
+
+
+<p>Alternatively, you can also find some plugins that save the media on Amazon S3 instead of the Website file system. The cost can be around $0.023 per GB for the first 50TB so it&#8217;s almost free. </p>
+
+
+
+<p>Since the free Heroku instance might not be able to handle a lot of traffic, we will only use the Heroku site as a development site if you need to add some text-only posts from other devices. We will add more to the workflow in the next tutorial as well so that we can have a website that can actually handle more traffic and activity (for free!). </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/deploying-wordpress-to-heroku/">5. Deploying WordPress To Heroku</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>4. Setting Up The Git Repository</title>
+		<link>https://www.mediocreinventions.com/setting-up-the-git-repository/</link>
+		<pubDate>Mon, 28 Jan 2019 07:38:57 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[Wordpress Hosting Options]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[github]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=2404</guid>
+		<description><![CDATA[<p>Intro This article will walk through how to set up our Git repository to store our code. The repository will be used by Heroku for live deployment on a free hosting environment. We will also go over environment variables and how they are important to consider when using third party services to host your website [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>This article will walk through how to set up our Git repository to store our code. The repository will be used by Heroku for live deployment on a free hosting environment. We will also go over environment variables and how they are important to consider when using third party services to host your website files. <br></p>
+
+
+
+<h2>Environment Variables</h2>
+
+
+
+<p>Sometimes your files in the website folder will contain confidential information such database users and passwords (in this case, the wp-config.php file contains this confidential information). If someone happens to get ahold of the file, then our database could be in trouble (maybe someone accidentally makes the repository public or the file gets sent across an unsecure network). Since we will be putting our files on third party services, we should start by adressing this submitting any files. One possible approach to address this is by using Environment variables. In a nutshell, environment variables are variables that only the server knows. </p>
+
+
+
+<h3>Apache Variables<br></h3>
+
+
+
+<p>Go to your website&#8217;s folder (should be in /var/www/yourwebsite) and open up the wp-config.php file: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /var/www/yourwebsite/wp-config.php</pre>
+
+
+
+<p>You should see some lines that say something like: </p>
+
+
+
+<pre class="wp-block-preformatted">define('DB_USER', 'yourdatabasename');<br>
+define('DB_USER', 'root');<br>
+define('DB_PASSWORD', 'CHANGEME');<br>
+define('DB_HOST', 'localhost');
+...
+</pre>
+
+
+
+<p>There should also be a similar section that defintes the AUTH_KEY, AUTH_SALT, and other key/salt variables. Since we wouldn&#8217;t want any unauthorized people to see this information, we will want to hide this information. To do this, let&#8217;s replace these values with keywords that let our server know to retrive them from the environment variables instead of the file. The lines should now look something like this: </p>
+
+
+
+<pre class="wp-block-preformatted">define('DB_USER', getenv('DB_NAME'));<br>
+define('DB_USER', getenv('DB_USER'));<br>
+define('DB_PASSWORD', getenv('DB_PASSWORD'));<br>
+define('DB_HOST', getenv('DB_PASSWORD'));
+...
+</pre>
+
+
+
+<p>Then we will configure the Apache web server&#8217;s environment variables so that these variables have the proper values associated with them. You can open up the envvars file in the /etcs/apache2/ folder: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/envvars</pre>
+
+
+
+<p>At the top of the file, there should be a section to add our environment variables. We will define these variables by entering lines like the following: </p>
+
+
+
+<pre class="wp-block-preformatted">export DB_NAME="yourdatabasename"
+export DB_USER="root"
+export DB_PASSWORD="CHANGEME"
+export DB_HOST="localhost"
+...
+</pre>
+
+
+
+<p>Double check that you entered everything correctly and replaced the values above with your own. Then you can restart the web server and visit your webpage (localhost) to see if everything still works. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>Remember the variable names that we set (like DB_NAME and DB_USER) since we will be using these for Heroku later. </p>
+
+
+
+<h2>Git</h2>
+
+
+
+<p>If you haven&#8217;t installed Git already, install it by running</p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install git</pre>
+
+
+
+<p>Then make sure to sign up for an account on their <a href="https://github.com/">website</a>. You can read more about Git on their website. There is also an article here that goes over it pretty well: <a href="https://kinsta.com/knowledgebase/what-is-github/">https://kinsta.com/knowledgebase/what-is-github/</a>. For our purposes, Github if the place where we will hold our website&#8217;s files and will help us with moving our changes onto the servers that will host our live websites (Heroku/Github Pages). </p>
+
+
+
+<h3>Git repository Setup</h3>
+
+
+
+<p>Once you have signed up for an account, create a new repository by hovering over the &#8220;+&#8221; icon on the top panel. Enter your application&#8217;s name to create your respository. This is where we will be story our application&#8217;s code/files. </p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/git0-1024x54.png" alt="" class="wp-image-2370" srcset="https://www.mediocreinventions.com/wp-content/uploads/git0-1024x54.png 1024w, https://www.mediocreinventions.com/wp-content/uploads/git0-300x16.png 300w, https://www.mediocreinventions.com/wp-content/uploads/git0-768x41.png 768w, https://www.mediocreinventions.com/wp-content/uploads/git0.png 1325w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p><strong>Note:</strong><br>
+You should be able to select Private Repository so that only you are able to view the code on the site (this feature was just recently made free at the time of writing this article!). Public repositories allow everyone on the internet to see it. Making it private can prevent people from seein sensitive information. For example, the wp-config.php file might contain your database name, username, and password. </p>
+
+
+
+<p>Once you have created the repository, the page should open up with some instructions. We will run similar commands below. Make sure to change your directory to where your website files before running the commands. </p>
+
+
+
+<pre class="wp-block-preformatted">cd /var/www/yourwebsite</pre>
+
+
+
+<p><strong>Note:</strong><br>If you get a permission error, you can change the permissions of this folder to allow anyone to access it. This is generally not recommended due to security concerns, but since it is on our local machine this should be fine. Run the following to make the permission change: </p>
+
+
+
+<pre class="wp-block-preformatted">chmod -R 777 /var/www/yourwebsite</pre>
+
+
+
+<p>Then you can change directories to the website folder again.</p>
+
+
+
+<h3>Pushing Changes<br></h3>
+
+
+
+<p>Once you are in the folder, proceed with the Git commands: </p>
+
+
+
+<pre class="wp-block-preformatted">git init<br>
+git add .<br>
+git commit -m "first commit"<br>
+git remote add origin https://github.com/youruser/yourrepo.git<br>
+git push -u origin master
+</pre>
+
+
+
+<p><strong>Notes:</strong></p>
+
+
+
+<ul><li>&#8216;init&#8217; initializes the folder so that your computer knows it is version controlled (creates the local repository). </li><li>&#8216;add .&#8217; adds all the files in your folder to prepare it for loading into repositories. </li><li>&#8216;commit&#8217; saves your changes to your local repository (needs to be done before moving to the remote repository on github.com).</li><li>&#8216;remote add&#8217; adds the URL of the remote repository on Github, so that it knows where to push the changes. </li><li>&#8216;push&#8217; moves the changes onto the remote repository. </li></ul>
+
+
+
+<p>Once you have done this, you can refresh your page and you should see your files in the Github repository. Now everytime you make changes to your files or add new files that you want to move to the live website (we have not set this up yet), you just have to go to the website directory on your computer and type the following: </p>
+
+
+
+<pre class="wp-block-preformatted">git add .<br>
+git commit -m "A message about what changes were made. "<br>
+git push
+</pre>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/setting-up-the-git-repository/">4. Setting Up The Git Repository</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>3. WordPress Configurations And Preparation</title>
+		<link>https://www.mediocreinventions.com/wordpress-configurations-and-preparation/</link>
+		<pubDate>Mon, 28 Jan 2019 07:24:47 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[configurations]]></category>
+		<category><![CDATA[plugins]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://localhost/?p=2400</guid>
+		<description><![CDATA[<p>Intro In this article, we go over some useful plugins that will help with your WordPress development. We will also go over some configuration changes to help resolve some common issues we might encounter later on. Plugins WP2Static &#8211; We will be converting our website to a static website for a faster user experience (and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we go over some useful plugins that will help with your WordPress development. We will also go over some configuration changes to help resolve some common issues we might encounter later on. <br></p>
+
+
+
+<h2>Plugins</h2>
+
+
+
+<p><strong>WP2Static</strong> &#8211; We will be converting our website to a static website for a faster user experience (and free hosting options). </p>
+
+
+
+<p> <strong>Yoast SEO</strong> &#8211; Helps with search engine optimizing so that you can improve your website traffic. </p>
+
+
+
+<p> <strong>GA Google Analytics</strong> &#8211; Helps intergrate your website with Google Analytics so you can track your website&#8217;s traffic better. </p>
+
+
+
+<p> <strong>Google XML Sitemaps</strong>&#8211; Helps with generating a simple sitemap for SEO purposes. Yoast SEO can also do this, this plugin may be better for our purposes in the later tutorials. </p>
+
+
+
+<p> <strong>Header Footer Code Manager</strong> &#8211; Helps us inject JavaScript snippets on your website&#8217;s pages incase you want to integrate with other services later (Such as AdSense or Amazon Associates). </p>
+
+
+
+<p> <strong>Optimize Database after Deleting Revisions</strong> &#8211; Since the service we will be using later on has a very strict database limit (but it&#8217;s free!), this will be crucial for keeping our database size smaller. </p>
+
+
+
+<p> <strong>Page Builder by SiteOrigin</strong> &#8211; Helps speed up page designing when editing your website. </p>
+
+
+
+<p> <strong>Upload Max File Size</strong> &#8211; By default, WordPress may only limit files to only be 2MB when uploading. This can help increase the limit in a easy and convenient way. If you still get an error saying a file is too big, it might be the resolution of the picture file. <br> <strong>WP Performance Score Booster</strong> &#8211; Helps speed up your website&#8217;s loading speed and performance score. Services such as <a href="https://tools.pingdom.com/">Pingdom</a> and <a href="https://gtmetrix.com/">GTmetrix</a> can help evaluate page speeds. <br>If you activate this plugin on your localhost and you get a 500 server error, you can check your Apache log files in /var/logs/apache2/ and find the error.log file. In the latest entry at the bottom, you should be able to see what the error is. If it says something along the lines of: </p>
+
+
+
+<p class="has-text-color has-vivid-red-color">&#8230; /var/www/yourwebsite/.htaccess: Invalid command &#8216;Header&#8217;, perhaps misspelled or defined by a module not included in the server configuration</p>
+
+
+
+<p>Then you will likely need to enable the Header module for Apache2 and restart the web server:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo a2enmod headers<br>
+sudo systemctl restart apache2
+</pre>
+
+
+
+<h2>Fixing Permalink Issue</h2>
+
+
+
+<p>By default, switching the permalink functions in WordPress might break your website. The pages and links to your posts might give you a 404 error saying it cannot be found. If this is happening, you can resolve this by doing the following: </p>
+
+
+
+<p>Open the file in a text editor with elevated priviledges (Nano or Vim): /etc/apache2/apache2.conf</p>
+
+
+
+<p>To edit this file, you may need elevated priviledges. You can use a text editor like nano by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/apache2.conf</pre>
+
+
+
+<p>Find the section that says  Directory /var/www/ and edit it so that AllowOverride is set to &#8220;All&#8221;. Below is what the file should look like in that section after editing. </p>
+
+
+
+<script src="https://gist.github.com/mt9304/88f86a9b518403907e5cb19183e0c5e5.js"></script>
+
+
+
+<p>Then restart the web server by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>You should be able to switch your permalink options around without breaking the links now. </p>
+
+
+
+<h2>Optimize Database</h2>
+
+
+
+<p>The database service we will be using only limits our database to be 5MB. Since it is such a small limit, we will use the Optimize Database after Deleting Revisions&#8221; plugin to reduce our database size. After installing and activating the plugin, you can access it through the WordPress Admin Panel &gt; Settings &gt; Optimize Database. Make sure to check off all the revisions area, because it can free a lot of space. </p>
+
+
+
+<h2>Disable Comments</h2>
+
+
+
+<p>Since we will be turning our website into a static website, we won&#8217;t be able to allow users to post comments. You can disable it in the WordPress Admin Panel &gt; Settings &gt; Discussion area. </p>
+
+
+
+<p>Now that this is done, we can proceed with deploying our application onto Heroku in the next article. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/wordpress-configurations-and-preparation/">3. WordPress Configurations And Preparation</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>2. Installing And Configuring WordPress (LAMP)</title>
+		<link>https://www.mediocreinventions.com/installing-wordpress/</link>
+		<pubDate>Sun, 13 Jan 2019 20:32:36 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[apache]]></category>
+		<category><![CDATA[installing]]></category>
+		<category><![CDATA[mysql]]></category>
+		<category><![CDATA[php]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=2291</guid>
+		<description><![CDATA[<p>Intro In this article, we will install WordPress as fast as we can. We will be using the LAMP environment we just setup in the previous article. This is on Ubuntu 18.04 and the WordPress version we are using will be 5.0.2. If have not set this up yet, feel free to visit the LAMP [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-wordpress/">2. Installing And Configuring WordPress (LAMP)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will install WordPress as fast as we can. We will be using the LAMP environment we just setup in the previous article. This is on Ubuntu 18.04 and the WordPress version we are using will be 5.0.2. If have not set this up yet, feel free to visit the LAMP installation <a href="https://mediocreinventions.com/installing-lamp-stack">article</a>. </p>
+
+
+
+<h2>Database</h2>
+
+
+
+<p>The database by default won&#8217;t allow you to run some of the commands below with the user and password arguments. To fix this, let&#8217;s run </p>
+
+
+
+<pre class="wp-block-preformatted">sudo mysql</pre>
+
+
+
+<p>Then once you are the console, run (remember to replace CHANGEME with the password):</p>
+
+
+
+<pre class="wp-block-preformatted">ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'CHANGEME';<br>
+FLUSH PRIVILEGES;
+</pre>
+
+
+
+<p>Now we can start setting up the database by running the command below (change the password section and YOUSITENAME to the site or database name that you want): </p>
+
+
+
+<pre class="wp-block-preformatted">mysql --user="root" --password="CHANGEME" -e "CREATE DATABASE YOURSITENAME DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"</pre>
+
+
+
+<p>This creates the database that we will be using for the website. </p>
+
+
+
+<p><strong>Note:</strong><br>
+For this tutorial, we will be using the root user in our local environment, but you can create your own user if you wish. We will be migrating this project to a free hosting service in the later articles so this doesn&#8217;t matter too much for our purposes. </p>
+
+
+
+<h2>Server Configurations</h2>
+
+
+
+<p>Let&#8217;s create our website folder for the server to use by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo mkdir /var/www/YOURSITENAME</pre>
+
+
+
+<p>Then we can download the the WordPress files in a temp folder. </p>
+
+
+
+<pre class="wp-block-preformatted">cd /tmp<br>
+curl -O https://wordpress.org/latest.tar.gz<br>
+tar xzvf latest.tar.gz<br>
+touch /tmp/wordpress/.htaccess<br>
+mkdir /tmp/wordpress/wp-content/upgrade
+</pre>
+
+
+
+<h2>Permissions</h2>
+
+
+
+<p>Finally, we can copy the folders to the correct place and set its permissions so that everything goes smoothly. </p>
+
+
+
+<pre class="wp-block-preformatted">sudo cp -a /tmp/wordpress/. /var/www/YOURSITENAME<br>
+sudo chown -R www-data:www-data /var/www/YOURSITENAME<br>
+sudo find /var/www/YOURSITENAME/ -type d -exec chmod 750 {} \;<br>
+sudo find /var/www/YOURSITENAME/ -type f -exec chmod 640 {} \;
+</pre>
+
+
+
+<p>Then we can change the document root in the configuration file to point to your website&#8217;s folder. Open up the file at /etc/apache2/sites-available/000-default.conf. You will need to run it with elevated priviledges, so if you are using the Nano text editor you can add sudo at the beginning like this: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo nano /etc/apache2/sites-available/000-default.conf</pre>
+
+
+
+<p>Or with Vim:</p>
+
+
+
+<pre class="wp-block-preformatted">sudo vi /etc/apache2/sites-available/000-default.conf</pre>
+
+
+
+<p>Then change the line after Document root to be /var/www/YOURWEBSITEFOLDER</p>
+
+
+
+<p>Then restart the web server by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>Now you can visit the website at http://localhost</p>
+
+
+
+<p>The page that opens up should look like this:</p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/localhost.png" alt="" class="wp-image-2332" srcset="https://www.mediocreinventions.com/wp-content/uploads/localhost.png 452w, https://www.mediocreinventions.com/wp-content/uploads/localhost-173x300.png 173w" sizes="(max-width: 452px) 100vw, 452px" /></figure>
+
+
+
+<p><strong>Note:</strong><br>
+There is a section in the wp-config.php file that you can change to make it more secure. </p>
+
+
+
+<p>For this part, we need to generate some texts with the &#8216;Curl&#8217; program. You can install Curl by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install curl</pre>
+
+
+
+<p>Then make sure you copy or save the text you get from running this:</p>
+
+
+
+<pre class="wp-block-preformatted">curl -s https://api.wordpress.org/secret-key/1.1/salt/</pre>
+
+
+
+<p>Now we can open up then config file in /var/www/wp-config.php (using sudo) and replace the section that looks similar to what we just generated above. </p>
+
+
+
+<p>Before opening the file, you might also need to change the permissions of your folder at /var/www/YOURWEBSITENAME by running: <br>
+sudo chmod 777 /var/www/YOURWEBSITENAME</p>
+
+
+
+<p>This makes it less secure if you are hosting the website on your current machine, but shouldn&#8217;t matter if you are just testing around. </p>
+
+
+
+<h2>Installation</h2>
+
+
+
+<p>To finish the installation, you can just follow through the instructions on the localhost page. After that, you are done, WordPress is now installed on your machine!</p>
+
+
+
+<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/wpscreen.png" alt="" class="wp-image-2333" srcset="https://www.mediocreinventions.com/wp-content/uploads/wpscreen.png 776w, https://www.mediocreinventions.com/wp-content/uploads/wpscreen-291x300.png 291w, https://www.mediocreinventions.com/wp-content/uploads/wpscreen-768x793.png 768w" sizes="(max-width: 776px) 100vw, 776px" /></figure>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-wordpress/">2. Installing And Configuring WordPress (LAMP)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>1. Installing LAMP Stack For WordPress</title>
+		<link>https://www.mediocreinventions.com/installing-lamp-stack/</link>
+		<pubDate>Sun, 13 Jan 2019 20:28:59 +0000</pubDate>
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+				<category><![CDATA[Installing Wordpress]]></category>
+		<category><![CDATA[Wordpress Free Hosting Workaround]]></category>
+		<category><![CDATA[installing]]></category>
+		<category><![CDATA[lamp]]></category>
+		<category><![CDATA[Ubuntu 18.04]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">https://www.mediocreinventions.com/?p=2261</guid>
+		<description><![CDATA[<p>Intro In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP. Linux is the operating system, Apache is the web server for the application, MySQL is the database, and PHP is the programming language. To follow through this tutorial, you can [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-lamp-stack/">1. Installing LAMP Stack For WordPress</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[
+<h2>Intro</h2>
+
+
+
+<p>In this article, we will begin with installing the LAMP stack on a Ubuntu 18.04 server. LAMP stands for Linux, Apache, MySQL, and PHP. Linux is the operating system, Apache is the web server for the application, MySQL is the database, and PHP is the programming language. To follow through this tutorial, you can use a virtual machine and spin up a new Ubuntu 18.04 server (it&#8217;s free). For some more information virtual machines, please visit this article: <a href="https://www.mediocreinventions.com/tools/">https://www.mediocreinventions.com/tools/</a></p>
+
+
+
+<p>If you already know how to do this and just want to set everything up as fast as possible, there is a script here that should get everything setup for installing LAMP stack and a WordPress site (You may have to change a few things in the script, like the database password. The comments should help explain what the script does): <a href="https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh">https://raw.githubusercontent.com/mt9304/scripts/master/lamp.sh</a>. To run it, just run &#8220;bash lamp.sh full&#8221; and make sure it has the proper permissions. </p>
+
+
+
+<p>A more detailed article on this can be found at <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a>. This article pretty much covers the same thing, but the one on this page is just much shorter and gets straight to the point. </p>
+
+
+
+<h2>Apache</h2>
+
+
+
+<p>To start, let&#8217;s run the following commands: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt update<br>
+sudo apt install apache2
+</pre>
+
+
+
+<p>Now let&#8217;s make sure the firewall doesn&#8217;t interfere with our web server by running this: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo ufw allow in "Apache Full"<br>
+sudo systemctl restart apache2
+</pre>
+
+
+
+<h2>MySQL</h2>
+
+
+
+<p>We will now install the database by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install mysql-server</pre>
+
+
+
+<p>The command below is just a security script that helps remove some potentially dangerous settings. You can answer Yes for most of them. The MySQL section in this article here explains it in more detail: <a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04</a></p>
+
+
+
+<pre class="wp-block-preformatted">sudo mysql_secure_installation</pre>
+
+
+
+<p>The settings are up to you, but here are what I answered for this project: <br>
+Password validate plug: N<br>
+New Password: CHANGEME<br>
+Confirm Passowrd: CHANGEME<br>
+Remove anonymous users: Y<br>
+Disallow root login remotely: N<br>
+Remove test database: Y<br>
+Reload priviledge table: Y</p>
+
+
+
+<p>The password you set above will be for the &#8216;root&#8217; user. </p>
+
+
+
+<h2>PHP</h2>
+
+
+
+<p>Now we can install PHP on the server along with some dependencies by running: </p>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php libapache2-mod-php php-mysql</pre>
+
+
+
+<pre class="wp-block-preformatted">sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip</pre>
+
+
+
+<p>Then we can set it so that Apache prioritizes php files by opening up /etc/apache2/mods-enabled/dir.conf and change the order of the entries there so that it looks like this: </p>
+
+
+
+<pre class="wp-block-preformatted"><br>
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm<br>
+
+</pre>
+
+
+
+<p>Now let&#8217;s restart the Apache server for the changes to take affect</p>
+
+
+
+<pre class="wp-block-preformatted">sudo systemctl restart apache2</pre>
+
+
+
+<p>The LAMP stack should be all setup now! In the next article, we will use this to install WordPress onto our server. </p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/installing-lamp-stack/">1. Installing LAMP Stack For WordPress</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
+]]></content:encoded>
+			</item>
+		<item>
 		<title>8. Nginx and Let&#8217;s Encrypt (SSL)</title>
 		<link>https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/</link>
 		<pubDate>Mon, 31 Dec 2018 20:42:12 +0000</pubDate>
@@ -35,7 +1101,7 @@
 
 		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=1621</guid>
 		<description><![CDATA[<p>Intro If you have setup your Nginx server on Ubuntu 18.04 then this article will walk you through how to add an SSL certificate using Let&#8217;s Encrypt to your website so that it uses https instead of http. If you chose to use Heroku, then you can skip this article. Please note that this article [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h3>Intro</h3>
@@ -123,7 +1189,7 @@ sudo ufw delete allow 'Nginx HTTP'
 
 
 <p>Congratulations, you have just secured your website with SSL and it should be ready for production!</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/">8. Nginx and Let&#8217;s Encrypt (SSL)</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
@@ -146,7 +1212,7 @@ sudo ufw delete allow 'Nginx HTTP'
 
 		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=1451</guid>
 		<description><![CDATA[<p>Intro In this article, we will deploy our Ruby on Rails application on a Ubuntu 18.04 server with Nginx (web server) and Puma (application server). We will also use PostgreSQL as our database and Rbenv to help us store sensitive information. Rbenv helps us store sensitive information (such as database passwords) on the server as [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -655,7 +1721,7 @@ website. </p>
 
 
 <p>Your website should now be ready to go public!</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-on-nginx/">7. Rails on Nginx, Puma, and PostgreSQL</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
@@ -673,7 +1739,7 @@ website. </p>
 
 		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=1371</guid>
 		<description><![CDATA[<p>Intro If you have followed through the Ruby on Rails tutorial in the previous posts, then you should have a basic Ruby on Rails web application on your local machine. The next step would be to move this onto a Production level web server so that the public can access it. In this article, we [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -1000,7 +2066,7 @@ instructions here: <a href="https://docs.aws.amazon.com/Route53/latest/Developer
  your AWS server is now up and running! Now our next few articles will 
 go over how to set up these servers to be a proper Production 
 environment for your application. </p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-hosting/">6. Ruby on Rails Hosting Options</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
@@ -1017,7 +2083,7 @@ environment for your application. </p>
 
 		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=791</guid>
 		<description><![CDATA[<p>Intro This article is going to be a very brief rundown of what React.js is and how to use it with your application. React is a very popular JavaScript library and there are a lot of courses out there that can teach you its ins and outs in detail. However, if you just want to [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -1204,7 +2270,7 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 
 <p>For our purposes, this basic application should be enough to deploy to a Production environment. The next articles will go through some common options for hosting your web application. <br></p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-with-react/">5. Ruby on Rails With React</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 		<item>
@@ -1222,7 +2288,7 @@ table file so that it looks like this: <a href="https://gist.github.com/mt9304/f
 
 		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=721</guid>
 		<description><![CDATA[<p>Intro In this article, we will create two roles for the users: the Admin role and Normal_User role. Users with the Admin role should have access to create and modify books on the website, while normal_users should only be able to view the books. We use the Rolify and CanCanCan gems to help us implement [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[
 <h2>Intro</h2>
@@ -1433,1178 +2499,7 @@ Now we have a basic authorization process for the website!</p>
 we haven&#8217;t went over the ways of put and post options (creating, 
 deleting, or editing). We will implement these functions in the next 
 article where we implement React for the front-end of the website. </p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></content:encoded>
-			</item>
-		<item>
-		<title>3. Ruby on Rails Authentication</title>
-		<link>https://www.mediocreinventions.com/rails-authentication/</link>
-		<pubDate>Sun, 30 Dec 2018 03:06:25 +0000</pubDate>
-		<dc:creator><![CDATA[Admin]]></dc:creator>
-				<category><![CDATA[Rails and React To Production (Nginx)]]></category>
-		<category><![CDATA[Rails Authentication/Authorization]]></category>
-		<category><![CDATA[Authentication]]></category>
-		<category><![CDATA[devise]]></category>
-		<category><![CDATA[Ruby]]></category>
-		<category><![CDATA[Ruby on Rails]]></category>
-
-		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=691</guid>
-		<description><![CDATA[<p>Note:A more detailed article on this topic can be found here: https://www.nopio.com/blog/authentication-authorization-rails/ Intro If you have followed through the previous article, then we should now have a basic API for our Books. Since our website now has functions, we should add authentication features so users can sign up and login. This can help us track [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authentication/">3. Ruby on Rails Authentication</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></description>
-				<content:encoded><![CDATA[
-<p><strong>Note:</strong><br>A more detailed article on this topic can be found here: <a href="https://www.nopio.com/blog/authentication-authorization-rails/">https://www.nopio.com/blog/authentication-authorization-rails/</a><br></p>
-
-
-
-<h2>Intro</h2>
-
-
-
-<p>If you have followed through the previous article, then we should now have a basic API for our Books. Since our website now has functions, we should add authentication features so users can sign up and login. This can help us track users and implement authorization later on.</p>
-
-
-
-<p>Let&#8217;s generate some components needed for this:</p>
-
-
-
-<pre class="wp-block-preformatted">rails generate devise:install</pre>
-
-
-
-<p>Generate the views for the authentication pages:</p>
-
-
-
-<pre class="wp-block-preformatted">rails g devise:views</pre>
-
-
-
-<p><strong>Note:</strong></p>
-
-
-
-<p>Devise is the gem (plugin/library for rails) that has a bunch of pre-built functions we can use to implement authentication.</p>
-
-
-
-<h2>Users</h2>
-
-
-
-<p>We can now run the follow to generate the User model for our database:</p>
-
-
-
-<pre class="wp-block-preformatted">rails generate devise User<br>
-rake db:migrate</pre>
-
-
-
-<p>You should now have a basic login screen for the website! To check, restart your rails server and visit http://localhost:3000/users/sign_in</p>
-
-
-
-<p>Click on Sign up and create a user</p>
-
-
-
-<p>After you create the user, you should be automatically signed in. Or you can sign in through /users/sign_in. If you are already signed in, it will just take you to the home page. Now we just need a way to let users know that they are signed in.</p>
-
-
-
-<h3>Navigation Bar<br></h3>
-
-
-
-<p>Let&#8217;s add a navigation bar at the top of the page for User options like signing in and signing out. Go to /app/views/layouts/ and open up your application&#8217;s layout file: application.html.erb. Then change the contents so that it looks like this: <a href="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b">https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b</a></p>
-
-
-
-<script src="https://gist.github.com/mt9304/d2bb86ad1b3e50f28bf4a14b4f344c3b.js"></script>
-
-
-
-<p>Now, we can add some CSS to style the page just a bit. Open up /app/assets/stylesheets/ and rename the application.css to application.scss. Then edit the contents in there to include bootstrap and add some styling: <a href="https://gist.github.com/mt9304/e9087f054ee8fb773f0180caeb75ab5c">https://gist.github.com/mt9304/e9087f054ee8fb773f0180caeb75ab5c</a></p>
-
-
-
-<script src="https://gist.github.com/mt9304/e9087f054ee8fb773f0180caeb75ab5c.js"></script>
-
-
-
-<p><strong>Notes:</strong></p>
-
-
-
-<p>The @import bootstrap line lets us use a very popular css library. More information on Bootstrap here: http://getbootstrap.com/</p>
-
-
-
-<p>It essentially has a bunch of pre-built styles we can use to make a website so we don&#8217;t have to style it from scratch.</p>
-
-
-
-<p>When you start the server and look at the website, you should now see a navigation bar at the top with a Dropdown menu for Users at the top right. Right now, clicking it won&#8217;t do anything, because we have not added the appropriate JavaScript to handle this action. In this case, we can use Bootstrap&#8217;s JavaScript library to help us handle dropdown menues.</p>
-
-
-
-<p>Go to /app/assets/javascripts/application.js and add //= require bootstrap-sprockets to the very bottom of the page and save. Now when you click on the User button at the top right, you should be able to see the menu drop down. This should show actions such as Login and Logout. These buttons should work already since the Devise gem has taken care of the authentication functions for us, but since we want users to know when they are logged in, we will make some changes to this menu.</p>
-
-
-
-<h4>Checking if logged in<br></h4>
-
-
-
-<p>Let&#8217;s make it so that you will only see the Login button if you are not already signed in. Similarly, the Logout button should only appear if the user is already signed in. To do this, let&#8217;s open up the /app/views/layouts/application.html.erb file again and make some changes to the user menu section. (around lined 32):</p>
-
-
-
-<pre class="wp-block-preformatted">&lt;% if user_signed_in? %&gt;<br>   &lt;%= link_to "Edit profile", edit_user_registration_path %&gt;<br>&lt;% else %&gt;<br>   &lt;%= link_to "Sign up", new_user_registration_path %&gt;<br>   &lt;%= link_to "Login", new_user_session_path %&gt;<br>&lt;% end %&gt;<br>&lt;% if user_signed_in? %&gt;<br>   &lt;%= link_to "Logout", destroy_user_session_path, method: :delete %&gt;<br>&lt;% end %&gt;</pre>
-
-
-
-<p>Your application.html.erb file should now look something like this: <a href="https://gist.github.com/mt9304/3a87440097d5de9e16ef40c704270528">https://gist.github.com/mt9304/3a87440097d5de9e16ef40c704270528</a></p>
-
-
-
-<script src="https://gist.github.com/mt9304/3a87440097d5de9e16ef40c704270528.js"></script>
-
-
-
-<p><strong>Notes:</strong></p>
-
-
-
-<p>In Ruby on Rails, the .html part of the file name shows it is an HTML file, and the erb extension at the end let&#8217;s the server know that this can accept Ruby code as well. The parts in between the angle bracket/percentage signs (&lt;% some_code %&gt;) are to indicate Ruby code, which is usually programming logic that HTML files would otherwise not be able to use. The brackets without &#8216;=&#8217; signs like &lt;% some_code %&gt; are indicators of Ruby code that do not need to render anything, while the &#8216;=&#8217; signs like &lt;%= some_code %&gt; indicates that something should be rendered. In this case, we can see that the &#8220;if else&#8221; logic of checking a user&#8217;s authentication does not need rendering, while the actual links to the Login/Logout functions need rendering, since they are actual buttons on the page.</p>
-
-
-
-The code that says something like link_to and new_user_session_path are just pre-built functions to make it more convenient (it also looks more readable, since it spells out exactly what it does). The Login line of code &lt;%= link_to &#8220;Login&#8221;, new_user_session_path %&gt; is essentially just <a href="/users/sign_in">Login</a> and you can try replacing this just to see for yourself.
-
-
-
-<h4>Logging in<br></h4>
-
-
-
-<p>When you login now, you should be able to see the Logout button, and the Sign in button would no longer be there. This allows users to see if they are logged in or out. Now if you ever want content that only users who are logged in should see, you know to just wrap it with these one of these lines: &lt;% if user_signed_in? %>   Yay, you are logged in!&lt;% end %></p>
-
-
-
-<p>This is how the login page should look like now:</p>
-
-
-
-<figure class="wp-block-image"><img src="https://localhost/wp-content/uploads/image.png" alt="" class="wp-image-872" srcset="https://www.mediocreinventions.com/wp-content/uploads/image.png 1014w, https://www.mediocreinventions.com/wp-content/uploads/image-300x130.png 300w, https://www.mediocreinventions.com/wp-content/uploads/image-768x334.png 768w" sizes="(max-width: 1014px) 100vw, 1014px" /></figure>
-
-
-
-<p>In the next article, we will go through Authorization, which means giving different users certain roles (such as Admin or Client) and allowing each of these roles to see different content. </p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authentication/">3. Ruby on Rails Authentication</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></content:encoded>
-			</item>
-		<item>
-		<title>2. Creating the Ruby on Rails API</title>
-		<link>https://www.mediocreinventions.com/ruby-on-rails-api/</link>
-		<pubDate>Sun, 30 Dec 2018 02:58:49 +0000</pubDate>
-		<dc:creator><![CDATA[Admin]]></dc:creator>
-				<category><![CDATA[Rails and React To Production (Nginx)]]></category>
-		<category><![CDATA[Rails Authentication/Authorization]]></category>
-		<category><![CDATA[Ruby on Rails With React]]></category>
-		<category><![CDATA[Ruby on Rails, Nginx and Puma]]></category>
-		<category><![CDATA[API]]></category>
-		<category><![CDATA[Ruby]]></category>
-		<category><![CDATA[Ruby on Rails]]></category>
-
-		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=641</guid>
-		<description><![CDATA[<p>Intro Now that we have the environment setup, we can finally start building our API for the web application. This article will go through how to create a basic REST API for perform CRUD (Create, Read, Update, Delete) operations. Start Lets start by creating the home page. Generate files needed for the home page by [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></description>
-				<content:encoded><![CDATA[
-<h2>Intro</h2>
-
-
-
-<p>Now that we have the environment setup, we can finally start building our API for the web application. This article will go through how to create a basic REST API for perform CRUD (Create, Read, Update, Delete) operations. </p>
-
-
-
-<h2>Start</h2>
-
-
-
-<p>Lets start by creating the home page. Generate files needed for the home page by typing:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">rails g controller home_page index
-</pre>
-
-
-
-<p>Create the resources for an object called book.&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">rails g resource book title author:text description:text pages:integer published:date
-</pre>
-
-
-
-<p>Migrate the database</p>
-
-
-
-<pre class="wp-block-preformatted">rake db:migrate
-</pre>
-
-
-
-<p><strong>Notes:</strong></p>
-
-
-
-<p>If this is the first 
-time you are seeing the above commands, here is what it is doing in a 
-nutshell for our purposes. &#8216;g&#8217; is short for generate, so in the commands
- above we are telling rails to generate things such as a controller or 
-resource. The index part is just the page itself (index.html) where you 
-can write HTML in and the controller allows for this page to interact 
-with the server (to get information from the database). Generating the 
-resource in this case allows us to add the routes (or URL paths) for 
-getting information about the book. This book is then set represented by
- a title, author (in text format), description, number of pages (in 
-integer format), and when it was published (in date format).&nbsp;</p>
-
-
-
-<h4>Routes</h4>
-
-
-
-<p>Let&#8217;s add the routes for the api we are making. In the config/routes.rb file, add the lines: </p>
-
-
-
-<pre class="wp-block-preformatted">root 'home_page#index'
-namespace :api do
-&nbsp;resources :books
-end
-</pre>
-
-
-
-<p>The routes.rb file should look like this:&nbsp;<a rel="noreferrer noopener" href="https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf" target="_blank">https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf</a><br><br></p>
-<script src="https://gist.github.com/mt9304/82f7a0dca262749e14ebbd28e3b8bbaf.js"></script>
-
-
-
-<h4>Controller</h4>
-
-
-
-<p>Now let&#8217;s replace the contents in the books controller in /app/controllers/books_controller.rb to be: </p>
-
-
-
-<pre class="wp-block-preformatted">module Api
-&nbsp;class EventsController &lt; ApplicationController
-&nbsp;&nbsp;def index
-&nbsp;&nbsp;&nbsp;render json: Book.all
-&nbsp;&nbsp;end
-&nbsp;end
-end
-</pre>
-
-
-
-<p>Now go into /app/controllers and create an folder 
-called api, then move the books_controller under there. New path should 
-be /app/controllers/api/books_controller.rb</p>
-
-
-
-<p>Any API related controllers should now go in that folder.&nbsp;</p>
-
-
-
-<p><strong>Note:</strong></p>
-
-
-
-<p>Putting
- books under the :api namespace and api folder allows you to access the 
-resource in the URL after /api. So in this case, it would be <a href="http://website.com/api/books" target="_blank" rel="noreferrer noopener">website.com/api/books</a>.
- Making books a resource by writing &#8220;resources :book&#8221; allows users to 
-access books through its RESTful URLs. Below are the following URLs you 
-will be able to use to get data about the books. Since we have the index
- method in the controller and views for books, you should be able to 
-visit that page (we haven&#8217;t added any book records in the database yet, 
-so these URLs wouldn&#8217;t return anything right now).&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">GET	/api/books(.:format)			api/books#index<br>POST	/api/books(.:format)			api/books#create<br>GET 	/api/books/new(.:format)		api/books#new<br>GET 	/api/books/:id/edit(.:format) 		api/books#edit<br>GET 	/api/books/:id(.:format) 		api/books#show<br>PATCH 	/api/books/:id(.:format) 		api/books#update<br>PUT 	/api/books/:id(.:format) 		api/books#update<br>DELETE 	/api/books/:id(.:format)</pre>
-
-
-
-<p>More information on REST here: <a rel="noreferrer noopener" href="https://www.restapitutorial.com/lessons/restfulresourcenaming.html" target="_blank">https://www.restapitutorial.com/lessons/restfulresourcenaming.html</a></p>
-
-
-
-<p>Here are the basics that you need to know in Rails regarding these APIs and routes:&nbsp;</p>
-
-
-
-<p>&#8211; Controllers will have a few standard methods:&nbsp;</p>
-
-
-
-<p>	index method for showing all the books (/books)</p>
-
-
-
-<p>	create method for creating a new book (/books/new)</p>
-
-
-
-<p>	show method for showing one particular book (/books/id where id is the book&#8217;s id in the database)</p>
-
-
-
-<p>	update method for updating an existing book (/books/id/edit)</p>
-
-
-
-<p>	destroy method for deleting an existing book (/books/id/ but with a DELETE method)</p>
-
-
-
-<p>Here
- we will fill out the rest of the controller methods to allow for the 
-above behavior through the API. Change your books controller so that it 
-is:&nbsp;<a href="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc</a></p>
-<script src="https://gist.github.com/mt9304/bd76031fe933b833beffd29e9af538dc.js"></script>
-
-
-
-<h2>Adding Books</h2>
-
-
-
-<p>Now let&#8217;s add some Books to our database so that we can test out the API. Go into the Rails console by typing in the terminal:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">rails c
-</pre>
-
-
-
-<p>(Make sure you are in the project&#8217;s folder)</p>
-
-
-
-<p>The
- Rails console lets you run Ruby code in. real time to make changes to 
-your application. In this case, we want to add a new Book, so let&#8217;s type
- in:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">b = Book.create :title =&gt; "How To Cook", :author =&gt; "Bob", :description =&gt; "Teaches you how to cook. ", :pages =&gt; 20, :published =&gt; "2018-11-03"
-b2 = Book.create :title =&gt; "How To Bake", :author =&gt; "Bill", :description =&gt; "Teaches you how to bake. ", :pages =&gt; 15, :published =&gt; "2018-02-03"
-</pre>
-
-
-
-<p><strong>Note:</strong></p>
-
-
-
-<p>While in the console, type &#8220;quit&#8221; to exit.&nbsp;</p>
-
-
-
-<p>This
- will create 2 entries in our database in the Books table. The database 
-right now is stored in /db/development.sqlite3. You can open this with 
-sqlitebrowser.&nbsp;</p>
-
-
-
-<p>If you haven&#8217;t downloaded it yet, you can install it by running these commands in the terminal:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">sudo add-apt-repository ppa:linuxgndu/sqlitebrowser-testing
-sudo apt-get update &amp;&amp; sudo apt-get install sqlitebrowser
-</pre>
-
-
-
-<p>Then you can go into your project folder and open it with the sqlitebrowser command:</p>
-
-
-
-<pre class="wp-block-preformatted">sqlitebrowser db/development.sqlite3
-</pre>
-
-
-
-<p>You can right click the Books option and see your 
-entries in there. Now you can try out the API urls above to see it in 
-action (Make sure you start your server first by running: rails s). For 
-example, go to localhost:3000/api/books/1</p>
-
-
-
-<p>You should 
-receive a page with information about one of the books we just created 
-in JSON format. The &#8220;1&#8221; at the end of the URL represent&#8217;s the ID, which 
-is found in the ID column of the Books table in the database. So if you 
-go to localhost:3000/api/books/2 then it will give you information on 
-the other book. </p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/ruby-on-rails-api/">2. Creating the Ruby on Rails API</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></content:encoded>
-			</item>
-		<item>
-		<title>1. Setting up Ruby on Rails Environment</title>
-		<link>https://www.mediocreinventions.com/rails-setup/</link>
-		<pubDate>Sun, 30 Dec 2018 02:35:16 +0000</pubDate>
-		<dc:creator><![CDATA[Admin]]></dc:creator>
-				<category><![CDATA[Rails and React To Production (Nginx)]]></category>
-		<category><![CDATA[Rails Authentication/Authorization]]></category>
-		<category><![CDATA[Ruby on Rails With React]]></category>
-		<category><![CDATA[Ruby on Rails, Nginx and Puma]]></category>
-		<category><![CDATA[install]]></category>
-		<category><![CDATA[React]]></category>
-		<category><![CDATA[Ruby]]></category>
-		<category><![CDATA[Ruby on Rails]]></category>
-		<category><![CDATA[setup]]></category>
-
-		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=531</guid>
-		<description><![CDATA[<p>Intro In this series of tutorials, we will go through how to build a Rails application with authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></description>
-				<content:encoded><![CDATA[
-<h2>Intro</h2>
-
-
-
-<p>In this series of tutorials, we will go through how to build a Rails application with  authentication/authorization. We will briefly go over what each function does and set up a bare-bones application template to use with React.js.This particular article will focus on just setting up the environment so that we can start the project. </p>
-
-
-
-<p>To  make sure you are on the same page, you can start on a brand new virtual machine running Ubuntu 18.04. You can download virtual machines  from here:&nbsp;</p>
-
-
-
-<p><a href="https://www.vmware.com/ca.html" target="_blank" rel="noreferrer noopener">https://www.vmware.com/ca.html</a> for VMware (free for Windows) or <a href="https://www.virtualbox.org/" target="_blank" rel="noreferrer noopener">https://www.virtualbox.org/</a> for VirtualBox (free for MacOS and Windows).&nbsp;</p>
-
-
-
-<p>Ubuntu Desktop operating system can be download here: <a href="https://www.ubuntu.com/download" target="_blank" rel="noreferrer noopener">https://www.ubuntu.com/download</a> or if 18.04 is not the latest version anymore, you can also check here: <a href="http://old-releases.ubuntu.com/releases/" target="_blank" rel="noreferrer noopener">http://old-releases.ubuntu.com/releases/</a></p>
-
-
-
-<h2>Start</h2>
-
-
-
-<p>To start, we will install the dependencies needed to install Ruby on Rails:&nbsp;</p>
-
-
-
-<p>Open
- up the terminal by pressing ctrl + alt + T and type in the following to
- start installing (make sure you wait for each command to finish before 
-running the next):&nbsp;</p>
-
-
-
-<h3>Install Git for version control</h3>
-
-
-
-<pre class="wp-block-preformatted">sudo apt install git
-</pre>
-
-
-
-<h3>Install libraries and other dependencies</h3>
-
-
-
-<pre class="wp-block-preformatted">sudo apt update
-sudo apt install curl
-sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
-</pre>
-
-
-
-<h3>Installs RVM for managing Ruby environments</h3>
-
-
-
-<pre class="wp-block-preformatted">git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.bashrc
-echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bashrc
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-</pre>
-
-
-
-<p><strong>Note:</strong></p>
-
-
-
-<p>If at any point the 
-terminal says you have not installed or function is not found when you 
-have just installed the program succesfully, an easy workaround is just 
-close the terminal and open it again. You can also type source ~/.bashrc
- or source ~/.bash_profile to see if it works. If it still doesn&#8217;t work,
- make sure the program was properly installed and there were no error 
-messages in the logs.&nbsp;</p>
-
-
-
-<h3>Continue setting up ruby environment</h3>
-
-
-
-<pre class="wp-block-preformatted">rbenv install 2.5.1
-rbenv global 2.5.1
-echo "gem: --no-document" &gt; ~/.gemrc
-gem install rails -v 5.2.0
-rbenv rehash
-</pre>
-
-
-
-<h3>Install NodeJS (JavaScript Runtime environment)</h3>
-
-
-
-<pre class="wp-block-preformatted">cd /tmp
-\curl -sSL https://deb.nodesource.com/setup_6.x -o nodejs.sh
-cat /tmp/nodejs.sh | sudo -E bash -
-sudo apt install -y nodejs
-</pre>
-
-
-
-<h3>Cleanup</h3>
-
-
-
-<p>Almost done the setup, let&#8217;s do some cleaning up and updating just to be sure</p>
-
-
-
-<pre class="wp-block-preformatted">cd ~/.rbenv
-git pull
-cd ~
-sudo apt install postgresql postgresql-contrib libpq-dev
-sudo apt update
-</pre>
-
-
-
-<p>Now we should be ready to begin creating the app.</p>
-
-
-
-<h2>Creating The App</h2>
-
-
-
-<p>Create the application</p>
-
-
-
-<pre class="wp-block-preformatted">rails new rails_template
-cd rails_template
-</pre>
-
-
-
-<p>Make sure you have installed a text editor so that we can edit some files For Sublime text install, do:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-sudo apt-get update
-sudo apt-get install sublime-text
-</pre>
-
-
-
-<p>For Vim install, do:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">sudo apt install vim
-</pre>
-
-
-
-<h4>Gemfile</h4>
-
-
-
-<p>Then open up the Gemfile edit it to include the proper gems. In particular, we are going to need Devise for authentication and CanCanCan for authorization. Authentication would mean the parts responsible for logging in a user, whereas authorization would be permissions for which types of users (roles) are allowed to do certain actions. These are usually very important for people to define in projects, since you wouldn&#8217;t want a guest to be able to access Admin level functions (such as deleting users). </p>
-
-
-
-<p>The Gemfile should look like this: <a href="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e" target="_blank" rel="noreferrer noopener">https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e</a></p>
-<script src="https://gist.github.com/mt9304/78c1ab6274d92629758b05c258def17e.js"></script>
-
-
-
-<p><strong>Note:&nbsp;</strong></p>
-
-
-
-<p>If you are unfamiliar with gems, you can think of them as additional programs, plugins/extensions, or libraries that the application can use. </p>
-
-
-
-<h4>Turbo Links<br></h4>
-
-
-
-<p>We also need to remove Turbo Links since it can cause  issues with some of the other technologies we are going to use later  on. Remove the &#8220;//= require turbolinks&#8221; line from  app/assets/javascripts/application.js. Remove the two  &#8220;data-turbolinks-track&#8221; =&gt; true hash key/value pairs from your  app/views/layouts/application.html.erb. </p>
-
-
-
-<p>
-The application.html.erb file  should look like this: <a rel="noreferrer noopener" href="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292" target="_blank">https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292﻿</a></p>
-<script src="https://gist.github.com/mt9304/6028e18397f0af7748d3df76fe4b9292.js"></script>
-
-
-
-<p><strong>Note:&nbsp;</strong></p>
-
-
-
-<p>The
- application.html.erb file here determines how your pages should look. 
-In general, all your pages in this application will use the HTML here 
-for its layout, and the &lt;%= yield %&gt; tag is the part that changes 
-depending on the page. </p>
-
-
-
-<h4>Database</h4>
-
-
-
-<p>After this, let&#8217;s run the following to install our database</p>
-
-
-
-<pre class="wp-block-preformatted">sudo apt install libsqlite3-dev
-sudo apt install sqlite3
-</pre>
-
-
-
-<p>We will change to using Postgres database later</p>
-
-
-
-<p><strong>Note:</strong></p>
-
-
-
-<p>Sqlite
- is a lightweight database good for development, but not that great at 
-handling a lot of connections. So we will use Postgresql later on when 
-we move it into production.&nbsp;</p>
-
-
-
-<p>Now that we have saved the new Gemfile, run the following command inside the application&#8217;s directory to install the gems:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">bundle install
-</pre>
-
-
-
-<h4>React</h4>
-
-
-
-<p>Let&#8217;s generate the files for React so we can use them later on: </p>
-
-
-
-<pre class="wp-block-preformatted">rails g react:install
-</pre>
-
-
-
-<p>After everything has been installs, run the 
-following to start the server, then visit localhost:3000 to see if the 
-application started successfully.&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">rails s
-</pre>
-
-
-
-<p>If all is successful so far, it should say Yay! you&#8217;re on Rails!</p>
-
-
-
-<p>To stop the application server from running, press <strong>CTRL+ C</strong> at the terminal to stop the process.&nbsp;</p>
-
-
-
-<p>Now that the application is up and running, we can start making a basic API.</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-setup/">1. Setting up Ruby on Rails Environment</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></content:encoded>
-			</item>
-		<item>
-		<title>12. Data Structure Basics For Programming</title>
-		<link>https://www.mediocreinventions.com/data-structures/</link>
-		<pubDate>Sat, 29 Dec 2018 23:59:12 +0000</pubDate>
-		<dc:creator><![CDATA[Admin]]></dc:creator>
-				<category><![CDATA[Web Application Basics]]></category>
-		<category><![CDATA[array]]></category>
-		<category><![CDATA[binary tree]]></category>
-		<category><![CDATA[data structures]]></category>
-		<category><![CDATA[hash map]]></category>
-		<category><![CDATA[javascript]]></category>
-		<category><![CDATA[linked list]]></category>
-
-		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=1311</guid>
-		<description><![CDATA[<p>Intro Knowing various data structures can be very beneficial when creating applications. For example, some data structures are faster to search through and some will be faster for inserting data. Depending on what your use case is, knowing when to use certain data structures and when to avoid certain ones can help your application scale [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/data-structures/">12. Data Structure Basics For Programming</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></description>
-				<content:encoded><![CDATA[
-<h2>Intro</h2>
-
-
-
-<p>Knowing
- various data structures can be very beneficial when creating 
-applications. For example, some data structures are faster to search 
-through and some will be faster for inserting data. Depending on what 
-your use case is, knowing when to use certain data structures and when 
-to avoid certain ones can help your application scale and perform a lot 
-better.&nbsp;This article will go through some of the most important data 
-structures that are implemented in various programming languages. </p>
-
-
-
-<h3>Array</h3>
-
-
-
-<p>Arrays can be declared in JavaScript like this:</p>
-
-
-
-<pre class="wp-block-preformatted">var myArray = ["firstValue", "secondValue", "thirdValue"];
-</pre>
-
-
-
-<p>Arrays store values in different indices and it can 
-be access quickly. In the above example, you can run the following to 
-get the first value stored in the array:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">console.log(myArray[0]);
-</pre>
-
-
-
-<p>The [0] is saying to look at index number 0, or the 
-very first thing inside the array (the count starts from 0, not 1). So 
-running myArray[1] would get the second value of &#8220;secondValue&#8221;. If you 
-already know the index of where the value is going to be stored, 
-accessing this value can be very efficient since it runs at constant 
-time, or O(1). However, if you didn&#8217;t know the index of where the value 
-is, you may have to write a function to search through the array. In 
-that case, it can longer. For example, the following snippet will loop 
-from the whole array to find the value it needs, giving it a linear 
-runtime, or O(n):&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">for (var i = 0; i &lt; myArray.length; i++) {<br>	if (myArray[i] == "thirdValue") {<br>		console.log("Found it!");<br>	}<br>}</pre>
-
-
-
-<p>Inserting and deleting values in the array can also 
-take just as long, since it has to move all the existing other values to
- fill the gap.&nbsp;</p>
-
-
-
-<h3>Linked List</h3>
-
-
-
-<p>A linked list is a 
-collection of data that is saved in a linear way. Each element points to
- the next element so that it knows which order it is in. For example, 
-below is a visualization of how a linked list might look like:&nbsp;</p>
-
-
-
-<p>Winter =&gt; Spring =&gt; Summer =&gt; Fall</p>
-
-
-
-<p>In
- the above example, the first item in the list is &#8220;Winter&#8221;, and it knows
- that its next element will be Spring. Spring will then only know its 
-next element is Summer, and so on. A linked list is very useful if you 
-want to insert or delete values very often, since it would have a 
-constant execution time, or O(n). This is because you would only have to
- change the pointers of the elements if you wanted to insert something, 
-instead of moving all the other elements around. For example, if we 
-wanted to insert an element between Spring and Summer called 
-&#8220;Springish&#8221;, then the process of inserting would be to just change the 
-Spring pointer to Springish and make sure the Springish pointer is set 
-to Summer.&nbsp;</p>
-
-
-
-<p><strong>Notes:&nbsp;</strong></p>
-
-
-
-<p>When 
-inserting at a specific index of a long linked list, you may still have 
-to traverse through the list at a linear execution time to search and 
-find the position.&nbsp;</p>
-
-
-
-<p>A &#8220;Doubly Linked List&#8221; is a data structure 
-that points in both directions. So each element knows both its previous 
-and next element. This allows for it to traverse both ways through the 
-list.&nbsp;</p>
-
-
-
-<p>I would recommend looking through this article to get a better idea of how to implement a linked list: <a href="https://www.geeksforgeeks.org/implementation-linkedlist-javascript/">https://www.geeksforgeeks.org/implementation-linkedlist-javascript/</a></p>
-
-
-
-<h3>Hash Map</h3>
-
-
-
-<p>A hash map stores key value pairs and is generally very fast when performing searches, insertion, and deletion. On average, it should have a constant execution time for these actions, but it can also take linear time in the worst case scenario.&nbsp;</p>
-
-
-
-<p><strong>Note:</strong></p>
-
-
-
-<p>This
- is going to be a very simplified explanation of the data structure. The
- Encryption article briefly explain hashing if you have not learned it 
-yet, or you can read from here: <a href="https://en.wikipedia.org/wiki/Hash_function" target="_blank" rel="noreferrer noopener">https://en.wikipedia.org/wiki/Hash_function</a></p>
-
-
-
-<p>Below is a pseudo-code snippet of a hash map that stored the names of different animals:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">myHashMap = { "dog" =&gt; "Skippy", "cat" =&gt; "Garfield", "squirrel" =&gt; "Ralph" }
-</pre>
-
-
-
-<p>To map the values, the value of dog may be hashed to
- become a number like 4. In that case, the value of &#8220;dog&#8221; would be 
-stored in an array-like structure at the 4th index. Since arrays have 
-constant access time, searching for a value in the hash map will be 
-constant in this case, since it just has to find the 4th index and 
-retrieve the value stored in there (which would be &#8220;Skippy&#8221;). However, 
-if another word happens to be hashed into 4, then they will both share 
-the same index. If all of the items happened to fall in the 4th index, 
-then it could take linear execution time to traverse through that bucket
- before finding the value. This collision here can be handled 
-differently depending on the developer, but it is usually handled like a
- linked list.&nbsp;</p>
-
-
-
-<p><strong>Note:&nbsp;</strong></p>
-
-
-
-<p>You may 
-see a lot of resources reference Hash Table and Hash Map. They are 
-similar data structures, but do have a few differences. A good 
-explanation of this can be found here: <a href="https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable" target="_blank" rel="noreferrer noopener">https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable</a></p>
-
-
-
-<h3>Binary Tree</h3>
-
-
-
-<p>A
- binary tree is made up of a bunch of nodes, and each node points to 2 
-other nodes, the left and the right. Below would be a visualization of a
- tree (you can also google a binary tree visualization for a proper 
-image):&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">       (5)<br>      /   \<br>    (3)   (7)<br>   / \     / \<br>(2) (4)   (6) (8)</pre>
-
-
-
-<p>For each node, the left node should be smaller than 
-the parent node and the right node should be bigger. When sorted and 
-balanced like this properly, it becomes very fast to find the value that
- you need. This is because if you need to find a value, you don&#8217;t need 
-to traverse through every node to find a match like a linked list would.
- For example, if you wanted to find the value of 4 in the above tree, it
- would start at the top and see that 4 is less than 5. Since the left 
-node is supposed to be less than the parent, it would then go to the 
-left node and do the same thing. Now 4 is more than 3, so it would look 
-to the right because the right node is larger than the parent. By 
-following this logic, even very large trees (as long as it is balanced) 
-will have very fast and scalable execution times for access, search, 
-delete, and insert functions (O(log(n))).&nbsp;</p>
-
-
-
-<p>In the worst
- case scenario though, if the tree is completely unbalanced, it might 
-just look like an ordered linked list. Below is an example visualization
- of an unbalanced tree:&nbsp;</p>
-
-
-
-<pre class="wp-block-preformatted">(1)<br>  \<br>  (2)<br>    \<br>    (3)<br>      \<br>      (4)</pre>
-
-
-
-<p>In that case, finding the value 4 would take linear execution time, since it has to traverse through everything.&nbsp;</p>
-
-
-
-<p><strong>Note:&nbsp;</strong></p>
-
-
-
-<p>For more details on this data structure and how it is implemented, this is a good article to start: <a href="https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/" target="_blank" rel="noreferrer noopener">https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/</a></p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/data-structures/">12. Data Structure Basics For Programming</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></content:encoded>
-			</item>
-		<item>
-		<title>11. Big O Notation Basics For Programming</title>
-		<link>https://www.mediocreinventions.com/big-o/</link>
-		<pubDate>Sat, 29 Dec 2018 23:57:06 +0000</pubDate>
-		<dc:creator><![CDATA[Admin]]></dc:creator>
-				<category><![CDATA[Web Application Basics]]></category>
-		<category><![CDATA[big o]]></category>
-		<category><![CDATA[efficiency]]></category>
-		<category><![CDATA[programming]]></category>
-		<category><![CDATA[time complexity]]></category>
-
-		<guid isPermaLink="false">http://mediocreinventions.herokuapp.com/?p=1271</guid>
-		<description><![CDATA[<p>Intro If you have followed through the Ruby on Rails tutorials on this website, then you should have a basic working application with an API to create, read, update, or delete items from your database. Following these concepts, you can build a lot of different applications, since this is essentially what almost every web application [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/big-o/">11. Big O Notation Basics For Programming</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
-]]></description>
-				<content:encoded><![CDATA[
-<h2>Intro</h2>
-
-
-
-<p>If you have followed through the Ruby on Rails tutorials on this website, then you should have a basic working application with an API to create, read, update, or delete items from your database. Following these concepts, you can build a lot of different applications, since this is essentially what almost every web application does. For example, a website that allows you to see movie ratings and reviews (such as IMDB) follows the same concept: </p>
-
-
-
-<ul><li>Has a database of objects, in this case it stores movies. </li><li>The movies have columns such as name, year, rating or summary. </li><li>There is something that pulls this information from the database and renders it for the public to see. </li></ul>
-
-
-
-<p>Even
- things like Twitter or Airbnb build on these same concepts (they are 
-definitely more complicated than this, but the point is that they are 
-all just applications that interact with a database and render things to
- users). So if you just build upon this template application, you can 
-make a lot of different inventions. However, when the projects get 
-really big (maybe you end up storing a million books in the database), 
-then the application will naturally take longer to process this. In 
-these cases, you will want to make sure that your code is as optimal as 
-you can make it so that the application can keep running fast and scale 
-better with time. For example, if you are implementing a search 
-function, you don&#8217;t want the code to go through a simple For Loop and 
-loop through the millions of books before finding the resulting book. </p>
-
-
-
-<p>The
- next few articles will also go through important concepts such as data 
-structures and algorithms to help get a clearer picture of what 
-efficient code looks like. However, it would be beneficial to first 
-understand what Big O is to know how to evaluate the efficiency of code.
- This article will introduce you to some of the main points of the Big O
- notation so that you will have a basic understanding of what it is 
-about. </p>
-
-
-
-<h2>Big O</h2>
-
-
-
-<p>Big O is a mathematical 
-representation that describes how much time and space an algorithm 
-requires as the input grows. We are going to go over 4 different run 
-times that are most commonly seen: O(n), O(n^2), O(log n), and O(1). If 
-you are afraid of math and feel like this makes no sense already, don&#8217;t 
-worry. I will go over this in plain English and will give simple 
-examples to illustrate what each of these mean. This also means that the
- explanations in this article will be very basic and will definitely not
- go into as much detail as an academic textbook would, so if you are 
-interested in this area then I would recommend taking a longer course on
- this since it is a very significant area in computer science. That 
-being said, I do believe that even having a basic understanding of this 
-is very valuable and will help you improve the way you code. </p>
-
-
-
-<h3>O(n)</h3>
-
-
-
-<p>When
- people refer to something as having a run time of O(n), it means that 
-it will take as long as the size of &#8220;n&#8221; (the variable). For example, the
- below code would be considered to have O(n) run time: </p>
-
-
-
-<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	console.log("I will run n times. ");<br>}</pre>
-
-
-
-<p>If you recall from the <a href="https://www.mediocreinventions.com/programming-basics/" target="_blank" rel="noreferrer noopener" aria-label="If you recall from the Programming article, the for loop will run as long as the condition of &quot;i < n&quot; is true. This means that this function will run 5 times if the value of &quot;n&quot; is 5, and 5000 times if the value of &quot;n&quot; is 5000. This has a &quot;linear&quot; run time because the size of &quot;n&quot; is proportionate to how many times it will run at a 1:1 ratio. So in the Search function example above, if the function loops through a million Book entries in alphabetical order, users will have to wait for the function to run a million times before it reaches the end. In the best case (&quot;maybe the book being searched starts with &quot;A&quot;), it might only have to loop through a handful of times before returning the result. Similarly, in the worst case scenario (maybe a Book's name is &quot;ZZZZZZ&quot;), then it will run the whole million times before returning the result. Although this can be very fast if the book's name started with &quot;A&quot;, Big O generally refers to the worst case scenario as its run time. So a simple for loop in this case would be O(n).  (opens in a new tab)">Programming</a> article, the for loop will run as long as the condition of &#8220;i &lt; n&#8221; is true. This means that this function will run 5 times if the value of &#8220;n&#8221; is 5, and 5000 times if the value of &#8220;n&#8221; is 5000. This has a &#8220;linear&#8221; run time because the size of &#8220;n&#8221; is proportionate to how many times it will run at a 1:1 ratio. So in the Search function example above, if the function loops through a million Book entries in alphabetical order, users will have to wait for the function to run a million times before it reaches the end. In the best case (&#8220;maybe the book being searched starts with &#8220;A&#8221;), it might only have to loop through a handful of times before returning the result. Similarly, in the worst case scenario (maybe a Book&#8217;s name is &#8220;ZZZZZZ&#8221;), then it will run the whole million times before returning the result. Although this can be very fast if the book&#8217;s name started with &#8220;A&#8221;, Big O generally refers to the worst case scenario as its run time. So a simple for loop in this case would be O(n). </p>
-
-
-
-<h3>O(n^2)</h3>
-
-
-
-<p>This is O(n) to the power of 2, which means it runs exponentially slower than O(n). The code below would be considered O(n^2): </p>
-
-
-
-<pre class="wp-block-preformatted">for (i = 0; i &lt; n; i++) {<br>	for (j =0; j &lt; n; i++) {<br>	console.log("I will run n * n times. ");	<br>	}<br>}</pre>
-
-
-
-<p>You can see that there is a for loop nested within a for loop, 
-and both of them depend on the size of &#8220;n&#8221;. Which means that if n is 10,
- then both the &#8220;j&#8221; and &#8220;i&#8221; loops have to run 10 times each. Since the 
-&#8220;j&#8221; loop is nested within the &#8220;i&#8221; loop, the &#8220;j&#8221; loop has to run 10 times
- before the &#8220;i&#8221; value increments by 1. To finish, &#8220;i&#8221; will also need to 
-run 10 times, which means 10 times 10. The point here is that both loops
- depend on the same variable and one of the loops is nested in the 
-other. This makes it take exponentially longer to run as the size of n 
-increases. </p>
-
-
-
-<h3>O(log n)</h3>
-
-
-
-<p>This one might be a bit 
-more complicated to understand in terms of the code. However, the 
-concept is much easier to understand. Algorithms that have a O(log n) or
- logarithmic run time are often regarded as very efficient and scalable.
- The code below is regarded as O(log n): </p>
-
-
-
-<pre class="wp-block-preformatted">function divideByTwo(n) {&nbsp;&nbsp;&nbsp;<br>   if (n == 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>&nbsp;&nbsp;&nbsp;} else if (n &gt; 1) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var previousNumber = divideByTwo(n / 2);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return n;<br>&nbsp;&nbsp;&nbsp;}<br>}</pre>
-
-
-
-<p>We haven&#8217;t went through &#8220;recursion&#8221; so the above code might 
-look a bit confusing (recursion is essentially a function that calls 
-itself). The code takes the input &#8220;n&#8221;, prints out the number, then 
-divide it by 2, and print out that number, then divide by 2 and so on 
-until the resulting number is less than 1. You can see that this is 
-scalable because even if the input is a million, if you keep dividing it
- by 2, the number of times this function has to run is still less than 
-30. The number of times this function has to run only increases by 1 
-every time &#8220;n&#8221; doubles in size. </p>
-
-
-
-<p>We implement these kind of 
-functions in real life all the time. For example, when you open up a 
-dictionary and want to find a word, you only need to flip through the 
-dictionary a few times before you find your word even though it may have
- thousands of pages. If the word is &#8220;happy&#8221;, you might start by opening 
-the dictionary from the middle. If you reach the &#8220;m&#8221; section, you 
-automatically flip back (maybe halfway). If this next section starts 
-with &#8220;e&#8221;, then you flip forward again and repeat until you reach the &#8220;h&#8221;
- section to find your word. No matter how big the dictionary is, it is 
-always a doable task because you are able to halve your results with 
-each flip. This is much more efficient than flipping through each page 
-one at a time, similar to what a for loop would do. </p>
-
-
-
-<h3>O(1)</h3>
-
-
-
-<p>This
- one just means constant time. It doesn&#8217;t depend on any input size, the 
-amount of time it runs is always going to be the same. A function like 
-below would be considered constant time: </p>
-
-
-
-<pre class="wp-block-preformatted">function doBunchOfThings() {<br>	console.log("Do something. ");<br>	console.log("Do another thing. ");<br>	console.log("Do even more things. ");<br>	console.log("Keep doing things. ");<br>	console.log("Just do one more thing. ");<br>}</pre>
-
-
-
-<p>No matter how many console.log() functions is fit in there, it 
-is always going to be O(1) run time because there is no variable input. </p>
-
-
-
-<p>There
- are a lot more notations out there and definitely more to analyzing run
- times, however, these are the essential concepts that should give you a
- decent understanding of how to determine the run time of a function. </p>
-
-
-
-<p>For a chart of some different Big O notations and their run times, please see this link: <a href="http://bigocheatsheet.com/" target="_blank" rel="noreferrer noopener">http://bigocheatsheet.com/</a></p>
-<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/big-o/">11. Big O Notation Basics For Programming</a> appeared first on <a rel="nofollow" href="http://dev.mediocreinventions.com">Mediocre Inventions</a>.</p>
+<p>The post <a rel="nofollow" href="https://www.mediocreinventions.com/rails-authorization/">4. Ruby on Rails Authorization</a> appeared first on <a rel="nofollow" href="http://www.mediocreinventions.com/">Mediocre Inventions</a>.</p>
 ]]></content:encoded>
 			</item>
 	</channel>
