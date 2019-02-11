@@ -9,582 +9,577 @@
 
 <url>
   <loc>https://www.mediocreinventions.com/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/privacy/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/deploying-wordpress-to-heroku/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/setting-up-the-git-repository/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/wordpress-configurations-and-preparation/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <loc>https://www.mediocreinventions.com/category/web-basics/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/category/rails-to-production/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/category/rails-to-production/rails-react/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/category/web-basics/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/category/wordpress-free-hosting/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <loc>https://www.mediocreinventions.com/privacy/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/deploying-wordpress-to-heroku/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/category/wordpress-free-hosting/wordpress-hosting-options/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/author/mt9304gmail-com/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.mediocreinventions.com/setting-up-the-git-repository/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/tag/cleardb/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.mediocreinventions.com/wordpress-configurations-and-preparation/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/tag/heroku/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/wordpress/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/git/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/github/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/configurations/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/plugins/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://www.mediocreinventions.com/category/wordpress-free-hosting/installing-wordpress/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/installing-wordpress/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/installing-lamp-stack/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/nginx-and-lets-encrypt-ssl/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/category/rails-to-production/rails-nginx/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/rails-on-nginx/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/ruby-on-rails-hosting/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/rails-with-react/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/rails-authorization/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/rails-authentication/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/ruby-on-rails-api/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/rails-setup/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/data-structures/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/big-o/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/monitoring/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/seo/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/scripting/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/encryption/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/web-servers/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/databases/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tools/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/testing/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/category/web-basics/page/2/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/installing-lamp-stack/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <loc>https://www.mediocreinventions.com/category/rails-to-production/rails-authentication-authorization/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/category/rails-to-production/rails-react/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/rails-with-react/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/rails-authorization/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/rails-authentication/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/ruby-on-rails-api/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/rails-setup/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/cleardb/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/heroku/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/wordpress/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/git/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/github/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/configurations/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/plugins/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/apache/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/installing/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/mysql/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/php/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/ubuntu-18-04/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tools/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/lamp/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/https/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/lets-encrypt/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/nginx/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/server/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/ssl/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/ubuntu/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/web-server/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/bash/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/linux/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/postgresql/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/ruby-on-rails/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/web-application/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/aws/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/hosting/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/react/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/react-js/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/ruby/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/authorization/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/cancancan/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/rolify/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/authentication/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/devise/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/api/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/setup/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/array/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/binary-tree/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/data-structures/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/hash-map/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/javascript/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/linked-list/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/programming-basics/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/big-o/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/efficiency/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/programming/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/time-complexity/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/google-analytics/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/monitoring/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/nginx-amplify/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/production/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/uptime-robot/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/web-applications/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/websites/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/search-engine-optimization/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/seo/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/scripting/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/asymmetric-encryption/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/encryption/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/hash/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/hashing/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/symmetric-encryption/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/http/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/servers/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/web-servers/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/databases/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/json/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/nosql/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/sql/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/tag/tools/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/testing/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://www.mediocreinventions.com/tag/unit-tests/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <loc>https://www.mediocreinventions.com/testing/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/internet-basics/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://www.mediocreinventions.com/tag/lamp/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <loc>https://www.mediocreinventions.com/tag/react/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/react-js/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/ruby/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/authorization/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/cancancan/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/rolify/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/authentication/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/devise/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/api/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/setup/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/tools/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/basics/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.41</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/data-types/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.41</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/for-loop/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.41</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/if-statements/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.41</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/while-loop/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/testing/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://www.mediocreinventions.com/tag/unit-tests/</loc>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.41</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/dns/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.41</priority>
 </url>
 <url>
   <loc>https://www.mediocreinventions.com/tag/internet/</loc>
-  <lastmod>2019-02-05T07:43:40+00:00</lastmod>
+  <lastmod>2019-02-11T01:05:34+00:00</lastmod>
   <priority>0.41</priority>
 </url>
 
